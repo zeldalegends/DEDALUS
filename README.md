@@ -21,65 +21,6 @@ relevant to authenticating other services are described in detail.
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/6b143a6b3ad8bcba69cf)
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/engsep/FIWARE/tree/pre-production)
 
-## Contents
-
-<details>
-<summary><strong>Details</strong></summary>
-
--   [Securing Microservices with a PEP Proxy](#securing-microservices-with-a-pep-proxy)
-    -   [Standard Concepts of Identity Management](#standard-concepts-of-identity-management)
-    -   [:arrow_forward: Video : Introduction to Wilma PEP Proxy](#arrow_forward-video--introduction-to-wilma-pep-proxy)
--   [Prerequisites](#prerequisites)
-    -   [Docker](#docker)
-    -   [Cygwin](#cygwin)
--   [Architecture](#architecture)
--   [Start Up](#start-up)
-    -   [Dramatis Personae](#dramatis-personae)
-    -   [Logging In to Keyrock using the REST API](#logging-in-to-keyrock-using-the-rest-api)
-        -   [Create Token with Password](#create-token-with-password)
-        -   [Get Token Info](#get-token-info)
--   [Managing PEP Proxies and IoT Agents](#managing-pep-proxies-and-iot-agents)
-    -   [:arrow_forward: Video : Wilma PEP Proxy Configuration](#arrow_forward-video--wilma-pep-proxy-configuration)
-    -   [Managing PEP Proxies and IoT Agents - Start Up](#managing-pep-proxies-and-iot-agents---start-up)
-    -   [PEP Proxy CRUD Actions](#pep-proxy-crud-actions)
-        -   [Create a PEP Proxy](#create-a-pep-proxy)
-        -   [Read PEP Proxy details](#read-pep-proxy-details)
-        -   [Reset Password of a PEP Proxy](#reset-password-of-a-pep-proxy)
-        -   [Delete a PEP Proxy](#delete-a-pep-proxy)
-    -   [IoT Agent CRUD Actions](#iot-agent-crud-actions)
-        -   [Create an IoT Agent](#create-an-iot-agent)
-        -   [Read IoT Agent details](#read-iot-agent-details)
-        -   [List IoT Agents](#list-iot-agents)
-        -   [Reset Password of an IoT Agent](#reset-password-of-an-iot-agent)
-        -   [Delete an IoT Agent](#delete-an-iot-agent)
--   [Securing the Orion Context Broker](#securing-the-orion-context-broker)
-    -   [Securing Orion - PEP Proxy Configuration](#securing-orion---pep-proxy-configuration)
-    -   [Securing Orion - Application Configuration](#securing-orion---application-configuration)
-    -   [Securing Orion - Start up](#securing-orion---start-up)
-        -   [:arrow_forward: Video : Securing A REST API](#arrow_forward-video--securing-a-rest-api)
-    -   [User Logs In to the Application using the REST API](#user-logs-in-to-the-application-using-the-rest-api)
-        -   [PEP Proxy - No Access to Orion without an Access Token](#pep-proxy---no-access-to-orion-without-an-access-token)
-        -   [Keyrock - User Obtains an Access Token](#keyrock---user-obtains-an-access-token)
-        -   [PEP Proxy - Accessing Orion with an Access Token](#pep-proxy---accessing-orion-with-an-access-token)
-        -   [PEP Proxy - Accessing Orion with an Authorization: Bearer](pep-proxy---accessing-orion-awith-an-authorization-bearer)
-    -   [Securing Orion - Sample Code](#securing-orion---sample-code)
--   [Securing an IoT Agent South Port](#securing-an-iot-agent-south-port)
-    -   [Securing an IoT Agent South Port - PEP Proxy Configuration](#securing-an-iot-agent-south-port---pep-proxy-configuration)
-    -   [Securing an IoT Agent South Port - Application Configuration](#securing-an-iot-agent-south-port---application-configuration)
-    -   [Securing South Port Traffic - Start up](#securing-south-port-traffic---start-up)
-    -   [IoT Sensor Logs In to the Application using the REST API](#iot-sensor-logs-in-to-the-application-using-the-rest-api)
-        -   [Keyrock - IoT Sensor Obtains an Access Token](#keyrock---iot-sensor-obtains-an-access-token)
-        -   [PEP Proxy - Accessing IoT Agent with an Access Token](#pep-proxy---accessing-iot-agent-with-an-access-token)
-    -   [Securing South Port Traffic - Sample Code](#securing-south-port-traffic---sample-code)
--   [Securing an IoT Agent North Port](#securing-an-iot-agent-north-port)
-    -   [Securing an IoT Agent North Port - IoT Agent Configuration](#securing-an-iot-agent-north-port---iot-agent-configuration)
-    -   [Securing an IoT Agent North Port - Start up](#securing-an-iot-agent-north-port---start-up)
-        -   [Keyrock - Obtaining a permanent token](#keyrock---obtaining-a-permanent-token)
-        -   [IoT Agent - provisioning a trusted service group](#iot-agent---provisioning-a-trusted-service-group)
-        -   [IoT Agent - provisioning a sensor](#iot-agent---provisioning-a-sensor)
-
-</details>
-
 # Securing Microservices with a PEP Proxy
 
 > "Oh, it's quite simple. If you are a friend, you speak the password, and the doors will open."
@@ -209,7 +150,8 @@ The specific architecture of each section of the tutorial is discussed below.
 To start the installation, do the following:
 
 ```console
-docker-compose up```
+docker-compose up
+```
 
 > **Note** The initial creation of Docker images can take up to three minutes
 
