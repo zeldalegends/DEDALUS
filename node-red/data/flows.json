@@ -16,13 +16,6 @@
         "env": []
     },
     {
-        "id": "ba9285a6.957868",
-        "type": "tab",
-        "label": "SAVE",
-        "disabled": true,
-        "info": ""
-    },
-    {
         "id": "e52631fa86fdd3be",
         "type": "tab",
         "label": "UNIVERSE",
@@ -44,6 +37,13 @@
         "disabled": false,
         "info": "",
         "env": []
+    },
+    {
+        "id": "ba9285a6.957868",
+        "type": "tab",
+        "label": "SAVE",
+        "disabled": true,
+        "info": ""
     },
     {
         "id": "48a7733923a33252",
@@ -183,10 +183,10 @@
         "id": "15d84497.52381b",
         "type": "Context-Broker",
         "name": "Orion LD + PEP Proxy",
-        "endpoint": "http://host.docker.internal:1029",
+        "endpoint": "http://orion-ld-proxy:1029",
         "service": "",
         "servicepath": "",
-        "idmEndpoint": "http://host.docker.internal:3005"
+        "idmEndpoint": "http://keyrock:3005"
     },
     {
         "id": "95f6c009.fa934",
@@ -503,6 +503,15 @@
         "type": "ethereum-client",
         "name": "Replit testnet (chain id:1919250540)",
         "url": "https://eth.replit.com"
+    },
+    {
+        "id": "46a656c62fd8366b",
+        "type": "Context-Broker",
+        "name": "FIWARE Lab Cloud Portal",
+        "endpoint": "http://217.172.12.171:1027",
+        "service": "",
+        "servicepath": "",
+        "idmEndpoint": "http://217.172.12.171:3005"
     },
     {
         "id": "28cb2f4e7bc6a6e4",
@@ -12929,597 +12938,6 @@
         ]
     },
     {
-        "id": "f279627921458d5f",
-        "type": "debug",
-        "z": "ba9285a6.957868",
-        "name": "GitHub vars",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 870,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "bdd706d8fb85efbd",
-        "type": "change",
-        "z": "ba9285a6.957868",
-        "name": "set flow.Github",
-        "rules": [
-            {
-                "t": "set",
-                "p": "Github.bearer",
-                "pt": "flow",
-                "to": "$contains($lowercase(token), \"bearer \") ? token : (\"bearer \" & token)",
-                "tot": "jsonata"
-            },
-            {
-                "t": "set",
-                "p": "Github.owner",
-                "pt": "flow",
-                "to": "username",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "Github.repo",
-                "pt": "flow",
-                "to": "repository",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 680,
-        "y": 120,
-        "wires": [
-            [
-                "f279627921458d5f"
-            ]
-        ]
-    },
-    {
-        "id": "172d6356ab04a229",
-        "type": "http request",
-        "z": "ba9285a6.957868",
-        "name": "PUT github",
-        "method": "PUT",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "https://api.github.com/repos/{{owner}}/{{repo}}/contents/node-red/data/{{{file}}}",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "authType": "",
-        "senderr": false,
-        "x": 870,
-        "y": 460,
-        "wires": [
-            [
-                "0c7340d2a44049f7"
-            ]
-        ]
-    },
-    {
-        "id": "3e5ce0e41afcd72f",
-        "type": "http request",
-        "z": "ba9285a6.957868",
-        "name": "GET github",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "https://api.github.com/repos/{{owner}}/{{repo}}/contents/node-red/data/{{{file}}}",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "authType": "",
-        "senderr": false,
-        "x": 870,
-        "y": 220,
-        "wires": [
-            [
-                "e866bd89f8560646"
-            ]
-        ]
-    },
-    {
-        "id": "64523d55e5caf6a2",
-        "type": "file in",
-        "z": "ba9285a6.957868",
-        "name": "",
-        "filename": "",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "none",
-        "allProps": false,
-        "x": 660,
-        "y": 380,
-        "wires": [
-            [
-                "48decdeb736e977e"
-            ]
-        ]
-    },
-    {
-        "id": "749b59e6136e3253",
-        "type": "change",
-        "z": "ba9285a6.957868",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "sha",
-                "pt": "msg",
-                "to": "payload.sha",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 870,
-        "y": 300,
-        "wires": [
-            [
-                "64523d55e5caf6a2"
-            ]
-        ]
-    },
-    {
-        "id": "48decdeb736e977e",
-        "type": "change",
-        "z": "ba9285a6.957868",
-        "name": "set msg.payload",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "{\"content\": $base64encode(payload)}",
-                "tot": "jsonata"
-            },
-            {
-                "t": "set",
-                "p": "payload.message",
-                "pt": "msg",
-                "to": "Saved from Node-RED editor",
-                "tot": "str"
-            },
-            {
-                "t": "move",
-                "p": "sha",
-                "pt": "msg",
-                "to": "payload.sha",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 860,
-        "y": 380,
-        "wires": [
-            [
-                "69472f5dbcdf5382"
-            ]
-        ]
-    },
-    {
-        "id": "e866bd89f8560646",
-        "type": "delay",
-        "z": "ba9285a6.957868",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "outputs": 1,
-        "x": 670,
-        "y": 300,
-        "wires": [
-            [
-                "749b59e6136e3253"
-            ]
-        ]
-    },
-    {
-        "id": "69472f5dbcdf5382",
-        "type": "change",
-        "z": "ba9285a6.957868",
-        "name": "set msg.headers",
-        "rules": [
-            {
-                "t": "set",
-                "p": "headers",
-                "pt": "msg",
-                "to": "{\"User-Agent\":\"Node-RED\"}",
-                "tot": "json"
-            },
-            {
-                "t": "set",
-                "p": "headers.Authorization",
-                "pt": "msg",
-                "to": "bearer",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 680,
-        "y": 460,
-        "wires": [
-            [
-                "172d6356ab04a229"
-            ]
-        ]
-    },
-    {
-        "id": "acda9dd01f83bbe0",
-        "type": "debug",
-        "z": "ba9285a6.957868",
-        "name": "commit statusCode",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "statusCode",
-        "statusType": "msg",
-        "x": 850,
-        "y": 540,
-        "wires": []
-    },
-    {
-        "id": "43dcd85b58dfee39",
-        "type": "change",
-        "z": "ba9285a6.957868",
-        "name": "set msg.headers",
-        "rules": [
-            {
-                "t": "set",
-                "p": "headers",
-                "pt": "msg",
-                "to": "{\"User-Agent\":\"Node-RED\"}",
-                "tot": "json"
-            },
-            {
-                "t": "set",
-                "p": "headers.Authorization",
-                "pt": "msg",
-                "to": "bearer",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 680,
-        "y": 220,
-        "wires": [
-            [
-                "3e5ce0e41afcd72f"
-            ]
-        ]
-    },
-    {
-        "id": "eaf63b0745580f85",
-        "type": "change",
-        "z": "ba9285a6.957868",
-        "name": "get flow.Github",
-        "rules": [
-            {
-                "t": "set",
-                "p": "bearer",
-                "pt": "msg",
-                "to": "Github.bearer",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "owner",
-                "pt": "msg",
-                "to": "Github.owner",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "repo",
-                "pt": "msg",
-                "to": "Github.repo",
-                "tot": "flow"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 680,
-        "y": 160,
-        "wires": [
-            [
-                "43dcd85b58dfee39"
-            ]
-        ]
-    },
-    {
-        "id": "0c7340d2a44049f7",
-        "type": "change",
-        "z": "ba9285a6.957868",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "topic",
-                "pt": "msg",
-                "to": "filename",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 670,
-        "y": 540,
-        "wires": [
-            [
-                "acda9dd01f83bbe0"
-            ]
-        ]
-    },
-    {
-        "id": "3118e4be366f0844",
-        "type": "comment",
-        "z": "ba9285a6.957868",
-        "name": "Github token",
-        "info": "Repository:\nhttps://github.com/${GITHUB_USERNAME}/${GITHUB_REPOSITORY}\n\nToken:\nhttps://github.com/settings/tokens\n",
-        "x": 890,
-        "y": 40,
-        "wires": []
-    },
-    {
-        "id": "581edb20c9a627e2",
-        "type": "change",
-        "z": "ba9285a6.957868",
-        "name": "set file paths",
-        "rules": [
-            {
-                "t": "set",
-                "p": "file",
-                "pt": "msg",
-                "to": "payload",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "filename",
-                "pt": "msg",
-                "to": "\"/data/\" & file",
-                "tot": "jsonata"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 430,
-        "y": 220,
-        "wires": [
-            [
-                "eaf63b0745580f85"
-            ]
-        ]
-    },
-    {
-        "id": "7c55382072ac5ecd",
-        "type": "inject",
-        "z": "ba9285a6.957868",
-        "name": "flows_cred.json",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "flows_cred.json",
-        "payloadType": "str",
-        "x": 140,
-        "y": 220,
-        "wires": [
-            [
-                "581edb20c9a627e2"
-            ]
-        ]
-    },
-    {
-        "id": "6efcdb36f7b67ad3",
-        "type": "inject",
-        "z": "ba9285a6.957868",
-        "name": "flows.json",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "flows.json",
-        "payloadType": "str",
-        "x": 120,
-        "y": 180,
-        "wires": [
-            [
-                "581edb20c9a627e2"
-            ]
-        ]
-    },
-    {
-        "id": "30b8aaf6d52456ce",
-        "type": "inject",
-        "z": "ba9285a6.957868",
-        "g": "416fb17dde932093",
-        "name": "GitHub",
-        "props": [
-            {
-                "p": "token",
-                "v": "GITHUB_TOKEN",
-                "vt": "env"
-            },
-            {
-                "p": "username",
-                "v": "hybuild-project",
-                "vt": "str"
-            },
-            {
-                "p": "repository",
-                "v": "PEP-Proxy-NGSI-LD",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 440,
-        "y": 60,
-        "wires": [
-            [
-                "bdd706d8fb85efbd"
-            ]
-        ]
-    },
-    {
-        "id": "f3b82308cbd26c4e",
-        "type": "inject",
-        "z": "ba9285a6.957868",
-        "name": "settings.js",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "settings.js",
-        "payloadType": "str",
-        "x": 120,
-        "y": 140,
-        "wires": [
-            [
-                "581edb20c9a627e2"
-            ]
-        ]
-    },
-    {
-        "id": "826cd1312e95863f",
-        "type": "inject",
-        "z": "ba9285a6.957868",
-        "name": "package.json",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "package.json",
-        "payloadType": "str",
-        "x": 130,
-        "y": 100,
-        "wires": [
-            [
-                "581edb20c9a627e2"
-            ]
-        ]
-    },
-    {
-        "id": "9ee5ee3ce991d462",
-        "type": "inject",
-        "z": "ba9285a6.957868",
-        "name": ".config.users.json",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": ".config.users.json",
-        "payloadType": "str",
-        "x": 140,
-        "y": 60,
-        "wires": [
-            [
-                "581edb20c9a627e2"
-            ]
-        ]
-    },
-    {
         "id": "7ccf9a969511e69c",
         "type": "ui_template",
         "z": "e52631fa86fdd3be",
@@ -13534,7 +12952,7 @@
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 570,
+        "x": 650,
         "y": 180,
         "wires": [
             [
@@ -13553,7 +12971,7 @@
         "updateModev2": "append",
         "ldContext": "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
         "mimeType": "application/ld+json",
-        "x": 710,
+        "x": 790,
         "y": 180,
         "wires": [
             [
@@ -13574,7 +12992,7 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "msg",
-        "x": 850,
+        "x": 930,
         "y": 180,
         "wires": []
     },
@@ -13800,8 +13218,8 @@
         "type": "comment",
         "z": "e52631fa86fdd3be",
         "name": "FE Universe - FIWARE Notarization",
-        "info": "Il programma scrive sul Context Broker\nOrion LD i risultati dei test immessi.\n\nAl riavvio annulla tutte le sottoscrizioni\nal Context Broker e sottoscrive il solo\nservizio di notarizzazione su Blockchain. \n\nNotarizza su Blockchain (testnet Goerli)\ngli Acceptance Test con codice 100 o 200.\n\nPer usare il programma imposta le env var\nETHEREUM_ADDRESS e ETHEREUM_PRIVATE_KEY\ne riavvia. Controlla la URL del Context\nBroker nella scheda \"NGSI-LD\" e la URL\nnella sezione Notification dei nodi rosa\nNGSI-Subsription. \n\n",
-        "x": 780,
+        "info": "Il programma scrive sul Context Broker\nOrion LD i risultati dei test immessi.\n\nAl riavvio annulla tutte le sottoscrizioni\nal Context Broker e sottoscrive il solo\nservizio di notarizzazione su Blockchain. \n\nNotarizza su Blockchain (testnet Goerli)\ngli Acceptance Test con codice 100 o 200.\n\nPer usare il programma:\n1) Imposta le variabili d'ambiente\nETHEREUM_ADDRESS e ETHEREUM_PRIVATE_KEY\ne riavvia Node-RED\n2) Controlla la URL del Context Broker \nnella scheda del flow \"FIWARE\"\n3) Controlla la URL nella sezione \nNotification dei nodi NGSI-Subsription\n",
+        "x": 860,
         "y": 40,
         "wires": []
     },
@@ -14144,7 +13562,7 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 610,
+        "x": 650,
         "y": 260,
         "wires": [
             [
@@ -14163,7 +13581,7 @@
         "arraySpltType": "len",
         "stream": false,
         "addname": "",
-        "x": 730,
+        "x": 810,
         "y": 260,
         "wires": [
             [
@@ -14186,7 +13604,7 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 860,
+        "x": 940,
         "y": 260,
         "wires": [
             []
@@ -14318,7 +13736,7 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 570,
+        "x": 650,
         "y": 560,
         "wires": [
             [
@@ -14339,7 +13757,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 700,
+        "x": 800,
         "y": 560,
         "wires": []
     },
@@ -14411,8 +13829,8 @@
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 860,
-        "y": 80,
+        "x": 940,
+        "y": 120,
         "wires": [
             []
         ]
@@ -14437,7 +13855,7 @@
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 730,
+        "x": 650,
         "y": 120,
         "wires": [
             [
@@ -14460,7 +13878,7 @@
         "className": "",
         "topic": "",
         "name": "",
-        "x": 870,
+        "x": 790,
         "y": 120,
         "wires": [
             []
@@ -15460,7 +14878,7 @@
         "usePreviousBlocksGasPrice": true,
         "gasPrice": "",
         "fetchFullTransaction": false,
-        "x": 380,
+        "x": 420,
         "y": 160,
         "wires": [
             [],
@@ -15514,7 +14932,7 @@
         "usePreviousBlocksGasPrice": true,
         "gasPrice": "46591",
         "fetchFullTransaction": false,
-        "x": 360,
+        "x": 400,
         "y": 320,
         "wires": [
             [
@@ -15539,7 +14957,7 @@
         "targetType": "full",
         "statusVal": "payload",
         "statusType": "msg",
-        "x": 830,
+        "x": 890,
         "y": 260,
         "wires": []
     },
@@ -15636,7 +15054,7 @@
         "z": "828bae03b631ac33",
         "name": "Come ricavare la Private Key",
         "info": "# Procedura su Chrome\n - Estensione Metamask\n - Opzioni account (overflow menu icon)\n - Dettagli Account\n - Esporta Chiave Privata",
-        "x": 880,
+        "x": 860,
         "y": 100,
         "wires": []
     },
@@ -15646,7 +15064,7 @@
         "z": "828bae03b631ac33",
         "name": "Come ricavare la Public Key",
         "info": "bash $ `npm i -g ethereum-private-key-to-public-key`\nbash $ `ethereum-private-key-to-public-key` _private-key_\n",
-        "x": 880,
+        "x": 860,
         "y": 140,
         "wires": []
     },
@@ -15766,7 +15184,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 400,
+        "x": 440,
         "y": 40,
         "wires": [
             [
@@ -15787,7 +15205,7 @@
         "targetType": "jsonata",
         "statusVal": "",
         "statusType": "auto",
-        "x": 600,
+        "x": 640,
         "y": 40,
         "wires": []
     },
@@ -15799,7 +15217,7 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 230,
+        "x": 250,
         "y": 40,
         "wires": [
             [
@@ -15815,7 +15233,7 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 350,
+        "x": 390,
         "y": 200,
         "wires": [
             [
@@ -15831,7 +15249,7 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 350,
+        "x": 390,
         "y": 360,
         "wires": [
             [
@@ -15852,7 +15270,7 @@
         "targetType": "msg",
         "statusVal": "payload.blockHash",
         "statusType": "msg",
-        "x": 830,
+        "x": 890,
         "y": 380,
         "wires": []
     },
@@ -15869,7 +15287,7 @@
         "targetType": "full",
         "statusVal": "payload",
         "statusType": "msg",
-        "x": 590,
+        "x": 630,
         "y": 160,
         "wires": []
     },
@@ -15878,8 +15296,8 @@
         "type": "comment",
         "z": "828bae03b631ac33",
         "name": "My_PoE.sol",
-        "info": "[Remix](https://remix.ethereum.org/)\n```\n// SPDX-License-Identifier: GPL-3.0\npragma solidity >=0.7.0 <0.9.0;\n\n/**\n * @title Proof of Existence\n * @dev Notarization with Blockchain\n */\ncontract ProofOfExistence {\n  // @dev The contract state\n  mapping (bytes32 => bool) private proofs;\n\n  // @dev Private helper function to get a document's SHA256 hash\n  // *pure function\n  function calculateProof(string memory document) private pure returns (bytes32) {\n    return sha256(abi.encode(document));\n  }\n  \n  // @dev Calculate and store the proof for a document in the contract state\n  // *transactional function*\n  function notarize(string memory document) public returns (bytes32) {\n    bytes32 hash = calculateProof(document);\n    require(proofs[hash] != true, \"Document already notarized.\");\n    proofs[hash] = true;\n    return hash;\n  }\n\n  // @dev Check if a document has been notarized\n  // *read-only function*\n  function checkDocument(string memory document) public view returns (bool) {\n    return proofs[calculateProof(document)];\n  }\n}\n```",
-        "x": 830,
+        "info": "[Remix](https://remix.ethereum.org/)\n\n```solidity\n\n// SPDX-License-Identifier: GPL-3.0\npragma solidity >=0.7.0 <0.9.0;\n\n/**\n * @title Proof of Existence\n * @dev Notarization with Blockchain\n */\ncontract ProofOfExistence {\n  // @dev The contract state\n  mapping (bytes32 => bool) private proofs;\n\n  // @dev Private helper function to get a document's SHA256 hash\n  // *pure function\n  function calculateProof(string memory document) private pure returns (bytes32) {\n    return sha256(abi.encode(document));\n  }\n  \n  // @dev Calculate and store the proof for a document in the contract state\n  // *transactional function*\n  function notarize(string memory document) public returns (bytes32) {\n    bytes32 hash = calculateProof(document);\n    require(proofs[hash] != true, \"Document already notarized.\");\n    proofs[hash] = true;\n    return hash;\n  }\n\n  // @dev Check if a document has been notarized\n  // *read-only function*\n  function checkDocument(string memory document) public view returns (bool) {\n    return proofs[calculateProof(document)];\n  }\n}\n\n```",
+        "x": 910,
         "y": 200,
         "wires": []
     },
@@ -15895,7 +15313,7 @@
         "toBlock": "latest",
         "filterFrom": "",
         "filterTo": "",
-        "x": 630,
+        "x": 670,
         "y": 420,
         "wires": [
             [
@@ -15922,7 +15340,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 630,
+        "x": 670,
         "y": 260,
         "wires": [
             [
@@ -15951,7 +15369,7 @@
         "topic": "",
         "payload": "transaction",
         "payloadType": "flow",
-        "x": 380,
+        "x": 420,
         "y": 420,
         "wires": [
             [
@@ -15973,7 +15391,7 @@
         "targetType": "msg",
         "statusVal": "summary.args[0]",
         "statusType": "msg",
-        "x": 840,
+        "x": 900,
         "y": 320,
         "wires": []
     },
@@ -15990,7 +15408,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 830,
+        "x": 890,
         "y": 480,
         "wires": []
     },
@@ -16005,31 +15423,13 @@
         "syntax": "mustache",
         "template": "https://goerli.etherscan.io/tx/{{payload}}",
         "output": "str",
-        "x": 600,
+        "x": 640,
         "y": 480,
         "wires": [
             [
                 "6c0efb7d54703c09"
             ]
         ]
-    },
-    {
-        "id": "8fadde141db77098",
-        "type": "debug",
-        "z": "828bae03b631ac33",
-        "d": true,
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 610,
-        "y": 120,
-        "wires": []
     },
     {
         "id": "6d881bfa8382ca00",
@@ -16052,7 +15452,7 @@
         "topic": "${ETHEREUM_ADDRESS}",
         "payload": "${ETHEREUM_PRIVATE_KEY}",
         "payloadType": "str",
-        "x": 590,
+        "x": 650,
         "y": 540,
         "wires": [
             [
@@ -16066,9 +15466,610 @@
         "z": "828bae03b631ac33",
         "name": "Lista RPC Goerli",
         "info": "**[Infura](https://infura.io/dashboard/ethereum/5335c51b15474082b174e255701d969f/settings)** (100000 richieste/giorno) (efbrtobrhrdauyhmib@nthrw.com)\nhttps://goerli.infura.io/v3/5335c51b15474082b174e255701d969f\n\n**[RPC Info](https://rpc.info/)** (public)\nhttps://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161\n\n**[Ankr](https://www.ankr.com/rpc/eth/eth_goerli/)** (public)\nhttps://rpc.ankr.com/eth_goerli\n\n**[Alchemy](https://dashboard.alchemy.com/usage)** (ybwyourptbrsevjdzn@nvhrw.com)\nhttps://eth-goerli.g.alchemy.com/v2/c_o7OYGYQFXHsLYv7GPlT_VAQQYaxQz2\n\n**[Mudit Gupta's Blog](https://mudit.blog)**(public)\nhttps://rpc.goerli.mudit.blog/",
-        "x": 840,
+        "x": 900,
         "y": 540,
         "wires": []
+    },
+    {
+        "id": "399f2053ac8aae5c",
+        "type": "comment",
+        "z": "828bae03b631ac33",
+        "name": "ETHEREUM_ADDREDD and ETHEREUM_PRIVATE_KEY ",
+        "info": "docker compose down\nexport ETHEREUM_ADDREDD=0x7e****\nexport ETHEREUM_PRIVATE_KEY=5f00***\ndocker compose up\n",
+        "x": 250,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "f279627921458d5f",
+        "type": "debug",
+        "z": "ba9285a6.957868",
+        "name": "GitHub vars",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 870,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "bdd706d8fb85efbd",
+        "type": "change",
+        "z": "ba9285a6.957868",
+        "name": "set flow.Github",
+        "rules": [
+            {
+                "t": "set",
+                "p": "Github.bearer",
+                "pt": "flow",
+                "to": "$contains($lowercase(token), \"bearer \") ? token : (\"bearer \" & token)",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "Github.owner",
+                "pt": "flow",
+                "to": "username",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "Github.repo",
+                "pt": "flow",
+                "to": "repository",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 680,
+        "y": 120,
+        "wires": [
+            [
+                "f279627921458d5f"
+            ]
+        ]
+    },
+    {
+        "id": "172d6356ab04a229",
+        "type": "http request",
+        "z": "ba9285a6.957868",
+        "name": "PUT github",
+        "method": "PUT",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.github.com/repos/{{owner}}/{{repo}}/contents/node-red/data/{{{file}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 870,
+        "y": 460,
+        "wires": [
+            [
+                "0c7340d2a44049f7"
+            ]
+        ]
+    },
+    {
+        "id": "3e5ce0e41afcd72f",
+        "type": "http request",
+        "z": "ba9285a6.957868",
+        "name": "GET github",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.github.com/repos/{{owner}}/{{repo}}/contents/node-red/data/{{{file}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 870,
+        "y": 220,
+        "wires": [
+            [
+                "e866bd89f8560646"
+            ]
+        ]
+    },
+    {
+        "id": "64523d55e5caf6a2",
+        "type": "file in",
+        "z": "ba9285a6.957868",
+        "name": "",
+        "filename": "",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 660,
+        "y": 380,
+        "wires": [
+            [
+                "48decdeb736e977e"
+            ]
+        ]
+    },
+    {
+        "id": "749b59e6136e3253",
+        "type": "change",
+        "z": "ba9285a6.957868",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "sha",
+                "pt": "msg",
+                "to": "payload.sha",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 870,
+        "y": 300,
+        "wires": [
+            [
+                "64523d55e5caf6a2"
+            ]
+        ]
+    },
+    {
+        "id": "48decdeb736e977e",
+        "type": "change",
+        "z": "ba9285a6.957868",
+        "name": "set msg.payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"content\": $base64encode(payload)}",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "payload.message",
+                "pt": "msg",
+                "to": "Saved from Node-RED editor",
+                "tot": "str"
+            },
+            {
+                "t": "move",
+                "p": "sha",
+                "pt": "msg",
+                "to": "payload.sha",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 860,
+        "y": 380,
+        "wires": [
+            [
+                "69472f5dbcdf5382"
+            ]
+        ]
+    },
+    {
+        "id": "e866bd89f8560646",
+        "type": "delay",
+        "z": "ba9285a6.957868",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "outputs": 1,
+        "x": 670,
+        "y": 300,
+        "wires": [
+            [
+                "749b59e6136e3253"
+            ]
+        ]
+    },
+    {
+        "id": "69472f5dbcdf5382",
+        "type": "change",
+        "z": "ba9285a6.957868",
+        "name": "set msg.headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{\"User-Agent\":\"Node-RED\"}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers.Authorization",
+                "pt": "msg",
+                "to": "bearer",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 680,
+        "y": 460,
+        "wires": [
+            [
+                "172d6356ab04a229"
+            ]
+        ]
+    },
+    {
+        "id": "acda9dd01f83bbe0",
+        "type": "debug",
+        "z": "ba9285a6.957868",
+        "name": "commit statusCode",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "statusCode",
+        "statusType": "msg",
+        "x": 850,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "43dcd85b58dfee39",
+        "type": "change",
+        "z": "ba9285a6.957868",
+        "name": "set msg.headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{\"User-Agent\":\"Node-RED\"}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers.Authorization",
+                "pt": "msg",
+                "to": "bearer",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 680,
+        "y": 220,
+        "wires": [
+            [
+                "3e5ce0e41afcd72f"
+            ]
+        ]
+    },
+    {
+        "id": "eaf63b0745580f85",
+        "type": "change",
+        "z": "ba9285a6.957868",
+        "name": "get flow.Github",
+        "rules": [
+            {
+                "t": "set",
+                "p": "bearer",
+                "pt": "msg",
+                "to": "Github.bearer",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "owner",
+                "pt": "msg",
+                "to": "Github.owner",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "repo",
+                "pt": "msg",
+                "to": "Github.repo",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 680,
+        "y": 160,
+        "wires": [
+            [
+                "43dcd85b58dfee39"
+            ]
+        ]
+    },
+    {
+        "id": "0c7340d2a44049f7",
+        "type": "change",
+        "z": "ba9285a6.957868",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "filename",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 670,
+        "y": 540,
+        "wires": [
+            [
+                "acda9dd01f83bbe0"
+            ]
+        ]
+    },
+    {
+        "id": "3118e4be366f0844",
+        "type": "comment",
+        "z": "ba9285a6.957868",
+        "name": "Github token",
+        "info": "Repository:\nhttps://github.com/${GITHUB_USERNAME}/${GITHUB_REPOSITORY}\n\nToken:\nhttps://github.com/settings/tokens\n",
+        "x": 890,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "581edb20c9a627e2",
+        "type": "change",
+        "z": "ba9285a6.957868",
+        "name": "set file paths",
+        "rules": [
+            {
+                "t": "set",
+                "p": "file",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "filename",
+                "pt": "msg",
+                "to": "\"/data/\" & file",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 220,
+        "wires": [
+            [
+                "eaf63b0745580f85"
+            ]
+        ]
+    },
+    {
+        "id": "7c55382072ac5ecd",
+        "type": "inject",
+        "z": "ba9285a6.957868",
+        "name": "flows_cred.json",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "flows_cred.json",
+        "payloadType": "str",
+        "x": 140,
+        "y": 220,
+        "wires": [
+            [
+                "581edb20c9a627e2"
+            ]
+        ]
+    },
+    {
+        "id": "6efcdb36f7b67ad3",
+        "type": "inject",
+        "z": "ba9285a6.957868",
+        "name": "flows.json",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "flows.json",
+        "payloadType": "str",
+        "x": 120,
+        "y": 180,
+        "wires": [
+            [
+                "581edb20c9a627e2"
+            ]
+        ]
+    },
+    {
+        "id": "30b8aaf6d52456ce",
+        "type": "inject",
+        "z": "ba9285a6.957868",
+        "g": "416fb17dde932093",
+        "name": "GitHub",
+        "props": [
+            {
+                "p": "token",
+                "v": "GITHUB_TOKEN",
+                "vt": "env"
+            },
+            {
+                "p": "username",
+                "v": "hybuild-project",
+                "vt": "str"
+            },
+            {
+                "p": "repository",
+                "v": "PEP-Proxy-NGSI-LD",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 440,
+        "y": 60,
+        "wires": [
+            [
+                "bdd706d8fb85efbd"
+            ]
+        ]
+    },
+    {
+        "id": "f3b82308cbd26c4e",
+        "type": "inject",
+        "z": "ba9285a6.957868",
+        "name": "settings.js",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "settings.js",
+        "payloadType": "str",
+        "x": 120,
+        "y": 140,
+        "wires": [
+            [
+                "581edb20c9a627e2"
+            ]
+        ]
+    },
+    {
+        "id": "826cd1312e95863f",
+        "type": "inject",
+        "z": "ba9285a6.957868",
+        "name": "package.json",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "package.json",
+        "payloadType": "str",
+        "x": 130,
+        "y": 100,
+        "wires": [
+            [
+                "581edb20c9a627e2"
+            ]
+        ]
+    },
+    {
+        "id": "9ee5ee3ce991d462",
+        "type": "inject",
+        "z": "ba9285a6.957868",
+        "name": ".config.users.json",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": ".config.users.json",
+        "payloadType": "str",
+        "x": 140,
+        "y": 60,
+        "wires": [
+            [
+                "581edb20c9a627e2"
+            ]
+        ]
     },
     {
         "id": "91618269345c9b5a",

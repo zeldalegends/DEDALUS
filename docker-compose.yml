@@ -438,6 +438,8 @@ services:
     environment:
      - ETHEREUM_ADDRESS
      - ETHEREUM_PRIVATE_KEY
+    volumes:
+     - ./node-red/data:/data
 #   volumes:
 #     - node-red-data:/data
 
