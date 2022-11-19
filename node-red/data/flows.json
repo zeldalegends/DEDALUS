@@ -10,7 +10,7 @@
     {
         "id": "79f6047133543b6d",
         "type": "tab",
-        "label": "AIO",
+        "label": "API",
         "disabled": false,
         "info": "",
         "env": []
@@ -33,7 +33,7 @@
     {
         "id": "44b7dbcf27bd28ae",
         "type": "tab",
-        "label": "NGSI-LD",
+        "label": "FIWARE",
         "disabled": false,
         "info": ""
     },
@@ -106,7 +106,9 @@
             "532151c821513cdf"
         ],
         "x": 294,
-        "y": 19
+        "y": 19,
+        "w": 192,
+        "h": 142
     },
     {
         "id": "67d94c6b13c37cc2",
@@ -379,8 +381,8 @@
     {
         "id": "a5b0ce2eb275e336",
         "type": "ethereum-client",
-        "name": "Rete di test Goerli",
-        "url": "https://rpc.goerli.mudit.blog/"
+        "name": "Goerli (Infura)",
+        "url": "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161"
     },
     {
         "id": "511b16494c95c3e9",
@@ -435,9 +437,9 @@
     {
         "id": "a46f63f7bc8183e7",
         "type": "sender-account",
-        "name": "Account 2 Test",
+        "name": "Account 2 Metamask",
         "ethereumClient": "a5b0ce2eb275e336",
-        "address": "0x7efC9d38581c7Cb8372325c349Ec5095D027B3Dd",
+        "address": "${ETHEREUM_ADDRESS}",
         "managedByEthereumClient": false,
         "transactionQueueSize": "100"
     },
@@ -495,6 +497,12 @@
         "service": "",
         "servicepath": "",
         "idmEndpoint": ""
+    },
+    {
+        "id": "c38d75068fda246d",
+        "type": "ethereum-client",
+        "name": "Replit testnet (chain id:1919250540)",
+        "url": "https://eth.replit.com"
     },
     {
         "id": "28cb2f4e7bc6a6e4",
@@ -13520,7 +13528,7 @@
         "order": 1,
         "width": 0,
         "height": 0,
-        "format": "<h4>\n    <img height=\"36\" src=\"https://account.thethingsnetwork.org/api/v2/users/atdfiware/picture.jpg\" />\n    Orion LD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n    <a href=\"https://zeldalegend-tutorialspe-xvippvejf0x.ws-eu54.gitpod.io/\"><input type=\"image\" height=\"36\" src=\"https://gitpod.io/button/open-in-gitpod.svg\" alt=\"Open in Gitpod\"/></a>\n</h4>\n<textarea style=\"font-size:14px;\" rows=\"9\">{{msg.payload}}</textarea>",
+        "format": "<h4>\n    <img height=\"36\" src=\"https://account.thethingsnetwork.org/api/v2/users/atdfiware/picture.jpg\" />\n    Orion LD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n    <a href=\"https://gitpod.io/#https://github.com/engsep/FIWARE\"><input type=\"image\" height=\"40\" src=\"https://gitpod.io/button/open-in-gitpod.svg\" alt=\"Open in Gitpod\"/></a>\n</h4>\n<textarea style=\"font-size:14px;\" rows=\"9\">{{msg.payload}}</textarea>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": true,
@@ -13610,7 +13618,7 @@
         "targetType": "full",
         "statusVal": "summary.txHash",
         "statusType": "msg",
-        "x": 850,
+        "x": 810,
         "y": 380,
         "wires": []
     },
@@ -13627,7 +13635,7 @@
         "targetType": "full",
         "statusVal": "payload.blockHash",
         "statusType": "msg",
-        "x": 850,
+        "x": 810,
         "y": 460,
         "wires": []
     },
@@ -13646,7 +13654,7 @@
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 710,
+        "x": 670,
         "y": 460,
         "wires": [
             [
@@ -13792,7 +13800,7 @@
         "type": "comment",
         "z": "e52631fa86fdd3be",
         "name": "FE Universe - FIWARE Notarization",
-        "info": "Il programma scrive sul Context Broker\nOrion LD i risultati dei test immessi.\n\nAl riavvio è programmato per annullare\ntutte le sottoscrizioni al Context Broker,\ne mantenerne solo quella al servizio\ndi notarizzazione su Blockchain. \n\nPer imostazione predefinita, notarizza\nsu Blockchain Ethereum (testnet Goerli)\nsolo gli Acceptance Test con un codice\nrisultato pari a 100 o 200.\n\nInserire la URL del Context Broker Orion\nnel flow \"FIWARE\", e a URL di Node-RED\nattualmente sul browser nella scheda\nNotification dei nodi Subscribe.",
+        "info": "Il programma scrive sul Context Broker\nOrion LD i risultati dei test immessi.\n\nAl riavvio annulla tutte le sottoscrizioni\nal Context Broker e sottoscrive il solo\nservizio di notarizzazione su Blockchain. \n\nNotarizza su Blockchain (testnet Goerli)\ngli Acceptance Test con codice 100 o 200.\n\nPer usare il programma imposta le env var\nETHEREUM_ADDRESS e ETHEREUM_PRIVATE_KEY\ne riavvia. Controlla la URL del Context\nBroker nella scheda \"NGSI-LD\" e la URL\nnella sezione Notification dei nodi rosa\nNGSI-Subsription. \n\n",
         "x": 780,
         "y": 40,
         "wires": []
@@ -14339,7 +14347,7 @@
         "id": "8f31643a8f64dea8",
         "type": "comment",
         "z": "e52631fa86fdd3be",
-        "name": "set notification endpoint",
+        "name": "endpoint set for docker",
         "info": "",
         "x": 140,
         "y": 380,
@@ -14356,7 +14364,7 @@
         "syntax": "mustache",
         "template": "TXN in progress...\n\nHash: {{payload}}\nLink: https://goerli.etherscan.io/tx/{{payload}}",
         "output": "str",
-        "x": 690,
+        "x": 650,
         "y": 380,
         "wires": [
             [
@@ -14377,7 +14385,7 @@
         "watchedAttributes": "",
         "q": "level==Acceptance;result<300",
         "notificationMode": "normalized",
-        "notificationEndpoint": "http://host.docker.internal:1880/test",
+        "notificationEndpoint": "http://node-red:1880/test",
         "notificationAttributes": "",
         "mimeType": "application/ld+json",
         "x": 270,
@@ -14405,6 +14413,55 @@
         "className": "",
         "x": 860,
         "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6a9ce898f4615e40",
+        "type": "ui_button",
+        "z": "e52631fa86fdd3be",
+        "name": "",
+        "group": "3887268fb207a290",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "info",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "comment",
+        "payload": "Set env ETHEREUM_ADDRESS and ETHEREUM_PRIVATE_KEY to use Goerli testnet.",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 730,
+        "y": 120,
+        "wires": [
+            [
+                "2d0b2179a2d30fee"
+            ]
+        ]
+    },
+    {
+        "id": "2d0b2179a2d30fee",
+        "type": "ui_toast",
+        "z": "e52631fa86fdd3be",
+        "position": "dialog",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 870,
+        "y": 120,
         "wires": [
             []
         ]
@@ -15341,7 +15398,7 @@
         "id": "dcae251182b37d2c",
         "type": "comment",
         "z": "44b7dbcf27bd28ae",
-        "name": "set notification endpoint",
+        "name": "endpoint set for docker",
         "info": "",
         "x": 120,
         "y": 360,
@@ -15359,7 +15416,7 @@
         "watchedAttributes": "",
         "q": "",
         "notificationMode": "normalized",
-        "notificationEndpoint": "http://host.docker.internal:1880/T",
+        "notificationEndpoint": "http://node-red:1880/T",
         "notificationAttributes": "",
         "mimeType": "application/ld+json",
         "x": 250,
@@ -15588,7 +15645,7 @@
         "type": "comment",
         "z": "828bae03b631ac33",
         "name": "Come ricavare la Public Key",
-        "info": "bash $ `npm i -g ethereum-private-key-to-public-key`\nbash $ `ethereum-private-key-to-public-key` _private-key_\n\n0406c16dffbd03799962604dac8056a0615fd0586c1a1df8c09c05bedd41acec25ab9756c6bc577d0804d4244ed08d86a5bd3fb83991fc67ca13c096a8b8f040e9",
+        "info": "bash $ `npm i -g ethereum-private-key-to-public-key`\nbash $ `ethereum-private-key-to-public-key` _private-key_\n",
         "x": 880,
         "y": 140,
         "wires": []
@@ -15628,8 +15685,7 @@
         "y": 280,
         "wires": [
             [
-                "66227205f7d98182",
-                "c4aeb4c22e647f23"
+                "66227205f7d98182"
             ]
         ]
     },
@@ -15658,8 +15714,7 @@
         "y": 120,
         "wires": [
             [
-                "666bcf1786a8826b",
-                "c661074bc8187e52"
+                "666bcf1786a8826b"
             ]
         ]
     },
@@ -15760,7 +15815,7 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 290,
+        "x": 350,
         "y": 200,
         "wires": [
             [
@@ -15776,7 +15831,7 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 290,
+        "x": 350,
         "y": 360,
         "wires": [
             [
@@ -15900,7 +15955,8 @@
         "y": 420,
         "wires": [
             [
-                "b81c9b20a9cb617f"
+                "b81c9b20a9cb617f",
+                "aaf5189ed0b9ad1c"
             ]
         ]
     },
@@ -15922,83 +15978,6 @@
         "wires": []
     },
     {
-        "id": "bee2f669ae954ab8",
-        "type": "ethers-transaction",
-        "z": "828bae03b631ac33",
-        "name": "",
-        "network": "0a1c6c0edd1fd842",
-        "wallet": "93b18379800c0f5a",
-        "output": "payload",
-        "outputType": "msg",
-        "wait": false,
-        "address": "",
-        "addressType": "str",
-        "ether": "",
-        "etherType": "str",
-        "gaslimit": "",
-        "contract": "26a531bf9aef221a",
-        "apiCall": "checkDocument",
-        "params": [
-            "payload"
-        ],
-        "param0": "payload",
-        "typeParam0": "msg",
-        "x": 390,
-        "y": 500,
-        "wires": [
-            [
-                "35f7ec80981384b0"
-            ]
-        ]
-    },
-    {
-        "id": "35f7ec80981384b0",
-        "type": "debug",
-        "z": "828bae03b631ac33",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 610,
-        "y": 500,
-        "wires": []
-    },
-    {
-        "id": "0a25a3c7164c9449",
-        "type": "ethers-transaction",
-        "z": "828bae03b631ac33",
-        "name": "",
-        "network": "0a1c6c0edd1fd842",
-        "wallet": "93b18379800c0f5a",
-        "output": "payload",
-        "outputType": "msg",
-        "wait": false,
-        "address": "",
-        "addressType": "str",
-        "ether": "",
-        "etherType": "str",
-        "gaslimit": "",
-        "contract": "26a531bf9aef221a",
-        "apiCall": "notarize",
-        "params": [
-            "payload"
-        ],
-        "param0": "payload",
-        "typeParam0": "msg",
-        "x": 380,
-        "y": 560,
-        "wires": [
-            [
-                "7a06a1dafea5c8a9"
-            ]
-        ]
-    },
-    {
         "id": "6c0efb7d54703c09",
         "type": "debug",
         "z": "828bae03b631ac33",
@@ -16011,8 +15990,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 910,
-        "y": 560,
+        "x": 830,
+        "y": 480,
         "wires": []
     },
     {
@@ -16026,158 +16005,11 @@
         "syntax": "mustache",
         "template": "https://goerli.etherscan.io/tx/{{payload}}",
         "output": "str",
-        "x": 760,
-        "y": 560,
-        "wires": [
-            [
-                "6c0efb7d54703c09"
-            ]
-        ]
-    },
-    {
-        "id": "7a06a1dafea5c8a9",
-        "type": "function",
-        "z": "828bae03b631ac33",
-        "name": "error check",
-        "func": "if (!msg.error) return msg;\nnode.error(msg.error, msg);",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 610,
-        "y": 560,
-        "wires": [
-            [
-                "aaf5189ed0b9ad1c"
-            ]
-        ]
-    },
-    {
-        "id": "41f41641c1704274",
-        "type": "inject",
-        "z": "828bae03b631ac33",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "Test",
-        "payloadType": "str",
-        "x": 110,
-        "y": 520,
-        "wires": [
-            [
-                "bee2f669ae954ab8"
-            ]
-        ]
-    },
-    {
-        "id": "05e1517dde152692",
-        "type": "comment",
-        "z": "828bae03b631ac33",
-        "name": "Ropsten (deprecated)",
-        "info": "ProofOfExistence3 (Sepolia)\n0x208e521112313e58EbFe8C7642a23dDEEefB4C8C",
-        "x": 140,
-        "y": 440,
-        "wires": []
-    },
-    {
-        "id": "935c0df299bd347b",
-        "type": "inject",
-        "z": "828bae03b631ac33",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "storedValue",
-        "payloadType": "flow",
-        "x": 140,
+        "x": 600,
         "y": 480,
         "wires": [
             [
-                "bee2f669ae954ab8"
-            ]
-        ]
-    },
-    {
-        "id": "f62e32bae716105f",
-        "type": "inject",
-        "z": "828bae03b631ac33",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "storedValue",
-        "payloadType": "flow",
-        "x": 140,
-        "y": 560,
-        "wires": [
-            [
-                "0a25a3c7164c9449"
-            ]
-        ]
-    },
-    {
-        "id": "c4aeb4c22e647f23",
-        "type": "ethers-transaction",
-        "z": "828bae03b631ac33",
-        "d": true,
-        "name": "",
-        "network": "d9ce9f5276beafeb",
-        "wallet": "93b18379800c0f5a",
-        "output": "payload",
-        "outputType": "msg",
-        "wait": false,
-        "address": "",
-        "addressType": "str",
-        "ether": "",
-        "etherType": "str",
-        "gaslimit": "",
-        "contract": "26a531bf9aef221a",
-        "apiCall": "notarize",
-        "params": [
-            "payload"
-        ],
-        "param0": "payload",
-        "typeParam0": "msg",
-        "x": 380,
-        "y": 280,
-        "wires": [
-            [
-                "8fadde141db77098"
+                "6c0efb7d54703c09"
             ]
         ]
     },
@@ -16200,35 +16032,43 @@
         "wires": []
     },
     {
-        "id": "c661074bc8187e52",
-        "type": "ethers-transaction",
+        "id": "6d881bfa8382ca00",
+        "type": "inject",
         "z": "828bae03b631ac33",
-        "d": true,
-        "name": "",
-        "network": "d9ce9f5276beafeb",
-        "wallet": "93b18379800c0f5a",
-        "output": "payload",
-        "outputType": "msg",
-        "wait": false,
-        "address": "",
-        "addressType": "str",
-        "ether": "",
-        "etherType": "str",
-        "gaslimit": "",
-        "contract": "26a531bf9aef221a",
-        "apiCall": "checkDocument",
-        "params": [
-            "payload"
+        "name": "test env",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
         ],
-        "param0": "payload",
-        "typeParam0": "msg",
-        "x": 390,
-        "y": 120,
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "${ETHEREUM_ADDRESS}",
+        "payload": "${ETHEREUM_PRIVATE_KEY}",
+        "payloadType": "str",
+        "x": 590,
+        "y": 540,
         "wires": [
             [
-                "8fadde141db77098"
+                "6c0efb7d54703c09"
             ]
         ]
+    },
+    {
+        "id": "e982f42b5f657dc5",
+        "type": "comment",
+        "z": "828bae03b631ac33",
+        "name": "Lista RPC Goerli",
+        "info": "**[Infura](https://infura.io/dashboard/ethereum/5335c51b15474082b174e255701d969f/settings)** (100000 richieste/giorno) (efbrtobrhrdauyhmib@nthrw.com)\nhttps://goerli.infura.io/v3/5335c51b15474082b174e255701d969f\n\n**[RPC Info](https://rpc.info/)** (public)\nhttps://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161\n\n**[Ankr](https://www.ankr.com/rpc/eth/eth_goerli/)** (public)\nhttps://rpc.ankr.com/eth_goerli\n\n**[Alchemy](https://dashboard.alchemy.com/usage)** (ybwyourptbrsevjdzn@nvhrw.com)\nhttps://eth-goerli.g.alchemy.com/v2/c_o7OYGYQFXHsLYv7GPlT_VAQQYaxQz2\n\n**[Mudit Gupta's Blog](https://mudit.blog)**(public)\nhttps://rpc.goerli.mudit.blog/",
+        "x": 840,
+        "y": 540,
+        "wires": []
     },
     {
         "id": "91618269345c9b5a",

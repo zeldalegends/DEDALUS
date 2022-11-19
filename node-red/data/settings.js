@@ -76,14 +76,14 @@ module.exports = {
     /** To password protect the Node-RED editor and admin API, the following
      * property can be used. See http://nodered.org/docs/security.html for details.
      */
-    //adminAuth: {
-    //    type: "credentials",
-    //    users: [{
-    //        username: "admin",
-    //        password: "$2a$08$zZWtXTja0fB1pzD4sHCMyOCMYz2Z6dNbM6tl8sJogENOMcxWV9DN.",
-    //        permissions: "*"
-    //    }]
-    //},
+    adminAuth: {
+        type: "credentials",
+        users: [{
+            username: "engsep",
+            password: "fe2c6648c75468d6f4cc5fa16ce33e43f7aefe8754f92a09eee2362b71851b85",
+            permissions: "*"
+        }]
+    },
 
     /** The following property can be used to enable HTTPS
      * This property can be either an object, containing both a (private) key
