@@ -155,7 +155,7 @@ be found [here](https://fiware.github.io/tutorials.Securing-Access/img/keyrock-d
 To create users and organizations and applications, you can log in at
 `http://localhost:3005/idm`. Please contact [ENG contact person](mailto:alessandro.rossi@eng.it) for the admin credentials.
 
-<!--details-->
+<details>
 
 ## Logging In to Keyrock using the REST API
 
@@ -243,7 +243,7 @@ The response will return the details of the associated user
     }
 }
 ```
-<!--/details-->
+</details>
 
 # Managing PEP Proxies and IoT Agents
 
@@ -266,7 +266,7 @@ Proxy Account associated with the application. Anyway, in the followings, instru
 
 >**Note** Creation of new PEP Proxy and IOT Agents is not necessary, since it is part of the HYPERRIDE ICT Platform, but it is documented for the sake of completeness.
 
-<!--details-->
+<details>
 
 ## PEP Proxy CRUD Actions
 
@@ -503,7 +503,7 @@ curl -X DELETE \
   'http://localhost:3005/v1/applications/{{application-id}}/iot_agents/{{iot-agent-id}}' \
   -H 'X-Auth-token: {{X-Auth-token}}'
 ```
-<!--/details-->
+</details>
 
 # Securing the Orion Context Broker
 
