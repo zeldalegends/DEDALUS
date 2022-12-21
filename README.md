@@ -517,7 +517,7 @@ curl -X DELETE \
 
 In the following picture, the general architecture of the secuirity-related part of the HYPERRIDE ICT Platform is depicted.
 
-![PEP Proxy Orion](pep-proxy-orion.png)
+![PEP Proxy Orion](hyperride-pep-proxy-orion.png)
 
 ## Securing Orion - PEP Proxy Configuration
 
