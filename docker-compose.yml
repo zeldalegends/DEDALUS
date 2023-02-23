@@ -393,6 +393,24 @@ services:
   # docker exec -it mosquitto mosquitto_sub -h mosquitto -t "/#"
   # docker exec -it mosquitto mosquitto_pub -h mosquitto -m "Hello world!" -t "/test"
 
+  # Node-RED for flow-programming automation
+  node-red:
+    build: ./node-red
+  # image: fiware/node-red
+  # hostname: node-red
+    container_name: node-red
+  # expose:
+  #   - "1880"      # node-red:1880
+    ports:
+      - "8880:1880" # localhost:8880
+    environment:
+     - ETHEREUM_ADDRESS
+     - ETHEREUM_PRIVATE_KEY
+    volumes:
+     - ./node-red/data:/data
+#   volumes:
+#     - node-red-data:/data
+
 
 # Volumes
 volumes:

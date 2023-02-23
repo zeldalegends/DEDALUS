@@ -89,6 +89,11 @@ ports:
     port: 8082
     onOpen: ignore
     visibility: public
+  - name: Node-RED
+    description: Custom IoT Agent
+    port: 8880
+    onOpen: open-browser
+    visibility: public
   - name: Eclipse MosQuiTTo
     description: MQTT Broker
     port: 8883

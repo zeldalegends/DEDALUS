@@ -1,0 +1,14 @@
+{
+    "15d84497.52381b": {
+        "username": "alice-the-admin@test.com",
+        "password": "test",
+        "client_id": "tutorial-dckr-site-0000-xpresswebapp",
+        "client_secret": "tutorial-dckr-site-0000-clientsecret"
+    },
+    "a46f63f7bc8183e7": {
+        "privateKey": "${ETHEREUM_PRIVATE_KEY}"
+    },
+    "93b18379800c0f5a": {
+        "keyPrivate": "${ETHEREUM_PRIVATE_KEY}"
+    }
+}
