@@ -393,33 +393,6 @@ services:
   # docker exec -it mosquitto mosquitto_sub -h mosquitto -t "/#"
   # docker exec -it mosquitto mosquitto_pub -h mosquitto -m "Hello world!" -t "/test"
 
-  # Node-RED
-  node-red:
-    image: nodered/node-red:latest # 3.0.2
-  # build: ./node-red
-  # hostname: node-red
-    container_name: node-red
-  # restart: on-failure # for Docker Compose
-  # deploy:             # for Docker Swarm
-  #   restart_policy:
-  #     condition: on-failure
-  # networks:
-  #   - default
-  # expose:
-  #   - "1880"      # node-red:1883
-    ports:
-      - "8880:1880" # localhost:8880
-    environment:
-      - TZ=Europe/Amsterdam
-    volumes:
-      - ./node-red/data:/data
-  #   - node-red-data:/data
-  # healthcheck: # Default options
-  #   interval: 30s
-  #   timeout: 30s
-  #   start_period: 0s
-  #   retries: 3
-
 
 # Volumes
 volumes:
@@ -427,7 +400,6 @@ volumes:
   mysql-db: ~
   mongo-db: ~
   mongo-db-config: ~
-  node-red-data: ~
 
 
 # Networks (with MTU patch for Vicenza2 VM)
