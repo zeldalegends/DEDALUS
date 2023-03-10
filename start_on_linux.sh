@@ -1,3 +1,5 @@
+#!\bin\bash
+
 echo -e "\033[0;32mFIWARE setup started.\033[0m"
 sudo chown -R 1000:1000 node-red
 docker compose pull && echo -e "\033[0;32mDocker images updated.\033[0m"
@@ -13,7 +15,7 @@ ver=$(docker -v); echo "${ver//, build*/}"
 ver=$(node -v); echo "Node.js $ver"
 echo ""
 echo -e "\033[1;36mWelcome to FIWARE\033[0m"
-docker ps -a --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
+docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"
 echo ""
 echo -e "\033[0;36mNotify Node-RED app on Replit...\033[0m"
 curl -X POST https://fiware.zeldalegends.repl.co/codespaces -H 'Content-Type: application/json' -d '{"started":true}'
