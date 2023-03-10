@@ -12,6 +12,6 @@ docker compose -f %DOCKER_FILE% -p %PROJECT_NAME% up --build --remove-orphans -d
 
 :loop
 docker compose -f %DOCKER_FILE% logs -t --until 1m
-docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
+docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"
 pause
 goto loop
