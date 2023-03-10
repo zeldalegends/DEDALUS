@@ -758,7 +758,7 @@ INSERT INTO `user_organization` VALUES
 (6,'member','manager2-good-0000-0000-000000000000','managers-team-0000-0000-000000000000'),
 (7,'owner', 'cccccccc-good-0000-0000-000000000000','security-team-0000-0000-000000000000'),
 (8,'member','detective1-good-0000-0000-000000000000','security-team-0000-0000-000000000000'),
-(9,'member','detective2-good-0000-0000-000000000000','security-team-0000-0000-000000000000');
+(9,'member','detective2-good-0000-0000-000000000000','security-team-0000-0000-000000000000'),
 (10,'owner','xxxxxxxx-good-0000-0000-000000000000','managers-team-0000-0000-000000000000'),
 (11,'owner','xxxxxxxx-good-0000-0000-000000000000','security-team-0000-0000-000000000000'),
 /*!40000 ALTER TABLE `user_organization` ENABLE KEYS */;
