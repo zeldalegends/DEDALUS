@@ -1,5 +1,7 @@
 FROM nodered/node-red:3.0.2
 
+USER ${UID}
+
 # Copy package.json to the WORKDIR so npm builds all
 # of your added nodes modules for Node-RED
 COPY data/package.json .

@@ -165,27 +165,26 @@ services:
   # healthcheck:
   #   interval: 50s
 
-# # Apache Server for NGSI-LD @context files
-# # *** NOT USED: Node-RED already provides a "public" static folder ***
-# ld-context:
-#   image: httpd:alpine
-# # hostname: ld-context
-# # container_name: http-server
-# # restart: on-failure # for Docker Compose
-# # deploy:             # for Docker Swarm
-# #   restart_policy:
-# #     condition: on-failure
-# # networks:
-# #   - default
-# # expose:
-# #   - 80    # http://ld-context
-#   ports:
-#     - 80:80 # http://localhost
-#   volumes:
-#     - ../public:/usr/local/apache2/htdocs/
-#   healthcheck:
-#     test: curl -f http://localhost || exit 1
-# #   interval: 15s
+  # Apache Server for NGSI-LD @context files
+  ld-context:
+    image: httpd:alpine
+  # hostname: ld-context
+  # container_name: http-server
+  # restart: on-failure # for Docker Compose
+  # deploy:             # for Docker Swarm
+  #   restart_policy:
+  #     condition: on-failure
+  # networks:
+  #   - default
+  # expose:
+  #   - 80    # http://ld-context
+    ports:
+      - 80:80 # http://localhost
+    volumes:
+      - ./public:/usr/local/apache2/htdocs/
+    healthcheck:
+      test: curl -f http://localhost || exit 1
+  #   interval: 15s
 
 
   # Databases
@@ -329,8 +328,8 @@ services:
       - "8545:7545" # localhost:8545
     command: --database.dbPath /db --server.host 0.0.0.0  --server.port 7545 --wallet.mnemonic "visit carpet logic blame furnace confirm rebel deliver medal mean illness error"
     volumes:
-      - ./ganache/.db:/db
-  #   - ganache-db:/db
+  #   - ./ganache/.db:/db
+      - ganache-db:/db
     healthcheck:
       test: |
         node -e 'data = JSON.stringify({jsonrpc:"2.0",method:"eth_blockNumber",params:[],id:1}); require("http").request({hostname:"localhost", port: 7545, method:"POST", headers: {"Content-Type": "application/json", "Content-Length": data.length }}, resp => resp.on("data", chunk => process.exit(0)).on("error", err => process.exit(1))).write(data)' && exit 0 || exit 1
@@ -373,16 +372,20 @@ services:
   # deploy:             # for Docker Swarm
   #   restart_policy:
   #     condition: on-failure
-  # networks:
-  #   - default
-    expose:
+    networks:
+      default:
+        aliases:
+          - mqtt
+          - mqtt-broker
+  # expose:
   #   - "1883"      # mosquitto:8883
-      - "9001"      # mosquitto:9001
+  #   - "9001"      # mosquitto:9001
     ports:
       - "8883:1883" # localhost:8883
-  #   - "9001:9001" # localhost:9001
-    volumes:
-      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - "9001:9001" # localhost:9001
+    command: mosquitto -c /mosquitto-no-auth.conf
+  # volumes:
+  #   - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
     healthcheck:
       test: mosquitto_sub -t '$$SYS/#' -C 1 | grep -v Error || exit 1
   #   test: timeout 5 mosquitto_sub -t '$$SYS/#' -C 1 | grep -v Error || exit 1
@@ -404,20 +407,37 @@ services:
     ports:
       - "8880:1880" # localhost:8880
     environment:
-     - ETHEREUM_ADDRESS
-     - ETHEREUM_PRIVATE_KEY
+      - ETHEREUM_ADDRESS
+      - ETHEREUM_PRIVATE_KEY
+      - TZ=Europe/Amsterdam
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     volumes:
-     - ./node-red/data:/data
-#   volumes:
-#     - node-red-data:/data
+      - ./node-red/data:/data
+  # volumes:
+  #   - node-red-data:/data
+   
+  # Custom Node-RED-based IoT Agent
+  iota:
+    build: ./node-red/custom-iota
+  # hostname: iota  
+    container_name: iota
+    environment:
+  #   - PUID=1000
+  #   - PGID=1000
+      - TZ=Europe/Amsterdam
+  # volumes:
+  #   - ./node-red/config:/config
+    restart: unless-stopped
 
 
 # Volumes
 volumes:
-# ganache-db: ~
+  ganache-db: ~
   mysql-db: ~
   mongo-db: ~
   mongo-db-config: ~
+# node-red-data: ~
 
 
 # Networks (with MTU patch for Vicenza2 VM)

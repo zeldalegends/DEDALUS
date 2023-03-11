@@ -28,6 +28,13 @@ relevant to authenticating other services are described in detail.
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/6b143a6b3ad8bcba69cf)
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/engsep/HYPERRIDE/tree/pre-production)
 
+# System Requirements
+- CPU: 16+ core
+- RAM: 32+ GB
+- HD: 20+ GB
+- Ubuntu 18+
+- Docker 20+
+
 # Securing Microservices with a PEP Proxy
 
 This repository, released in the framework of the HYPERRIDE Project, derives and extend [this one](https://github.com/FIWARE/tutorials.Securing-Access) released by the FIWARE Foundation, which demonstrated that it is possible to Permit
