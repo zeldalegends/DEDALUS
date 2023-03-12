@@ -404,7 +404,7 @@ services:
   # Node-RED for flow-programming automation
   node-red:
     build: ./node-red
-  # image: fiware/node-red
+  # image: nodered/node-red
   # hostname: node-red
     container_name: node-red
   # expose:
