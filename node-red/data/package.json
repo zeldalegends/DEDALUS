@@ -27,8 +27,9 @@
         "node-red-contrib-watchdirectory": "https://github.com/fatoldsun00/node-red-contrib-watchdirectory",
         "node-red-dashboard": "^3.1.7",
         "node-red-node-base64": "^0.3.0",
+        "node-red-node-random": "~0.4.1",
         "node-red-node-smooth": "^0.1.2",
-        "node-red-node-ui-table": "^0.3.12",
+        "node-red-node-ui-table": "~0.4.3",
         "passport-fiware-oauth": "^0.3.0"
     },
     "engines": {

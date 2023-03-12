@@ -1010,7 +1010,7 @@
     },
     "node-red-node-ui-table": {
         "name": "node-red-node-ui-table",
-        "version": "0.3.12",
+        "version": "0.4.3",
         "local": true,
         "user": true,
         "nodes": {
@@ -1124,6 +1124,25 @@
                 "user": false,
                 "module": "node-red-contrib-localtunnel",
                 "file": "/data/node_modules/node-red-contrib-localtunnel/localtunnel.js"
+            }
+        }
+    },
+    "node-red-node-random": {
+        "name": "node-red-node-random",
+        "version": "0.4.1",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "random": {
+                "name": "random",
+                "types": [
+                    "random"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-node-random",
+                "file": "/data/node_modules/node-red-node-random/random.js"
             }
         }
     }

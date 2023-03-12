@@ -42,6 +42,16 @@
             },
             "tours": {
                 "welcome": "3.0.2"
+            },
+            "sidebar": {
+                "order": [
+                    "info",
+                    "help",
+                    "debug",
+                    "dashboard",
+                    "config",
+                    "context"
+                ]
             }
         }
     }

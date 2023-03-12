@@ -129,7 +129,9 @@
             "d3da3a597cad7169"
         ],
         "x": 414,
-        "y": 2879
+        "y": 2879,
+        "w": 192,
+        "h": 82
     },
     {
         "id": "c732681448a48707",
@@ -162,7 +164,9 @@
             "ce581a260ef4589e"
         ],
         "x": 34,
-        "y": 19
+        "y": 19,
+        "w": 892,
+        "h": 442
     },
     {
         "id": "4021db84d1108fd0",
@@ -177,7 +181,9 @@
             "9ad0c568481392a4"
         ],
         "x": 54,
-        "y": 59
+        "y": 59,
+        "w": 172,
+        "h": 82
     },
     {
         "id": "15d84497.52381b",
@@ -5278,8 +5284,8 @@
         "y": 80,
         "wires": [
             [
-                "9e23df214e9fc86a",
-                "0e7537603b7a008e"
+                "0e7537603b7a008e",
+                "b98d38119d65e6c7"
             ]
         ]
     },
@@ -5367,13 +5373,14 @@
         "syntax": "mustache",
         "template": "<a href=\"{{payload}}\">{{payload}}</a>",
         "output": "str",
-        "x": 790,
+        "x": 835,
         "y": 140,
         "wires": [
             [
                 "139d7039051e6bfa"
             ]
-        ]
+        ],
+        "l": false
     },
     {
         "id": "3957704b27d8a53d",
@@ -5435,7 +5442,7 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 770,
+        "x": 790,
         "y": 200,
         "wires": [
             [
@@ -5513,8 +5520,8 @@
         "y": 260,
         "wires": [
             [
-                "9044023485915d06",
-                "30ca056f81b0debf"
+                "30ca056f81b0debf",
+                "cbe4d8d4e5222e67"
             ]
         ]
     },
@@ -5602,13 +5609,14 @@
         "syntax": "mustache",
         "template": "<a href=\"{{payload}}\">{{payload}}</a>",
         "output": "str",
-        "x": 790,
+        "x": 835,
         "y": 320,
         "wires": [
             [
                 "3983dab42994df24"
             ]
-        ]
+        ],
+        "l": false
     },
     {
         "id": "67356fa398337c13",
@@ -5627,7 +5635,7 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 770,
+        "x": 790,
         "y": 380,
         "wires": [
             [
@@ -5705,8 +5713,8 @@
         "y": 440,
         "wires": [
             [
-                "5ffcd71df1a98442",
-                "a14e04fa6af91931"
+                "a14e04fa6af91931",
+                "ead7ea819e5b9d32"
             ]
         ]
     },
@@ -5738,13 +5746,14 @@
         "syntax": "mustache",
         "template": "<a href=\"{{payload}}\">{{payload}}</a>",
         "output": "str",
-        "x": 790,
+        "x": 835,
         "y": 500,
         "wires": [
             [
                 "c5a932010cadf9b3"
             ]
-        ]
+        ],
+        "l": false
     },
     {
         "id": "6f150b481c92d302",
@@ -5763,7 +5772,7 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 770,
+        "x": 790,
         "y": 560,
         "wires": [
             [
@@ -5882,7 +5891,7 @@
             "description": "Just loads the image.",
             "parameters": []
         },
-        "x": 825,
+        "x": 835,
         "y": 80,
         "wires": [
             [
@@ -5984,7 +5993,7 @@
             "description": "Just loads the image.",
             "parameters": []
         },
-        "x": 825,
+        "x": 835,
         "y": 260,
         "wires": [
             [
@@ -6065,7 +6074,7 @@
             "description": "Just loads the image.",
             "parameters": []
         },
-        "x": 825,
+        "x": 835,
         "y": 440,
         "wires": [
             [
@@ -6393,10 +6402,10 @@
         "inputtype": "port",
         "inputs": 1,
         "x": 590,
-        "y": 20,
+        "y": 620,
         "wires": [
             [
-                "d366f830965a1b3e"
+                "b9e250d1ca7ce651"
             ]
         ]
     },
@@ -6405,7 +6414,7 @@
         "type": "mqtt in",
         "z": "8769aeb719e4f5f1",
         "name": "",
-        "topic": "node/red/open",
+        "topic": "/node/red/switch",
         "qos": "2",
         "datatype": "auto-detect",
         "broker": "8a9e3b401fa2a0b9",
@@ -6413,7 +6422,7 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 110,
+        "x": 120,
         "y": 20,
         "wires": [
             [
@@ -6426,7 +6435,7 @@
         "type": "mqtt out",
         "z": "8769aeb719e4f5f1",
         "name": "",
-        "topic": "node/red/link",
+        "topic": "/node/red/link",
         "qos": "",
         "retain": "",
         "respTopic": "",
@@ -6435,12 +6444,164 @@
         "correl": "",
         "expiry": "",
         "broker": "8a9e3b401fa2a0b9",
-        "x": 910,
+        "x": 900,
         "y": 20,
         "wires": []
     },
     {
-        "id": "a12d871f3f772313",
+        "id": "b98d38119d65e6c7",
+        "type": "change",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "out.mongo",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 785,
+        "y": 140,
+        "wires": [
+            [
+                "9e23df214e9fc86a"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "cbe4d8d4e5222e67",
+        "type": "change",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "out.mysql",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 785,
+        "y": 320,
+        "wires": [
+            [
+                "9044023485915d06"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "ead7ea819e5b9d32",
+        "type": "change",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "out.mysql",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 785,
+        "y": 500,
+        "wires": [
+            [
+                "5ffcd71df1a98442"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "7c521f056485ef38",
+        "type": "localtunnel",
+        "z": "8769aeb719e4f5f1",
+        "buttonState": false,
+        "name": "",
+        "input_type": "input",
+        "port": "1880",
+        "subdomain": "hyperride",
+        "reject_other_subdomain": false,
+        "local_https": false,
+        "allow_invalid_cert": true,
+        "start_on_load": false,
+        "retry_on_error": 0,
+        "local_cert": "",
+        "local_key": "",
+        "local_ca": "",
+        "host": "",
+        "local_host": "node-red",
+        "inputs": 1,
+        "x": 590,
+        "y": 20,
+        "wires": [
+            [
+                "6ddb14b32286bac6",
+                "1b341c819f39911d"
+            ]
+        ]
+    },
+    {
+        "id": "5df94c4a1e18080c",
+        "type": "mqtt in",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "topic": "/node/red/switch/alt",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "8a9e3b401fa2a0b9",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 130,
+        "y": 620,
+        "wires": [
+            [
+                "73d7b9e1add6b905"
+            ]
+        ]
+    },
+    {
+        "id": "98062a473030ab70",
+        "type": "mqtt out",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "topic": "/node/red/link",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "8a9e3b401fa2a0b9",
+        "x": 900,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "73d7b9e1add6b905",
         "type": "change",
         "z": "8769aeb719e4f5f1",
         "name": "on",
@@ -6449,8 +6610,99 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "on",
-                "tot": "str"
+                "to": "payload ? payload : \"on\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 370,
+        "y": 620,
+        "wires": [
+            [
+                "60cd7879a306dec1"
+            ]
+        ]
+    },
+    {
+        "id": "b9e250d1ca7ce651",
+        "type": "change",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "out.node-red",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "out",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 785,
+        "y": 620,
+        "wires": [
+            [
+                "98062a473030ab70"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "3a010c4869ed4ba9",
+        "type": "inject",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "on",
+        "payloadType": "str",
+        "x": 370,
+        "y": 20,
+        "wires": [
+            [
+                "7c521f056485ef38"
+            ]
+        ]
+    },
+    {
+        "id": "a12d871f3f772313",
+        "type": "change",
+        "z": "8769aeb719e4f5f1",
+        "name": "on ¹",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload ? payload : \"on\"",
+                "tot": "jsonata"
             }
         ],
         "action": "",
@@ -6462,9 +6714,61 @@
         "y": 20,
         "wires": [
             [
-                "60cd7879a306dec1"
+                "7c521f056485ef38"
             ]
         ]
+    },
+    {
+        "id": "6ddb14b32286bac6",
+        "type": "change",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "out.node-red",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "out",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 785,
+        "y": 20,
+        "wires": [
+            [
+                "d366f830965a1b3e"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "1b341c819f39911d",
+        "type": "debug",
+        "z": "8769aeb719e4f5f1",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 100,
+        "wires": []
     },
     {
         "id": "ea805040d9020dd5",

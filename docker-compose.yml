@@ -4,7 +4,7 @@ services:
   orion:
     image: fiware/orion:latest # 3.8.0
   # hostname: orion
-    container_name: cb-orion
+    container_name: orion
     depends_on:
       mongo-db:
         condition: service_healthy
@@ -28,7 +28,7 @@ services:
   orion-ld:
     image: fiware/orion-ld:latest # 1.1.2
   # hostname: orion-ld
-    container_name: cb-orion-ld
+    container_name: orion-ld
     depends_on:
       mongo-db:
         condition: service_healthy
@@ -53,7 +53,7 @@ services:
   keyrock:
     image: fiware/idm:latest # 8.3.2-distroless
   # hostname: keyrock
-    container_name: idm-keyrock
+    container_name: keyrock
     depends_on:
       mysql-db:
         condition: service_healthy
@@ -89,7 +89,7 @@ services:
   orion-proxy:
     image: fiware/pep-proxy:latest # 8.3.0-distroless
   # hostname: orion-proxy
-    container_name: pep-proxy-orion
+    container_name: orion-proxy
     depends_on:
       keyrock:
         condition: service_started
@@ -129,7 +129,7 @@ services:
   orion-ld-proxy:
     image: fiware/pep-proxy:latest # 8.3.0-distroless
   # hostname: orion-ld-proxy
-    container_name: pep-proxy-orion-ld
+    container_name: orion-ld-proxy
     depends_on:
       keyrock:
         condition: service_started
@@ -169,13 +169,18 @@ services:
   ld-context:
     image: httpd:alpine
   # hostname: ld-context
-  # container_name: http-server
+    container_name: ld-context
   # restart: on-failure # for Docker Compose
   # deploy:             # for Docker Swarm
   #   restart_policy:
   #     condition: on-failure
-  # networks:
-  #   - default
+    networks:
+      default:
+        aliases:
+          - apache
+          - apache-server
+          - http
+          - http-server
   # expose:
   #   - 80    # http://ld-context
     ports:
@@ -416,12 +421,12 @@ services:
       - ./node-red/data:/data
   # volumes:
   #   - node-red-data:/data
-   
+
   # Custom Node-RED-based IoT Agent
-  iota:
+  custom-iota:
     build: ./node-red/custom-iota
   # hostname: iota  
-    container_name: iota
+    container_name: custom-iota
     environment:
   #   - PUID=1000
   #   - PGID=1000
