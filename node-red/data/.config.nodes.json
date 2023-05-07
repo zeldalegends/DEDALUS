@@ -695,7 +695,7 @@
     },
     "node-red-contrib-fs": {
         "name": "node-red-contrib-fs",
-        "version": "1.4.1",
+        "version": "1.4.2",
         "local": true,
         "user": true,
         "nodes": {
@@ -1143,6 +1143,31 @@
                 "user": false,
                 "module": "node-red-node-random",
                 "file": "/data/node_modules/node-red-node-random/random.js"
+            }
+        }
+    },
+    "node-red-contrib-os": {
+        "name": "node-red-contrib-os",
+        "version": "0.2.1",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "os": {
+                "name": "os",
+                "types": [
+                    "OS",
+                    "Drives",
+                    "Uptime",
+                    "CPUs",
+                    "Loadavg",
+                    "Memory",
+                    "NetworkIntf"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-os",
+                "file": "/data/node_modules/node-red-contrib-os/os/os.js"
             }
         }
     }

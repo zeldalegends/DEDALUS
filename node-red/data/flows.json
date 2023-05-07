@@ -1,5 +1,13 @@
 [
     {
+        "id": "e4d1f70f0b51d593",
+        "type": "tab",
+        "label": "FIWARE API v1.4",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "d52625fe4d11e746",
         "type": "tab",
         "label": "Test",
@@ -98,7 +106,9 @@
             "1a1a090377e2b43e"
         ],
         "x": 334,
-        "y": 19
+        "y": 19,
+        "w": 232,
+        "h": 82
     },
     {
         "id": "ed8605f54d7c9002",
@@ -184,6 +194,109 @@
         "y": 59,
         "w": 172,
         "h": 82
+    },
+    {
+        "id": "65e5c56aa44c2a1a",
+        "type": "group",
+        "z": "e4d1f70f0b51d593",
+        "name": "FIWARE Setup",
+        "style": {
+            "fill": "#bfdbef",
+            "label": true
+        },
+        "nodes": [
+            "4f617122750c0f43",
+            "ea8bb708cfaae1de",
+            "0e91a0ed4983b3c7",
+            "8ccb2fb71fc097f5",
+            "52b33d29afa99a83",
+            "51894087b56da7f1",
+            "f3292234195969dc",
+            "62712e6d9136e4b8",
+            "12e972a149736d94",
+            "19532ef6c17cd667",
+            "d447d83a31e47ff4",
+            "306a97ccd670c8aa",
+            "e6151ba8a0ded940",
+            "7e405aa4486f615e",
+            "f819a86eaf080f7d",
+            "acab54130407b01f",
+            "b092d883fb5cf816",
+            "e370a02358e18368",
+            "cadf79137d2475c9",
+            "4be639eb23286d16",
+            "af7b2e417540b94e",
+            "65e49056e6bb77a1",
+            "8d938745e58ebc94"
+        ],
+        "x": 14,
+        "y": 19,
+        "w": 932,
+        "h": 422
+    },
+    {
+        "id": "3617274168fc6518",
+        "type": "group",
+        "z": "e4d1f70f0b51d593",
+        "name": "User Info",
+        "style": {
+            "fill": "#ffefbf",
+            "label": true
+        },
+        "nodes": [
+            "9fd70375ac880d58",
+            "1508d77d6809ddb7",
+            "610ff9c29f658c5f",
+            "dbd9c87e3874b349",
+            "9ce779817ad950ec",
+            "0ea4cc4c5a0b4db1"
+        ],
+        "x": 1034,
+        "y": 359,
+        "w": 1012,
+        "h": 82
+    },
+    {
+        "id": "666fdbcb779ca583",
+        "type": "group",
+        "z": "e4d1f70f0b51d593",
+        "name": "Context Broker dump",
+        "style": {
+            "fill": "#e3f3d3",
+            "label": true
+        },
+        "nodes": [
+            "9319141b70e1dcfc",
+            "f01bdfe1998c8b5c",
+            "df9646b86f72f8b3",
+            "dd7d7cf0ce1b2a81",
+            "a7421c2dcee4af40",
+            "4afe8471efeb3d64",
+            "3daa71f31114633e",
+            "49d64956ecb2a056",
+            "7ea60dbba947ecfc",
+            "28f795d298411cd4",
+            "3e1a57ea2bf01e3b",
+            "b9fc51e322bcba70",
+            "737193c12573452e",
+            "1ad130c5b73acf4c",
+            "c15fd7e5d687bc9a",
+            "463446501f7f7b99",
+            "0453516bf9d06061",
+            "1d5e64dbaa822e20",
+            "ed75f7f1c5275d08",
+            "475343401fcb6306",
+            "33370102ac08344a",
+            "40a83ad0aad83202",
+            "bbe233b4512a26dd",
+            "9f0f8cba2b6dbd99",
+            "bf1e762d076be306",
+            "a8c5436832d3ad59"
+        ],
+        "x": 1034,
+        "y": 19,
+        "w": 1012,
+        "h": 322
     },
     {
         "id": "15d84497.52381b",
@@ -556,6 +669,6283 @@
         "willMsg": {},
         "userProps": "",
         "sessionExpiry": ""
+    },
+    {
+        "id": "4f617122750c0f43",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "g": "65e5c56aa44c2a1a",
+        "name": "GET /version (v2)",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "{{{orion}}}/version",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "payload.access_token"
+            }
+        ],
+        "x": 570,
+        "y": 400,
+        "wires": [
+            [
+                "ea8bb708cfaae1de"
+            ]
+        ]
+    },
+    {
+        "id": "ea8bb708cfaae1de",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "g": "65e5c56aa44c2a1a",
+        "name": "orion version",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload.orion.version",
+        "statusType": "msg",
+        "x": 810,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "0e91a0ed4983b3c7",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "g": "65e5c56aa44c2a1a",
+        "name": "set flow vars and access token",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "statusCode&\" - \"&(payload.error?payload.error:payload.access_token)",
+        "statusType": "jsonata",
+        "x": 190,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "8ccb2fb71fc097f5",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "g": "65e5c56aa44c2a1a",
+        "name": "headers",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "\"Basic \" & clientCredentials",
+        "statusType": "jsonata",
+        "x": 120,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "52b33d29afa99a83",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "g": "65e5c56aa44c2a1a",
+        "name": "GET /version (IdM)",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "{{{keyrock}}}/version",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "payload.access_token"
+            }
+        ],
+        "x": 570,
+        "y": 280,
+        "wires": [
+            [
+                "51894087b56da7f1"
+            ]
+        ]
+    },
+    {
+        "id": "51894087b56da7f1",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "g": "65e5c56aa44c2a1a",
+        "name": "keyrock version",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload.keyrock.version",
+        "statusType": "msg",
+        "x": 820,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "f3292234195969dc",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "g": "65e5c56aa44c2a1a",
+        "name": "headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "authorization",
+                "pt": "msg",
+                "to": "\"Basic \" & clientCredentials",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "content-type",
+                "pt": "msg",
+                "to": "application/x-www-form-urlencoded",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 120,
+        "y": 180,
+        "wires": [
+            [
+                "12e972a149736d94"
+            ]
+        ]
+    },
+    {
+        "id": "62712e6d9136e4b8",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "g": "65e5c56aa44c2a1a",
+        "name": "get new token",
+        "props": [
+            {
+                "p": "orion",
+                "v": "orion",
+                "vt": "flow"
+            },
+            {
+                "p": "orion-ld",
+                "v": "orion-ld",
+                "vt": "flow"
+            },
+            {
+                "p": "keyrock",
+                "v": "keyrock",
+                "vt": "flow"
+            },
+            {
+                "p": "username",
+                "v": "username",
+                "vt": "flow"
+            },
+            {
+                "p": "password",
+                "v": "password",
+                "vt": "flow"
+            },
+            {
+                "p": "clientId",
+                "v": "clientId",
+                "vt": "flow"
+            },
+            {
+                "p": "clientSecret",
+                "v": "clientSecret",
+                "vt": "flow"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 130,
+        "y": 120,
+        "wires": [
+            [
+                "306a97ccd670c8aa"
+            ]
+        ]
+    },
+    {
+        "id": "12e972a149736d94",
+        "type": "template",
+        "z": "e4d1f70f0b51d593",
+        "g": "65e5c56aa44c2a1a",
+        "name": "payload",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "grant_type=password&username={{{username}}}&password={{{password}}}",
+        "output": "str",
+        "x": 340,
+        "y": 180,
+        "wires": [
+            [
+                "65e49056e6bb77a1"
+            ]
+        ]
+    },
+    {
+        "id": "19532ef6c17cd667",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "g": "65e5c56aa44c2a1a",
+        "name": "client id",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "clientId",
+        "targetType": "msg",
+        "statusVal": "clientId",
+        "statusType": "auto",
+        "x": 800,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "d447d83a31e47ff4",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "g": "65e5c56aa44c2a1a",
+        "name": "client secret",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "clientSecret",
+        "targetType": "msg",
+        "statusVal": "clientId",
+        "statusType": "auto",
+        "x": 810,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "306a97ccd670c8aa",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "g": "65e5c56aa44c2a1a",
+        "name": "encode credentials",
+        "rules": [
+            {
+                "t": "set",
+                "p": "clientCredentials",
+                "pt": "msg",
+                "to": "clientId & \":\" & clientSecret",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 370,
+        "y": 120,
+        "wires": [
+            [
+                "f819a86eaf080f7d"
+            ]
+        ]
+    },
+    {
+        "id": "e6151ba8a0ded940",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "g": "65e5c56aa44c2a1a",
+        "name": "STARTUP",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 130,
+        "y": 60,
+        "wires": [
+            [
+                "b092d883fb5cf816"
+            ]
+        ]
+    },
+    {
+        "id": "7e405aa4486f615e",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "d": true,
+        "g": "65e5c56aa44c2a1a",
+        "name": "password",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "password",
+        "targetType": "msg",
+        "statusVal": "$pad(\"\",$length(password),\"*\")\t",
+        "statusType": "jsonata",
+        "x": 820,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "9d14d56bee213768",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "statusCode&\" - \"&(payload.error?payload.error:$count(payload)&($count(payload)=1?\" result\":\" results\"))",
+        "statusType": "jsonata",
+        "x": 810,
+        "y": 1700,
+        "wires": []
+    },
+    {
+        "id": "4d5d1a9ed0afc87c",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "all entities",
+        "props": [
+            {
+                "p": "options",
+                "v": "keyValues",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 120,
+        "y": 1640,
+        "wires": [
+            [
+                "e264d31adb89adcd"
+            ]
+        ]
+    },
+    {
+        "id": "338d6526db529088",
+        "type": "template",
+        "z": "e4d1f70f0b51d593",
+        "name": "options",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n    \"options\": \"{{options}}\"\n}\n",
+        "output": "json",
+        "x": 460,
+        "y": 1640,
+        "wires": [
+            [
+                "d6543f13caaa78d1"
+            ]
+        ]
+    },
+    {
+        "id": "e264d31adb89adcd",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "v2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion",
+                "pt": "msg",
+                "to": "orion",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "x-auth-token",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 1640,
+        "wires": [
+            [
+                "338d6526db529088"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png"
+    },
+    {
+        "id": "172ac0845f3b28a7",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "import-data (v2)",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[{\"id\":\"urn:ngsi-ld:Store:001\",\"type\":\"Store\",\"address\":{\"type\":\"PostalAddress\",\"value\":{\"streetAddress\":\"Bornholmer Straße 65\",\"addressRegion\":\"Berlin\",\"addressLocality\":\"Prenzlauer Berg\",\"postalCode\":\"10439\"}},\"location\":{\"type\":\"geo:json\",\"value\":{\"type\":\"Point\",\"coordinates\":[13.3986,52.5547]}},\"name\":{\"type\":\"Text\",\"value\":\"Bösebrücke Einkauf\"}},{\"id\":\"urn:ngsi-ld:Store:002\",\"type\":\"Store\",\"address\":{\"type\":\"PostalAddress\",\"value\":{\"streetAddress\":\"Friedrichstraße 44\",\"addressRegion\":\"Berlin\",\"addressLocality\":\"Kreuzberg\",\"postalCode\":\"10969\"}},\"location\":{\"type\":\"geo:json\",\"value\":{\"type\":\"Point\",\"coordinates\":[13.3903,52.5075]}},\"name\":{\"type\":\"Text\",\"value\":\"Checkpoint Markt\"}},{\"id\":\"urn:ngsi-ld:Store:003\",\"type\":\"Store\",\"address\":{\"type\":\"PostalAddress\",\"value\":{\"streetAddress\":\"Mühlenstrasse 10\",\"addressRegion\":\"Berlin\",\"addressLocality\":\"Friedrichshain\",\"postalCode\":\"10243\"}},\"location\":{\"type\":\"geo:json\",\"value\":{\"type\":\"Point\",\"coordinates\":[13.4447,52.5031]}},\"name\":{\"type\":\"Text\",\"value\":\"East Side Galleria\"}},{\"id\":\"urn:ngsi-ld:Store:004\",\"type\":\"Store\",\"address\":{\"type\":\"PostalAddress\",\"value\":{\"streetAddress\":\"Panoramastraße 1A\",\"addressRegion\":\"Berlin\",\"addressLocality\":\"Mitte\",\"postalCode\":\"10178\"}},\"location\":{\"type\":\"geo:json\",\"value\":{\"type\":\"Point\",\"coordinates\":[13.4094,52.5208]}},\"name\":{\"type\":\"Text\",\"value\":\"Tower Trödelmarkt\"}},{\"id\":\"urn:ngsi-ld:Shelf:unit001\",\"type\":\"Shelf\",\"location\":{\"type\":\"geo:json\",\"value\":{\"type\":\"Point\",\"coordinates\":[13.3986112,52.554699]}},\"maxCapacity\":{\"type\":\"Integer\",\"value\":50},\"name\":{\"type\":\"Text\",\"value\":\"Corner Unit\"},\"refStore\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Store:001\"}},{\"id\":\"urn:ngsi-ld:Shelf:unit002\",\"type\":\"Shelf\",\"location\":{\"type\":\"geo:json\",\"value\":{\"type\":\"Point\",\"coordinates\":[13.3987221,52.554664]}},\"maxCapacity\":{\"type\":\"Integer\",\"value\":100},\"name\":{\"type\":\"Text\",\"value\":\"Wall Unit 1\"},\"refStore\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Store:001\"}},{\"id\":\"urn:ngsi-ld:Shelf:unit003\",\"type\":\"Shelf\",\"location\":{\"type\":\"geo:json\",\"value\":{\"type\":\"Point\",\"coordinates\":[13.3987221,52.554664]}},\"maxCapacity\":{\"type\":\"Integer\",\"value\":100},\"name\":{\"type\":\"Text\",\"value\":\"Wall Unit 2\"},\"refStore\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Store:001\"}},{\"id\":\"urn:ngsi-ld:Shelf:unit004\",\"type\":\"Shelf\",\"location\":{\"type\":\"geo:json\",\"value\":{\"type\":\"Point\",\"coordinates\":[13.390311,52.507522]}},\"maxCapacity\":{\"type\":\"Integer\",\"value\":50},\"name\":{\"type\":\"Text\",\"value\":\"Corner Unit\"},\"refStore\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Store:002\"}},{\"id\":\"urn:ngsi-ld:Shelf:unit005\",\"type\":\"Shelf\",\"location\":{\"type\":\"geo:json\",\"value\":{\"type\":\"Point\",\"coordinates\":[13.390309,52.50751]}},\"maxCapacity\":{\"type\":\"Integer\",\"value\":200},\"name\":{\"type\":\"Text\",\"value\":\"Long Wall Unit\"},\"refStore\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Store:002\"}},{\"id\":\"urn:ngsi-ld:Shelf:unit006\",\"type\":\"Shelf\",\"location\":{\"type\":\"geo:json\",\"value\":{\"type\":\"Point\",\"coordinates\":[13.4447112,52.503199]}},\"maxCapacity\":{\"type\":\"Integer\",\"value\":50},\"name\":{\"type\":\"Text\",\"value\":\"Corner Unit\"},\"refStore\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Store:003\"}},{\"id\":\"urn:ngsi-ld:Shelf:unit007\",\"type\":\"Shelf\",\"location\":{\"type\":\"geo:json\",\"value\":{\"type\":\"Point\",\"coordinates\":[13.4447221,52.503164]}},\"maxCapacity\":{\"type\":\"Integer\",\"value\":100},\"name\":{\"type\":\"Text\",\"value\":\"Wall Unit 1\"},\"refStore\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Store:003\"}},{\"id\":\"urn:ngsi-ld:Shelf:unit008\",\"type\":\"Shelf\",\"location\":{\"type\":\"geo:json\",\"value\":{\"type\":\"Point\",\"coordinates\":[13.4447221,52.503164]}},\"maxCapacity\":{\"type\":\"Integer\",\"value\":100},\"name\":{\"type\":\"Text\",\"value\":\"Wall Unit 2\"},\"refStore\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Store:003\"}},{\"id\":\"urn:ngsi-ld:Shelf:unit009\",\"type\":\"Shelf\",\"location\":{\"type\":\"geo:json\",\"value\":{\"type\":\"Point\",\"coordinates\":[13.444711,52.503122]}},\"maxCapacity\":{\"type\":\"Integer\",\"value\":50},\"name\":{\"type\":\"Text\",\"value\":\"Corner Unit\"},\"refStore\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Store:003\"}},{\"id\":\"urn:ngsi-ld:Shelf:unit010\",\"type\":\"Shelf\",\"location\":{\"type\":\"geo:json\",\"value\":{\"type\":\"Point\",\"coordinates\":[13.4094111,52.5208028]}},\"maxCapacity\":{\"type\":\"Integer\",\"value\":200},\"name\":{\"type\":\"Text\",\"value\":\"Long Wall Unit\"},\"refStore\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Store:004\"}},{\"id\":\"urn:ngsi-ld:Product:001\",\"type\":\"Product\",\"name\":{\"type\":\"Text\",\"value\":\"Beer\"},\"size\":{\"type\":\"Text\",\"value\":\"S\"},\"price\":{\"type\":\"Integer\",\"value\":99}},{\"id\":\"urn:ngsi-ld:Product:002\",\"type\":\"Product\",\"name\":{\"type\":\"Text\",\"value\":\"Red Wine\"},\"size\":{\"type\":\"Text\",\"value\":\"M\"},\"price\":{\"type\":\"Integer\",\"value\":1099}},{\"id\":\"urn:ngsi-ld:Product:003\",\"type\":\"Product\",\"name\":{\"type\":\"Text\",\"value\":\"White Wine\"},\"size\":{\"type\":\"Text\",\"value\":\"M\"},\"price\":{\"type\":\"Integer\",\"value\":1499}},{\"id\":\"urn:ngsi-ld:Product:004\",\"type\":\"Product\",\"name\":{\"type\":\"Text\",\"value\":\"Vodka\"},\"size\":{\"type\":\"Text\",\"value\":\"XL\"},\"price\":{\"type\":\"Integer\",\"value\":5000}},{\"id\":\"urn:ngsi-ld:Product:005\",\"type\":\"Product\",\"name\":{\"type\":\"Text\",\"value\":\"Lager\"},\"size\":{\"type\":\"Text\",\"value\":\"S\"},\"price\":{\"type\":\"Integer\",\"value\":99}},{\"id\":\"urn:ngsi-ld:Product:006\",\"type\":\"Product\",\"name\":{\"type\":\"Text\",\"value\":\"Whisky\"},\"size\":{\"type\":\"Text\",\"value\":\"S\"},\"price\":{\"type\":\"Integer\",\"value\":99}},{\"id\":\"urn:ngsi-ld:Product:007\",\"type\":\"Product\",\"name\":{\"type\":\"Text\",\"value\":\"Gin\"},\"size\":{\"type\":\"Text\",\"value\":\"S\"},\"price\":{\"type\":\"Integer\",\"value\":99}},{\"id\":\"urn:ngsi-ld:Product:008\",\"type\":\"Product\",\"name\":{\"type\":\"Text\",\"value\":\"Apple Juice\"},\"size\":{\"type\":\"Text\",\"value\":\"S\"},\"price\":{\"type\":\"Integer\",\"value\":99}},{\"id\":\"urn:ngsi-ld:Product:009\",\"type\":\"Product\",\"name\":{\"type\":\"Text\",\"value\":\"Orange Juice\"},\"size\":{\"type\":\"Text\",\"value\":\"S\"},\"price\":{\"type\":\"Integer\",\"value\":99}},{\"id\":\"urn:ngsi-ld:InventoryItem:001\",\"type\":\"InventoryItem\",\"refStore\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Store:001\"},\"refShelf\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Shelf:unit001\"},\"refProduct\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Product:001\"},\"stockCount\":{\"type\":\"Integer\",\"value\":10000},\"shelfCount\":{\"type\":\"Integer\",\"value\":15}},{\"id\":\"urn:ngsi-ld:InventoryItem:002\",\"type\":\"InventoryItem\",\"refStore\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Store:001\"},\"refShelf\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Shelf:unit002\"},\"refProduct\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Product:003\"},\"stockCount\":{\"type\":\"Integer\",\"value\":10000},\"shelfCount\":{\"type\":\"Integer\",\"value\":50}},{\"id\":\"urn:ngsi-ld:InventoryItem:003\",\"type\":\"InventoryItem\",\"refStore\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Store:001\"},\"refShelf\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Shelf:unit003\"},\"refProduct\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Product:004\"},\"stockCount\":{\"type\":\"Integer\",\"value\":10000},\"shelfCount\":{\"type\":\"Integer\",\"value\":50}},{\"id\":\"urn:ngsi-ld:InventoryItem:004\",\"type\":\"InventoryItem\",\"refStore\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Store:002\"},\"refShelf\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Shelf:unit004\"},\"refProduct\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Product:001\"},\"stockCount\":{\"type\":\"Integer\",\"value\":10000},\"shelfCount\":{\"type\":\"Integer\",\"value\":15}},{\"id\":\"urn:ngsi-ld:InventoryItem:005\",\"type\":\"InventoryItem\",\"refStore\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Store:002\"},\"refShelf\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Shelf:unit005\"},\"refProduct\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Product:002\"},\"stockCount\":{\"type\":\"Integer\",\"value\":10000},\"shelfCount\":{\"type\":\"Integer\",\"value\":15}},{\"id\":\"urn:ngsi-ld:InventoryItem:006\",\"type\":\"InventoryItem\",\"refStore\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Store:003\"},\"refShelf\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Shelf:unit006\"},\"refProduct\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Product:001\"},\"stockCount\":{\"type\":\"Integer\",\"value\":10000},\"shelfCount\":{\"type\":\"Integer\",\"value\":50}},{\"id\":\"urn:ngsi-ld:InventoryItem:007\",\"type\":\"InventoryItem\",\"refStore\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Store:003\"},\"refShelf\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Shelf:unit007\"},\"refProduct\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Product:008\"},\"stockCount\":{\"type\":\"Integer\",\"value\":10000},\"shelfCount\":{\"type\":\"Integer\",\"value\":50}},{\"id\":\"urn:ngsi-ld:InventoryItem:008\",\"type\":\"InventoryItem\",\"refStore\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Store:003\"},\"refShelf\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Shelf:unit008\"},\"refProduct\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Product:009\"},\"stockCount\":{\"type\":\"Integer\",\"value\":10000},\"shelfCount\":{\"type\":\"Integer\",\"value\":50}},{\"id\":\"urn:ngsi-ld:InventoryItem:401\",\"type\":\"InventoryItem\",\"refStore\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Store:004\"},\"refShelf\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Shelf:unit010\"},\"refProduct\":{\"type\":\"Relationship\",\"value\":\"urn:ngsi-ld:Product:001\"},\"stockCount\":{\"type\":\"Integer\",\"value\":10000},\"shelfCount\":{\"type\":\"Integer\",\"value\":50}}]",
+        "payloadType": "json",
+        "x": 140,
+        "y": 1520,
+        "wires": [
+            [
+                "b34bf052becafb2f"
+            ]
+        ]
+    },
+    {
+        "id": "acd697efb0817b27",
+        "type": "comment",
+        "z": "e4d1f70f0b51d593",
+        "name": "WRITE (v2)",
+        "info": " - [CRUD operations](https://github.com/FIWARE/tutorials.CRUD-Operations/tree/NGSI-v2)\n - [PEP Proxy](https://github.com/FIWARE/tutorials.PEP-Proxy/tree/NGSI-v2)\n",
+        "x": 130,
+        "y": 1360,
+        "wires": []
+    },
+    {
+        "id": "e2f831eba5fd9d5c",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "entities (v2)",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[{\"id\":\"urn:ngsi-ld:Product:011\",\"type\":\"Product\",\"name\":{\"type\":\"Text\",\"value\":\"Brandy\"},\"size\":{\"type\":\"Text\",\"value\":\"M\"},\"price\":{\"type\":\"Integer\",\"value\":1199}},{\"id\":\"urn:ngsi-ld:Product:012\",\"type\":\"Product\",\"name\":{\"type\":\"Text\",\"value\":\"Port\"},\"size\":{\"type\":\"Text\",\"value\":\"M\"},\"price\":{\"type\":\"Integer\",\"value\":1099}}]",
+        "payloadType": "json",
+        "x": 130,
+        "y": 1400,
+        "wires": [
+            [
+                "bd22609696427afc"
+            ]
+        ]
+    },
+    {
+        "id": "2abf8dca902cd5a9",
+        "type": "comment",
+        "z": "e4d1f70f0b51d593",
+        "name": "READ (v2)",
+        "info": " - [CRUD Tutorial](https://github.com/FIWARE/tutorials.CRUD-Operations/tree/NGSI-v2)\n - [PEP Proxy](https://github.com/FIWARE/tutorials.PEP-Proxy/tree/NGSI-v2)\n",
+        "x": 120,
+        "y": 1600,
+        "wires": []
+    },
+    {
+        "id": "58049333b8aebf68",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "search by",
+        "props": [
+            {
+                "p": "type",
+                "v": "Product",
+                "vt": "str"
+            },
+            {
+                "p": "attrs",
+                "v": "name,price",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 120,
+        "y": 1760,
+        "wires": [
+            [
+                "c97c471c7a258293"
+            ]
+        ]
+    },
+    {
+        "id": "d6b07debbec0aa85",
+        "type": "template",
+        "z": "e4d1f70f0b51d593",
+        "name": "type,attrs",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n    \"type\": \"{{type}}\",\n    \"attrs\": \"{{attrs}}\"\n}\n",
+        "output": "json",
+        "x": 460,
+        "y": 1760,
+        "wires": [
+            [
+                "d6543f13caaa78d1"
+            ]
+        ]
+    },
+    {
+        "id": "9656dbd20f8b2a39",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "sensor",
+        "props": [
+            {
+                "p": "id",
+                "v": "urn:ngsi-ld:TemperatureSensor:001",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 110,
+        "y": 1700,
+        "wires": [
+            [
+                "918689bba1e52c8c"
+            ]
+        ]
+    },
+    {
+        "id": "5e3e947c87202360",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "sensor",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[ {\"id\":\"urn:ngsi-ld:TemperatureSensor:001\"}]",
+        "payloadType": "json",
+        "x": 110,
+        "y": 2000,
+        "wires": [
+            [
+                "a335891710761dd8"
+            ]
+        ]
+    },
+    {
+        "id": "1d30e459df4eb5e6",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "import-data (v2)",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[{\"id\":\"urn:ngsi-ld:Store:001\",\"type\":\"Store\"},{\"id\":\"urn:ngsi-ld:Store:002\",\"type\":\"Store\"},{\"id\":\"urn:ngsi-ld:Store:003\",\"type\":\"Store\"},{\"id\":\"urn:ngsi-ld:Store:004\",\"type\":\"Store\"},{\"id\":\"urn:ngsi-ld:Shelf:unit001\",\"type\":\"Shelf\"},{\"id\":\"urn:ngsi-ld:Shelf:unit002\",\"type\":\"Shelf\"},{\"id\":\"urn:ngsi-ld:Shelf:unit003\",\"type\":\"Shelf\"},{\"id\":\"urn:ngsi-ld:Shelf:unit004\",\"type\":\"Shelf\"},{\"id\":\"urn:ngsi-ld:Shelf:unit005\",\"type\":\"Shelf\"},{\"id\":\"urn:ngsi-ld:Shelf:unit006\",\"type\":\"Shelf\"},{\"id\":\"urn:ngsi-ld:Shelf:unit007\",\"type\":\"Shelf\"},{\"id\":\"urn:ngsi-ld:Shelf:unit008\",\"type\":\"Shelf\"},{\"id\":\"urn:ngsi-ld:Shelf:unit009\",\"type\":\"Shelf\"},{\"id\":\"urn:ngsi-ld:Shelf:unit010\",\"type\":\"Shelf\"},{\"id\":\"urn:ngsi-ld:Product:001\",\"type\":\"Product\"},{\"id\":\"urn:ngsi-ld:Product:002\",\"type\":\"Product\"},{\"id\":\"urn:ngsi-ld:Product:003\",\"type\":\"Product\"},{\"id\":\"urn:ngsi-ld:Product:004\",\"type\":\"Product\"},{\"id\":\"urn:ngsi-ld:Product:005\",\"type\":\"Product\"},{\"id\":\"urn:ngsi-ld:Product:006\",\"type\":\"Product\"},{\"id\":\"urn:ngsi-ld:Product:007\",\"type\":\"Product\"},{\"id\":\"urn:ngsi-ld:Product:008\",\"type\":\"Product\"},{\"id\":\"urn:ngsi-ld:Product:009\",\"type\":\"Product\"},{\"id\":\"urn:ngsi-ld:InventoryItem:001\",\"type\":\"InventoryItem\"},{\"id\":\"urn:ngsi-ld:InventoryItem:002\",\"type\":\"InventoryItem\"},{\"id\":\"urn:ngsi-ld:InventoryItem:003\",\"type\":\"InventoryItem\"},{\"id\":\"urn:ngsi-ld:InventoryItem:004\",\"type\":\"InventoryItem\"},{\"id\":\"urn:ngsi-ld:InventoryItem:005\",\"type\":\"InventoryItem\"},{\"id\":\"urn:ngsi-ld:InventoryItem:006\",\"type\":\"InventoryItem\"},{\"id\":\"urn:ngsi-ld:InventoryItem:007\",\"type\":\"InventoryItem\"},{\"id\":\"urn:ngsi-ld:InventoryItem:008\",\"type\":\"InventoryItem\"},{\"id\":\"urn:ngsi-ld:InventoryItem:401\",\"type\":\"InventoryItem\"}]",
+        "payloadType": "json",
+        "x": 140,
+        "y": 2060,
+        "wires": [
+            [
+                "c8b6f2888c464dbb"
+            ]
+        ]
+    },
+    {
+        "id": "77088baad773e601",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "entities (v2)",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[{\"id\":\"urn:ngsi-ld:Product:011\",\"type\":\"Product\"},{\"id\":\"urn:ngsi-ld:Product:012\",\"type\":\"Product\"}]",
+        "payloadType": "json",
+        "x": 130,
+        "y": 1940,
+        "wires": [
+            [
+                "b1e21f24a399174d"
+            ]
+        ]
+    },
+    {
+        "id": "8a5d4c2ef2750866",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "all entities",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 120,
+        "y": 1880,
+        "wires": [
+            [
+                "d68da9090ed22dac"
+            ]
+        ]
+    },
+    {
+        "id": "127b3f57ef6e7788",
+        "type": "template",
+        "z": "e4d1f70f0b51d593",
+        "name": "attrs",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n    \"attrs\": \"id\"\n}",
+        "output": "json",
+        "x": 450,
+        "y": 1880,
+        "wires": [
+            [
+                "f82b56aa7f2b5930"
+            ]
+        ]
+    },
+    {
+        "id": "7aba4dea5468f40e",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "statusCode & \": \" & (statusCode > 300 ? payload.error : \"updated at \" & $now(\"[H01]:[m]:[s]\"))",
+        "statusType": "jsonata",
+        "x": 810,
+        "y": 1460,
+        "wires": []
+    },
+    {
+        "id": "c2f08ed65cd95e09",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "statusCode",
+        "statusType": "msg",
+        "x": 810,
+        "y": 2000,
+        "wires": []
+    },
+    {
+        "id": "cb3c6edd9711c192",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "append",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t   \"actionType\": \"append\",\t   \"entities\": payload\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 1460,
+        "wires": [
+            [
+                "2d765cfa863f1001"
+            ]
+        ]
+    },
+    {
+        "id": "cb8b0675856389b2",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "delete",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t   \"actionType\": \"delete\",\t   \"entities\": payload\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 450,
+        "y": 2000,
+        "wires": [
+            [
+                "c890e6335f46b932"
+            ]
+        ]
+    },
+    {
+        "id": "28f5ee70311517cb",
+        "type": "comment",
+        "z": "e4d1f70f0b51d593",
+        "name": "DELETE (v2)",
+        "info": " - [CRUD operations](https://github.com/FIWARE/tutorials.CRUD-Operations/tree/NGSI-v2)\n",
+        "x": 130,
+        "y": 1840,
+        "wires": []
+    },
+    {
+        "id": "c772beb0c491ecf2",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "sensor",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[\t    {\t        \"id\":\"urn:ngsi-ld:TemperatureSensor:001\",\t        \"type\":\"TemperatureSensor\",\t        \"category\": {\t            \"type\":\"Text\",\t            \"value\":\"Sensor\"\t        },\t        \"temperature\": {\t            \"type\":\"Integer\",\t            \"value\":$round(200*$random())-50,\t            \"metadata\": {\t                \"unitCode\": {\t                    \"type\": \"Text\",\t                    \"value\": \"CEL\"\t                }\t            }\t        }\t    }\t]",
+        "payloadType": "jsonata",
+        "x": 110,
+        "y": 1460,
+        "wires": [
+            [
+                "4ed05ae24d8db0e1"
+            ]
+        ]
+    },
+    {
+        "id": "ecd9a8b87f1ac719",
+        "type": "template",
+        "z": "e4d1f70f0b51d593",
+        "name": "id",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n    \"id\": \"{{id}}\"\n}\n",
+        "output": "json",
+        "x": 450,
+        "y": 1700,
+        "wires": [
+            [
+                "d6543f13caaa78d1"
+            ]
+        ]
+    },
+    {
+        "id": "fb84a4aae7652d6a",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "create entity",
+        "props": [
+            {
+                "p": "x-auth-token",
+                "v": "x-auth-token",
+                "vt": "flow"
+            },
+            {
+                "p": "orion",
+                "v": "orion",
+                "vt": "flow"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"id\":\"urn:ngsi-ld:TemperatureSensor:001\",\"type\":\"TemperatureSensor\",\"category\":{\"type\":\"Text\",\"value\":\"Sensor\"},\"temperature\":{\"type\":\"Integer\",\"value\":0,\"metadata\":{\"unitCode\":{\"type\":\"Text\",\"value\":\"CEL\"}}}}",
+        "payloadType": "json",
+        "x": 130,
+        "y": 520,
+        "wires": [
+            [
+                "9cd481486f6c2aa1"
+            ]
+        ]
+    },
+    {
+        "id": "3785deead51f65f9",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "write attribute",
+        "props": [
+            {
+                "p": "x-auth-token",
+                "v": "x-auth-token",
+                "vt": "flow"
+            },
+            {
+                "p": "orion",
+                "v": "orion",
+                "vt": "flow"
+            },
+            {
+                "p": "id",
+                "v": "urn:ngsi-ld:TemperatureSensor:001",
+                "vt": "str"
+            },
+            {
+                "p": "attr",
+                "v": "temperature",
+                "vt": "str"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "$round(200*$random())-50",
+        "payloadType": "jsonata",
+        "x": 130,
+        "y": 600,
+        "wires": [
+            [
+                "50e55ed514a9d2c0",
+                "03c7fc2ee66ccc7b"
+            ]
+        ]
+    },
+    {
+        "id": "fdeb9207974730b7",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "test create",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "statusCode & \": \" & (statusCode > 300 ? payload.error : \"created at \" & $now(\"[H01]:[m]:[s]\"))",
+        "statusType": "jsonata",
+        "x": 810,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "74c8177ab2b217e1",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "test write",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "statusCode & \": \" & (statusCode > 300 ? payload.error : \"updated at \" & $now(\"[H01]:[m]:[s]\"))",
+        "statusType": "jsonata",
+        "x": 800,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "b73f826fae3a967d",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "read attribute",
+        "props": [
+            {
+                "p": "x-auth-token",
+                "v": "x-auth-token",
+                "vt": "flow"
+            },
+            {
+                "p": "orion",
+                "v": "orion",
+                "vt": "flow"
+            },
+            {
+                "p": "id",
+                "v": "urn:ngsi-ld:TemperatureSensor:001",
+                "vt": "str"
+            },
+            {
+                "p": "attr",
+                "v": "temperature",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 130,
+        "y": 680,
+        "wires": [
+            [
+                "c81b343c2e7505ee"
+            ]
+        ]
+    },
+    {
+        "id": "5e9a4e722db3c859",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "test read",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "statusCode & \": \" & (statusCode > 300 ? payload.error : payload)",
+        "statusType": "jsonata",
+        "x": 800,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "9cd481486f6c2aa1",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "name": "POST /v2/entities",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "{{{orion}}}/v2/entities",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "Content-Type",
+                "keyValue": "",
+                "valueType": "application/json",
+                "valueValue": ""
+            },
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            }
+        ],
+        "x": 490,
+        "y": 520,
+        "wires": [
+            [
+                "fdeb9207974730b7"
+            ]
+        ]
+    },
+    {
+        "id": "65c0e7761e9fa1a2",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "name": "GET /v2/entities/{id}",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "query",
+        "url": "{{{orion}}}/v2/entities/{{{id}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            }
+        ],
+        "x": 490,
+        "y": 760,
+        "wires": [
+            [
+                "fa2a22f0218b1d3a"
+            ]
+        ]
+    },
+    {
+        "id": "fa2a22f0218b1d3a",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "test get",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "statusCode & \": \" & (statusCode > 300 ? payload.error : payload.id)",
+        "statusType": "jsonata",
+        "x": 800,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "08d74c8253838004",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "get entity",
+        "props": [
+            {
+                "p": "x-auth-token",
+                "v": "x-auth-token",
+                "vt": "flow"
+            },
+            {
+                "p": "orion",
+                "v": "orion",
+                "vt": "flow"
+            },
+            {
+                "p": "id",
+                "v": "urn:ngsi-ld:TemperatureSensor:001",
+                "vt": "str"
+            },
+            {
+                "p": "payload.options",
+                "v": "keyValues",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 120,
+        "y": 760,
+        "wires": [
+            [
+                "65c0e7761e9fa1a2"
+            ]
+        ]
+    },
+    {
+        "id": "8f675a59fd600b8e",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "name": "DELETE /v2/entities/{id}",
+        "method": "DELETE",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "{{{orion}}}/v2/entities/{{{id}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            }
+        ],
+        "x": 510,
+        "y": 840,
+        "wires": [
+            [
+                "c83b053d5e2833d9"
+            ]
+        ]
+    },
+    {
+        "id": "ead15e82dae2ef19",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "delete entity",
+        "props": [
+            {
+                "p": "x-auth-token",
+                "v": "x-auth-token",
+                "vt": "flow"
+            },
+            {
+                "p": "orion",
+                "v": "orion",
+                "vt": "flow"
+            },
+            {
+                "p": "id",
+                "v": "urn:ngsi-ld:TemperatureSensor:001",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 130,
+        "y": 840,
+        "wires": [
+            [
+                "8f675a59fd600b8e"
+            ]
+        ]
+    },
+    {
+        "id": "c83b053d5e2833d9",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "test delete",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "statusCode & \": \" & (statusCode > 300 ? payload.error : \"deleted at \" & $now(\"[H01]:[m]:[s]\"))",
+        "statusType": "jsonata",
+        "x": 810,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "7c83bf3c755b0c8f",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "name": "GET /v2/subscriptions/",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "{{{orion}}}/v2/subscriptions/",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            }
+        ],
+        "x": 500,
+        "y": 1280,
+        "wires": [
+            [
+                "cd9c571b8bfa3592"
+            ]
+        ]
+    },
+    {
+        "id": "21df661c24bd1fd1",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "list all subs",
+        "props": [
+            {
+                "p": "orion",
+                "v": "orion",
+                "vt": "flow"
+            },
+            {
+                "p": "x-auth-token",
+                "v": "x-auth-token",
+                "vt": "flow"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 120,
+        "y": 1280,
+        "wires": [
+            [
+                "1be07103649f8ac2"
+            ]
+        ]
+    },
+    {
+        "id": "4cffb60e2e1bfe59",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "name": "DELETE /v2/subscriptions/{id}",
+        "method": "DELETE",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "{{{orion}}}/v2/subscriptions/{{id}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            }
+        ],
+        "x": 530,
+        "y": 1200,
+        "wires": [
+            [
+                "7c83bf3c755b0c8f",
+                "5f68384c9bbca9d3"
+            ]
+        ]
+    },
+    {
+        "id": "a6db68601cc57089",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "delete latest sub",
+        "props": [
+            {
+                "p": "orion",
+                "v": "orion",
+                "vt": "flow"
+            },
+            {
+                "p": "x-auth-token",
+                "v": "x-auth-token",
+                "vt": "flow"
+            },
+            {
+                "p": "id",
+                "v": "latest",
+                "vt": "flow"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 140,
+        "y": 1200,
+        "wires": [
+            [
+                "9b3436c15ed843cb"
+            ]
+        ]
+    },
+    {
+        "id": "04c8f56ef0877055",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "delete all subs",
+        "props": [
+            {
+                "p": "orion",
+                "v": "orion",
+                "vt": "flow"
+            },
+            {
+                "p": "x-auth-token",
+                "v": "x-auth-token",
+                "vt": "flow"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 130,
+        "y": 1120,
+        "wires": [
+            [
+                "652bf8f18f5a5c52"
+            ]
+        ]
+    },
+    {
+        "id": "b0974a09ea744963",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "name": "GET /v2/subscriptions/",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "{{{orion}}}/v2/subscriptions/",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            }
+        ],
+        "x": 500,
+        "y": 1120,
+        "wires": [
+            [
+                "1c204360a9172702",
+                "c3de1ada791ae062"
+            ]
+        ]
+    },
+    {
+        "id": "8ef186b6414e6a50",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "get flow.latest",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload.id",
+        "statusType": "msg",
+        "x": 820,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "318b046fd75823b4",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "latest",
+                "pt": "flow",
+                "to": "payload.id",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 820,
+        "y": 1340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8cde03d49d0299f2",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload.id",
+                "pt": "msg",
+                "to": "id",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 840,
+        "y": 1160,
+        "wires": [
+            [
+                "4cffb60e2e1bfe59"
+            ]
+        ]
+    },
+    {
+        "id": "5f68384c9bbca9d3",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "statusCode&\" - \"&(payload.error?payload.error:$count(payload)&($count(payload)=1?\" result\":\" results\"))",
+        "statusType": "jsonata",
+        "x": 810,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "1c204360a9172702",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "split",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "statusCode&\" - \"&(payload.error?payload.error:$count(payload)&($count(payload)=1?\" result\":\" results\"))",
+        "statusType": "jsonata",
+        "x": 670,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "b51c66240a230caa",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "split",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "statusCode&\" - \"&(payload.error?payload.error:$count(payload)&($count(payload)=1?\" result\":\" results\"))",
+        "statusType": "jsonata",
+        "x": 670,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "c3de1ada791ae062",
+        "type": "split",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 670,
+        "y": 1140,
+        "wires": [
+            [
+                "8cde03d49d0299f2"
+            ]
+        ]
+    },
+    {
+        "id": "30e843c5317febf5",
+        "type": "split",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 670,
+        "y": 1340,
+        "wires": [
+            [
+                "8ef186b6414e6a50",
+                "318b046fd75823b4"
+            ]
+        ]
+    },
+    {
+        "id": "b50c9a8232511466",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "create simple sub",
+        "props": [
+            {
+                "p": "orion",
+                "v": "orion",
+                "vt": "flow"
+            },
+            {
+                "p": "x-auth-token",
+                "v": "x-auth-token",
+                "vt": "flow"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"description\":\"Notify me of all temperature changes\",\"subject\":{\"entities\":[{\"idPattern\":\".*\",\"type\":\"TemperatureSensor\"}],\"condition\":{\"attrs\":[\"temperature\"]}},\"notification\":{\"http\":{\"url\":\"http://node-red:1880/temperature-change\"}}}",
+        "payloadType": "json",
+        "x": 140,
+        "y": 980,
+        "wires": [
+            [
+                "ee3cc9a19a0daf19"
+            ]
+        ]
+    },
+    {
+        "id": "3123b1d7cdf5f926",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "name": "POST /v2/subscriptions/",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "{{{orion}}}/v2/subscriptions/",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "Content-Type",
+                "keyValue": "",
+                "valueType": "application/json",
+                "valueValue": ""
+            },
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            }
+        ],
+        "x": 510,
+        "y": 920,
+        "wires": [
+            [
+                "cde125c35ad8fba5"
+            ]
+        ]
+    },
+    {
+        "id": "91229fadebcc52ba",
+        "type": "http in",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "url": "/temperature-change",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 510,
+        "y": 980,
+        "wires": [
+            [
+                "28710a31d37723ce",
+                "cd2683b8732d6b52"
+            ]
+        ]
+    },
+    {
+        "id": "28710a31d37723ce",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "/temperature-change",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload.data[0].temperature.value",
+        "statusType": "msg",
+        "x": 840,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "50e55ed514a9d2c0",
+        "type": "delay",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "100",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 290,
+        "y": 640,
+        "wires": [
+            [
+                "c81b343c2e7505ee"
+            ]
+        ]
+    },
+    {
+        "id": "860d3782486c2ed5",
+        "type": "http in",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "url": "/test-simple-ads",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 500,
+        "y": 1040,
+        "wires": [
+            [
+                "cd2683b8732d6b52",
+                "627c2adc9506c3dd"
+            ]
+        ]
+    },
+    {
+        "id": "cd2683b8732d6b52",
+        "type": "http response",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 790,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "627c2adc9506c3dd",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "/test-simple-ads",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload.data[0].temperature",
+        "statusType": "msg",
+        "x": 820,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "cde125c35ad8fba5",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "statusCode & \": \" & $replace(headers.location, \"/v2/subscriptions/\", \"\")",
+        "statusType": "jsonata",
+        "x": 810,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "cd9c571b8bfa3592",
+        "type": "trigger",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "op1": "",
+        "op2": "",
+        "op1type": "nul",
+        "op2type": "payl",
+        "duration": "250",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 480,
+        "y": 1340,
+        "wires": [
+            [
+                "b51c66240a230caa",
+                "30e843c5317febf5"
+            ]
+        ]
+    },
+    {
+        "id": "a10167529981e920",
+        "type": "comment",
+        "z": "e4d1f70f0b51d593",
+        "name": "Note",
+        "info": "The DELETE /v2/entities/id method \nseems to be less reliable than the\nBatch Delete Multiple Entities\nPOST /v2/op/update (see example below).",
+        "x": 610,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "f819a86eaf080f7d",
+        "type": "base64",
+        "z": "e4d1f70f0b51d593",
+        "g": "65e5c56aa44c2a1a",
+        "name": "",
+        "action": "str",
+        "property": "clientCredentials",
+        "x": 600,
+        "y": 120,
+        "wires": [
+            [
+                "f3292234195969dc",
+                "8ccb2fb71fc097f5",
+                "7e405aa4486f615e",
+                "19532ef6c17cd667",
+                "d447d83a31e47ff4",
+                "af7b2e417540b94e"
+            ]
+        ]
+    },
+    {
+        "id": "acab54130407b01f",
+        "type": "comment",
+        "z": "e4d1f70f0b51d593",
+        "g": "65e5c56aa44c2a1a",
+        "name": "FIWARE Guides",
+        "info": "Orion v2\n - [CRUD operations](https://github.com/FIWARE/tutorials.CRUD-Operations/tree/NGSI-v2)\n - [PEP Proxy](https://github.com/FIWARE/tutorials.PEP-Proxy/tree/NGSI-v2)\n - [Subscriptions](https://github.com/FIWARE/tutorials.Subscriptions/tree/NGSI-v2)\n\nOrion-LD\n - [CRUD operations](https://github.com/FIWARE/tutorials.CRUD-Operations/tree/NGSI-LD)\n - [PEP Proxy](https://github.com/FIWARE/tutorials.PEP-Proxy/tree/NGSI-LD)\n - [Subscriptions](https://github.com/FIWARE/tutorials.Subscriptions/tree/NGSI-LD)\n",
+        "x": 140,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "0f9e6715da608291",
+        "type": "comment",
+        "z": "e4d1f70f0b51d593",
+        "name": "SUBSCRIBE (v2)",
+        "info": " - [Subscriptions](https://github.com/FIWARE/tutorials.Subscriptions/tree/NGSI-v2)\n",
+        "x": 140,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "b092d883fb5cf816",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "g": "65e5c56aa44c2a1a",
+        "name": "inside Docker",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion",
+                "pt": "msg",
+                "to": "http://orion:1026",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "orion-ld",
+                "pt": "msg",
+                "to": "http://orion-ld:1026",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "keyrock",
+                "pt": "msg",
+                "to": "http://keyrock:3005",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "clientId",
+                "pt": "msg",
+                "to": "tutorial-dckr-site-0000-xpresswebapp",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "clientSecret",
+                "pt": "msg",
+                "to": "tutorial-dckr-site-0000-clientsecret",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "username",
+                "pt": "msg",
+                "to": "alice-the-admin@test.com",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "password",
+                "pt": "msg",
+                "to": "test",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "link",
+                "pt": "msg",
+                "to": "<https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld>; rel=\"http://www.w3.org/ns/json-ld#context\"; type=\"application/ld+json\"",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 60,
+        "wires": [
+            [
+                "306a97ccd670c8aa"
+            ]
+        ]
+    },
+    {
+        "id": "e370a02358e18368",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "g": "65e5c56aa44c2a1a",
+        "name": "Entirety (TBD)",
+        "props": [
+            {
+                "p": "orion",
+                "v": "http://217.172.12.211:1027",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 130,
+        "y": 400,
+        "wires": [
+            [
+                "4f617122750c0f43"
+            ]
+        ]
+    },
+    {
+        "id": "bd66007112d574d4",
+        "type": "comment",
+        "z": "e4d1f70f0b51d593",
+        "name": "http://node-red:1880",
+        "info": "On Linux:   172.17.0.1\nOn Windows: host.docker.internal",
+        "x": 550,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "c5a41def39602c4b",
+        "type": "comment",
+        "z": "e4d1f70f0b51d593",
+        "name": "TEST (v2)",
+        "info": " - [CRUD operations](https://github.com/FIWARE/tutorials.CRUD-Operations/tree/NGSI-v2)\n - [PEP Proxy](https://github.com/FIWARE/tutorials.PEP-Proxy/tree/NGSI-v2)\n",
+        "x": 120,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "03c7fc2ee66ccc7b",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "name": "PUT /v2/entities/{id}/attrs/{attr}/value",
+        "method": "PUT",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "{{{orion}}}/v2/entities/{{{id}}}/attrs/{{{attr}}}/value",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Content-Type",
+                "valueType": "other",
+                "valueValue": "text/plain"
+            }
+        ],
+        "x": 550,
+        "y": 600,
+        "wires": [
+            [
+                "74c8177ab2b217e1"
+            ]
+        ]
+    },
+    {
+        "id": "c81b343c2e7505ee",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "name": "GET /v2/entities/{id}/attrs/{attr}/value",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "{{{orion}}}/v2/entities/{{{id}}}/attrs/{{{attr}}}/value",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            }
+        ],
+        "x": 550,
+        "y": 680,
+        "wires": [
+            [
+                "5e9a4e722db3c859"
+            ]
+        ]
+    },
+    {
+        "id": "a6aa3121d6ed6921",
+        "type": "comment",
+        "z": "e4d1f70f0b51d593",
+        "name": "WRITE (LD)",
+        "info": " - [CRUD operations](https://github.com/FIWARE/tutorials.CRUD-Operations/tree/NGSI-LD)\n - [PEP Proxy](https://github.com/FIWARE/tutorials.PEP-Proxy/tree/NGSI-LD)\n",
+        "x": 1150,
+        "y": 1360,
+        "wires": []
+    },
+    {
+        "id": "00f4cb233e89ab56",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "entities (LD)",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[{\"id\":\"urn:ngsi-ld:TemperatureSensor:001\",\"type\":\"TemperatureSensor\",\"category\":{\"type\":\"Property\",\"value\":\"sensor\"},\"temperature\":{\"type\":\"Property\",\"value\":24.1,\"unitCode\":\"CEL\"}},{\"id\":\"urn:ngsi-ld:TemperatureSensor:002\",\"type\":\"TemperatureSensor\",\"category\":{\"type\":\"Property\",\"value\":\"sensor\"},\"temperature\":{\"type\":\"Property\",\"value\":25.2,\"unitCode\":\"CEL\"}},{\"id\":\"urn:ngsi-ld:TemperatureSensor:003\",\"type\":\"TemperatureSensor\",\"category\":{\"type\":\"Property\",\"value\":\"sensor\"},\"temperature\":{\"type\":\"Property\",\"value\":26.3,\"unitCode\":\"CEL\"}}]",
+        "payloadType": "json",
+        "x": 1150,
+        "y": 1400,
+        "wires": [
+            [
+                "77118e946f8287e3"
+            ]
+        ]
+    },
+    {
+        "id": "dda5c60d203379f3",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "statusCode",
+        "statusType": "msg",
+        "x": 1870,
+        "y": 1460,
+        "wires": []
+    },
+    {
+        "id": "763af8433f85b78c",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "sensor",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[{\t    \"id\": \"urn:ngsi-ld:TemperatureSensor:001\",\t    \"type\": \"TemperatureSensor\",\t    \"category\": {\t        \"type\": \"Property\",\t        \"value\": \"Sensor\"\t    },\t    \"temperature\": {\t        \"type\": \"Property\",\t        \"value\": $round(200*$random())-50,\t        \"unitCode\": \"CEL\"\t    }\t}]",
+        "payloadType": "jsonata",
+        "x": 1130,
+        "y": 1460,
+        "wires": [
+            [
+                "d269bfa1aa7523da"
+            ]
+        ]
+    },
+    {
+        "id": "3aeacf51aa676d27",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "name": "POST /ngsi-ld/v1/entityOperations/upsert",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "{{{orion-ld}}}/ngsi-ld/v1/entityOperations/upsert",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Link",
+                "valueType": "msg",
+                "valueValue": "link"
+            }
+        ],
+        "x": 1620,
+        "y": 1460,
+        "wires": [
+            [
+                "dda5c60d203379f3"
+            ]
+        ]
+    },
+    {
+        "id": "525a3bd4a52ed13a",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "import-data (LD)",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[{\"id\":\"urn:ngsi-ld:Building:farm001\",\"type\":\"Building\",\"category\":{\"type\":\"Property\",\"value\":[\"farm\"]},\"address\":{\"type\":\"Property\",\"value\":{\"streetAddress\":\"Großer Stern 1\",\"addressRegion\":\"Berlin\",\"addressLocality\":\"Tiergarten\",\"postalCode\":\"10557\"},\"verified\":{\"type\":\"Property\",\"value\":true}},\"location\":{\"type\":\"GeoProperty\",\"value\":{\"type\":\"Point\",\"coordinates\":[13.3505,52.5144]}},\"name\":{\"type\":\"Property\",\"value\":\"Victory Farm\"},\"owner\":{\"type\":\"Relationship\",\"object\":\"urn:ngsi-ld:Person:person001\"}},{\"id\":\"urn:ngsi-ld:Building:barn002\",\"type\":\"Building\",\"category\":{\"type\":\"Property\",\"value\":[\"barn\"]},\"address\":{\"type\":\"Property\",\"value\":{\"streetAddress\":\"Straße des 17. Juni\",\"addressRegion\":\"Berlin\",\"addressLocality\":\"Tiergarten\",\"postalCode\":\"10557\"},\"verified\":{\"type\":\"Property\",\"value\":true}},\"location\":{\"type\":\"GeoProperty\",\"value\":{\"type\":\"Point\",\"coordinates\":[13.3698,52.5163]}},\"name\":{\"type\":\"Property\",\"value\":\"Big Red Barn\"},\"owner\":{\"type\":\"Relationship\",\"object\":\"urn:ngsi-ld:Person:person001\"}},{\"id\":\"urn:ngsi-ld:Building:tower003\",\"type\":\"Building\",\"category\":{\"type\":\"Property\",\"value\":[\"water_tower\"]},\"address\":{\"type\":\"Property\",\"value\":{\"streetAddress\":\"John-Foster-Dulles-Allee\",\"addressRegion\":\"Berlin\",\"addressLocality\":\"Tiergarten\",\"postalCode\":\"10557\"},\"verified\":{\"type\":\"Property\",\"value\":true}},\"location\":{\"type\":\"GeoProperty\",\"value\":{\"type\":\"Point\",\"coordinates\":[13.3598,52.5165]}},\"name\":{\"type\":\"Property\",\"value\":\"Triton Tower\"},\"owner\":{\"type\":\"Relationship\",\"object\":\"urn:ngsi-ld:Person:person001\"}},{\"id\":\"urn:ngsi-ld:Building:farm002\",\"type\":\"Building\",\"category\":{\"type\":\"Property\",\"value\":[\"farm\"]},\"address\":{\"type\":\"Property\",\"value\":{\"streetAddress\":\"Hardenbergplatz 8\",\"addressRegion\":\"Berlin\",\"addressLocality\":\"Tiergarten\",\"postalCode\":\"10787\"},\"verified\":{\"type\":\"Property\",\"value\":true}},\"location\":{\"type\":\"GeoProperty\",\"value\":{\"type\":\"Point\",\"coordinates\":[13.3127,52.4893]}},\"name\":{\"type\":\"Property\",\"value\":\"Animal Farm\"},\"owner\":{\"type\":\"Relationship\",\"object\":\"urn:ngsi-ld:Person:person002\"}},{\"id\":\"urn:ngsi-ld:Person:person001\",\"type\":\"Person\",\"name\":{\"type\":\"Property\",\"value\":\"Old MacDonald\"}},{\"id\":\"urn:ngsi-ld:Person:person002\",\"type\":\"Person\",\"name\":{\"type\":\"Property\",\"value\":\"Napoleon the Pig\"}}]",
+        "payloadType": "json",
+        "x": 1160,
+        "y": 1520,
+        "wires": [
+            [
+                "d06cdac0f792ff23"
+            ]
+        ]
+    },
+    {
+        "id": "77118e946f8287e3",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "LD",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion-ld",
+                "pt": "msg",
+                "to": "orion-ld",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "x-auth-token",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "link",
+                "pt": "msg",
+                "to": "link",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1350,
+        "y": 1400,
+        "wires": [
+            [
+                "3aeacf51aa676d27"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png"
+    },
+    {
+        "id": "6a6fb9a7c00b3df5",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "create entity",
+        "props": [
+            {
+                "p": "x-auth-token",
+                "v": "x-auth-token",
+                "vt": "flow"
+            },
+            {
+                "p": "orion-ld",
+                "v": "orion-ld",
+                "vt": "flow"
+            },
+            {
+                "p": "payload"
+            },
+            {
+                "p": "link",
+                "v": "link",
+                "vt": "flow"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"id\":\"urn:ngsi-ld:TemperatureSensor:001\",\"type\":\"TemperatureSensor\",\"category\":{\"type\":\"Property\",\"value\":\"Sensor\"},\"temperature\":{\"type\":\"Property\",\"value\":0,\"unitCode\":\"CEL\"}}",
+        "payloadType": "json",
+        "x": 1150,
+        "y": 520,
+        "wires": [
+            [
+                "f38db19e74bf7b23"
+            ]
+        ]
+    },
+    {
+        "id": "b5aef3b4689e3c29",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "name": "PATCH /ngsi-ld/v1/entities/{id}/attrs",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "{{{orion-ld}}}/ngsi-ld/v1/entities/{{{id}}}/attrs",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Link",
+                "valueType": "msg",
+                "valueValue": "link"
+            },
+            {
+                "keyType": "Content-Type",
+                "keyValue": "",
+                "valueType": "application/json",
+                "valueValue": ""
+            }
+        ],
+        "x": 1600,
+        "y": 600,
+        "wires": [
+            [
+                "967768808e69c13d"
+            ]
+        ]
+    },
+    {
+        "id": "af4232d50836da83",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "write attribute",
+        "props": [
+            {
+                "p": "x-auth-token",
+                "v": "x-auth-token",
+                "vt": "flow"
+            },
+            {
+                "p": "orion-ld",
+                "v": "orion-ld",
+                "vt": "flow"
+            },
+            {
+                "p": "id",
+                "v": "urn:ngsi-ld:TemperatureSensor:001",
+                "vt": "str"
+            },
+            {
+                "p": "payload"
+            },
+            {
+                "p": "method",
+                "v": "PATCH",
+                "vt": "str"
+            },
+            {
+                "p": "link",
+                "v": "link",
+                "vt": "flow"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\t   \"temperature\": {\t       \"value\": $round(200*$random())-50,\t       \"type\": \"Property\"\t      }\t}\t\t",
+        "payloadType": "jsonata",
+        "x": 1150,
+        "y": 600,
+        "wires": [
+            [
+                "b5aef3b4689e3c29",
+                "a7d8257c7916de65"
+            ]
+        ]
+    },
+    {
+        "id": "aae55975ba1d2157",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "test create",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "statusCode & \": \" & (statusCode > 300 ? payload.title : \"created at \" & $now(\"[H01]:[m]:[s]\"))",
+        "statusType": "jsonata",
+        "x": 1870,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "967768808e69c13d",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "test write",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "statusCode & \": \" & (statusCode > 300 ? payload.title : \"updated at \" & $now(\"[H01]:[m]:[s]\"))",
+        "statusType": "jsonata",
+        "x": 1860,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "38b3bd9e77bd9131",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "read attribute",
+        "props": [
+            {
+                "p": "x-auth-token",
+                "v": "x-auth-token",
+                "vt": "flow"
+            },
+            {
+                "p": "orion-ld",
+                "v": "orion-ld",
+                "vt": "flow"
+            },
+            {
+                "p": "id",
+                "v": "urn:ngsi-ld:TemperatureSensor:001",
+                "vt": "str"
+            },
+            {
+                "p": "link",
+                "v": "link",
+                "vt": "flow"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 1150,
+        "y": 680,
+        "wires": [
+            [
+                "3ab4b225925c565e"
+            ]
+        ]
+    },
+    {
+        "id": "adbd4e01fb09a844",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "test get / read",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "statusCode & \": \" & (payload.title ? payload.title : payload.temperature)",
+        "statusType": "jsonata",
+        "x": 1880,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "f38db19e74bf7b23",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "name": "POST /ngsi-ld/v1/entities/",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "{{{orion-ld}}}/ngsi-ld/v1/entities",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "Content-Type",
+                "keyValue": "",
+                "valueType": "application/json",
+                "valueValue": ""
+            },
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Link",
+                "valueType": "msg",
+                "valueValue": "link"
+            }
+        ],
+        "x": 1570,
+        "y": 520,
+        "wires": [
+            [
+                "aae55975ba1d2157"
+            ]
+        ]
+    },
+    {
+        "id": "7a27f392b8bc0764",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "name": "GET /ngsi-ld/v1/entities/{id}",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "query",
+        "url": "{{{orion-ld}}}/ngsi-ld/v1/entities/{{{id}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Link",
+                "valueType": "msg",
+                "valueValue": "link"
+            }
+        ],
+        "x": 1580,
+        "y": 760,
+        "wires": [
+            [
+                "adbd4e01fb09a844",
+                "231a1735cd34d99a"
+            ]
+        ]
+    },
+    {
+        "id": "a3f0ff35a8f1b1cb",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "get entity",
+        "props": [
+            {
+                "p": "x-auth-token",
+                "v": "x-auth-token",
+                "vt": "flow"
+            },
+            {
+                "p": "orion-ld",
+                "v": "orion-ld",
+                "vt": "flow"
+            },
+            {
+                "p": "id",
+                "v": "urn:ngsi-ld:TemperatureSensor:001",
+                "vt": "str"
+            },
+            {
+                "p": "link",
+                "v": "link",
+                "vt": "flow"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 1140,
+        "y": 760,
+        "wires": [
+            [
+                "7a27f392b8bc0764"
+            ]
+        ]
+    },
+    {
+        "id": "5d98e80914faf7c9",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "name": "DELETE /ngsi-ld/v1/entities/{{id}",
+        "method": "DELETE",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "{{{orion-ld}}}/ngsi-ld/v1/entities/{{{id}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            }
+        ],
+        "x": 1590,
+        "y": 840,
+        "wires": [
+            [
+                "38b778c31e4fc10a"
+            ]
+        ]
+    },
+    {
+        "id": "de2a05a32671b621",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "delete entity",
+        "props": [
+            {
+                "p": "x-auth-token",
+                "v": "x-auth-token",
+                "vt": "flow"
+            },
+            {
+                "p": "orion-ld",
+                "v": "orion-ld",
+                "vt": "flow"
+            },
+            {
+                "p": "id",
+                "v": "urn:ngsi-ld:TemperatureSensor:001",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 1150,
+        "y": 840,
+        "wires": [
+            [
+                "5d98e80914faf7c9"
+            ]
+        ]
+    },
+    {
+        "id": "38b778c31e4fc10a",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "test delete",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "statusCode & \": \" & (statusCode > 300 ? payload.title : \"deleted at \" & $now(\"[H01]:[m]:[s]\"))",
+        "statusType": "jsonata",
+        "x": 1870,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "fcc20e5d887b4553",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "name": "GET /ngsi-ld/v1/subscriptions",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "{{{orion-ld}}}/ngsi-ld/v1/subscriptions",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            }
+        ],
+        "x": 1580,
+        "y": 1280,
+        "wires": [
+            [
+                "350c30f2e4b802cf"
+            ]
+        ]
+    },
+    {
+        "id": "b3b32eb8b221e685",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "list all subs",
+        "props": [
+            {
+                "p": "orion-ld",
+                "v": "orion-ld",
+                "vt": "flow"
+            },
+            {
+                "p": "x-auth-token",
+                "v": "x-auth-token",
+                "vt": "flow"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 1140,
+        "y": 1280,
+        "wires": [
+            [
+                "536c96bca4131db7"
+            ]
+        ]
+    },
+    {
+        "id": "d7777f82ae124e77",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "name": "DELETE /ngsi-ld/v1/subscriptions/{{id}}",
+        "method": "DELETE",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "{{{orion-ld}}}/ngsi-ld/v1/subscriptions/{{id}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            }
+        ],
+        "x": 1610,
+        "y": 1220,
+        "wires": [
+            [
+                "fcc20e5d887b4553",
+                "7084acb2c72843f1"
+            ]
+        ]
+    },
+    {
+        "id": "f28a42fac37c861b",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "delete latest sub",
+        "props": [
+            {
+                "p": "orion-ld",
+                "v": "orion-ld",
+                "vt": "flow"
+            },
+            {
+                "p": "x-auth-token",
+                "v": "x-auth-token",
+                "vt": "flow"
+            },
+            {
+                "p": "id",
+                "v": "latest",
+                "vt": "flow"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 1160,
+        "y": 1200,
+        "wires": [
+            [
+                "dd090ec13940ad7d"
+            ]
+        ]
+    },
+    {
+        "id": "754c403705563bca",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "delete all subs",
+        "props": [
+            {
+                "p": "orion-ld",
+                "v": "orion-ld",
+                "vt": "flow"
+            },
+            {
+                "p": "x-auth-token",
+                "v": "x-auth-token",
+                "vt": "flow"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 1150,
+        "y": 1120,
+        "wires": [
+            [
+                "99d1a447e30add1d"
+            ]
+        ]
+    },
+    {
+        "id": "729838fabb0bf8db",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "name": "GET /ngsi-ld/v1/subscriptions",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "{{{orion-ld}}}/ngsi-ld/v1/subscriptions",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            }
+        ],
+        "x": 1540,
+        "y": 1120,
+        "wires": [
+            [
+                "554dc4f9bd89f929",
+                "2d18aff0acd96532"
+            ]
+        ]
+    },
+    {
+        "id": "cc21a716ea65f48b",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "get flow.latest",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload.id",
+        "statusType": "msg",
+        "x": 1880,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "89fd654060be583b",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "latest",
+                "pt": "flow",
+                "to": "payload.id",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1880,
+        "y": 1340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "159ebbf199f52c18",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "move msg.payload.id",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload.id",
+                "pt": "msg",
+                "to": "id",
+                "tot": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1900,
+        "y": 1160,
+        "wires": [
+            [
+                "d7777f82ae124e77"
+            ]
+        ]
+    },
+    {
+        "id": "c3f67f6b8b86ea28",
+        "type": "comment",
+        "z": "e4d1f70f0b51d593",
+        "name": "SUBSCRIBE (LD)",
+        "info": " - [Subscriptions](https://github.com/FIWARE/tutorials.Subscriptions/tree/NGSI-LD)\n",
+        "x": 1170,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "7084acb2c72843f1",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "statusCode&\" - \"&(payload.error?payload.error:$count(payload)&($count(payload)=1?\" result\":\" results\"))",
+        "statusType": "jsonata",
+        "x": 1870,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "554dc4f9bd89f929",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "split",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "statusCode&\" - \"&(payload.error?payload.error:$count(payload)&($count(payload)=1?\" result\":\" results\"))",
+        "statusType": "jsonata",
+        "x": 1730,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "9d7b8c41cfd3fcf1",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "split",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "statusCode&\" - \"&(payload.error?payload.error:$count(payload)&($count(payload)=1?\" result\":\" results\"))",
+        "statusType": "jsonata",
+        "x": 1730,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "2d18aff0acd96532",
+        "type": "split",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 1730,
+        "y": 1140,
+        "wires": [
+            [
+                "159ebbf199f52c18"
+            ]
+        ]
+    },
+    {
+        "id": "816f40d4761f5e77",
+        "type": "split",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 1730,
+        "y": 1340,
+        "wires": [
+            [
+                "cc21a716ea65f48b",
+                "89fd654060be583b"
+            ]
+        ]
+    },
+    {
+        "id": "ce3b110c4e166395",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "create simple ld sub",
+        "props": [
+            {
+                "p": "orion-ld",
+                "v": "orion-ld",
+                "vt": "flow"
+            },
+            {
+                "p": "x-auth-token",
+                "v": "x-auth-token",
+                "vt": "flow"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"description\":\"Notify me of all temperature changes\",\"type\":\"Subscription\",\"entities\":[{\"type\":\"TemperatureSensor\"}],\"watchedAttributes\":[\"temperature\"],\"notification\":{\"format\":\"keyValues\",\"endpoint\":{\"uri\":\"http://node-red:1880/temperature-change-ld\",\"accept\":\"application/json\"}},\"@context\":\"https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld\"}",
+        "payloadType": "json",
+        "x": 1170,
+        "y": 980,
+        "wires": [
+            [
+                "477e93476b4de38c"
+            ]
+        ]
+    },
+    {
+        "id": "cdc275e167779668",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "name": "POST /ngsi-ld/v1/subscriptions",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "{{{orion-ld}}}/ngsi-ld/v1/subscriptions",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "Content-Type",
+                "keyValue": "",
+                "valueType": "other",
+                "valueValue": "application/ld+json"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            }
+        ],
+        "x": 1590,
+        "y": 920,
+        "wires": [
+            [
+                "b9e08fdb6a298e8c"
+            ]
+        ]
+    },
+    {
+        "id": "b9e08fdb6a298e8c",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "statusCode & \": \" & $replace(headers.location, \"/ngsi-ld/v1/subscriptions/\", \"\")",
+        "statusType": "jsonata",
+        "x": 1870,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "32ddbb57b1d26bf8",
+        "type": "http in",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "url": "/temperature-change-ld",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 1580,
+        "y": 980,
+        "wires": [
+            [
+                "5add479158b4d552",
+                "07f8e866fed53eb9"
+            ]
+        ]
+    },
+    {
+        "id": "5add479158b4d552",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "/temperature-change-ld",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload.data[0].temperature",
+        "statusType": "msg",
+        "x": 1910,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "a7d8257c7916de65",
+        "type": "delay",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "100",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1330,
+        "y": 640,
+        "wires": [
+            [
+                "3ab4b225925c565e"
+            ]
+        ]
+    },
+    {
+        "id": "231a1735cd34d99a",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "d": true,
+        "name": "test get",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "statusCode & \": \" & (payload.title? payload.title : payload.id)",
+        "statusType": "jsonata",
+        "x": 1860,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "3c73310bf7106d99",
+        "type": "http in",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "url": "/test-simple-ads-ld",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 1570,
+        "y": 1040,
+        "wires": [
+            [
+                "07f8e866fed53eb9",
+                "e5b5430d9e88cc4f"
+            ]
+        ]
+    },
+    {
+        "id": "07f8e866fed53eb9",
+        "type": "http response",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1850,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "e5b5430d9e88cc4f",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "/test-simple-ads-ld",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload.data[0].temperature",
+        "statusType": "msg",
+        "x": 1890,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "350c30f2e4b802cf",
+        "type": "trigger",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "op1": "",
+        "op2": "",
+        "op1type": "nul",
+        "op2type": "payl",
+        "duration": "250",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 1540,
+        "y": 1340,
+        "wires": [
+            [
+                "9d7b8c41cfd3fcf1",
+                "816f40d4761f5e77"
+            ]
+        ]
+    },
+    {
+        "id": "c5d8114e3bb7a508",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "statusCode&\" - \"&(payload.error?payload.error:$count(payload)&($count(payload)=1?\" result\":\" results\"))",
+        "statusType": "jsonata",
+        "x": 1870,
+        "y": 1700,
+        "wires": []
+    },
+    {
+        "id": "0121a5f956667d99",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "search by types (verbose)",
+        "props": [
+            {
+                "p": "payload.type",
+                "v": "TemperatureSensor,Building,Person",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 1190,
+        "y": 1640,
+        "wires": [
+            [
+                "dcfe7412930bc24b"
+            ]
+        ]
+    },
+    {
+        "id": "913bc03e42d3a12a",
+        "type": "comment",
+        "z": "e4d1f70f0b51d593",
+        "name": "READ (LD)",
+        "info": " - [CRUD Tutorial](https://github.com/FIWARE/tutorials.CRUD-Operations/tree/NGSI-LD)\n - [PEP Proxy](https://github.com/FIWARE/tutorials.PEP-Proxy/tree/NGSI-LD)\n",
+        "x": 1140,
+        "y": 1600,
+        "wires": []
+    },
+    {
+        "id": "04771ce90ae471e7",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "search by type",
+        "props": [
+            {
+                "p": "payload.type",
+                "v": "Building",
+                "vt": "str"
+            },
+            {
+                "p": "payload.attrs",
+                "v": "category,name",
+                "vt": "str"
+            },
+            {
+                "p": "payload.options",
+                "v": "keyValues",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 1160,
+        "y": 1760,
+        "wires": [
+            [
+                "dcfe7412930bc24b"
+            ]
+        ]
+    },
+    {
+        "id": "b050b2c5bd947319",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "sensor",
+        "props": [
+            {
+                "p": "payload.id",
+                "v": "urn:ngsi-ld:TemperatureSensor:001",
+                "vt": "str"
+            },
+            {
+                "p": "payload.options",
+                "v": "keyValues",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 1130,
+        "y": 1700,
+        "wires": [
+            [
+                "dcfe7412930bc24b"
+            ]
+        ]
+    },
+    {
+        "id": "c08b4893bd2c3b01",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "sensor",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[\"urn:ngsi-ld:TemperatureSensor:001\"]",
+        "payloadType": "json",
+        "x": 1130,
+        "y": 2000,
+        "wires": [
+            [
+                "14d23938bae775f5"
+            ]
+        ]
+    },
+    {
+        "id": "04ff8f8ef826bc13",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "name": "POST /ngsi-ld/v1/entityOperations/delete",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "{{{orion-ld}}}/ngsi-ld/v1/entityOperations/delete",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            }
+        ],
+        "x": 1620,
+        "y": 2000,
+        "wires": [
+            [
+                "614046f842984481"
+            ]
+        ]
+    },
+    {
+        "id": "8b7e1acf6340a078",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "import-data (v2)",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[\"urn:ngsi-ld:Building:farm001\",\"urn:ngsi-ld:Building:farm002\",\"urn:ngsi-ld:Building:tower003\",\"urn:ngsi-ld:Building:barn002\",\"urn:ngsi-ld:Person:person001\",\"urn:ngsi-ld:Person:person002\"]",
+        "payloadType": "json",
+        "x": 1160,
+        "y": 2060,
+        "wires": [
+            [
+                "14d23938bae775f5"
+            ]
+        ]
+    },
+    {
+        "id": "92c02fde5c7a5e24",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "entities (v2)",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[\"urn:ngsi-ld:TemperatureSensor:001\",\"urn:ngsi-ld:TemperatureSensor:002\",\"urn:ngsi-ld:TemperatureSensor:003\"]",
+        "payloadType": "json",
+        "x": 1150,
+        "y": 1940,
+        "wires": [
+            [
+                "14d23938bae775f5"
+            ]
+        ]
+    },
+    {
+        "id": "614046f842984481",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "statusCode",
+        "statusType": "msg",
+        "x": 1870,
+        "y": 2000,
+        "wires": []
+    },
+    {
+        "id": "a760351a43172a31",
+        "type": "comment",
+        "z": "e4d1f70f0b51d593",
+        "name": "DELETE (LD)",
+        "info": " - [CRUD operations](https://github.com/FIWARE/tutorials.CRUD-Operations/tree/NGSI-LD)\n",
+        "x": 1150,
+        "y": 1840,
+        "wires": []
+    },
+    {
+        "id": "509812f19747fc1e",
+        "type": "template",
+        "z": "e4d1f70f0b51d593",
+        "name": "payload",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n    \"type\": \"Building\",\n    \"atts\": \"category,name\",\n    \"options\": \"keyValues\"\n}\n",
+        "output": "json",
+        "x": 1520,
+        "y": 1640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8e71896fb0187ab9",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "name": "GET /ngsi-ld/v1/entities",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "query",
+        "url": "{{{orion-ld}}}/ngsi-ld/v1/entities",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Link",
+                "valueType": "msg",
+                "valueValue": "link"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            }
+        ],
+        "x": 1570,
+        "y": 1700,
+        "wires": [
+            [
+                "c5d8114e3bb7a508",
+                "732e596afd4c58a3"
+            ]
+        ]
+    },
+    {
+        "id": "dcfe7412930bc24b",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "LD",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion-ld",
+                "pt": "msg",
+                "to": "orion-ld",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "x-auth-token",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "link",
+                "pt": "msg",
+                "to": "link",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1350,
+        "y": 1700,
+        "wires": [
+            [
+                "8e71896fb0187ab9"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png"
+    },
+    {
+        "id": "cd19ed5b51a7e71c",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "all entities (simulated)",
+        "props": [
+            {
+                "p": "payload.options",
+                "v": "keyValues",
+                "vt": "str"
+            },
+            {
+                "p": "payload.type",
+                "v": "TemperatureSensor,Building,Person",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 1180,
+        "y": 1880,
+        "wires": [
+            [
+                "a34c5c04164d9bc0"
+            ]
+        ]
+    },
+    {
+        "id": "a34c5c04164d9bc0",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "LD",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion-ld",
+                "pt": "msg",
+                "to": "orion-ld",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "x-auth-token",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "link",
+                "pt": "msg",
+                "to": "link",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1350,
+        "y": 1880,
+        "wires": [
+            [
+                "1db0865c6d832446"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png"
+    },
+    {
+        "id": "1db0865c6d832446",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "name": "GET /ngsi-ld/v1/entities",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "query",
+        "url": "{{{orion-ld}}}/ngsi-ld/v1/entities",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "Content-Type",
+                "keyValue": "",
+                "valueType": "application/json",
+                "valueValue": ""
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Link",
+                "valueType": "msg",
+                "valueValue": "link"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            }
+        ],
+        "x": 1570,
+        "y": 1880,
+        "wires": [
+            [
+                "91ae9e8a6aac1448"
+            ]
+        ]
+    },
+    {
+        "id": "91ae9e8a6aac1448",
+        "type": "split",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 1510,
+        "y": 1940,
+        "wires": [
+            [
+                "3267e97b5fbc21a6"
+            ]
+        ]
+    },
+    {
+        "id": "ad61dd031a900b53",
+        "type": "join",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "mode": "auto",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": "false",
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "x": 1850,
+        "y": 1940,
+        "wires": [
+            [
+                "04ff8f8ef826bc13"
+            ]
+        ]
+    },
+    {
+        "id": "3267e97b5fbc21a6",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload.id",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1680,
+        "y": 1940,
+        "wires": [
+            [
+                "ad61dd031a900b53"
+            ]
+        ]
+    },
+    {
+        "id": "14d23938bae775f5",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "LD",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion-ld",
+                "pt": "msg",
+                "to": "orion-ld",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "x-auth-token",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "link",
+                "pt": "msg",
+                "to": "link",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1350,
+        "y": 2000,
+        "wires": [
+            [
+                "04ff8f8ef826bc13"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png"
+    },
+    {
+        "id": "732e596afd4c58a3",
+        "type": "split",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 1710,
+        "y": 1640,
+        "wires": [
+            [
+                "cbfac0fe21082297"
+            ]
+        ]
+    },
+    {
+        "id": "cbfac0fe21082297",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1870,
+        "y": 1640,
+        "wires": []
+    },
+    {
+        "id": "62034f636edc7131",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "name": "GET /ngsi-ld/v1/entities (with @context removed)",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "query",
+        "url": "{{{orion-ld}}}/ngsi-ld/v1/entities",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Link",
+                "valueType": "msg",
+                "valueValue": "link"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            },
+            {
+                "keyType": "Accept",
+                "keyValue": "",
+                "valueType": "application/json",
+                "valueValue": ""
+            }
+        ],
+        "x": 1650,
+        "y": 1760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3c8a2fa79eefe732",
+        "type": "comment",
+        "z": "e4d1f70f0b51d593",
+        "name": "TEST (LD)",
+        "info": " - [CRUD operations](https://github.com/FIWARE/tutorials.CRUD-Operations/tree/NGSI-LD)\n - [PEP Proxy](https://github.com/FIWARE/tutorials.PEP-Proxy/tree/NGSI-LD)\n",
+        "x": 1140,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "9fd70375ac880d58",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "g": "3617274168fc6518",
+        "name": "set msg.x-subject-token",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "headers[\"x-subject-token\"]",
+        "statusType": "msg",
+        "x": 1530,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "9ce779817ad950ec",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "g": "3617274168fc6518",
+        "name": "keyrock",
+        "props": [
+            {
+                "p": "keyrock",
+                "v": "keyrock",
+                "vt": "flow"
+            },
+            {
+                "p": "username",
+                "v": "username",
+                "vt": "flow"
+            },
+            {
+                "p": "password",
+                "v": "password",
+                "vt": "flow"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{ \"name\": username, \"password\": password }",
+        "payloadType": "jsonata",
+        "x": 1130,
+        "y": 400,
+        "wires": [
+            [
+                "0ea4cc4c5a0b4db1"
+            ]
+        ]
+    },
+    {
+        "id": "1508d77d6809ddb7",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "g": "3617274168fc6518",
+        "name": "GET /v1/auth/tokens",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "{{{keyrock}}}/v1/auth/tokens",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "Content-Type",
+                "keyValue": "",
+                "valueType": "application/json",
+                "valueValue": ""
+            },
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-token",
+                "valueType": "msg",
+                "valueValue": "x-subject-token"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "X-Subject-token",
+                "valueType": "msg",
+                "valueValue": "x-subject-token"
+            }
+        ],
+        "x": 1780,
+        "y": 400,
+        "wires": [
+            [
+                "dbd9c87e3874b349"
+            ]
+        ]
+    },
+    {
+        "id": "610ff9c29f658c5f",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "g": "3617274168fc6518",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "x-subject-token",
+                "pt": "msg",
+                "to": "headers[\"x-subject-token\"]",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1530,
+        "y": 400,
+        "wires": [
+            [
+                "1508d77d6809ddb7"
+            ]
+        ]
+    },
+    {
+        "id": "dbd9c87e3874b349",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "g": "3617274168fc6518",
+        "name": "user id",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload.User.id",
+        "statusType": "msg",
+        "x": 1950,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "9319141b70e1dcfc",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "clientCredentials",
+                "pt": "msg",
+                "to": "clientId & \":\" & clientSecret",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1410,
+        "y": 120,
+        "wires": [
+            [
+                "1ad130c5b73acf4c"
+            ]
+        ]
+    },
+    {
+        "id": "f01bdfe1998c8b5c",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "encoded credentials",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "clientCredentials",
+        "statusType": "msg",
+        "x": 1900,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "df9646b86f72f8b3",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "authorization",
+                "pt": "msg",
+                "to": "\"Basic \" & clientCredentials",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1180,
+        "y": 180,
+        "wires": [
+            [
+                "b9fc51e322bcba70"
+            ]
+        ]
+    },
+    {
+        "id": "dd7d7cf0ce1b2a81",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "POST /oauth2/token",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "{{{keyrock}}}/oauth2/token",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "Authorization",
+                "keyValue": "",
+                "valueType": "msg",
+                "valueValue": "authorization"
+            },
+            {
+                "keyType": "Content-Type",
+                "keyValue": "",
+                "valueType": "other",
+                "valueValue": "application/x-www-form-urlencoded"
+            }
+        ],
+        "x": 1660,
+        "y": 180,
+        "wires": [
+            [
+                "a7421c2dcee4af40",
+                "4afe8471efeb3d64"
+            ]
+        ]
+    },
+    {
+        "id": "a7421c2dcee4af40",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "payload.access_token",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1180,
+        "y": 240,
+        "wires": [
+            [
+                "0453516bf9d06061",
+                "bbe233b4512a26dd",
+                "9f0f8cba2b6dbd99",
+                "a8c5436832d3ad59"
+            ]
+        ]
+    },
+    {
+        "id": "4afe8471efeb3d64",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "access_token",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload.access_token",
+        "statusType": "msg",
+        "x": 1880,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "3daa71f31114633e",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "GET v2/entities",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "query",
+        "url": "{{{orion}}}/v2/entities",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            }
+        ],
+        "x": 1680,
+        "y": 240,
+        "wires": [
+            [
+                "49d64956ecb2a056"
+            ]
+        ]
+    },
+    {
+        "id": "49d64956ecb2a056",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "Orion v2 (FIWARE)",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "$count(payload) & \" entities\"\t",
+        "statusType": "jsonata",
+        "x": 1890,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "7ea60dbba947ecfc",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "A",
+        "rules": [
+            {
+                "t": "set",
+                "p": "clientId",
+                "pt": "msg",
+                "to": "tutorial-dckr-site-0000-xpresswebapp",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "clientSecret",
+                "pt": "msg",
+                "to": "tutorial-dckr-site-0000-clientsecret",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "username",
+                "pt": "msg",
+                "to": "alice-the-admin@test.com",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "password",
+                "pt": "msg",
+                "to": "test",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1130,
+        "y": 60,
+        "wires": [
+            [
+                "9319141b70e1dcfc"
+            ]
+        ]
+    },
+    {
+        "id": "28f795d298411cd4",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "B",
+        "rules": [
+            {
+                "t": "set",
+                "p": "clientId",
+                "pt": "msg",
+                "to": "tutorial-dckr-site-0000-xpresswebapp",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "clientSecret",
+                "pt": "msg",
+                "to": "tutorial-dckr-site-0000-clientsecret",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "username",
+                "pt": "msg",
+                "to": "bob-the-manager@test.com",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "password",
+                "pt": "msg",
+                "to": "test",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1150,
+        "y": 80,
+        "wires": [
+            [
+                "9319141b70e1dcfc"
+            ]
+        ]
+    },
+    {
+        "id": "3e1a57ea2bf01e3b",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "C",
+        "rules": [
+            {
+                "t": "set",
+                "p": "clientId",
+                "pt": "msg",
+                "to": "tutorial-dckr-site-0000-xpresswebapp",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "clientSecret",
+                "pt": "msg",
+                "to": "tutorial-dckr-site-0000-clientsecret",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "username",
+                "pt": "msg",
+                "to": "charlie-security@test.com",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "password",
+                "pt": "msg",
+                "to": "test",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1170,
+        "y": 100,
+        "wires": [
+            [
+                "9319141b70e1dcfc"
+            ]
+        ]
+    },
+    {
+        "id": "b9fc51e322bcba70",
+        "type": "template",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "oauth2 payload",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "username={{username}}&password={{password}}&grant_type=password",
+        "output": "str",
+        "x": 1380,
+        "y": 180,
+        "wires": [
+            [
+                "dd7d7cf0ce1b2a81"
+            ]
+        ]
+    },
+    {
+        "id": "737193c12573452e",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "Z",
+        "rules": [
+            {
+                "t": "set",
+                "p": "clientId",
+                "pt": "msg",
+                "to": "tutorial-dckr-site-0000-xpresswebapp",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "clientSecret",
+                "pt": "msg",
+                "to": "tutorial-dckr-site-0000-clientsecret",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "username",
+                "pt": "msg",
+                "to": "zelda@hyrule.com",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "password",
+                "pt": "msg",
+                "to": "test",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1190,
+        "y": 120,
+        "wires": [
+            [
+                "9319141b70e1dcfc"
+            ]
+        ]
+    },
+    {
+        "id": "1ad130c5b73acf4c",
+        "type": "base64",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "",
+        "action": "str",
+        "property": "clientCredentials",
+        "x": 1700,
+        "y": 120,
+        "wires": [
+            [
+                "f01bdfe1998c8b5c",
+                "df9646b86f72f8b3"
+            ]
+        ]
+    },
+    {
+        "id": "c15fd7e5d687bc9a",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "GET /ngsi-ld/v1/entities",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "query",
+        "url": "{{{orion-ld}}}/ngsi-ld/v1/entities",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            }
+        ],
+        "x": 1650,
+        "y": 300,
+        "wires": [
+            [
+                "1d5e64dbaa822e20"
+            ]
+        ]
+    },
+    {
+        "id": "463446501f7f7b99",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "Alice",
+        "props": [
+            {
+                "p": "username",
+                "v": "alice-the-admin@test.com",
+                "vt": "str"
+            },
+            {
+                "p": "password",
+                "v": "test",
+                "vt": "str"
+            },
+            {
+                "p": "orion",
+                "v": "http://217.172.12.212:1026",
+                "vt": "str"
+            },
+            {
+                "p": "orion-ld",
+                "v": "http://217.172.12.212:1027",
+                "vt": "str"
+            },
+            {
+                "p": "keyrock",
+                "v": "http://217.172.12.212:3005",
+                "vt": "str"
+            },
+            {
+                "p": "clientId",
+                "v": "tutorial-dckr-site-0000-xpresswebapp",
+                "vt": "str"
+            },
+            {
+                "p": "clientSecret",
+                "v": "tutorial-dckr-site-0000-clientsecret",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 1130,
+        "y": 60,
+        "wires": [
+            [
+                "9319141b70e1dcfc"
+            ]
+        ]
+    },
+    {
+        "id": "0453516bf9d06061",
+        "type": "template",
+        "z": "e4d1f70f0b51d593",
+        "d": true,
+        "g": "666fdbcb779ca583",
+        "name": "optional payload",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\"options\": \"keyValues\"}",
+        "output": "json",
+        "x": 1500,
+        "y": 220,
+        "wires": [
+            [
+                "3daa71f31114633e"
+            ]
+        ]
+    },
+    {
+        "id": "1d5e64dbaa822e20",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "Orion LD (Demo)",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "$count(payload) & \" entities\"\t",
+        "statusType": "jsonata",
+        "x": 1890,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "ed75f7f1c5275d08",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "Bob",
+        "props": [
+            {
+                "p": "username",
+                "v": "bob-the-manager@test.com",
+                "vt": "str"
+            },
+            {
+                "p": "password",
+                "v": "test",
+                "vt": "str"
+            },
+            {
+                "p": "orion",
+                "v": "http://217.172.12.212:1026",
+                "vt": "str"
+            },
+            {
+                "p": "orion-ld",
+                "v": "http://217.172.12.212:1027",
+                "vt": "str"
+            },
+            {
+                "p": "keyrock",
+                "v": "http://217.172.12.212:3005",
+                "vt": "str"
+            },
+            {
+                "p": "clientId",
+                "v": "tutorial-dckr-site-0000-xpresswebapp",
+                "vt": "str"
+            },
+            {
+                "p": "clientSecret",
+                "v": "tutorial-dckr-site-0000-clientsecret",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 1150,
+        "y": 80,
+        "wires": [
+            [
+                "9319141b70e1dcfc"
+            ]
+        ]
+    },
+    {
+        "id": "475343401fcb6306",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "Charlie",
+        "props": [
+            {
+                "p": "username",
+                "v": "charlie-security@test.com",
+                "vt": "str"
+            },
+            {
+                "p": "password",
+                "v": "test",
+                "vt": "str"
+            },
+            {
+                "p": "orion",
+                "v": "http://217.172.12.212:1026",
+                "vt": "str"
+            },
+            {
+                "p": "orion-ld",
+                "v": "http://217.172.12.212:1027",
+                "vt": "str"
+            },
+            {
+                "p": "keyrock",
+                "v": "http://217.172.12.212:3005",
+                "vt": "str"
+            },
+            {
+                "p": "clientId",
+                "v": "tutorial-dckr-site-0000-xpresswebapp",
+                "vt": "str"
+            },
+            {
+                "p": "clientSecret",
+                "v": "tutorial-dckr-site-0000-clientsecret",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 1170,
+        "y": 100,
+        "wires": [
+            [
+                "9319141b70e1dcfc"
+            ]
+        ]
+    },
+    {
+        "id": "33370102ac08344a",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "Zelda",
+        "props": [
+            {
+                "p": "username",
+                "v": "zelda@hyrule.com",
+                "vt": "str"
+            },
+            {
+                "p": "password",
+                "v": "test",
+                "vt": "str"
+            },
+            {
+                "p": "orion",
+                "v": "http://217.172.12.212:1026",
+                "vt": "str"
+            },
+            {
+                "p": "orion-ld",
+                "v": "http://217.172.12.212:1027",
+                "vt": "str"
+            },
+            {
+                "p": "keyrock",
+                "v": "http://217.172.12.212:3005",
+                "vt": "str"
+            },
+            {
+                "p": "clientSecret",
+                "v": "tutorial-dckr-site-0000-clientsecret",
+                "vt": "str"
+            },
+            {
+                "p": "clientId",
+                "v": "tutorial-dckr-site-0000-xpresswebapp",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 1190,
+        "y": 120,
+        "wires": [
+            [
+                "9319141b70e1dcfc"
+            ]
+        ]
+    },
+    {
+        "id": "40a83ad0aad83202",
+        "type": "template",
+        "z": "e4d1f70f0b51d593",
+        "d": true,
+        "g": "666fdbcb779ca583",
+        "name": "Type = Building",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n    \"type\": \"https://uri.fiware.org/ns/data-models#Building\"\n}\n",
+        "output": "json",
+        "x": 1400,
+        "y": 280,
+        "wires": [
+            [
+                "c15fd7e5d687bc9a"
+            ]
+        ]
+    },
+    {
+        "id": "0ea4cc4c5a0b4db1",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "g": "3617274168fc6518",
+        "name": "POST /v1/auth/tokens",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "{{{keyrock}}}/v1/auth/tokens",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "Content-Type",
+                "keyValue": "",
+                "valueType": "application/json",
+                "valueValue": ""
+            }
+        ],
+        "x": 1300,
+        "y": 400,
+        "wires": [
+            [
+                "610ff9c29f658c5f",
+                "9fd70375ac880d58"
+            ]
+        ]
+    },
+    {
+        "id": "9f0f8cba2b6dbd99",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "set flow vars and access token",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "statusCode&\" - \"&(payload.error?payload.error:payload.access_token)",
+        "statusType": "jsonata",
+        "x": 1430,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "bbe233b4512a26dd",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "set flow vars and access token",
+        "rules": [
+            {
+                "t": "set",
+                "p": "keyrock",
+                "pt": "flow",
+                "to": "keyrock",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "clientId",
+                "pt": "flow",
+                "to": "clientId",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "clientSecret",
+                "pt": "flow",
+                "to": "clientSecret",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "username",
+                "pt": "flow",
+                "to": "username",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "password",
+                "pt": "flow",
+                "to": "password",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "orion",
+                "pt": "flow",
+                "to": "orion",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "orion-ld",
+                "pt": "flow",
+                "to": "orion-ld",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "flow",
+                "to": "payload.access_token",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "link",
+                "pt": "flow",
+                "to": "<https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld>; rel=\"http://www.w3.org/ns/json-ld#context\"; type=\"application/ld+json\"",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1430,
+        "y": 240,
+        "wires": [
+            [
+                "3daa71f31114633e"
+            ]
+        ]
+    },
+    {
+        "id": "bf1e762d076be306",
+        "type": "comment",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "Portable API (AIO)",
+        "info": "",
+        "x": 1890,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "a8c5436832d3ad59",
+        "type": "template",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "query by type",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n    \"type\": \"TemperatureSensor\"\n}\n",
+        "output": "json",
+        "x": 1380,
+        "y": 300,
+        "wires": [
+            [
+                "c15fd7e5d687bc9a"
+            ]
+        ]
+    },
+    {
+        "id": "4be639eb23286d16",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "g": "65e5c56aa44c2a1a",
+        "name": "GET /version (LD)",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "{{{orion-ld}}}/version",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "payload.access_token"
+            }
+        ],
+        "x": 570,
+        "y": 340,
+        "wires": [
+            [
+                "cadf79137d2475c9"
+            ]
+        ]
+    },
+    {
+        "id": "cadf79137d2475c9",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "g": "65e5c56aa44c2a1a",
+        "name": "orion-ld version",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload[\"orionld version\"]",
+        "statusType": "msg",
+        "x": 820,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "af7b2e417540b94e",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "g": "65e5c56aa44c2a1a",
+        "name": "username",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "username",
+        "targetType": "msg",
+        "statusVal": "username",
+        "statusType": "auto",
+        "x": 800,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "d68da9090ed22dac",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "v2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion",
+                "pt": "msg",
+                "to": "orion",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "x-auth-token",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 1880,
+        "wires": [
+            [
+                "127b3f57ef6e7788"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png"
+    },
+    {
+        "id": "b1e21f24a399174d",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "v2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion",
+                "pt": "msg",
+                "to": "orion",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "x-auth-token",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 1940,
+        "wires": [
+            [
+                "cb8b0675856389b2"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png"
+    },
+    {
+        "id": "ee3cc9a19a0daf19",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "v2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion",
+                "pt": "msg",
+                "to": "orion",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "x-auth-token",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 980,
+        "wires": [
+            [
+                "3123b1d7cdf5f926"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png"
+    },
+    {
+        "id": "652bf8f18f5a5c52",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "v2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion",
+                "pt": "msg",
+                "to": "orion",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "x-auth-token",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 1120,
+        "wires": [
+            [
+                "b0974a09ea744963"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png"
+    },
+    {
+        "id": "9b3436c15ed843cb",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "v2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion",
+                "pt": "msg",
+                "to": "orion",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "x-auth-token",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 1200,
+        "wires": [
+            [
+                "4cffb60e2e1bfe59"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png"
+    },
+    {
+        "id": "1be07103649f8ac2",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "v2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion",
+                "pt": "msg",
+                "to": "orion",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "x-auth-token",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 1280,
+        "wires": [
+            [
+                "7c83bf3c755b0c8f"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png"
+    },
+    {
+        "id": "bd22609696427afc",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "v2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion",
+                "pt": "msg",
+                "to": "orion",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "x-auth-token",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 1400,
+        "wires": [
+            [
+                "cb3c6edd9711c192"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png"
+    },
+    {
+        "id": "4ed05ae24d8db0e1",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "v2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion",
+                "pt": "msg",
+                "to": "orion",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "x-auth-token",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 1460,
+        "wires": [
+            [
+                "cb3c6edd9711c192"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png"
+    },
+    {
+        "id": "b34bf052becafb2f",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "v2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion",
+                "pt": "msg",
+                "to": "orion",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "x-auth-token",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 1520,
+        "wires": [
+            [
+                "cb3c6edd9711c192"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png"
+    },
+    {
+        "id": "918689bba1e52c8c",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "v2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion",
+                "pt": "msg",
+                "to": "orion",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "x-auth-token",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 1700,
+        "wires": [
+            [
+                "ecd9a8b87f1ac719"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png"
+    },
+    {
+        "id": "c97c471c7a258293",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "v2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion",
+                "pt": "msg",
+                "to": "orion",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "x-auth-token",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 1760,
+        "wires": [
+            [
+                "d6b07debbec0aa85"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png"
+    },
+    {
+        "id": "d6543f13caaa78d1",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "name": "GET /v2/entities?query",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "query",
+        "url": "{{{orion}}}/v2/entities",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            }
+        ],
+        "x": 630,
+        "y": 1700,
+        "wires": [
+            [
+                "9d14d56bee213768"
+            ]
+        ]
+    },
+    {
+        "id": "a335891710761dd8",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "v2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion",
+                "pt": "msg",
+                "to": "orion",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "x-auth-token",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 2000,
+        "wires": [
+            [
+                "cb8b0675856389b2"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png"
+    },
+    {
+        "id": "c8b6f2888c464dbb",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "v2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion",
+                "pt": "msg",
+                "to": "orion",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "x-auth-token",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 2060,
+        "wires": [
+            [
+                "cb8b0675856389b2"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png"
+    },
+    {
+        "id": "5dfa6d0b50d3b365",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "v2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion",
+                "pt": "msg",
+                "to": "orion",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "x-auth-token",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 1040,
+        "wires": [
+            [
+                "3123b1d7cdf5f926"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png"
+    },
+    {
+        "id": "c890e6335f46b932",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "name": "POST /v2/op/update",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "{{{orion}}}/v2/op/update",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "Content-Type",
+                "keyValue": "",
+                "valueType": "application/json",
+                "valueValue": ""
+            },
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            }
+        ],
+        "x": 630,
+        "y": 2000,
+        "wires": [
+            [
+                "c2f08ed65cd95e09"
+            ]
+        ]
+    },
+    {
+        "id": "f82b56aa7f2b5930",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "name": "GET /v2/entities?query",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "query",
+        "url": "{{{orion}}}/v2/entities",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            }
+        ],
+        "x": 630,
+        "y": 1880,
+        "wires": [
+            [
+                "cb8b0675856389b2"
+            ]
+        ]
+    },
+    {
+        "id": "536c96bca4131db7",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "LD",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion-ld",
+                "pt": "msg",
+                "to": "orion-ld",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "x-auth-token",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "link",
+                "pt": "msg",
+                "to": "link",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1350,
+        "y": 1280,
+        "wires": [
+            [
+                "fcc20e5d887b4553"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png"
+    },
+    {
+        "id": "dd090ec13940ad7d",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "LD",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion-ld",
+                "pt": "msg",
+                "to": "orion-ld",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "x-auth-token",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "link",
+                "pt": "msg",
+                "to": "link",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1350,
+        "y": 1200,
+        "wires": [
+            [
+                "d7777f82ae124e77"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png"
+    },
+    {
+        "id": "99d1a447e30add1d",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "LD",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion-ld",
+                "pt": "msg",
+                "to": "orion-ld",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "x-auth-token",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "link",
+                "pt": "msg",
+                "to": "link",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1350,
+        "y": 1120,
+        "wires": [
+            [
+                "729838fabb0bf8db"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png"
+    },
+    {
+        "id": "a98b7643cd2cc453",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "LD",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion-ld",
+                "pt": "msg",
+                "to": "orion-ld",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "x-auth-token",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "link",
+                "pt": "msg",
+                "to": "link",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1350,
+        "y": 1040,
+        "wires": [
+            [
+                "cdc275e167779668"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png"
+    },
+    {
+        "id": "477e93476b4de38c",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "LD",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion-ld",
+                "pt": "msg",
+                "to": "orion-ld",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "x-auth-token",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "link",
+                "pt": "msg",
+                "to": "link",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1350,
+        "y": 980,
+        "wires": [
+            [
+                "cdc275e167779668"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png"
+    },
+    {
+        "id": "3dd0610c5a948af8",
+        "type": "comment",
+        "z": "e4d1f70f0b51d593",
+        "name": "http://node-red:1880",
+        "info": "On Linux:   172.17.0.1\nOn Windows: host.docker.internal",
+        "x": 1630,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "8f405c109a3819cf",
+        "type": "comment",
+        "z": "e4d1f70f0b51d593",
+        "name": "check notification url",
+        "info": "",
+        "x": 170,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "2fc8e6b984c18640",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "create scoped sub",
+        "props": [
+            {
+                "p": "orion",
+                "v": "orion",
+                "vt": "flow"
+            },
+            {
+                "p": "x-auth-token",
+                "v": "x-auth-token",
+                "vt": "flow"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"description\":\"Notify me of all anomalous temperatures\",\"subject\":{\"entities\":[{\"idPattern\":\".*\",\"type\":\"TemperatureSensor\"}],\"condition\":{\"attrs\":[\"temperature\"],\"expression\":{\"q\":\"temperature>75\"}}},\"notification\":{\"http\":{\"url\":\"http://node-red:1880/test-simple-ads\"}}}",
+        "payloadType": "json",
+        "x": 150,
+        "y": 1040,
+        "wires": [
+            [
+                "5dfa6d0b50d3b365"
+            ]
+        ]
+    },
+    {
+        "id": "ab054543f8596051",
+        "type": "inject",
+        "z": "e4d1f70f0b51d593",
+        "name": "create scoped sub",
+        "props": [
+            {
+                "p": "orion-ld",
+                "v": "orion-ld",
+                "vt": "flow"
+            },
+            {
+                "p": "x-auth-token",
+                "v": "x-auth-token",
+                "vt": "flow"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"description\":\"Notify me of all 'anomalous' temperatures (LD version)\",\"type\":\"Subscription\",\"entities\":[{\"type\":\"TemperatureSensor\"}],\"watchedAttributes\":[\"temperature\"],\"q\":\"temperature>75\",\"notification\":{\"attributes\":[\"temperature\"],\"format\":\"keyValues\",\"endpoint\":{\"uri\":\"http://node-red:1880/test-simple-ads-ld\",\"accept\":\"application/json\"}},\"@context\":\"https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld\"}",
+        "payloadType": "json",
+        "x": 1170,
+        "y": 1040,
+        "wires": [
+            [
+                "a98b7643cd2cc453"
+            ]
+        ]
+    },
+    {
+        "id": "20033ecc8943c987",
+        "type": "comment",
+        "z": "e4d1f70f0b51d593",
+        "name": "check notification url",
+        "info": "",
+        "x": 170,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "11a81cbda6aceb49",
+        "type": "comment",
+        "z": "e4d1f70f0b51d593",
+        "name": "check notification url",
+        "info": "",
+        "x": 1190,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "9f16d6f68cb7c28d",
+        "type": "comment",
+        "z": "e4d1f70f0b51d593",
+        "name": "check notification url",
+        "info": "",
+        "x": 1190,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "769edc4ff15fa81f",
+        "type": "comment",
+        "z": "e4d1f70f0b51d593",
+        "name": "Note",
+        "info": "Payload not supported by DELETE (removed)",
+        "x": 1970,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "2d765cfa863f1001",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "name": "POST /v2/op/update",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "{{{orion}}}/v2/op/update",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "Content-Type",
+                "keyValue": "",
+                "valueType": "application/json",
+                "valueValue": ""
+            },
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            }
+        ],
+        "x": 630,
+        "y": 1460,
+        "wires": [
+            [
+                "7aba4dea5468f40e"
+            ]
+        ]
+    },
+    {
+        "id": "3ab4b225925c565e",
+        "type": "template",
+        "z": "e4d1f70f0b51d593",
+        "name": "attrs, options",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n    \"attrs\": \"temperature\",\n    \"options\": \"keyValues\"\n}",
+        "output": "json",
+        "x": 1530,
+        "y": 680,
+        "wires": [
+            [
+                "ca29945734321892"
+            ]
+        ]
+    },
+    {
+        "id": "d269bfa1aa7523da",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "LD",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion-ld",
+                "pt": "msg",
+                "to": "orion-ld",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "x-auth-token",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "link",
+                "pt": "msg",
+                "to": "link",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1350,
+        "y": 1460,
+        "wires": [
+            [
+                "3aeacf51aa676d27"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png"
+    },
+    {
+        "id": "d06cdac0f792ff23",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "LD",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion-ld",
+                "pt": "msg",
+                "to": "orion-ld",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "x-auth-token",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "link",
+                "pt": "msg",
+                "to": "link",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1350,
+        "y": 1520,
+        "wires": [
+            [
+                "3aeacf51aa676d27"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png"
+    },
+    {
+        "id": "ca29945734321892",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "name": "",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "method",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1550,
+        "y": 720,
+        "wires": [
+            [
+                "7a27f392b8bc0764"
+            ]
+        ]
+    },
+    {
+        "id": "65e49056e6bb77a1",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "g": "65e5c56aa44c2a1a",
+        "name": "POST /oauth2/token",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "{{{keyrock}}}/oauth2/token",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "Authorization",
+                "keyValue": "",
+                "valueType": "msg",
+                "valueValue": "authorization"
+            },
+            {
+                "keyType": "Content-Type",
+                "keyValue": "",
+                "valueType": "msg",
+                "valueValue": "content-type"
+            }
+        ],
+        "x": 580,
+        "y": 180,
+        "wires": [
+            [
+                "8d938745e58ebc94",
+                "0e91a0ed4983b3c7"
+            ]
+        ]
+    },
+    {
+        "id": "8d938745e58ebc94",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "g": "65e5c56aa44c2a1a",
+        "name": "set flow vars and access token",
+        "rules": [
+            {
+                "t": "set",
+                "p": "keyrock",
+                "pt": "flow",
+                "to": "keyrock",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "clientId",
+                "pt": "flow",
+                "to": "clientId",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "clientSecret",
+                "pt": "flow",
+                "to": "clientSecret",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "username",
+                "pt": "flow",
+                "to": "username",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "password",
+                "pt": "flow",
+                "to": "password",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "orion",
+                "pt": "flow",
+                "to": "orion",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "orion-ld",
+                "pt": "flow",
+                "to": "orion-ld",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "flow",
+                "to": "payload.access_token",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "link",
+                "pt": "flow",
+                "to": "link",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 190,
+        "y": 340,
+        "wires": [
+            [
+                "4f617122750c0f43",
+                "52b33d29afa99a83",
+                "4be639eb23286d16"
+            ]
+        ]
     },
     {
         "id": "28cb2f4e7bc6a6e4",
@@ -19042,7 +25432,7 @@
         "z": "48a7733923a33252",
         "name": "",
         "start": "data",
-        "pattern": "*.*",
+        "pattern": "*",
         "folders": "*",
         "hidden": false,
         "lstype": "both",
