@@ -22,7 +22,8 @@ echo Welcome to HYPERRIDE!
 docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"
 echo.
 echo Notify Node-RED app on Replit...
-curl -X POST https://fiware.zeldalegends.repl.co/codespaces -H 'Content-Type: application/json' -d '{"started":true}'
+echo Not supported in Windows.
+rem curl -X POST https://fiware.zeldalegends.repl.co/codespaces -H 'Content-Type: application/json' -d '{"started":true}'
 #
 # ===============
 # USEFUL COMMANDS
