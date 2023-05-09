@@ -106,9 +106,7 @@
             "1a1a090377e2b43e"
         ],
         "x": 334,
-        "y": 19,
-        "w": 232,
-        "h": 82
+        "y": 19
     },
     {
         "id": "ed8605f54d7c9002",
@@ -139,9 +137,7 @@
             "d3da3a597cad7169"
         ],
         "x": 414,
-        "y": 2879,
-        "w": 192,
-        "h": 82
+        "y": 2879
     },
     {
         "id": "c732681448a48707",
@@ -174,9 +170,7 @@
             "ce581a260ef4589e"
         ],
         "x": 34,
-        "y": 19,
-        "w": 892,
-        "h": 442
+        "y": 19
     },
     {
         "id": "4021db84d1108fd0",
@@ -191,9 +185,7 @@
             "9ad0c568481392a4"
         ],
         "x": 54,
-        "y": 59,
-        "w": 172,
-        "h": 82
+        "y": 59
     },
     {
         "id": "65e5c56aa44c2a1a",
@@ -644,7 +636,7 @@
         "hidden": false
     },
     {
-        "id": "8a9e3b401fa2a0b9",
+        "id": "1c5e119ec6122feb",
         "type": "mqtt-broker",
         "name": "",
         "broker": "broker.hivemq.com",
@@ -12804,19 +12796,19 @@
         "type": "mqtt in",
         "z": "8769aeb719e4f5f1",
         "name": "",
-        "topic": "/node/red/switch",
+        "topic": "/just/you",
         "qos": "2",
         "datatype": "auto-detect",
-        "broker": "8a9e3b401fa2a0b9",
+        "broker": "1c5e119ec6122feb",
         "nl": false,
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 120,
+        "x": 100,
         "y": 20,
         "wires": [
             [
-                "89cb6230d0b0cac3"
+                "b8f3b1a2c61cb399"
             ]
         ]
     },
@@ -12825,7 +12817,7 @@
         "type": "mqtt out",
         "z": "8769aeb719e4f5f1",
         "name": "",
-        "topic": "/node/red/switch",
+        "topic": "/its/a/me",
         "qos": "",
         "retain": "",
         "respTopic": "",
@@ -12833,8 +12825,8 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "8a9e3b401fa2a0b9",
-        "x": 900,
+        "broker": "1c5e119ec6122feb",
+        "x": 920,
         "y": 20,
         "wires": []
     },
@@ -12955,15 +12947,15 @@
         "type": "mqtt in",
         "z": "8769aeb719e4f5f1",
         "name": "",
-        "topic": "/node/red/switch/alt",
+        "topic": "/just/you/mentor",
         "qos": "2",
         "datatype": "auto-detect",
-        "broker": "8a9e3b401fa2a0b9",
+        "broker": "1c5e119ec6122feb",
         "nl": false,
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 130,
+        "x": 120,
         "y": 620,
         "wires": [
             [
@@ -12976,7 +12968,7 @@
         "type": "mqtt out",
         "z": "8769aeb719e4f5f1",
         "name": "",
-        "topic": "/node/red/link",
+        "topic": "/its/a/me",
         "qos": "",
         "retain": "",
         "respTopic": "",
@@ -12984,8 +12976,8 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "8a9e3b401fa2a0b9",
-        "x": 900,
+        "broker": "1c5e119ec6122feb",
+        "x": 920,
         "y": 620,
         "wires": []
     },
@@ -12999,7 +12991,7 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "payload ? payload : \"on\"",
+                "to": "payload ? payload : \"off\"",
                 "tot": "jsonata"
             }
         ],
@@ -13024,7 +13016,7 @@
         "rules": [
             {
                 "t": "set",
-                "p": "out.node-red",
+                "p": "out.link",
                 "pt": "flow",
                 "to": "payload",
                 "tot": "msg"
@@ -13089,7 +13081,7 @@
         "rules": [
             {
                 "t": "set",
-                "p": "out.node-red",
+                "p": "out.link",
                 "pt": "flow",
                 "to": "payload",
                 "tot": "msg"
@@ -13117,24 +13109,83 @@
         "l": false
     },
     {
-        "id": "89cb6230d0b0cac3",
+        "id": "b8f3b1a2c61cb399",
         "type": "switch",
         "z": "8769aeb719e4f5f1",
-        "name": "on / off ?",
+        "name": "",
         "property": "payload",
         "propertyType": "msg",
         "rules": [
             {
-                "t": "jsonata_exp",
-                "v": "payload=\"on\" or payload=\"off\"",
-                "vt": "jsonata"
+                "t": "eq",
+                "v": "off",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "on",
+                "vt": "str"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 1,
-        "x": 380,
+        "outputs": 2,
+        "x": 230,
         "y": 20,
+        "wires": [
+            [
+                "7c521f056485ef38"
+            ],
+            [
+                "40b1b6f19e5fe649"
+            ]
+        ]
+    },
+    {
+        "id": "40b1b6f19e5fe649",
+        "type": "http request",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://ifconfig.me/all.json",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 310,
+        "y": 100,
+        "wires": [
+            [
+                "2e5ec6589697d933"
+            ]
+        ]
+    },
+    {
+        "id": "2e5ec6589697d933",
+        "type": "change",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "out",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 180,
         "wires": [
             [
                 "7c521f056485ef38"

@@ -64,7 +64,7 @@ docker version
 
 Please ensure that you are using Docker version 20.10 or higher and Docker Compose 1.29 or higher and upgrade if necessary.
 
-# Start Up
+# Setup
 
 We have worked hard to make it simple to start the installation of the HYPERRIDE ICT Platform.
 All its services can be initialised from the command-line by running the bash script provided within the repository. Please
@@ -137,8 +137,9 @@ The response will look similar to the following:
     }
 }
 ```
-
-> **What if I get a `Failed to connect to localhost port 1026: Connection refused` Response?**
+## Throubleshooting
+>
+### Error response: `Failed to connect to localhost port 1026: Connection refused`
 >
 > If you get a `Connection refused` response, the Orion Content Broker cannot be found where expected for this
 > tutorial - you will need to substitute the URL and port in each cUrl command with the corrected IP address. All the
@@ -170,6 +171,9 @@ The response will look similar to the following:
 > docker run --network fiware_default --rm appropriate/curl -s \
 >  -X GET 'http://orion:1026/version'
 > ```
+### Other known issues 
+> In some cases, the `db-mysql` containers fails to go up at first run. It is enough to run the `start` script to fix the issue.
+>
 
 # Introduction
 
