@@ -20,8 +20,8 @@ echo -e "\033[1;36mWelcome to HYPERRIDE!\033[0m"
 docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"
 echo -e ""
 echo -e "\033[0;36mNotify Node-RED app on Replit...\033[0m"
-# echo IP: $(curl -s http://whatismyip.akamai.com/)
-# echo IP: $(ip addr show $(ip route | awk '/default/ { print $5 }') | grep 'inet' | head -n 1 | awk '/inet/ {print $2}' | cut -d'/' -f1)
+# IP=$(curl -s http://whatismyip.akamai.com/)
+# IP=$(ip addr show $(ip route | awk '/default/ { print $5 }') | grep 'inet' | head -n 1 | awk '/inet/ {print $2}' | cut -d'/' -f1)
 IP=$(curl -s https://ifconfig.me/)
 JSON={\"orion\":\"http://$IP:1026\",\"keyrock\":\"http://$IP:3005\",\"started\":true}
 curl -X POST https://hyperride.engsep.repl.co/gitpod -H 'Content-Type: application/json' -d $JSON
