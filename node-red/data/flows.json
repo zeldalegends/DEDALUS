@@ -13169,7 +13169,7 @@
         "id": "2e5ec6589697d933",
         "type": "change",
         "z": "8769aeb719e4f5f1",
-        "name": "",
+        "name": "set flow.out",
         "rules": [
             {
                 "t": "set",
@@ -13177,6 +13177,18 @@
                 "pt": "flow",
                 "to": "payload",
                 "tot": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "on",
+                "tot": "str"
             }
         ],
         "action": "",
