@@ -23,7 +23,7 @@ echo -e "\033[0;36mNotify Node-RED app on Replit...\033[0m"
 # echo IP: $(curl -s http://whatismyip.akamai.com/)
 # echo IP: $(ip addr show $(ip route | awk '/default/ { print $5 }') | grep 'inet' | head -n 1 | awk '/inet/ {print $2}' | cut -d'/' -f1)
 IP=$(curl -s https://ifconfig.me/)
-JSON={\"orion\":\"$URL:1026\",\"keyrock\":\"$URL:3005\",\"started\":true}
+JSON={\"orion\":\"http://$IP:1026\",\"keyrock\":\"http://$IP:3005\",\"started\":true}
 curl -X POST https://hyperride.engsep.repl.co/gitpod -H 'Content-Type: application/json' -d $JSON
 #
 # ===============
