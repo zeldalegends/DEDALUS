@@ -1,5 +1,5 @@
 # FROM nodered/node-red:3.0.2
-FROM nodered/node-red
+FROM nodered/node-red:latest
 
 USER ${UID}
 
