@@ -7,6 +7,10 @@ docker compose pull && echo -e "\033[0;32mDocker images updated.\033[0m"
 # docker compose down -v --remove-orphans
 echo -e "\033[0;35mBuilding Docker containers...\033[0m"
 docker compose -p fiware up -d --remove-orphans --build && echo -e "\033[0;32mDocker containers built.\033[0m"
+# Patch for Vicenza2: use image instead of build in compose and decomment the following 3 lines:
+# docker exec node-red bash -c 'cd /data ; npm i'
+# docker stop node-red
+# docker start node-red
 echo -e ""
 echo -e "\033[0;44m ICT Platform \033[0m"
 echo -e "\033[0;33mby Alerox 2023\033[0m"
@@ -24,7 +28,8 @@ echo -e "\033[0;36mNotify Node-RED app on Replit...\033[0m"
 # IP=$(ip addr show $(ip route | awk '/default/ { print $5 }') | grep 'inet' | head -n 1 | awk '/inet/ {print $2}' | cut -d'/' -f1)
 IP=$(curl -s https://ifconfig.me/)
 JSON={\"orion\":\"http://$IP:1026\",\"keyrock\":\"http://$IP:3005\",\"started\":true}
-curl -X POST https://hyperride.engsep.repl.co/gitpod -H 'Content-Type: application/json' -d $JSON
+curl -X POST https://hyperride.engsep.repl.co/fiware -H 'Content-Type: application/json' -d $JSON
+
 #
 # ===============
 # USEFUL COMMANDS
