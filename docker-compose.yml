@@ -419,9 +419,9 @@ services:
       - "host.docker.internal:host-gateway"
     volumes:
       - ./node-red/data:/data
-      - /etc:/etc
-      - /home:/home
-      - /root:/root
+      - /etc:/mnt/etc
+      - /home:/mnt/home
+      - /root:/mnt/root
   # volumes:
   #   - node-red-data:/data
 
