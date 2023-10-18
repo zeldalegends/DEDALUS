@@ -34,7 +34,7 @@ tasks:
 
 # List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
 ports:
-  - name: Apache Server 
+  - name: Apache Server
     description: LD @context files
     port: 80
     onOpen: ignore
@@ -81,7 +81,7 @@ ports:
     visibility: public
   - name: Ganache
     description: Truffle Blockchain
-    port: 8545
+    port: 7545
     onOpen: ignore
   - name: Alethio Lite Explorer
     description: Blockchain frontend
@@ -90,12 +90,12 @@ ports:
     visibility: public
   - name: Node-RED
     description: Custom IoT Agent
-    port: 8880
+    port: 1880
     onOpen: open-browser
     visibility: public
   - name: Eclipse MosQuiTTo
     description: MQTT Broker
-    port: 8883
+    port: 1883
     onOpen: ignore
     visibility: public
   - name: Eclipse MosQuiTTo

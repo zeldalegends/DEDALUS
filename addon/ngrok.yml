@@ -1,0 +1,13 @@
+version: 2
+api_key: 2Mzl7JvZ6ywPjhAufZc3WiTXgbm_7rwUSZdqLErjfW2mtRD3v
+authtoken: 2Mzg7mT5Xdbb4VCQ3VvtpE4kNrA_6W8eMDEddVRVEqZtrhF9i
+tunnels:
+  mongo:
+    proto: http
+    addr: mongo-express:8081
+  mysql:
+    proto: http
+    addr: adminer:8080
+  node-red:
+    proto: http
+    addr: node-red:1880
