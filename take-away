@@ -1,0 +1,10 @@
+Usare gli script per avviare, loggare, stoppare e rimuovere i container, e caricare le modifiche su Github:
+run.sh
+list.sh
+drop.sh
+clean.sh
+upload.sh
+
+Prima di distribuire la cartella come D5.8 su engsep, cancellare:
+token
+upload.sh

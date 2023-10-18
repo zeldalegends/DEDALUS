@@ -450,9 +450,9 @@ volumes:
 # node-red-data: ~
 
 
-# Networks (with MTU patch for Vicenza2 VM)
-networks:
-  default:
-    driver: bridge
-    driver_opts:
-      com.docker.network.driver.mtu: 1450
+# # Networks (with MTU patch for Vicenza2 VM)
+# networks:
+#   default:
+#     driver: bridge
+#     driver_opts:
+#       com.docker.network.driver.mtu: 1450
