@@ -9,7 +9,7 @@ USER 0
 # COPY data/package.json .
 # RUN npm install --unsafe-perm --no-update-notifier --no-fund --only=production
 WORKDIR /data
-COPY data/package.json .
+COPY data/package*.json .
 RUN npm install --unsafe-perm --no-update-notifier --no-fund --only=production
 
 # Copy _your_ Node-RED project files into place
