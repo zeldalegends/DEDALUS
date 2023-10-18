@@ -41,7 +41,7 @@
                 "view-show-welcome-tours": true
             },
             "tours": {
-                "welcome": "3.0.2"
+                "welcome": "3.1.0"
             },
             "sidebar": {
                 "order": [

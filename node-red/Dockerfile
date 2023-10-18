@@ -1,10 +1,14 @@
 # FROM nodered/node-red:3.0.2
 FROM nodered/node-red:latest
 
-USER ${UID}
+# USER ${UID}
+USER 0
 
 # Copy package.json to the WORKDIR so npm builds all
 # of your added nodes modules for Node-RED
+# COPY data/package.json .
+# RUN npm install --unsafe-perm --no-update-notifier --no-fund --only=production
+WORKDIR /data
 COPY data/package.json .
 RUN npm install --unsafe-perm --no-update-notifier --no-fund --only=production
 
@@ -20,3 +24,4 @@ COPY data/*.* /data/
 # You should add extra nodes via your package.json file but you can also add them here:
 #WORKDIR /usr/src/node-red
 #RUN npm install node-red-node-smooth
+WORKDIR /usr/src/node-red

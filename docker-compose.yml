@@ -243,6 +243,8 @@ services:
   # ports:
   #   - "8081:8081" # localhost:8081
     environment:
+      - ME_CONFIG_BASICAUTH_USERNAME=
+      - ME_CONFIG_BASICAUTH_PASSWORD=
       - ME_CONFIG_MONGODB_SERVER=mongo-db
   # healthcheck:
   #   test: wget --quiet --tries=3 --spider http://localhost:8081 || exit 1
@@ -330,7 +332,7 @@ services:
   # expose:
   #   - "7545"      # ganache:7545
     ports:
-      - "8545:7545" # localhost:8545
+      - "7545:7545" # localhost:7545
     command: --database.dbPath /db --server.host 0.0.0.0  --server.port 7545 --wallet.mnemonic "visit carpet logic blame furnace confirm rebel deliver medal mean illness error"
     volumes:
   #   - ./ganache/.db:/db
@@ -366,7 +368,7 @@ services:
   # healthcheck: TBD
 
   # docker run -it --rm --network fiware_default --name fe-ganache -p 80:80 -e APP_NODE_URL="http://ganache:7545" alethio/ethereum-lite-explorer
-  # docker run -it --rm --name fe-ganache -p 80:80 -e APP_NODE_URL="http://localhost:8545" alethio/ethereum-lite-explorer
+  # docker run -it --rm --name fe-ganache -p 80:80 -e APP_NODE_URL="http://localhost:7545" alethio/ethereum-lite-explorer
 
   # MQTT Broker (MosQuiTTo)
   mosquitto:
@@ -383,10 +385,10 @@ services:
           - mqtt
           - mqtt-broker
   # expose:
-  #   - "1883"      # mosquitto:8883
+  #   - "1883"      # mosquitto:1883
   #   - "9001"      # mosquitto:9001
     ports:
-      - "8883:1883" # localhost:8883
+      - "1883:1883" # localhost:1883
       - "9001:9001" # localhost:9001
     command: mosquitto -c /mosquitto-no-auth.conf
   # volumes:
@@ -410,7 +412,7 @@ services:
   # expose:
   #   - "1880"      # node-red:1880
     ports:
-      - "8880:1880" # localhost:8880
+      - "1880:1880" # localhost:1880
     environment:
       - ETHEREUM_ADDRESS
       - ETHEREUM_PRIVATE_KEY
@@ -425,18 +427,18 @@ services:
   # volumes:
   #   - node-red-data:/data
 
-  # Custom Node-RED-based IoT Agent
-  custom-iota:
-    build: ./node-red/custom-iota
-  # hostname: iota  
-    container_name: custom-iota
-    environment:
-  #   - PUID=1000
-  #   - PGID=1000
-      - TZ=Europe/Amsterdam
-  # volumes:
-  #   - ./node-red/config:/config
-    restart: unless-stopped
+# # Custom Node-RED-based IoT Agent
+# custom-iota:
+#   build: ./node-red/custom-iota
+# # hostname: iota  
+#   container_name: custom-iota
+#   environment:
+# #   - PUID=1000
+# #   - PGID=1000
+#     - TZ=Europe/Amsterdam
+# # volumes:
+# #   - ./node-red/config:/config
+#   restart: unless-stopped
 
 
 # Volumes
