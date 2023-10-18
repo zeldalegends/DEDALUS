@@ -41,3 +41,4 @@ setenv.bat
 *.bak
 .db
 .env
+token
