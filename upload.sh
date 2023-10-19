@@ -13,11 +13,11 @@ echo git status && echo ""
 
 echo -e "\033[0;36m🟦 COMMIT ALL CHANGES IN FOLDER \033[0m"
 git add .
-echo -e "\033[0;32mInsert title and press CRTL+X...\033[0m" && read key
+echo -e "\033[0;32mPress Enter to set commit title (CTRL+S+X to terminate)...\033[0m" && read key
 git commit && echo ""
 
 echo -e "\033[0;33m🟨 GIT CREDENTIALS \033[0m"
 echo Username: zeldalegends
 echo Password: $(cat token)
-echo -e "\033[0;36m🟦 PUSH TO MASTER BRANCH \033[0m"
+echo -e "\033[0;36m🟦 PUSH TO MAIN BRANCH \033[0m"
 git push
