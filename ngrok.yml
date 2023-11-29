@@ -7,7 +7,7 @@ tunnels:
     addr: mongo-express:8081
   mysql:
     proto: http
-    addr: adminer:8080
+    addr: phpmyadmin:80
   node-red:
     proto: http
     addr: node-red:1880

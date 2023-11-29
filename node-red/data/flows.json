@@ -1,5 +1,13 @@
 [
     {
+        "id": "8769aeb719e4f5f1",
+        "type": "tab",
+        "label": "Databases",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "e4d1f70f0b51d593",
         "type": "tab",
         "label": "FIWARE API v1.4",
@@ -11,14 +19,6 @@
         "id": "d52625fe4d11e746",
         "type": "tab",
         "label": "Test",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
-        "id": "8769aeb719e4f5f1",
-        "type": "tab",
-        "label": "Databases",
         "disabled": false,
         "info": "",
         "env": []
@@ -106,7 +106,9 @@
             "1a1a090377e2b43e"
         ],
         "x": 334,
-        "y": 19
+        "y": 19,
+        "w": 232,
+        "h": 82
     },
     {
         "id": "ed8605f54d7c9002",
@@ -499,7 +501,7 @@
         "id": "511b16494c95c3e9",
         "type": "smart-contract",
         "name": "My_PoE.sol (Remix)",
-        "ethereumClient": "a5b0ce2eb275e336",
+        "ethereumClient": "a4d6d03469e02326",
         "address": "0xE1989a90127A449Bd22176299104cf6d2cb5Ba86",
         "abi": "[ \t{ \t\t\"inputs\": [ \t\t\t{ \t\t\t\t\"internalType\": \"string\", \t\t\t\t\"name\": \"document\", \t\t\t\t\"type\": \"string\" \t\t\t} \t\t], \t\t\"name\": \"notarize\", \t\t\"outputs\": [ \t\t\t{ \t\t\t\t\"internalType\": \"bytes32\", \t\t\t\t\"name\": \"\", \t\t\t\t\"type\": \"bytes32\" \t\t\t} \t\t], \t\t\"stateMutability\": \"nonpayable\", \t\t\"type\": \"function\" \t}, \t{ \t\t\"inputs\": [ \t\t\t{ \t\t\t\t\"internalType\": \"string\", \t\t\t\t\"name\": \"document\", \t\t\t\t\"type\": \"string\" \t\t\t} \t\t], \t\t\"name\": \"checkDocument\", \t\t\"outputs\": [ \t\t\t{ \t\t\t\t\"internalType\": \"bool\", \t\t\t\t\"name\": \"\", \t\t\t\t\"type\": \"bool\" \t\t\t} \t\t], \t\t\"stateMutability\": \"view\", \t\t\"type\": \"function\" \t} ]"
     },
@@ -549,7 +551,7 @@
         "id": "a46f63f7bc8183e7",
         "type": "sender-account",
         "name": "Account 2 Test",
-        "ethereumClient": "a5b0ce2eb275e336",
+        "ethereumClient": "a4d6d03469e02326",
         "address": "0x7efC9d38581c7Cb8372325c349Ec5095D027B3Dd",
         "managedByEthereumClient": false,
         "transactionQueueSize": "100"
@@ -618,7 +620,7 @@
     {
         "id": "51def6da5af481ac",
         "type": "ui_group",
-        "name": "Default",
+        "name": "Tunnels",
         "tab": "1e15f62f82f992f8",
         "order": 1,
         "disp": true,
@@ -661,6 +663,1690 @@
         "willMsg": {},
         "userProps": "",
         "sessionExpiry": ""
+    },
+    {
+        "id": "a4d6d03469e02326",
+        "type": "ethereum-client",
+        "name": "Replit",
+        "url": "https://eth.replit.com"
+    },
+    {
+        "id": "3aac35bcfa602387",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "3ed3003da454f6e0",
+        "type": "ngrok",
+        "z": "8769aeb719e4f5f1",
+        "buttonState": true,
+        "port": "8081",
+        "portType": "num",
+        "host": "mongo-express",
+        "hostType": "str",
+        "creds": "b4799249b6347148",
+        "region": "",
+        "regionType": "eu",
+        "proto": "http",
+        "bind_tls": "",
+        "bind_tlsType": "https",
+        "subdomain": "",
+        "subdomainType": "none",
+        "auth": "",
+        "authType": "none",
+        "hostHeader": "",
+        "hostHeaderType": "none",
+        "name": "mongo-express:8081",
+        "inputtype": "port",
+        "inputs": 1,
+        "x": 460,
+        "y": 300,
+        "wires": [
+            [
+                "0e7537603b7a008e",
+                "b98d38119d65e6c7"
+            ]
+        ]
+    },
+    {
+        "id": "139d7039051e6bfa",
+        "type": "ui_text",
+        "z": "8769aeb719e4f5f1",
+        "group": "51def6da5af481ac",
+        "order": 9,
+        "width": 5,
+        "height": 1,
+        "name": "Link",
+        "label": "",
+        "format": "{{msg.link}}",
+        "layout": "row-left",
+        "className": "link",
+        "x": 910,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "9e23df214e9fc86a",
+        "type": "template",
+        "z": "8769aeb719e4f5f1",
+        "name": "link",
+        "field": "link",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<a href=\"{{payload}}\">{{payload}}</a>",
+        "output": "str",
+        "x": 750,
+        "y": 300,
+        "wires": [
+            [
+                "139d7039051e6bfa"
+            ]
+        ]
+    },
+    {
+        "id": "3957704b27d8a53d",
+        "type": "change",
+        "z": "8769aeb719e4f5f1",
+        "name": "Disconnected",
+        "rules": [
+            {
+                "t": "set",
+                "p": "link",
+                "pt": "msg",
+                "to": "<font color=\"red\">Disconnected</font>",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "qr",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 360,
+        "wires": [
+            [
+                "c31371792690c0c6",
+                "a297cce6310b5d7e",
+                "3ed3003da454f6e0"
+            ]
+        ]
+    },
+    {
+        "id": "c31371792690c0c6",
+        "type": "delay",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "10",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 730,
+        "y": 360,
+        "wires": [
+            [
+                "139d7039051e6bfa"
+            ]
+        ]
+    },
+    {
+        "id": "a297cce6310b5d7e",
+        "type": "ui_template",
+        "z": "8769aeb719e4f5f1",
+        "group": "51def6da5af481ac",
+        "name": "QR",
+        "order": 10,
+        "width": 1,
+        "height": 1,
+        "format": "<body>\n    <img src=\"{{msg.qr}}\">\n</body>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 910,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "58d90a1c6b4f0957",
+        "type": "ui_template",
+        "z": "8769aeb719e4f5f1",
+        "group": "51def6da5af481ac",
+        "name": "Mongo Express",
+        "order": 8,
+        "width": "0",
+        "height": "0",
+        "format": "<div style=\"display: flex; align-items: center;\">\n    &nbsp;&nbsp;&nbsp;<img height=\"42\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/MongoDB_Logo.svg/320px-MongoDB_Logo.svg.png\"/>\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 440,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c1620bc8fe30efb4",
+        "type": "ngrok",
+        "z": "8769aeb719e4f5f1",
+        "buttonState": true,
+        "port": "80",
+        "portType": "num",
+        "host": "phpMyAdmin",
+        "hostType": "str",
+        "creds": "b4799249b6347148",
+        "region": "",
+        "regionType": "eu",
+        "proto": "http",
+        "bind_tls": "",
+        "bind_tlsType": "https",
+        "subdomain": "",
+        "subdomainType": "none",
+        "auth": "",
+        "authType": "none",
+        "hostHeader": "",
+        "hostHeaderType": "none",
+        "name": "phpMyAdmin:80",
+        "inputtype": "port",
+        "inputs": 1,
+        "x": 440,
+        "y": 480,
+        "wires": [
+            [
+                "30ca056f81b0debf",
+                "cbe4d8d4e5222e67"
+            ]
+        ]
+    },
+    {
+        "id": "3983dab42994df24",
+        "type": "ui_text",
+        "z": "8769aeb719e4f5f1",
+        "group": "51def6da5af481ac",
+        "order": 12,
+        "width": "5",
+        "height": 1,
+        "name": "Link",
+        "label": "",
+        "format": "{{msg.link}}",
+        "layout": "row-left",
+        "className": "link",
+        "x": 910,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "9044023485915d06",
+        "type": "template",
+        "z": "8769aeb719e4f5f1",
+        "name": "link",
+        "field": "link",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<a href=\"{{payload}}\">{{payload}}</a>",
+        "output": "str",
+        "x": 750,
+        "y": 480,
+        "wires": [
+            [
+                "3983dab42994df24"
+            ]
+        ]
+    },
+    {
+        "id": "67356fa398337c13",
+        "type": "delay",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "10",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 730,
+        "y": 540,
+        "wires": [
+            [
+                "3983dab42994df24"
+            ]
+        ]
+    },
+    {
+        "id": "1db7e5e112bb0069",
+        "type": "ui_template",
+        "z": "8769aeb719e4f5f1",
+        "group": "51def6da5af481ac",
+        "name": "QR",
+        "order": 13,
+        "width": 1,
+        "height": 1,
+        "format": "<body>\n    <img src=\"{{msg.qr}}\">\n</body>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 910,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f0356858e5058f40",
+        "type": "ui_template",
+        "z": "8769aeb719e4f5f1",
+        "group": "51def6da5af481ac",
+        "name": "phpMyAdmin",
+        "order": 11,
+        "width": "0",
+        "height": "0",
+        "format": "<div style=\"display: flex; align-items: center;\">\n    &nbsp;&nbsp;&nbsp;<img height=\"42\" src=\"data:image/png;base64,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\"/>\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 430,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "712bbc74186cf31b",
+        "type": "ngrok",
+        "z": "8769aeb719e4f5f1",
+        "buttonState": true,
+        "port": "port",
+        "portType": "flow",
+        "host": "host",
+        "hostType": "flow",
+        "creds": "b4799249b6347148",
+        "region": "",
+        "regionType": "eu",
+        "proto": "http",
+        "bind_tls": "",
+        "bind_tlsType": "https",
+        "subdomain": "",
+        "subdomainType": "none",
+        "auth": "",
+        "authType": "none",
+        "hostHeader": "",
+        "hostHeaderType": "none",
+        "name": "host:port",
+        "inputtype": "port",
+        "inputs": 1,
+        "x": 420,
+        "y": 120,
+        "wires": [
+            [
+                "a14e04fa6af91931",
+                "ead7ea819e5b9d32"
+            ]
+        ]
+    },
+    {
+        "id": "c5a932010cadf9b3",
+        "type": "ui_text",
+        "z": "8769aeb719e4f5f1",
+        "group": "51def6da5af481ac",
+        "order": 6,
+        "width": "5",
+        "height": 1,
+        "name": "Link",
+        "label": "",
+        "format": "{{msg.link}}",
+        "layout": "row-left",
+        "className": "link",
+        "x": 910,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "5ffcd71df1a98442",
+        "type": "template",
+        "z": "8769aeb719e4f5f1",
+        "name": "link",
+        "field": "link",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<a href=\"{{payload}}\">{{payload}}</a>",
+        "output": "str",
+        "x": 750,
+        "y": 120,
+        "wires": [
+            [
+                "c5a932010cadf9b3"
+            ]
+        ]
+    },
+    {
+        "id": "6f150b481c92d302",
+        "type": "delay",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "10",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 730,
+        "y": 180,
+        "wires": [
+            [
+                "c5a932010cadf9b3"
+            ]
+        ]
+    },
+    {
+        "id": "2cd43a7aefbcf554",
+        "type": "ui_template",
+        "z": "8769aeb719e4f5f1",
+        "group": "51def6da5af481ac",
+        "name": "QR",
+        "order": 7,
+        "width": 1,
+        "height": 1,
+        "format": "<body>\n    <img src=\"{{msg.qr}}\">\n</body>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 910,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d2445aa91d7af175",
+        "type": "ui_button",
+        "z": "8769aeb719e4f5f1",
+        "name": "on",
+        "group": "51def6da5af481ac",
+        "order": 4,
+        "width": 1,
+        "height": 1,
+        "passthru": true,
+        "label": "",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "green",
+        "className": "",
+        "icon": "fa-play",
+        "payload": "on",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 110,
+        "y": 240,
+        "wires": [
+            [
+                "ef0a383712aca286",
+                "712bbc74186cf31b",
+                "3ed3003da454f6e0",
+                "c1620bc8fe30efb4"
+            ]
+        ]
+    },
+    {
+        "id": "ef0a383712aca286",
+        "type": "trigger",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "op1": "",
+        "op2": "off",
+        "op1type": "nul",
+        "op2type": "str",
+        "duration": "1",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "hr",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 130,
+        "y": 320,
+        "wires": [
+            [
+                "0f67e64ea55bcfad"
+            ]
+        ]
+    },
+    {
+        "id": "26a37ecfc4e40c88",
+        "type": "jimp-image",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "data": "qr",
+        "dataType": "msg",
+        "ret": "b64",
+        "parameter1": "",
+        "parameter1Type": "msg",
+        "parameter2": "",
+        "parameter2Type": "msg",
+        "parameter3": "",
+        "parameter3Type": "msg",
+        "parameter4": "",
+        "parameter4Type": "msg",
+        "parameter5": "",
+        "parameter5Type": "msg",
+        "parameter6": "",
+        "parameter6Type": "msg",
+        "parameter7": "",
+        "parameter7Type": "msg",
+        "parameter8": "",
+        "parameter8Type": "msg",
+        "sendProperty": "qr",
+        "sendPropertyType": "msg",
+        "parameterCount": 0,
+        "jimpFunction": "none",
+        "selectedJimpFunction": {
+            "name": "none",
+            "fn": "none",
+            "description": "Just loads the image.",
+            "parameters": []
+        },
+        "x": 750,
+        "y": 240,
+        "wires": [
+            [
+                "a297cce6310b5d7e"
+            ]
+        ]
+    },
+    {
+        "id": "0e7537603b7a008e",
+        "type": "Barcode Generator",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "data": "payload",
+        "dataType": "msg",
+        "barcode": "qrcode",
+        "barcodeType": "barcode",
+        "options": "",
+        "optionsType": "ui",
+        "sendProperty": "qr",
+        "props": [
+            {
+                "p": "rotate",
+                "v": "N",
+                "vt": "str"
+            },
+            {
+                "p": "includetext",
+                "v": "true",
+                "vt": "bool"
+            },
+            {
+                "p": "textxalign",
+                "v": "center",
+                "vt": "str"
+            }
+        ],
+        "x": 630,
+        "y": 240,
+        "wires": [
+            [
+                "26a37ecfc4e40c88"
+            ]
+        ]
+    },
+    {
+        "id": "957f548b6f052892",
+        "type": "ui_template",
+        "z": "8769aeb719e4f5f1",
+        "group": "51def6da5af481ac",
+        "name": "CSS",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "format": "<style>\n    .link {\n        font-size:11px;\n    }\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 910,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b28b2e4bc9a452fe",
+        "type": "jimp-image",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "data": "qr",
+        "dataType": "msg",
+        "ret": "b64",
+        "parameter1": "",
+        "parameter1Type": "msg",
+        "parameter2": "",
+        "parameter2Type": "msg",
+        "parameter3": "",
+        "parameter3Type": "msg",
+        "parameter4": "",
+        "parameter4Type": "msg",
+        "parameter5": "",
+        "parameter5Type": "msg",
+        "parameter6": "",
+        "parameter6Type": "msg",
+        "parameter7": "",
+        "parameter7Type": "msg",
+        "parameter8": "",
+        "parameter8Type": "msg",
+        "sendProperty": "qr",
+        "sendPropertyType": "msg",
+        "parameterCount": 0,
+        "jimpFunction": "none",
+        "selectedJimpFunction": {
+            "name": "none",
+            "fn": "none",
+            "description": "Just loads the image.",
+            "parameters": []
+        },
+        "x": 750,
+        "y": 420,
+        "wires": [
+            [
+                "1db7e5e112bb0069"
+            ]
+        ]
+    },
+    {
+        "id": "30ca056f81b0debf",
+        "type": "Barcode Generator",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "data": "payload",
+        "dataType": "msg",
+        "barcode": "qrcode",
+        "barcodeType": "barcode",
+        "options": "",
+        "optionsType": "ui",
+        "sendProperty": "qr",
+        "props": [
+            {
+                "p": "rotate",
+                "v": "N",
+                "vt": "str"
+            },
+            {
+                "p": "includetext",
+                "v": "true",
+                "vt": "bool"
+            },
+            {
+                "p": "textxalign",
+                "v": "center",
+                "vt": "str"
+            }
+        ],
+        "x": 630,
+        "y": 420,
+        "wires": [
+            [
+                "b28b2e4bc9a452fe"
+            ]
+        ]
+    },
+    {
+        "id": "ac61e6a9e522bf5b",
+        "type": "jimp-image",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "data": "qr",
+        "dataType": "msg",
+        "ret": "b64",
+        "parameter1": "",
+        "parameter1Type": "msg",
+        "parameter2": "",
+        "parameter2Type": "msg",
+        "parameter3": "",
+        "parameter3Type": "msg",
+        "parameter4": "",
+        "parameter4Type": "msg",
+        "parameter5": "",
+        "parameter5Type": "msg",
+        "parameter6": "",
+        "parameter6Type": "msg",
+        "parameter7": "",
+        "parameter7Type": "msg",
+        "parameter8": "",
+        "parameter8Type": "msg",
+        "sendProperty": "qr",
+        "sendPropertyType": "msg",
+        "parameterCount": 0,
+        "jimpFunction": "none",
+        "selectedJimpFunction": {
+            "name": "none",
+            "fn": "none",
+            "description": "Just loads the image.",
+            "parameters": []
+        },
+        "x": 750,
+        "y": 60,
+        "wires": [
+            [
+                "2cd43a7aefbcf554"
+            ]
+        ]
+    },
+    {
+        "id": "a14e04fa6af91931",
+        "type": "Barcode Generator",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "data": "payload",
+        "dataType": "msg",
+        "barcode": "qrcode",
+        "barcodeType": "barcode",
+        "options": "",
+        "optionsType": "ui",
+        "sendProperty": "qr",
+        "props": [
+            {
+                "p": "rotate",
+                "v": "N",
+                "vt": "str"
+            },
+            {
+                "p": "includetext",
+                "v": "true",
+                "vt": "bool"
+            },
+            {
+                "p": "textxalign",
+                "v": "center",
+                "vt": "str"
+            }
+        ],
+        "x": 630,
+        "y": 60,
+        "wires": [
+            [
+                "ac61e6a9e522bf5b"
+            ]
+        ]
+    },
+    {
+        "id": "f6c16c14ae57c8c3",
+        "type": "change",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "port",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7e421ebdff7ca827",
+        "type": "comment",
+        "z": "8769aeb719e4f5f1",
+        "name": "MQTT & Uploads ⬇️",
+        "info": "172.17.0.1\nhost.docker.internal\n7396",
+        "x": 160,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "e55509c875c2f788",
+        "type": "change",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "host",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "44de59596a5ed04f",
+        "type": "ui_text_input",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "label": "Host",
+        "tooltip": "custom-iota",
+        "group": "51def6da5af481ac",
+        "order": 2,
+        "width": "2",
+        "height": "1",
+        "passthru": true,
+        "mode": "text",
+        "delay": "0",
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 270,
+        "y": 40,
+        "wires": [
+            [
+                "e55509c875c2f788"
+            ]
+        ]
+    },
+    {
+        "id": "d99b1af25923eac3",
+        "type": "ui_text_input",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "label": "Port",
+        "tooltip": "7396",
+        "group": "51def6da5af481ac",
+        "order": 3,
+        "width": "2",
+        "height": "1",
+        "passthru": true,
+        "mode": "number",
+        "delay": "0",
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 270,
+        "y": 80,
+        "wires": [
+            [
+                "f6c16c14ae57c8c3"
+            ]
+        ]
+    },
+    {
+        "id": "716e120f02072e03",
+        "type": "change",
+        "z": "8769aeb719e4f5f1",
+        "name": "Disconnected",
+        "rules": [
+            {
+                "t": "set",
+                "p": "link",
+                "pt": "msg",
+                "to": "<font color=\"red\">Disconnected</font>",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "qr",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 540,
+        "wires": [
+            [
+                "1db7e5e112bb0069",
+                "67356fa398337c13",
+                "c1620bc8fe30efb4"
+            ]
+        ]
+    },
+    {
+        "id": "2b74c256118846d6",
+        "type": "change",
+        "z": "8769aeb719e4f5f1",
+        "name": "Disconnected",
+        "rules": [
+            {
+                "t": "set",
+                "p": "link",
+                "pt": "msg",
+                "to": "<font color=\"red\">Disconnected</font>",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "qr",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 180,
+        "wires": [
+            [
+                "2cd43a7aefbcf554",
+                "6f150b481c92d302",
+                "712bbc74186cf31b"
+            ]
+        ]
+    },
+    {
+        "id": "1fa8c11830d13c6d",
+        "type": "inject",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "172.17.0.1",
+        "payloadType": "str",
+        "x": 130,
+        "y": 40,
+        "wires": [
+            [
+                "44de59596a5ed04f"
+            ]
+        ]
+    },
+    {
+        "id": "5f4ee799ab4c6241",
+        "type": "inject",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "3005",
+        "payloadType": "num",
+        "x": 110,
+        "y": 80,
+        "wires": [
+            [
+                "d99b1af25923eac3"
+            ]
+        ]
+    },
+    {
+        "id": "b98d38119d65e6c7",
+        "type": "change",
+        "z": "8769aeb719e4f5f1",
+        "name": "mongo",
+        "rules": [
+            {
+                "t": "set",
+                "p": "out.mongo",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 630,
+        "y": 300,
+        "wires": [
+            [
+                "9e23df214e9fc86a"
+            ]
+        ]
+    },
+    {
+        "id": "cbe4d8d4e5222e67",
+        "type": "change",
+        "z": "8769aeb719e4f5f1",
+        "name": "mysql",
+        "rules": [
+            {
+                "t": "set",
+                "p": "out.mysql",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 630,
+        "y": 480,
+        "wires": [
+            [
+                "9044023485915d06"
+            ]
+        ]
+    },
+    {
+        "id": "ead7ea819e5b9d32",
+        "type": "change",
+        "z": "8769aeb719e4f5f1",
+        "name": "custom",
+        "rules": [
+            {
+                "t": "set",
+                "p": "out.custom",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 620,
+        "y": 120,
+        "wires": [
+            [
+                "5ffcd71df1a98442"
+            ]
+        ]
+    },
+    {
+        "id": "61fa618120eb5d90",
+        "type": "inject",
+        "z": "8769aeb719e4f5f1",
+        "name": "INIT",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "on",
+        "payloadType": "str",
+        "x": 110,
+        "y": 160,
+        "wires": [
+            [
+                "d2445aa91d7af175"
+            ]
+        ]
+    },
+    {
+        "id": "0f67e64ea55bcfad",
+        "type": "ui_button",
+        "z": "8769aeb719e4f5f1",
+        "name": "off",
+        "group": "51def6da5af481ac",
+        "order": 5,
+        "width": 1,
+        "height": 1,
+        "passthru": true,
+        "label": "",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "red",
+        "className": "",
+        "icon": "fa-stop",
+        "payload": "off",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 110,
+        "y": 420,
+        "wires": [
+            [
+                "2b74c256118846d6",
+                "3957704b27d8a53d",
+                "716e120f02072e03"
+            ]
+        ]
+    },
+    {
+        "id": "4c4f1b7ec5eda293",
+        "type": "mqtt in",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "topic": "/just/you",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "1c5e119ec6122feb",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 120,
+        "y": 680,
+        "wires": [
+            [
+                "b8f3b1a2c61cb399"
+            ]
+        ]
+    },
+    {
+        "id": "d366f830965a1b3e",
+        "type": "mqtt out",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "topic": "/its/a/me",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "1c5e119ec6122feb",
+        "x": 900,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "7c521f056485ef38",
+        "type": "localtunnel",
+        "z": "8769aeb719e4f5f1",
+        "buttonState": false,
+        "name": "node-red:1880",
+        "input_type": "input",
+        "port": "1880",
+        "subdomain": "my-hyperride",
+        "reject_other_subdomain": false,
+        "local_https": false,
+        "allow_invalid_cert": true,
+        "start_on_load": true,
+        "retry_on_error": 0,
+        "local_cert": "",
+        "local_key": "",
+        "local_ca": "",
+        "host": "",
+        "local_host": "node-red",
+        "inputs": 1,
+        "x": 480,
+        "y": 620,
+        "wires": [
+            [
+                "6ddb14b32286bac6"
+            ]
+        ]
+    },
+    {
+        "id": "6ddb14b32286bac6",
+        "type": "change",
+        "z": "8769aeb719e4f5f1",
+        "name": "get flow.out",
+        "rules": [
+            {
+                "t": "set",
+                "p": "out.link",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "out",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 730,
+        "y": 620,
+        "wires": [
+            [
+                "d366f830965a1b3e"
+            ]
+        ]
+    },
+    {
+        "id": "b8f3b1a2c61cb399",
+        "type": "switch",
+        "z": "8769aeb719e4f5f1",
+        "name": "on / off ?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "off",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "on",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 260,
+        "y": 680,
+        "wires": [
+            [
+                "7c521f056485ef38"
+            ],
+            [
+                "40b1b6f19e5fe649"
+            ]
+        ]
+    },
+    {
+        "id": "40b1b6f19e5fe649",
+        "type": "http request",
+        "z": "8769aeb719e4f5f1",
+        "name": "GET ifconfig.me/all.json",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://ifconfig.me/all.json",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 510,
+        "y": 740,
+        "wires": [
+            [
+                "2e5ec6589697d933"
+            ]
+        ]
+    },
+    {
+        "id": "2e5ec6589697d933",
+        "type": "change",
+        "z": "8769aeb719e4f5f1",
+        "name": "set flow.out",
+        "rules": [
+            {
+                "t": "set",
+                "p": "out",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "on",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 730,
+        "y": 740,
+        "wires": [
+            [
+                "7c521f056485ef38"
+            ]
+        ]
+    },
+    {
+        "id": "60cd7879a306dec1",
+        "type": "ngrok",
+        "z": "8769aeb719e4f5f1",
+        "buttonState": true,
+        "port": "8880",
+        "portType": "num",
+        "host": "host.docker.internal",
+        "hostType": "str",
+        "creds": "b4799249b6347148",
+        "region": "",
+        "regionType": "eu",
+        "proto": "http",
+        "bind_tls": "",
+        "bind_tlsType": "https",
+        "subdomain": "",
+        "subdomainType": "none",
+        "auth": "",
+        "authType": "none",
+        "hostHeader": "",
+        "hostHeaderType": "none",
+        "name": "Node-RED",
+        "inputtype": "port",
+        "inputs": 1,
+        "x": 470,
+        "y": 840,
+        "wires": [
+            [
+                "ebfdb1facb8b4a65"
+            ]
+        ]
+    },
+    {
+        "id": "5df94c4a1e18080c",
+        "type": "mqtt in",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "topic": "/just/you/mentor",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "1c5e119ec6122feb",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 140,
+        "y": 840,
+        "wires": [
+            [
+                "73d7b9e1add6b905"
+            ]
+        ]
+    },
+    {
+        "id": "98062a473030ab70",
+        "type": "mqtt out",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "topic": "/its/a/me",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "1c5e119ec6122feb",
+        "x": 900,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "73d7b9e1add6b905",
+        "type": "change",
+        "z": "8769aeb719e4f5f1",
+        "name": "on",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload ? payload : \"off\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 840,
+        "wires": [
+            [
+                "60cd7879a306dec1"
+            ]
+        ]
+    },
+    {
+        "id": "ebfdb1facb8b4a65",
+        "type": "change",
+        "z": "8769aeb719e4f5f1",
+        "name": "get flow.out",
+        "rules": [
+            {
+                "t": "set",
+                "p": "out.link",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "out",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 730,
+        "y": 840,
+        "wires": [
+            [
+                "98062a473030ab70"
+            ]
+        ]
+    },
+    {
+        "id": "58f4b326a458f7c7",
+        "type": "http in",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "url": "/uploads/:filename",
+        "method": "put",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 960,
+        "wires": [
+            [
+                "0cfb1cff9b4b2d0c"
+            ]
+        ]
+    },
+    {
+        "id": "067240aab2ab920f",
+        "type": "http response",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 910,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "eb083481d2375b38",
+        "type": "comment",
+        "z": "8769aeb719e4f5f1",
+        "name": "curl -T <file-path> http://node-red:1880/uploads/<file%20name>",
+        "info": "",
+        "x": 290,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "2ce836b1f80ceb6f",
+        "type": "file",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "filename": "filepath",
+        "filenameType": "msg",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 700,
+        "y": 960,
+        "wires": [
+            [
+                "0c7ba291d3f3e997"
+            ]
+        ]
+    },
+    {
+        "id": "58c22a523feb9981",
+        "type": "http in",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "url": "/uploads/:filename",
+        "method": "delete",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 170,
+        "y": 1080,
+        "wires": [
+            [
+                "bf96ddb85c5fb2b4"
+            ]
+        ]
+    },
+    {
+        "id": "c98826c735c5a51b",
+        "type": "comment",
+        "z": "8769aeb719e4f5f1",
+        "name": "curl -X DELETE http://node-red:1880/uploads/<file%20name>",
+        "info": "",
+        "x": 280,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "d4a3b1c7d87e5abb",
+        "type": "file",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "filename": "filepath",
+        "filenameType": "msg",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "delete",
+        "encoding": "none",
+        "x": 710,
+        "y": 1080,
+        "wires": [
+            [
+                "0c7ba291d3f3e997"
+            ]
+        ]
+    },
+    {
+        "id": "0c7ba291d3f3e997",
+        "type": "change",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "OK",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 880,
+        "y": 960,
+        "wires": [
+            [
+                "067240aab2ab920f"
+            ]
+        ]
+    },
+    {
+        "id": "1115c26390ea5daa",
+        "type": "template",
+        "z": "8769aeb719e4f5f1",
+        "name": "msg.filepath",
+        "field": "filepath",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "/public/uploads/{{filename}}",
+        "output": "str",
+        "x": 550,
+        "y": 960,
+        "wires": [
+            [
+                "2ce836b1f80ceb6f"
+            ]
+        ]
+    },
+    {
+        "id": "0cfb1cff9b4b2d0c",
+        "type": "change",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "filename",
+                "pt": "msg",
+                "to": "req.params.filename",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 370,
+        "y": 960,
+        "wires": [
+            [
+                "1115c26390ea5daa"
+            ]
+        ]
+    },
+    {
+        "id": "e6f37dda54e9a7f3",
+        "type": "template",
+        "z": "8769aeb719e4f5f1",
+        "name": "msg.filepath",
+        "field": "filepath",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "/public/uploads/{{filename}}",
+        "output": "str",
+        "x": 570,
+        "y": 1080,
+        "wires": [
+            [
+                "d4a3b1c7d87e5abb"
+            ]
+        ]
+    },
+    {
+        "id": "bf96ddb85c5fb2b4",
+        "type": "change",
+        "z": "8769aeb719e4f5f1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "filename",
+                "pt": "msg",
+                "to": "req.params.filename",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 390,
+        "y": 1080,
+        "wires": [
+            [
+                "e6f37dda54e9a7f3"
+            ]
+        ]
     },
     {
         "id": "4f617122750c0f43",
@@ -11638,1572 +13324,6 @@
         "x": 280,
         "y": 2540,
         "wires": []
-    },
-    {
-        "id": "3ed3003da454f6e0",
-        "type": "ngrok",
-        "z": "8769aeb719e4f5f1",
-        "buttonState": true,
-        "port": "8081",
-        "portType": "num",
-        "host": "mongo-express",
-        "hostType": "str",
-        "creds": "b4799249b6347148",
-        "region": "",
-        "regionType": "eu",
-        "proto": "http",
-        "bind_tls": "",
-        "bind_tlsType": "https",
-        "subdomain": "",
-        "subdomainType": "none",
-        "auth": "",
-        "authType": "none",
-        "hostHeader": "",
-        "hostHeaderType": "none",
-        "name": "mongo-express:8081",
-        "inputtype": "port",
-        "inputs": 1,
-        "x": 560,
-        "y": 80,
-        "wires": [
-            [
-                "0e7537603b7a008e",
-                "b98d38119d65e6c7"
-            ]
-        ]
-    },
-    {
-        "id": "139d7039051e6bfa",
-        "type": "ui_text",
-        "z": "8769aeb719e4f5f1",
-        "group": "51def6da5af481ac",
-        "order": 6,
-        "width": 5,
-        "height": 1,
-        "name": "Link",
-        "label": "",
-        "format": "{{msg.link}}",
-        "layout": "row-left",
-        "className": "link",
-        "x": 930,
-        "y": 200,
-        "wires": []
-    },
-    {
-        "id": "32f8ca11b1147c39",
-        "type": "ui_button",
-        "z": "8769aeb719e4f5f1",
-        "name": "on",
-        "group": "51def6da5af481ac",
-        "order": 5,
-        "width": 1,
-        "height": 1,
-        "passthru": true,
-        "label": "",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "green",
-        "className": "",
-        "icon": "fa-play",
-        "payload": "on",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 90,
-        "y": 80,
-        "wires": [
-            [
-                "61e5ab38a0b2768f",
-                "716e120f02072e03",
-                "2b74c256118846d6",
-                "3ed3003da454f6e0"
-            ]
-        ]
-    },
-    {
-        "id": "61e5ab38a0b2768f",
-        "type": "trigger",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "op1": "",
-        "op2": "off",
-        "op1type": "nul",
-        "op2type": "str",
-        "duration": "1",
-        "extend": true,
-        "overrideDelay": false,
-        "units": "hr",
-        "reset": "",
-        "bytopic": "all",
-        "topic": "topic",
-        "outputs": 1,
-        "x": 110,
-        "y": 200,
-        "wires": [
-            [
-                "3957704b27d8a53d"
-            ]
-        ]
-    },
-    {
-        "id": "9e23df214e9fc86a",
-        "type": "template",
-        "z": "8769aeb719e4f5f1",
-        "name": "link",
-        "field": "link",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "<a href=\"{{payload}}\">{{payload}}</a>",
-        "output": "str",
-        "x": 835,
-        "y": 140,
-        "wires": [
-            [
-                "139d7039051e6bfa"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "3957704b27d8a53d",
-        "type": "change",
-        "z": "8769aeb719e4f5f1",
-        "name": "Disconnected",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "off",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "link",
-                "pt": "msg",
-                "to": "<font color=\"red\">Disconnected</font>",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "qr",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 580,
-        "y": 200,
-        "wires": [
-            [
-                "c31371792690c0c6",
-                "a297cce6310b5d7e",
-                "3ed3003da454f6e0"
-            ]
-        ]
-    },
-    {
-        "id": "c31371792690c0c6",
-        "type": "delay",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "10",
-        "timeoutUnits": "milliseconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 790,
-        "y": 200,
-        "wires": [
-            [
-                "139d7039051e6bfa"
-            ]
-        ]
-    },
-    {
-        "id": "a297cce6310b5d7e",
-        "type": "ui_template",
-        "z": "8769aeb719e4f5f1",
-        "group": "51def6da5af481ac",
-        "name": "QR",
-        "order": 7,
-        "width": 1,
-        "height": 1,
-        "format": "<body>\n    <img src=\"{{msg.qr}}\">\n</body>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "className": "",
-        "x": 930,
-        "y": 140,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "58d90a1c6b4f0957",
-        "type": "ui_template",
-        "z": "8769aeb719e4f5f1",
-        "group": "51def6da5af481ac",
-        "name": "Mongo Express",
-        "order": 4,
-        "width": "5",
-        "height": 1,
-        "format": "<div style=\"display: flex; align-items: center;\">\n    &nbsp;&nbsp;&nbsp;<img height=\"42\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/MongoDB_Logo.svg/320px-MongoDB_Logo.svg.png\"/>\n</div>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "className": "",
-        "x": 120,
-        "y": 140,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "c1620bc8fe30efb4",
-        "type": "ngrok",
-        "z": "8769aeb719e4f5f1",
-        "buttonState": true,
-        "port": "8080",
-        "portType": "num",
-        "host": "adminer",
-        "hostType": "str",
-        "creds": "b4799249b6347148",
-        "region": "",
-        "regionType": "eu",
-        "proto": "http",
-        "bind_tls": "",
-        "bind_tlsType": "https",
-        "subdomain": "",
-        "subdomainType": "none",
-        "auth": "",
-        "authType": "none",
-        "hostHeader": "",
-        "hostHeaderType": "none",
-        "name": "adminer:8080",
-        "inputtype": "port",
-        "inputs": 1,
-        "x": 580,
-        "y": 260,
-        "wires": [
-            [
-                "30ca056f81b0debf",
-                "cbe4d8d4e5222e67"
-            ]
-        ]
-    },
-    {
-        "id": "3983dab42994df24",
-        "type": "ui_text",
-        "z": "8769aeb719e4f5f1",
-        "group": "51def6da5af481ac",
-        "order": 10,
-        "width": "5",
-        "height": 1,
-        "name": "Link",
-        "label": "",
-        "format": "{{msg.link}}",
-        "layout": "row-left",
-        "className": "link",
-        "x": 930,
-        "y": 380,
-        "wires": []
-    },
-    {
-        "id": "9a69f0970d5df146",
-        "type": "ui_button",
-        "z": "8769aeb719e4f5f1",
-        "name": "on",
-        "group": "51def6da5af481ac",
-        "order": 9,
-        "width": 1,
-        "height": 1,
-        "passthru": true,
-        "label": "",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "green",
-        "className": "",
-        "icon": "fa-play",
-        "payload": "on",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 90,
-        "y": 260,
-        "wires": [
-            [
-                "d36f9284fbcbf9be",
-                "c1620bc8fe30efb4",
-                "3957704b27d8a53d",
-                "2b74c256118846d6"
-            ]
-        ]
-    },
-    {
-        "id": "d36f9284fbcbf9be",
-        "type": "trigger",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "op1": "",
-        "op2": "off",
-        "op1type": "nul",
-        "op2type": "str",
-        "duration": "1",
-        "extend": true,
-        "overrideDelay": false,
-        "units": "hr",
-        "reset": "",
-        "bytopic": "all",
-        "topic": "topic",
-        "outputs": 1,
-        "x": 110,
-        "y": 380,
-        "wires": [
-            [
-                "716e120f02072e03"
-            ]
-        ]
-    },
-    {
-        "id": "9044023485915d06",
-        "type": "template",
-        "z": "8769aeb719e4f5f1",
-        "name": "link",
-        "field": "link",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "<a href=\"{{payload}}\">{{payload}}</a>",
-        "output": "str",
-        "x": 835,
-        "y": 320,
-        "wires": [
-            [
-                "3983dab42994df24"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "67356fa398337c13",
-        "type": "delay",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "10",
-        "timeoutUnits": "milliseconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 790,
-        "y": 380,
-        "wires": [
-            [
-                "3983dab42994df24"
-            ]
-        ]
-    },
-    {
-        "id": "1db7e5e112bb0069",
-        "type": "ui_template",
-        "z": "8769aeb719e4f5f1",
-        "group": "51def6da5af481ac",
-        "name": "QR",
-        "order": 11,
-        "width": 1,
-        "height": 1,
-        "format": "<body>\n    <img src=\"{{msg.qr}}\">\n</body>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "className": "",
-        "x": 930,
-        "y": 320,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f0356858e5058f40",
-        "type": "ui_template",
-        "z": "8769aeb719e4f5f1",
-        "group": "51def6da5af481ac",
-        "name": "Adminer",
-        "order": 8,
-        "width": "5",
-        "height": 1,
-        "format": "<div style=\"display: flex; align-items: center;\">\n    &nbsp;&nbsp;&nbsp;<img height=\"42\" src=\"data:image/png;base64,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\"/>\n</div>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "className": "",
-        "x": 100,
-        "y": 320,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "712bbc74186cf31b",
-        "type": "ngrok",
-        "z": "8769aeb719e4f5f1",
-        "buttonState": true,
-        "port": "port",
-        "portType": "flow",
-        "host": "host",
-        "hostType": "flow",
-        "creds": "b4799249b6347148",
-        "region": "",
-        "regionType": "eu",
-        "proto": "http",
-        "bind_tls": "",
-        "bind_tlsType": "https",
-        "subdomain": "",
-        "subdomainType": "none",
-        "auth": "",
-        "authType": "none",
-        "hostHeader": "",
-        "hostHeaderType": "none",
-        "name": "host:port",
-        "inputtype": "port",
-        "inputs": 1,
-        "x": 600,
-        "y": 440,
-        "wires": [
-            [
-                "a14e04fa6af91931",
-                "ead7ea819e5b9d32"
-            ]
-        ]
-    },
-    {
-        "id": "c5a932010cadf9b3",
-        "type": "ui_text",
-        "z": "8769aeb719e4f5f1",
-        "group": "51def6da5af481ac",
-        "order": 15,
-        "width": "5",
-        "height": 1,
-        "name": "Link",
-        "label": "",
-        "format": "{{msg.link}}",
-        "layout": "row-left",
-        "className": "link",
-        "x": 930,
-        "y": 560,
-        "wires": []
-    },
-    {
-        "id": "5ffcd71df1a98442",
-        "type": "template",
-        "z": "8769aeb719e4f5f1",
-        "name": "link",
-        "field": "link",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "<a href=\"{{payload}}\">{{payload}}</a>",
-        "output": "str",
-        "x": 835,
-        "y": 500,
-        "wires": [
-            [
-                "c5a932010cadf9b3"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "6f150b481c92d302",
-        "type": "delay",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "10",
-        "timeoutUnits": "milliseconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 790,
-        "y": 560,
-        "wires": [
-            [
-                "c5a932010cadf9b3"
-            ]
-        ]
-    },
-    {
-        "id": "2cd43a7aefbcf554",
-        "type": "ui_template",
-        "z": "8769aeb719e4f5f1",
-        "group": "51def6da5af481ac",
-        "name": "QR",
-        "order": 16,
-        "width": 1,
-        "height": 1,
-        "format": "<body>\n    <img src=\"{{msg.qr}}\">\n</body>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "className": "",
-        "x": 930,
-        "y": 500,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "d2445aa91d7af175",
-        "type": "ui_button",
-        "z": "8769aeb719e4f5f1",
-        "name": "on",
-        "group": "51def6da5af481ac",
-        "order": 14,
-        "width": 1,
-        "height": 1,
-        "passthru": true,
-        "label": "",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "green",
-        "className": "",
-        "icon": "fa-play",
-        "payload": "on",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 90,
-        "y": 440,
-        "wires": [
-            [
-                "ef0a383712aca286",
-                "712bbc74186cf31b",
-                "716e120f02072e03",
-                "3957704b27d8a53d"
-            ]
-        ]
-    },
-    {
-        "id": "ef0a383712aca286",
-        "type": "trigger",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "op1": "",
-        "op2": "off",
-        "op1type": "nul",
-        "op2type": "str",
-        "duration": "1",
-        "extend": true,
-        "overrideDelay": false,
-        "units": "hr",
-        "reset": "",
-        "bytopic": "all",
-        "topic": "topic",
-        "outputs": 1,
-        "x": 110,
-        "y": 560,
-        "wires": [
-            [
-                "2b74c256118846d6"
-            ]
-        ]
-    },
-    {
-        "id": "26a37ecfc4e40c88",
-        "type": "jimp-image",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "data": "qr",
-        "dataType": "msg",
-        "ret": "b64",
-        "parameter1": "",
-        "parameter1Type": "msg",
-        "parameter2": "",
-        "parameter2Type": "msg",
-        "parameter3": "",
-        "parameter3Type": "msg",
-        "parameter4": "",
-        "parameter4Type": "msg",
-        "parameter5": "",
-        "parameter5Type": "msg",
-        "parameter6": "",
-        "parameter6Type": "msg",
-        "parameter7": "",
-        "parameter7Type": "msg",
-        "parameter8": "",
-        "parameter8Type": "msg",
-        "sendProperty": "qr",
-        "sendPropertyType": "msg",
-        "parameterCount": 0,
-        "jimpFunction": "none",
-        "selectedJimpFunction": {
-            "name": "none",
-            "fn": "none",
-            "description": "Just loads the image.",
-            "parameters": []
-        },
-        "x": 835,
-        "y": 80,
-        "wires": [
-            [
-                "a297cce6310b5d7e"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "0e7537603b7a008e",
-        "type": "Barcode Generator",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "data": "payload",
-        "dataType": "msg",
-        "barcode": "qrcode",
-        "barcodeType": "barcode",
-        "options": "",
-        "optionsType": "ui",
-        "sendProperty": "qr",
-        "props": [
-            {
-                "p": "rotate",
-                "v": "N",
-                "vt": "str"
-            },
-            {
-                "p": "includetext",
-                "v": "true",
-                "vt": "bool"
-            },
-            {
-                "p": "textxalign",
-                "v": "center",
-                "vt": "str"
-            }
-        ],
-        "x": 785,
-        "y": 80,
-        "wires": [
-            [
-                "26a37ecfc4e40c88"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "957f548b6f052892",
-        "type": "ui_template",
-        "z": "8769aeb719e4f5f1",
-        "group": "51def6da5af481ac",
-        "name": "CSS",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "format": "<style>\n    .link {\n        font-size:11px;\n    }\n</style>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "className": "",
-        "x": 930,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "b28b2e4bc9a452fe",
-        "type": "jimp-image",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "data": "qr",
-        "dataType": "msg",
-        "ret": "b64",
-        "parameter1": "",
-        "parameter1Type": "msg",
-        "parameter2": "",
-        "parameter2Type": "msg",
-        "parameter3": "",
-        "parameter3Type": "msg",
-        "parameter4": "",
-        "parameter4Type": "msg",
-        "parameter5": "",
-        "parameter5Type": "msg",
-        "parameter6": "",
-        "parameter6Type": "msg",
-        "parameter7": "",
-        "parameter7Type": "msg",
-        "parameter8": "",
-        "parameter8Type": "msg",
-        "sendProperty": "qr",
-        "sendPropertyType": "msg",
-        "parameterCount": 0,
-        "jimpFunction": "none",
-        "selectedJimpFunction": {
-            "name": "none",
-            "fn": "none",
-            "description": "Just loads the image.",
-            "parameters": []
-        },
-        "x": 835,
-        "y": 260,
-        "wires": [
-            [
-                "1db7e5e112bb0069"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "30ca056f81b0debf",
-        "type": "Barcode Generator",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "data": "payload",
-        "dataType": "msg",
-        "barcode": "qrcode",
-        "barcodeType": "barcode",
-        "options": "",
-        "optionsType": "ui",
-        "sendProperty": "qr",
-        "props": [
-            {
-                "p": "rotate",
-                "v": "N",
-                "vt": "str"
-            },
-            {
-                "p": "includetext",
-                "v": "true",
-                "vt": "bool"
-            },
-            {
-                "p": "textxalign",
-                "v": "center",
-                "vt": "str"
-            }
-        ],
-        "x": 785,
-        "y": 260,
-        "wires": [
-            [
-                "b28b2e4bc9a452fe"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "ac61e6a9e522bf5b",
-        "type": "jimp-image",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "data": "qr",
-        "dataType": "msg",
-        "ret": "b64",
-        "parameter1": "",
-        "parameter1Type": "msg",
-        "parameter2": "",
-        "parameter2Type": "msg",
-        "parameter3": "",
-        "parameter3Type": "msg",
-        "parameter4": "",
-        "parameter4Type": "msg",
-        "parameter5": "",
-        "parameter5Type": "msg",
-        "parameter6": "",
-        "parameter6Type": "msg",
-        "parameter7": "",
-        "parameter7Type": "msg",
-        "parameter8": "",
-        "parameter8Type": "msg",
-        "sendProperty": "qr",
-        "sendPropertyType": "msg",
-        "parameterCount": 0,
-        "jimpFunction": "none",
-        "selectedJimpFunction": {
-            "name": "none",
-            "fn": "none",
-            "description": "Just loads the image.",
-            "parameters": []
-        },
-        "x": 835,
-        "y": 440,
-        "wires": [
-            [
-                "2cd43a7aefbcf554"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "a14e04fa6af91931",
-        "type": "Barcode Generator",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "data": "payload",
-        "dataType": "msg",
-        "barcode": "qrcode",
-        "barcodeType": "barcode",
-        "options": "",
-        "optionsType": "ui",
-        "sendProperty": "qr",
-        "props": [
-            {
-                "p": "rotate",
-                "v": "N",
-                "vt": "str"
-            },
-            {
-                "p": "includetext",
-                "v": "true",
-                "vt": "bool"
-            },
-            {
-                "p": "textxalign",
-                "v": "center",
-                "vt": "str"
-            }
-        ],
-        "x": 785,
-        "y": 440,
-        "wires": [
-            [
-                "ac61e6a9e522bf5b"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "f6c16c14ae57c8c3",
-        "type": "change",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "port",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 390,
-        "y": 520,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "7e421ebdff7ca827",
-        "type": "comment",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "info": "172.17.0.1\nhost.docker.internal\n7396",
-        "x": 920,
-        "y": 440,
-        "wires": []
-    },
-    {
-        "id": "e55509c875c2f788",
-        "type": "change",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "host",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 390,
-        "y": 480,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "44de59596a5ed04f",
-        "type": "ui_text_input",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "label": "Host",
-        "tooltip": "custom-iota",
-        "group": "51def6da5af481ac",
-        "order": 12,
-        "width": "3",
-        "height": "1",
-        "passthru": true,
-        "mode": "text",
-        "delay": "0",
-        "topic": "topic",
-        "sendOnBlur": true,
-        "className": "",
-        "topicType": "msg",
-        "x": 250,
-        "y": 480,
-        "wires": [
-            [
-                "e55509c875c2f788"
-            ]
-        ]
-    },
-    {
-        "id": "d99b1af25923eac3",
-        "type": "ui_text_input",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "label": "Port",
-        "tooltip": "7396",
-        "group": "51def6da5af481ac",
-        "order": 13,
-        "width": "2",
-        "height": "1",
-        "passthru": true,
-        "mode": "number",
-        "delay": "0",
-        "topic": "topic",
-        "sendOnBlur": true,
-        "className": "",
-        "topicType": "msg",
-        "x": 250,
-        "y": 520,
-        "wires": [
-            [
-                "f6c16c14ae57c8c3"
-            ]
-        ]
-    },
-    {
-        "id": "716e120f02072e03",
-        "type": "change",
-        "z": "8769aeb719e4f5f1",
-        "name": "Disconnected",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "off",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "link",
-                "pt": "msg",
-                "to": "<font color=\"red\">Disconnected</font>",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "qr",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 580,
-        "y": 380,
-        "wires": [
-            [
-                "1db7e5e112bb0069",
-                "67356fa398337c13",
-                "c1620bc8fe30efb4"
-            ]
-        ]
-    },
-    {
-        "id": "2b74c256118846d6",
-        "type": "change",
-        "z": "8769aeb719e4f5f1",
-        "name": "Disconnected",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "off",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "link",
-                "pt": "msg",
-                "to": "<font color=\"red\">Disconnected</font>",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "qr",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 580,
-        "y": 560,
-        "wires": [
-            [
-                "2cd43a7aefbcf554",
-                "6f150b481c92d302",
-                "712bbc74186cf31b"
-            ]
-        ]
-    },
-    {
-        "id": "1fa8c11830d13c6d",
-        "type": "inject",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "172.17.0.1",
-        "payloadType": "str",
-        "x": 110,
-        "y": 480,
-        "wires": [
-            [
-                "44de59596a5ed04f"
-            ]
-        ]
-    },
-    {
-        "id": "5f4ee799ab4c6241",
-        "type": "inject",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "3005",
-        "payloadType": "num",
-        "x": 90,
-        "y": 520,
-        "wires": [
-            [
-                "d99b1af25923eac3"
-            ]
-        ]
-    },
-    {
-        "id": "60cd7879a306dec1",
-        "type": "ngrok",
-        "z": "8769aeb719e4f5f1",
-        "buttonState": true,
-        "port": "8880",
-        "portType": "num",
-        "host": "host.docker.internal",
-        "hostType": "str",
-        "creds": "b4799249b6347148",
-        "region": "",
-        "regionType": "eu",
-        "proto": "http",
-        "bind_tls": "",
-        "bind_tlsType": "https",
-        "subdomain": "",
-        "subdomainType": "none",
-        "auth": "",
-        "authType": "none",
-        "hostHeader": "",
-        "hostHeaderType": "none",
-        "name": "Node-RED",
-        "inputtype": "port",
-        "inputs": 1,
-        "x": 590,
-        "y": 620,
-        "wires": [
-            [
-                "b9e250d1ca7ce651"
-            ]
-        ]
-    },
-    {
-        "id": "4c4f1b7ec5eda293",
-        "type": "mqtt in",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "topic": "/just/you",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "1c5e119ec6122feb",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 100,
-        "y": 20,
-        "wires": [
-            [
-                "b8f3b1a2c61cb399"
-            ]
-        ]
-    },
-    {
-        "id": "d366f830965a1b3e",
-        "type": "mqtt out",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "topic": "/its/a/me",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "1c5e119ec6122feb",
-        "x": 920,
-        "y": 20,
-        "wires": []
-    },
-    {
-        "id": "b98d38119d65e6c7",
-        "type": "change",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "out.mongo",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 785,
-        "y": 140,
-        "wires": [
-            [
-                "9e23df214e9fc86a"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "cbe4d8d4e5222e67",
-        "type": "change",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "out.mysql",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 785,
-        "y": 320,
-        "wires": [
-            [
-                "9044023485915d06"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "ead7ea819e5b9d32",
-        "type": "change",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "out.custom",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 785,
-        "y": 500,
-        "wires": [
-            [
-                "5ffcd71df1a98442"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "7c521f056485ef38",
-        "type": "localtunnel",
-        "z": "8769aeb719e4f5f1",
-        "buttonState": false,
-        "name": "node-red:1880",
-        "input_type": "input",
-        "port": "1880",
-        "subdomain": "my-hyperride",
-        "reject_other_subdomain": false,
-        "local_https": false,
-        "allow_invalid_cert": true,
-        "start_on_load": false,
-        "retry_on_error": 0,
-        "local_cert": "",
-        "local_key": "",
-        "local_ca": "",
-        "host": "",
-        "local_host": "node-red",
-        "inputs": 1,
-        "x": 580,
-        "y": 20,
-        "wires": [
-            [
-                "6ddb14b32286bac6"
-            ]
-        ]
-    },
-    {
-        "id": "5df94c4a1e18080c",
-        "type": "mqtt in",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "topic": "/just/you/mentor",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "1c5e119ec6122feb",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 120,
-        "y": 620,
-        "wires": [
-            [
-                "73d7b9e1add6b905"
-            ]
-        ]
-    },
-    {
-        "id": "98062a473030ab70",
-        "type": "mqtt out",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "topic": "/its/a/me",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "1c5e119ec6122feb",
-        "x": 920,
-        "y": 620,
-        "wires": []
-    },
-    {
-        "id": "73d7b9e1add6b905",
-        "type": "change",
-        "z": "8769aeb719e4f5f1",
-        "name": "on",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "payload ? payload : \"off\"",
-                "tot": "jsonata"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 370,
-        "y": 620,
-        "wires": [
-            [
-                "60cd7879a306dec1"
-            ]
-        ]
-    },
-    {
-        "id": "b9e250d1ca7ce651",
-        "type": "change",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "out.link",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "out",
-                "tot": "flow"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 785,
-        "y": 620,
-        "wires": [
-            [
-                "98062a473030ab70"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "3a010c4869ed4ba9",
-        "type": "inject",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "1",
-        "topic": "",
-        "payload": "on",
-        "payloadType": "str",
-        "x": 390,
-        "y": 60,
-        "wires": [
-            [
-                "7c521f056485ef38",
-                "712bbc74186cf31b"
-            ]
-        ]
-    },
-    {
-        "id": "6ddb14b32286bac6",
-        "type": "change",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "out.link",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "out",
-                "tot": "flow"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 785,
-        "y": 20,
-        "wires": [
-            [
-                "d366f830965a1b3e"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "b8f3b1a2c61cb399",
-        "type": "switch",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "off",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "on",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 230,
-        "y": 20,
-        "wires": [
-            [
-                "7c521f056485ef38"
-            ],
-            [
-                "40b1b6f19e5fe649"
-            ]
-        ]
-    },
-    {
-        "id": "40b1b6f19e5fe649",
-        "type": "http request",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "https://ifconfig.me/all.json",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 310,
-        "y": 100,
-        "wires": [
-            [
-                "2e5ec6589697d933"
-            ]
-        ]
-    },
-    {
-        "id": "2e5ec6589697d933",
-        "type": "change",
-        "z": "8769aeb719e4f5f1",
-        "name": "set flow.out",
-        "rules": [
-            {
-                "t": "set",
-                "p": "out",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "payload",
-                "pt": "msg"
-            },
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "on",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 410,
-        "y": 180,
-        "wires": [
-            [
-                "7c521f056485ef38"
-            ]
-        ]
     },
     {
         "id": "ea805040d9020dd5",

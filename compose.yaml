@@ -2,7 +2,7 @@
 services:
   # Orion v2 Context Broker
   orion:
-    image: fiware/orion:latest # 3.8.0
+    image: fiware/orion #:3.8.0
   # hostname: orion
     container_name: orion
     depends_on:
@@ -26,7 +26,7 @@ services:
 
   # Orion-LD Context Broker
   orion-ld:
-    image: fiware/orion-ld:latest # 1.1.2
+    image: fiware/orion-ld #:1.1.2
   # hostname: orion-ld
     container_name: orion-ld
     depends_on:
@@ -46,12 +46,12 @@ services:
       - "10270:1026" # (for testing) localhost:10270
     command: -dbhost mongo-db -db orionld -logLevel DEBUG
     healthcheck:
-      test: curl --fail -s http://localhost:1026/ngsi-ld/ex/v1/version || exit 1
+      test: curl -sf http://localhost:1026/ngsi-ld/ex/v1/version || exit 1
   #   interval: 5s
 
   # Keyrock IdM
   keyrock:
-    image: fiware/idm:latest # 8.3.2-distroless
+    image: fiware/idm #:8.3.2-distroless
   # hostname: keyrock
     container_name: keyrock
     depends_on:
@@ -87,7 +87,7 @@ services:
 
   # Wilma PEP Proxy for Orion (v2)
   orion-proxy:
-    image: fiware/pep-proxy:latest # 8.3.0-distroless
+    image: fiware/pep-proxy #:8.3.0-distroless
   # hostname: orion-proxy
     container_name: orion-proxy
     depends_on:
@@ -127,7 +127,7 @@ services:
 
   # Wilma PEP Proxy for Orion-LD
   orion-ld-proxy:
-    image: fiware/pep-proxy:latest # 8.3.0-distroless
+    image: fiware/pep-proxy #:8.3.0-distroless
   # hostname: orion-ld-proxy
     container_name: orion-ld-proxy
     depends_on:
@@ -166,12 +166,14 @@ services:
   #   interval: 50s
 
   # Apache Server for NGSI-LD @context files
-  ld-context:
+  web:
     image: httpd:alpine
-  # hostname: ld-context
-    container_name: ld-context
+  # hostname: web
+    container_name: apache-server
   # restart: on-failure # for Docker Compose
   # deploy:             # for Docker Swarm
+  #   mode: replicated
+  #   replicas: 3
   #   restart_policy:
   #     condition: on-failure
     networks:
@@ -181,6 +183,8 @@ services:
           - apache-server
           - http
           - http-server
+          - ld-context
+          - web-server
   # expose:
   #   - 80    # http://ld-context
     ports:
@@ -188,7 +192,7 @@ services:
     volumes:
       - ./public:/usr/local/apache2/htdocs/
     healthcheck:
-      test: curl -f http://localhost || exit 1
+      test: wget --spider -q http://localhost || exit 1
   #   interval: 15s
 
 
@@ -226,7 +230,7 @@ services:
 
   # Mongo DB front-end
   mongo-express:
-    image: mongo-express:latest # 1.0.0-alpha
+    image: mongo-express #:1.0.0-alpha
   # hostname: mongo-express
     container_name: fe-mongo
     depends_on:
@@ -234,6 +238,8 @@ services:
         condition: service_healthy
   # restart: on-failure # for Docker Compose
   # deploy:             # for Docker Swarm
+  #   mode: replicated
+  #   replicas: 3
   #   restart_policy:
   #     condition: on-failure
   # networks:
@@ -246,17 +252,19 @@ services:
       - ME_CONFIG_BASICAUTH_USERNAME=
       - ME_CONFIG_BASICAUTH_PASSWORD=
       - ME_CONFIG_MONGODB_SERVER=mongo-db
-  # healthcheck:
-  #   test: wget --quiet --tries=3 --spider http://localhost:8081 || exit 1
+    healthcheck:
+      test: wget -q --spider http://localhost:8081 || exit 1
   #   timeout: 10s
   #   retries: 30
 
-  # docker run -it --rm --net=fiware_default --name fe-mongo -p 80:8081 -e ME_CONFIG_MONGODB_SERVER=mongo-db mongo-express
-  # docker run -it --rm --net=fiware_default --name ngrok-mongo -e NGROK_AUTHTOKEN=2L2kdrNlcTBcxDERiOxTW3kyEaV_3siN3rWauYmt4KLGHrHZg ngrok/ngrok:latest http 8081
+  # https://ngrok.com/docs/using-ngrok-with/docker/
+
+  # docker run -it --rm --net=fiware_default --name fe-mongo -e ME_CONFIG_MONGODB_SERVER=mongo-db mongo-express
+  # docker run -it --rm --net=fiware_default --name ngrok-mongo -e NGROK_AUTHTOKEN=2L2kdrNlcTBcxDERiOxTW3kyEaV_3siN3rWauYmt4KLGHrHZg ngrok/ngrok:latest http fe-mongo:8081
 
   # MySQL DB (Keyrock)
   mysql-db:
-    image: mysql:latest # 8.0.32
+    image: mysql #:8.0.32
   # hostname: mysql-db
     container_name: db-mysql
   # restart: on-failure # for Docker Compose
@@ -286,8 +294,8 @@ services:
   # cat backup.sql | docker exec -i db-mysql /usr/bin/mysql -u root --password=secret idm
 
   # MySQL DB front-end
-  adminer:
-    image: adminer:latest # 4.8.1
+  phpmyadmin:
+    image: phpmyadmin #:5.2.1
   # hostname: adminer
     container_name: fe-mysql
     depends_on:
@@ -295,32 +303,63 @@ services:
         condition: service_healthy
   # restart: on-failure # for Docker Compose
   # deploy:             # for Docker Swarm
+  #   mode: replicated
+  #   replicas: 3
   #   restart_policy:
   #     condition: on-failure
   # networks:
   #   - default
     expose:
-      - "8080"      # adminer:8080
+      - "80"      # phpmyadmin:80
   # ports:
-  #   - "8080:8080" # localhost:8080
+  #   - "8080:80" # localhost:8080
     environment:
-  #   - ADMINER_DEFAULT_DB_DRIVER=mysql
-  #   - ADMINER_DEFAULT_DB_HOST=mysql-db
-  #   - ADMINER_DEFAULT_DB_NAME=root
-  #   - ADMINER_DEFAULT_DB_PASSWORD=secret
-      - ADMINER_DESIGN=pokorny # mvt # pepa-linha # rmsoft_blue
-  #   - ADMINER_PLUGINS=see https://www.adminer.org/en/plugins/
-  # healthcheck: TBD
+  #   - PMA_ARBITRARY=1
+      - PMA_HOST=mysql-db
+      - PMA_USER=root
+      - PMA_PASSWORD=secret
+    healthcheck:
+      test: curl -sf http://localhost || exit 1
 
-  # docker run -it --rm --network fiware_default --name fe-mysql -p 80:8080 adminer
-  # docker run -it --rm --network fiware_default --name ngrok-mysql -e NGROK_AUTHTOKEN=2L2kdrNlcTBcxDERiOxTW3kyEaV_3siN3rWauYmt4KLGHrHZg ngrok/ngrok:latest http 8080
+  # https://ngrok.com/docs/using-ngrok-with/docker/
+
+  # docker run -it --rm --network fiware_default --name fe-mysql phpmyadmin
+  # docker run -it --rm --network fiware_default --name ngrok-mysql -e NGROK_AUTHTOKEN=2L2kdrNlcTBcxDERiOxTW3kyEaV_3siN3rWauYmt4KLGHrHZg ngrok/ngrok:latest http fe-mysql:8080
+
+# # MySQL DB front-end
+# adminer:
+#   image: adminer #:4.8.1
+# # hostname: adminer
+#   container_name: old-fe-mysql
+#   depends_on:
+#     mysql-db:
+#       condition: service_healthy
+# # restart: on-failure # for Docker Compose
+# # deploy:             # for Docker Swarm
+# #   mode: replicated
+# #   replicas: 3
+# #   restart_policy:
+# #     condition: on-failure
+# # networks:
+# #   - default
+#   expose:
+#     - "8080"      # adminer:8080
+# # ports:
+# #   - "8080:8080" # localhost:8080
+#   environment:
+# #   - ADMINER_DEFAULT_DB_DRIVER=mysql
+# #   - ADMINER_DEFAULT_DB_HOST=mysql-db
+# #   - ADMINER_DEFAULT_DB_NAME=root
+# #   - ADMINER_DEFAULT_DB_PASSWORD=secret
+#     - ADMINER_DESIGN=pokorny # mvt # pepa-linha # rmsoft_blue
+# #   - ADMINER_PLUGINS=see https://www.adminer.org/en/plugins/
 
 
   # Other services
 
   # Blockchain (Ganache)
   ganache:
-    image: trufflesuite/ganache:latest # v7.7.3
+    image: trufflesuite/ganache #:v7.7.3
   # hostname: ganache
     container_name: bc-ganache
   # restart: on-failure # for Docker Compose
@@ -330,24 +369,23 @@ services:
   # networks:
   #   - default
   # expose:
-  #   - "7545"      # ganache:7545
+  #   - "8545"      # ganache:8545
     ports:
-      - "7545:7545" # localhost:7545
-    command: --database.dbPath /db --server.host 0.0.0.0  --server.port 7545 --wallet.mnemonic "visit carpet logic blame furnace confirm rebel deliver medal mean illness error"
+      - "8545:8545" # localhost:8545
+    command: --database.dbPath /db --server.host 0.0.0.0  --server.port 8545 --wallet.mnemonic "visit carpet logic blame furnace confirm rebel deliver medal mean illness error"
     volumes:
   #   - ./ganache/.db:/db
       - ganache-db:/db
     healthcheck:
-      test: |
-        node -e 'data = JSON.stringify({jsonrpc:"2.0",method:"eth_blockNumber",params:[],id:1}); require("http").request({hostname:"localhost", port: 7545, method:"POST", headers: {"Content-Type": "application/json", "Content-Length": data.length }}, resp => resp.on("data", chunk => process.exit(0)).on("error", err => process.exit(1))).write(data)' && exit 0 || exit 1
-  #   test: curl -f -X POST --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' http://localhost:7545 && exit 0 || exit 1
+      test: node -e 'data=JSON.stringify({jsonrpc:"2.0",method:"eth_blockNumber",params:[],id:1});require("http").request({hostname:"localhost",port:8545,method:"POST",headers:{"Content-Type":"application/json","Content-Length":data.length}},resp=>resp.on("data",chunk=>process.exit(0)).on("error",err=>process.exit(1))).write(data)' && exit 0 || exit 1
+  #   test: curl -f -X POST --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' http://localhost:8545 && exit 0 || exit 1
   #   interval: 5s
   #   timeout: 5s
   #   retries: 5
 
   # Blockchain front-end (Lite Explorer)
   lite-explorer:
-    image: alethio/ethereum-lite-explorer:latest # v1.0.0-beta.10
+    image: alethio/ethereum-lite-explorer #:v1.0.0-beta.10
   # hostname: lite-explorer
     container_name: fe-ganache
     depends_on:
@@ -355,6 +393,8 @@ services:
         condition: service_healthy
   # restart: on-failure # for Docker Compose
   # deploy:             # for Docker Swarm
+  #   mode: replicated
+  #   replicas: 3
   #   restart_policy:
   #     condition: on-failure
   # networks:
@@ -362,21 +402,24 @@ services:
   # expose:
   #   - "80"        # lite-explorer:80
     ports:
-      - "8082:80"   # localhost:8082
+      - "8546:80"   # localhost:8546
     environment:
-      - APP_NODE_URL=http://ganache:7545
-  # healthcheck: TBD
+      - APP_NODE_URL=http://ganache:8545
+    healthcheck:
+      test: wget -q --spider http://localhost || exit 1
 
   # docker run -it --rm --network fiware_default --name fe-ganache -p 80:80 -e APP_NODE_URL="http://ganache:7545" alethio/ethereum-lite-explorer
   # docker run -it --rm --name fe-ganache -p 80:80 -e APP_NODE_URL="http://localhost:7545" alethio/ethereum-lite-explorer
 
   # MQTT Broker (MosQuiTTo)
   mosquitto:
-    image: eclipse-mosquitto:latest # 2.0.15
+    image: eclipse-mosquitto #:2.0.15
   # hostname: mosquitto
     container_name: mqtt-broker
   # restart: on-failure # for Docker Compose
   # deploy:             # for Docker Swarm
+  #   mode: replicated
+  #   replicas: 3
   #   restart_policy:
   #     condition: on-failure
     networks:
@@ -389,7 +432,7 @@ services:
   #   - "9001"      # mosquitto:9001
     ports:
       - "1883:1883" # localhost:1883
-      - "9001:9001" # localhost:9001
+  #   - "9001:9001" # localhost:9001
     command: mosquitto -c /mosquitto-no-auth.conf
   # volumes:
   #   - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
@@ -409,6 +452,27 @@ services:
   # image: nodered/node-red
   # hostname: node-red
     container_name: node-red
+    depends_on:
+      keyrock:
+        condition: service_healthy
+      ganache:
+        condition: service_healthy
+      mongo-express:
+        condition: service_healthy
+      orion-ld-proxy:
+        condition: service_healthy
+      orion-proxy:
+        condition: service_healthy
+      phpmyadmin:
+        condition: service_healthy
+  # restart: on-failure # for Docker Compose
+  # deploy:             # for Docker Swarm
+  #   mode: replicated
+  #   replicas: 3
+  #   restart_policy:
+  #     condition: on-failure
+  # networks:
+  #   - default
   # expose:
   #   - "1880"      # node-red:1880
     ports:
@@ -421,6 +485,7 @@ services:
       - "host.docker.internal:host-gateway"
     volumes:
       - ./node-red/data:/data
+      - ./public:/public
       - /etc:/mnt/etc
       - /home:/mnt/home
       - /root:/mnt/root
