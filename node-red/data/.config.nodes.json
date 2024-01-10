@@ -744,7 +744,7 @@
     },
     "node-red-dashboard": {
         "name": "node-red-dashboard",
-        "version": "3.6.0",
+        "version": "3.6.2",
         "local": true,
         "user": true,
         "nodes": {
@@ -1021,7 +1021,7 @@
     },
     "node-red-contrib-ngrok": {
         "name": "node-red-contrib-ngrok",
-        "version": "2.0.1",
+        "version": "2.1.0",
         "local": true,
         "user": true,
         "nodes": {

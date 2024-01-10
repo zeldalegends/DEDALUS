@@ -44,7 +44,7 @@ module.exports = {
      * lost.
      */
     //credentialSecret: "a-secret-key",
-    credentialSecret: false,
+    credentialSecret: false,                                                    
 
     /** By default, the flow JSON will be formatted over multiple lines making
      * it easier to compare changes when using version control.
@@ -84,14 +84,14 @@ module.exports = {
     //        permissions: "*"
     //    }]
     //},
-    adminAuth: {
-        "type": "credentials",
-        "users": [{
-            username: "alerox",
+    adminAuth: {                                                                
+        "type": "credentials",                                                  
+        "users": [{                                                             
+            username: "alerox",                                                 
             password: "$2a$12$kKYon3YnMe1A13EJSyDYjeIKYxFdmPKEtD8TEdDunRG8zesp8ZGsK",
-            permissions: "*"
-        }]
-    },
+            permissions: "*"                                                    
+        }]                                                                      
+    },                                                                          
 
     /** The following property can be used to enable HTTPS
      * This property can be either an object, containing both a (private) key

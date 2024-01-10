@@ -2,7 +2,15 @@
     {
         "id": "8769aeb719e4f5f1",
         "type": "tab",
-        "label": "Databases",
+        "label": "Database",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "bfe76d69eb22265e",
+        "type": "tab",
+        "label": "Link",
         "disabled": false,
         "info": "",
         "env": []
@@ -106,9 +114,7 @@
             "1a1a090377e2b43e"
         ],
         "x": 334,
-        "y": 19,
-        "w": 232,
-        "h": 82
+        "y": 19
     },
     {
         "id": "ed8605f54d7c9002",
@@ -224,9 +230,7 @@
             "8d938745e58ebc94"
         ],
         "x": 14,
-        "y": 19,
-        "w": 932,
-        "h": 422
+        "y": 19
     },
     {
         "id": "3617274168fc6518",
@@ -246,9 +250,7 @@
             "0ea4cc4c5a0b4db1"
         ],
         "x": 1034,
-        "y": 359,
-        "w": 1012,
-        "h": 82
+        "y": 359
     },
     {
         "id": "666fdbcb779ca583",
@@ -288,9 +290,7 @@
             "a8c5436832d3ad59"
         ],
         "x": 1034,
-        "y": 19,
-        "w": 1012,
-        "h": 322
+        "y": 19
     },
     {
         "id": "15d84497.52381b",
@@ -445,15 +445,15 @@
         "type": "ui_tab",
         "name": "System Monitor",
         "icon": "memory",
-        "order": 4,
+        "order": 5,
         "disabled": false,
         "hidden": false
     },
     {
         "id": "68ea59a18e66e807",
         "type": "ui_tab",
-        "name": "Home",
-        "icon": "home",
+        "name": "Universe",
+        "icon": "bubble_chart",
         "order": 2,
         "disabled": false,
         "hidden": false
@@ -599,7 +599,7 @@
         "type": "ui_tab",
         "name": "HTML Viewer",
         "icon": "dashboard",
-        "order": 5,
+        "order": 6,
         "disabled": false,
         "hidden": false
     },
@@ -620,7 +620,7 @@
     {
         "id": "51def6da5af481ac",
         "type": "ui_group",
-        "name": "Tunnels",
+        "name": "Database",
         "tab": "1e15f62f82f992f8",
         "order": 1,
         "disp": true,
@@ -631,8 +631,8 @@
     {
         "id": "1e15f62f82f992f8",
         "type": "ui_tab",
-        "name": "Databases",
-        "icon": "fa-database",
+        "name": "Home",
+        "icon": "home",
         "order": 1,
         "disabled": false,
         "hidden": false
@@ -671,12 +671,15 @@
         "url": "https://eth.replit.com"
     },
     {
-        "id": "3aac35bcfa602387",
-        "type": "ui_tab",
-        "name": "Home",
-        "icon": "dashboard",
-        "disabled": false,
-        "hidden": false
+        "id": "e351187f9c95f60d",
+        "type": "ui_group",
+        "name": "Link",
+        "tab": "1e15f62f82f992f8",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
     },
     {
         "id": "3ed3003da454f6e0",
@@ -1122,7 +1125,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 110,
-        "y": 240,
+        "y": 220,
         "wires": [
             [
                 "ef0a383712aca286",
@@ -1441,16 +1444,6 @@
         ]
     },
     {
-        "id": "7e421ebdff7ca827",
-        "type": "comment",
-        "z": "8769aeb719e4f5f1",
-        "name": "MQTT & Uploads ⬇️",
-        "info": "172.17.0.1\nhost.docker.internal\n7396",
-        "x": 160,
-        "y": 540,
-        "wires": []
-    },
-    {
         "id": "e55509c875c2f788",
         "type": "change",
         "z": "8769aeb719e4f5f1",
@@ -1760,7 +1753,7 @@
         "payload": "on",
         "payloadType": "str",
         "x": 110,
-        "y": 160,
+        "y": 140,
         "wires": [
             [
                 "d2445aa91d7af175"
@@ -1788,7 +1781,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 110,
-        "y": 420,
+        "y": 460,
         "wires": [
             [
                 "2b74c256118846d6",
@@ -1800,7 +1793,7 @@
     {
         "id": "4c4f1b7ec5eda293",
         "type": "mqtt in",
-        "z": "8769aeb719e4f5f1",
+        "z": "bfe76d69eb22265e",
         "name": "",
         "topic": "/just/you",
         "qos": "2",
@@ -1810,8 +1803,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 120,
-        "y": 680,
+        "x": 100,
+        "y": 100,
         "wires": [
             [
                 "b8f3b1a2c61cb399"
@@ -1821,7 +1814,7 @@
     {
         "id": "d366f830965a1b3e",
         "type": "mqtt out",
-        "z": "8769aeb719e4f5f1",
+        "z": "bfe76d69eb22265e",
         "name": "",
         "topic": "/its/a/me",
         "qos": "",
@@ -1832,14 +1825,14 @@
         "correl": "",
         "expiry": "",
         "broker": "1c5e119ec6122feb",
-        "x": 900,
-        "y": 620,
+        "x": 920,
+        "y": 40,
         "wires": []
     },
     {
         "id": "7c521f056485ef38",
         "type": "localtunnel",
-        "z": "8769aeb719e4f5f1",
+        "z": "bfe76d69eb22265e",
         "buttonState": false,
         "name": "node-red:1880",
         "input_type": "input",
@@ -1856,8 +1849,8 @@
         "host": "",
         "local_host": "node-red",
         "inputs": 1,
-        "x": 480,
-        "y": 620,
+        "x": 520,
+        "y": 40,
         "wires": [
             [
                 "6ddb14b32286bac6"
@@ -1867,7 +1860,7 @@
     {
         "id": "6ddb14b32286bac6",
         "type": "change",
-        "z": "8769aeb719e4f5f1",
+        "z": "bfe76d69eb22265e",
         "name": "get flow.out",
         "rules": [
             {
@@ -1890,8 +1883,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 730,
-        "y": 620,
+        "x": 750,
+        "y": 40,
         "wires": [
             [
                 "d366f830965a1b3e"
@@ -1901,7 +1894,7 @@
     {
         "id": "b8f3b1a2c61cb399",
         "type": "switch",
-        "z": "8769aeb719e4f5f1",
+        "z": "bfe76d69eb22265e",
         "name": "on / off ?",
         "property": "payload",
         "propertyType": "msg",
@@ -1920,8 +1913,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 260,
-        "y": 680,
+        "x": 280,
+        "y": 100,
         "wires": [
             [
                 "7c521f056485ef38"
@@ -1934,7 +1927,7 @@
     {
         "id": "40b1b6f19e5fe649",
         "type": "http request",
-        "z": "8769aeb719e4f5f1",
+        "z": "bfe76d69eb22265e",
         "name": "GET ifconfig.me/all.json",
         "method": "GET",
         "ret": "obj",
@@ -1947,8 +1940,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 510,
-        "y": 740,
+        "x": 550,
+        "y": 160,
         "wires": [
             [
                 "2e5ec6589697d933"
@@ -1958,7 +1951,7 @@
     {
         "id": "2e5ec6589697d933",
         "type": "change",
-        "z": "8769aeb719e4f5f1",
+        "z": "bfe76d69eb22265e",
         "name": "set flow.out",
         "rules": [
             {
@@ -1986,8 +1979,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 730,
-        "y": 740,
+        "x": 750,
+        "y": 160,
         "wires": [
             [
                 "7c521f056485ef38"
@@ -1997,7 +1990,7 @@
     {
         "id": "60cd7879a306dec1",
         "type": "ngrok",
-        "z": "8769aeb719e4f5f1",
+        "z": "bfe76d69eb22265e",
         "buttonState": true,
         "port": "8880",
         "portType": "num",
@@ -2018,8 +2011,8 @@
         "name": "Node-RED",
         "inputtype": "port",
         "inputs": 1,
-        "x": 470,
-        "y": 840,
+        "x": 510,
+        "y": 220,
         "wires": [
             [
                 "ebfdb1facb8b4a65"
@@ -2029,7 +2022,7 @@
     {
         "id": "5df94c4a1e18080c",
         "type": "mqtt in",
-        "z": "8769aeb719e4f5f1",
+        "z": "bfe76d69eb22265e",
         "name": "",
         "topic": "/just/you/mentor",
         "qos": "2",
@@ -2039,8 +2032,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 140,
-        "y": 840,
+        "x": 120,
+        "y": 220,
         "wires": [
             [
                 "73d7b9e1add6b905"
@@ -2050,7 +2043,7 @@
     {
         "id": "98062a473030ab70",
         "type": "mqtt out",
-        "z": "8769aeb719e4f5f1",
+        "z": "bfe76d69eb22265e",
         "name": "",
         "topic": "/its/a/me",
         "qos": "",
@@ -2061,14 +2054,14 @@
         "correl": "",
         "expiry": "",
         "broker": "1c5e119ec6122feb",
-        "x": 900,
-        "y": 840,
+        "x": 920,
+        "y": 220,
         "wires": []
     },
     {
         "id": "73d7b9e1add6b905",
         "type": "change",
-        "z": "8769aeb719e4f5f1",
+        "z": "bfe76d69eb22265e",
         "name": "on",
         "rules": [
             {
@@ -2085,7 +2078,7 @@
         "to": "",
         "reg": false,
         "x": 290,
-        "y": 840,
+        "y": 220,
         "wires": [
             [
                 "60cd7879a306dec1"
@@ -2095,7 +2088,7 @@
     {
         "id": "ebfdb1facb8b4a65",
         "type": "change",
-        "z": "8769aeb719e4f5f1",
+        "z": "bfe76d69eb22265e",
         "name": "get flow.out",
         "rules": [
             {
@@ -2118,8 +2111,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 730,
-        "y": 840,
+        "x": 750,
+        "y": 220,
         "wires": [
             [
                 "98062a473030ab70"
@@ -2129,14 +2122,14 @@
     {
         "id": "58f4b326a458f7c7",
         "type": "http in",
-        "z": "8769aeb719e4f5f1",
+        "z": "bfe76d69eb22265e",
         "name": "",
-        "url": "/uploads/:filename",
+        "url": "/uploads/:file",
         "method": "put",
         "upload": false,
         "swaggerDoc": "",
-        "x": 160,
-        "y": 960,
+        "x": 120,
+        "y": 340,
         "wires": [
             [
                 "0cfb1cff9b4b2d0c"
@@ -2146,54 +2139,35 @@
     {
         "id": "067240aab2ab920f",
         "type": "http response",
-        "z": "8769aeb719e4f5f1",
+        "z": "bfe76d69eb22265e",
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 910,
-        "y": 1080,
+        "x": 930,
+        "y": 400,
         "wires": []
     },
     {
         "id": "eb083481d2375b38",
         "type": "comment",
-        "z": "8769aeb719e4f5f1",
-        "name": "curl -T <file-path> http://node-red:1880/uploads/<file%20name>",
+        "z": "bfe76d69eb22265e",
+        "name": "curl -T <src-path> http://node-red:1880/uploads/<dest-name>",
         "info": "",
-        "x": 290,
-        "y": 920,
+        "x": 260,
+        "y": 300,
         "wires": []
-    },
-    {
-        "id": "2ce836b1f80ceb6f",
-        "type": "file",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "filename": "filepath",
-        "filenameType": "msg",
-        "appendNewline": false,
-        "createDir": true,
-        "overwriteFile": "true",
-        "encoding": "none",
-        "x": 700,
-        "y": 960,
-        "wires": [
-            [
-                "0c7ba291d3f3e997"
-            ]
-        ]
     },
     {
         "id": "58c22a523feb9981",
         "type": "http in",
-        "z": "8769aeb719e4f5f1",
+        "z": "bfe76d69eb22265e",
         "name": "",
-        "url": "/uploads/:filename",
+        "url": "/uploads/:file",
         "method": "delete",
         "upload": false,
         "swaggerDoc": "",
-        "x": 170,
-        "y": 1080,
+        "x": 130,
+        "y": 460,
         "wires": [
             [
                 "bf96ddb85c5fb2b4"
@@ -2203,89 +2177,63 @@
     {
         "id": "c98826c735c5a51b",
         "type": "comment",
-        "z": "8769aeb719e4f5f1",
-        "name": "curl -X DELETE http://node-red:1880/uploads/<file%20name>",
+        "z": "bfe76d69eb22265e",
+        "name": "curl -X DELETE http://node-red:1880/uploads/<dest-name>",
         "info": "",
-        "x": 280,
-        "y": 1040,
+        "x": 250,
+        "y": 420,
         "wires": []
     },
     {
         "id": "d4a3b1c7d87e5abb",
         "type": "file",
-        "z": "8769aeb719e4f5f1",
+        "z": "bfe76d69eb22265e",
         "name": "",
-        "filename": "filepath",
+        "filename": "filename",
         "filenameType": "msg",
         "appendNewline": true,
         "createDir": false,
         "overwriteFile": "delete",
         "encoding": "none",
-        "x": 710,
-        "y": 1080,
+        "x": 730,
+        "y": 520,
         "wires": [
             [
-                "0c7ba291d3f3e997"
-            ]
-        ]
-    },
-    {
-        "id": "0c7ba291d3f3e997",
-        "type": "change",
-        "z": "8769aeb719e4f5f1",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "OK",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 880,
-        "y": 960,
-        "wires": [
-            [
-                "067240aab2ab920f"
+                "91f6e3de9bb0aa62",
+                "30dd0f7d5640fabd"
             ]
         ]
     },
     {
         "id": "1115c26390ea5daa",
         "type": "template",
-        "z": "8769aeb719e4f5f1",
-        "name": "msg.filepath",
-        "field": "filepath",
+        "z": "bfe76d69eb22265e",
+        "name": "msg.filename",
+        "field": "filename",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "/public/uploads/{{filename}}",
+        "template": "/public/uploads/{{file}}",
         "output": "str",
-        "x": 550,
-        "y": 960,
+        "x": 510,
+        "y": 340,
         "wires": [
             [
-                "2ce836b1f80ceb6f"
+                "df14b114c5762c35"
             ]
         ]
     },
     {
         "id": "0cfb1cff9b4b2d0c",
         "type": "change",
-        "z": "8769aeb719e4f5f1",
+        "z": "bfe76d69eb22265e",
         "name": "",
         "rules": [
             {
                 "t": "set",
-                "p": "filename",
+                "p": "file",
                 "pt": "msg",
-                "to": "req.params.filename",
+                "to": "req.params.file",
                 "tot": "msg"
             }
         ],
@@ -2294,8 +2242,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 370,
-        "y": 960,
+        "x": 310,
+        "y": 340,
         "wires": [
             [
                 "1115c26390ea5daa"
@@ -2305,33 +2253,34 @@
     {
         "id": "e6f37dda54e9a7f3",
         "type": "template",
-        "z": "8769aeb719e4f5f1",
-        "name": "msg.filepath",
-        "field": "filepath",
+        "z": "bfe76d69eb22265e",
+        "name": "msg.filename",
+        "field": "filename",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "/public/uploads/{{filename}}",
+        "template": "/public/uploads/{{file}}",
         "output": "str",
-        "x": 570,
-        "y": 1080,
+        "x": 510,
+        "y": 460,
         "wires": [
             [
-                "d4a3b1c7d87e5abb"
+                "d4a3b1c7d87e5abb",
+                "7a203f1b1ad17f4b"
             ]
         ]
     },
     {
         "id": "bf96ddb85c5fb2b4",
         "type": "change",
-        "z": "8769aeb719e4f5f1",
+        "z": "bfe76d69eb22265e",
         "name": "",
         "rules": [
             {
                 "t": "set",
-                "p": "filename",
+                "p": "file",
                 "pt": "msg",
-                "to": "req.params.filename",
+                "to": "req.params.file",
                 "tot": "msg"
             }
         ],
@@ -2340,12 +2289,153 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 390,
-        "y": 1080,
+        "x": 310,
+        "y": 460,
         "wires": [
             [
                 "e6f37dda54e9a7f3"
             ]
+        ]
+    },
+    {
+        "id": "91f6e3de9bb0aa62",
+        "type": "template",
+        "z": "bfe76d69eb22265e",
+        "name": "msg",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{{{file}}}{{{payload}}} deleted.\n",
+        "output": "str",
+        "x": 930,
+        "y": 460,
+        "wires": [
+            [
+                "21d52b3c9c5e5512"
+            ]
+        ]
+    },
+    {
+        "id": "df14b114c5762c35",
+        "type": "file",
+        "z": "bfe76d69eb22265e",
+        "name": "",
+        "filename": "filename",
+        "filenameType": "msg",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 740,
+        "y": 340,
+        "wires": [
+            [
+                "81481b360f9d4f3d"
+            ]
+        ]
+    },
+    {
+        "id": "7a203f1b1ad17f4b",
+        "type": "trigger",
+        "z": "bfe76d69eb22265e",
+        "name": "",
+        "op1": "",
+        "op2": " NOT",
+        "op1type": "nul",
+        "op2type": "str",
+        "duration": "2",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 740,
+        "y": 460,
+        "wires": [
+            [
+                "91f6e3de9bb0aa62"
+            ]
+        ]
+    },
+    {
+        "id": "30dd0f7d5640fabd",
+        "type": "change",
+        "z": "bfe76d69eb22265e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "reset",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 520,
+        "wires": [
+            [
+                "7a203f1b1ad17f4b"
+            ]
+        ]
+    },
+    {
+        "id": "21d52b3c9c5e5512",
+        "type": "http response",
+        "z": "bfe76d69eb22265e",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 930,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "81481b360f9d4f3d",
+        "type": "template",
+        "z": "bfe76d69eb22265e",
+        "name": "msg",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{{{file}}} uploaded.\n",
+        "output": "str",
+        "x": 930,
+        "y": 340,
+        "wires": [
+            [
+                "067240aab2ab920f"
+            ]
+        ]
+    },
+    {
+        "id": "b2cb76719325d723",
+        "type": "ui_template",
+        "z": "bfe76d69eb22265e",
+        "group": "e351187f9c95f60d",
+        "name": "Home & Uploads",
+        "order": 14,
+        "width": "0",
+        "height": "0",
+        "format": "<div>\n    &nbsp;\n    <button><a id=\"home\" style=\"text-decoration:none\"><i class=\"fa fa-home\"></i> Home</a></button>\n    &nbsp;&nbsp;&nbsp;\n    <button><a id=\"uploads\" style=\"text-decoration:none\"><i class=\"fa fa-upload\"></i> Uploads</a></button>\n    &nbsp;&nbsp;&nbsp;\n    <button><a href=\"..\" style=\"text-decoration:none\"><i class=\"fa fa-pencil\"></i> Editor</a></button>\n</div>\n<script>\n    document.getElementById(\"home\").href = window.location.protocol + \"//\" + window.location.hostname;\n    document.getElementById(\"uploads\").href = window.location.protocol + \"//\" + window.location.hostname + \"/uploads/\"\n</script>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 130,
+        "y": 520,
+        "wires": [
+            []
         ]
     },
     {

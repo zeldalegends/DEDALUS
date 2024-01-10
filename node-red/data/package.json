@@ -23,10 +23,10 @@
         "node-red-contrib-fs": "https://github.com/zeldalegends/node-red-contrib-fs",
         "node-red-contrib-image-tools": "~2.0.4",
         "node-red-contrib-localtunnel": "~1.0.0-2",
-        "node-red-contrib-ngrok": "~2.0.1",
+        "node-red-contrib-ngrok": "~2.1.0",
         "node-red-contrib-os": "~0.2.1",
         "node-red-contrib-watchdirectory": "https://github.com/fatoldsun00/node-red-contrib-watchdirectory",
-        "node-red-dashboard": "~3.6.0",
+        "node-red-dashboard": "~3.6.2",
         "node-red-node-base64": "^0.3.0",
         "node-red-node-ui-table": "~0.4.3",
         "passport-fiware-oauth": "^0.3.0"

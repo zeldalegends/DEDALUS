@@ -1,14 +1,12 @@
 # FROM nodered/node-red:3.0.2
-FROM nodered/node-red:latest
+FROM nodered/node-red:latest-18
 
 # USER ${UID}
 USER 0
+WORKDIR /data
 
 # Copy package.json to the WORKDIR so npm builds all
 # of your added nodes modules for Node-RED
-# COPY data/package.json .
-# RUN npm install --unsafe-perm --no-update-notifier --no-fund --only=production
-WORKDIR /data
 COPY data/package*.json .
 RUN npm install --unsafe-perm --no-update-notifier --no-fund --only=production
 
@@ -19,7 +17,7 @@ RUN npm install --unsafe-perm --no-update-notifier --no-fund --only=production
 # COPY settings.js /data/settings.js
 # COPY flows_cred.json /data/flows_cred.json
 # COPY flows.json /data/flows.json
-COPY data/*.* /data/
+COPY data/* /data/
 
 # You should add extra nodes via your package.json file but you can also add them here:
 #WORKDIR /usr/src/node-red
