@@ -476,7 +476,7 @@ services:
   # expose:
   #   - "1880"      # node-red:1880
     ports:
-      - "1880:1880" # localhost:1880
+      - "8880:1880" # localhost:8880
     environment:
       - ETHEREUM_ADDRESS
       - ETHEREUM_PRIVATE_KEY
