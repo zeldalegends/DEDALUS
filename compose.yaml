@@ -179,16 +179,13 @@ services:
     networks:
       default:
         aliases:
-          - apache
-          - apache-server
-          - http
           - http-server
           - ld-context
           - web-server
   # expose:
-  #   - 80    # http://ld-context
+  #   - "80"      # http://ld-context
     ports:
-      - 80:80 # http://localhost
+      - "8000:80" # http://localhost:8000
     volumes:
       - ./public:/usr/local/apache2/htdocs/
     healthcheck:
@@ -253,7 +250,7 @@ services:
       - ME_CONFIG_BASICAUTH_PASSWORD=
       - ME_CONFIG_MONGODB_SERVER=mongo-db
     healthcheck:
-      test: wget -q --spider http://localhost:8081 || exit 1
+      test: wget -q --spider http://admin:pass@localhost:8081 || exit 1
   #   timeout: 10s
   #   retries: 30
 
@@ -369,16 +366,16 @@ services:
   # networks:
   #   - default
   # expose:
-  #   - "8545"      # ganache:8545
+  #   - "7545"      # ganache:7545
     ports:
-      - "8545:8545" # localhost:8545
-    command: --database.dbPath /db --server.host 0.0.0.0  --server.port 8545 --wallet.mnemonic "visit carpet logic blame furnace confirm rebel deliver medal mean illness error"
+      - "7545:7545" # localhost:7545
+    command: --database.dbPath /db --server.host 0.0.0.0  --server.port 7545 --wallet.mnemonic "visit carpet logic blame furnace confirm rebel deliver medal mean illness error"
     volumes:
   #   - ./ganache/.db:/db
       - ganache-db:/db
     healthcheck:
-      test: node -e 'data=JSON.stringify({jsonrpc:"2.0",method:"eth_blockNumber",params:[],id:1});require("http").request({hostname:"localhost",port:8545,method:"POST",headers:{"Content-Type":"application/json","Content-Length":data.length}},resp=>resp.on("data",chunk=>process.exit(0)).on("error",err=>process.exit(1))).write(data)' && exit 0 || exit 1
-  #   test: curl -f -X POST --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' http://localhost:8545 && exit 0 || exit 1
+      test: node -e 'data=JSON.stringify({jsonrpc:"2.0",method:"eth_blockNumber",params:[],id:1});require("http").request({hostname:"localhost",port:7545,method:"POST",headers:{"Content-Type":"application/json","Content-Length":data.length}},resp=>resp.on("data",chunk=>process.exit(0)).on("error",err=>process.exit(1))).write(data)' && exit 0 || exit 1
+  #   test: curl -f -X POST --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' http://localhost:7545 && exit 0 || exit 1
   #   interval: 5s
   #   timeout: 5s
   #   retries: 5
@@ -402,9 +399,9 @@ services:
   # expose:
   #   - "80"        # lite-explorer:80
     ports:
-      - "8546:80"   # localhost:8546
+      - "7546:80"   # localhost:7546
     environment:
-      - APP_NODE_URL=http://ganache:8545
+      - APP_NODE_URL=http://ganache:7545
     healthcheck:
       test: wget -q --spider http://localhost || exit 1
 
@@ -451,7 +448,7 @@ services:
     build: ./node-red
   # image: nodered/node-red
   # hostname: node-red
-    container_name: node-red
+    container_name: node-red-agent
     depends_on:
       keyrock:
         condition: service_healthy
@@ -486,11 +483,11 @@ services:
     volumes:
       - ./node-red/data:/data
       - ./public:/public
-      - /etc:/mnt/etc
-      - /home:/mnt/home
-      - /root:/mnt/root
   # volumes:
   #   - node-red-data:/data
+
+  # Run once to update dependencies and custom nodes
+  # docker exec -it node-red bash -c "cd /data && npm install --unsafe-perm --no-update-notifier --no-fund --only=production" && docker restart node-red
 
 # # Custom Node-RED-based IoT Agent
 # custom-iota:

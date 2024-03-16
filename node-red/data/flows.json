@@ -130,7 +130,9 @@
             "532151c821513cdf"
         ],
         "x": 294,
-        "y": 19
+        "y": 19,
+        "w": 192,
+        "h": 142
     },
     {
         "id": "67d94c6b13c37cc2",
@@ -145,7 +147,9 @@
             "d3da3a597cad7169"
         ],
         "x": 414,
-        "y": 2879
+        "y": 2879,
+        "w": 192,
+        "h": 82
     },
     {
         "id": "c732681448a48707",
@@ -178,7 +182,9 @@
             "ce581a260ef4589e"
         ],
         "x": 34,
-        "y": 19
+        "y": 19,
+        "w": 892,
+        "h": 442
     },
     {
         "id": "4021db84d1108fd0",
@@ -193,7 +199,9 @@
             "9ad0c568481392a4"
         ],
         "x": 54,
-        "y": 59
+        "y": 59,
+        "w": 172,
+        "h": 82
     },
     {
         "id": "65e5c56aa44c2a1a",
@@ -222,7 +230,6 @@
             "f819a86eaf080f7d",
             "acab54130407b01f",
             "b092d883fb5cf816",
-            "e370a02358e18368",
             "cadf79137d2475c9",
             "4be639eb23286d16",
             "af7b2e417540b94e",
@@ -230,7 +237,9 @@
             "8d938745e58ebc94"
         ],
         "x": 14,
-        "y": 19
+        "y": 19,
+        "w": 932,
+        "h": 422
     },
     {
         "id": "3617274168fc6518",
@@ -250,7 +259,9 @@
             "0ea4cc4c5a0b4db1"
         ],
         "x": 1034,
-        "y": 359
+        "y": 359,
+        "w": 1012,
+        "h": 82
     },
     {
         "id": "666fdbcb779ca583",
@@ -266,9 +277,7 @@
             "f01bdfe1998c8b5c",
             "df9646b86f72f8b3",
             "dd7d7cf0ce1b2a81",
-            "a7421c2dcee4af40",
             "4afe8471efeb3d64",
-            "3daa71f31114633e",
             "49d64956ecb2a056",
             "7ea60dbba947ecfc",
             "28f795d298411cd4",
@@ -278,19 +287,23 @@
             "1ad130c5b73acf4c",
             "c15fd7e5d687bc9a",
             "463446501f7f7b99",
-            "0453516bf9d06061",
             "1d5e64dbaa822e20",
             "ed75f7f1c5275d08",
             "475343401fcb6306",
             "33370102ac08344a",
-            "40a83ad0aad83202",
-            "bbe233b4512a26dd",
-            "9f0f8cba2b6dbd99",
             "bf1e762d076be306",
-            "a8c5436832d3ad59"
+            "cf75b30eb23a4499",
+            "9f0f8cba2b6dbd99",
+            "bbe233b4512a26dd",
+            "a8c5436832d3ad59",
+            "0453516bf9d06061",
+            "a7421c2dcee4af40",
+            "3daa71f31114633e"
         ],
         "x": 1034,
-        "y": 19
+        "y": 19,
+        "w": 1012,
+        "h": 322
     },
     {
         "id": "15d84497.52381b",
@@ -4363,32 +4376,6 @@
         ]
     },
     {
-        "id": "e370a02358e18368",
-        "type": "inject",
-        "z": "e4d1f70f0b51d593",
-        "g": "65e5c56aa44c2a1a",
-        "name": "Entirety (TBD)",
-        "props": [
-            {
-                "p": "orion",
-                "v": "http://217.172.12.211:1027",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 130,
-        "y": 400,
-        "wires": [
-            [
-                "4f617122750c0f43"
-            ]
-        ]
-    },
-    {
         "id": "bd66007112d574d4",
         "type": "comment",
         "z": "e4d1f70f0b51d593",
@@ -4466,6 +4453,12 @@
                 "keyValue": "X-Auth-Token",
                 "valueType": "msg",
                 "valueValue": "x-auth-token"
+            },
+            {
+                "keyType": "Accept",
+                "keyValue": "",
+                "valueType": "text/plain",
+                "valueValue": ""
             }
         ],
         "x": 550,
@@ -6522,7 +6515,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1410,
+        "x": 1430,
         "y": 120,
         "wires": [
             [
@@ -6610,39 +6603,8 @@
         "y": 180,
         "wires": [
             [
-                "a7421c2dcee4af40",
-                "4afe8471efeb3d64"
-            ]
-        ]
-    },
-    {
-        "id": "a7421c2dcee4af40",
-        "type": "change",
-        "z": "e4d1f70f0b51d593",
-        "g": "666fdbcb779ca583",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "x-auth-token",
-                "pt": "msg",
-                "to": "payload.access_token",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1180,
-        "y": 240,
-        "wires": [
-            [
-                "0453516bf9d06061",
-                "bbe233b4512a26dd",
-                "9f0f8cba2b6dbd99",
-                "a8c5436832d3ad59"
+                "4afe8471efeb3d64",
+                "a7421c2dcee4af40"
             ]
         ]
     },
@@ -6663,38 +6625,6 @@
         "x": 1880,
         "y": 180,
         "wires": []
-    },
-    {
-        "id": "3daa71f31114633e",
-        "type": "http request",
-        "z": "e4d1f70f0b51d593",
-        "g": "666fdbcb779ca583",
-        "name": "GET v2/entities",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "query",
-        "url": "{{{orion}}}/v2/entities",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [
-            {
-                "keyType": "other",
-                "keyValue": "X-Auth-Token",
-                "valueType": "msg",
-                "valueValue": "x-auth-token"
-            }
-        ],
-        "x": 1680,
-        "y": 240,
-        "wires": [
-            [
-                "49d64956ecb2a056"
-            ]
-        ]
     },
     {
         "id": "49d64956ecb2a056",
@@ -6873,7 +6803,7 @@
         "syntax": "mustache",
         "template": "username={{username}}&password={{password}}&grant_type=password",
         "output": "str",
-        "x": 1380,
+        "x": 1400,
         "y": 180,
         "wires": [
             [
@@ -7032,27 +6962,6 @@
         "wires": [
             [
                 "9319141b70e1dcfc"
-            ]
-        ]
-    },
-    {
-        "id": "0453516bf9d06061",
-        "type": "template",
-        "z": "e4d1f70f0b51d593",
-        "d": true,
-        "g": "666fdbcb779ca583",
-        "name": "optional payload",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "json",
-        "syntax": "mustache",
-        "template": "{\"options\": \"keyValues\"}",
-        "output": "json",
-        "x": 1500,
-        "y": 220,
-        "wires": [
-            [
-                "3daa71f31114633e"
             ]
         ]
     },
@@ -7243,27 +7152,6 @@
         ]
     },
     {
-        "id": "40a83ad0aad83202",
-        "type": "template",
-        "z": "e4d1f70f0b51d593",
-        "d": true,
-        "g": "666fdbcb779ca583",
-        "name": "Type = Building",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "json",
-        "syntax": "mustache",
-        "template": "{\n    \"type\": \"https://uri.fiware.org/ns/data-models#Building\"\n}\n",
-        "output": "json",
-        "x": 1400,
-        "y": 280,
-        "wires": [
-            [
-                "c15fd7e5d687bc9a"
-            ]
-        ]
-    },
-    {
         "id": "0ea4cc4c5a0b4db1",
         "type": "http request",
         "z": "e4d1f70f0b51d593",
@@ -7297,108 +7185,6 @@
         ]
     },
     {
-        "id": "9f0f8cba2b6dbd99",
-        "type": "debug",
-        "z": "e4d1f70f0b51d593",
-        "g": "666fdbcb779ca583",
-        "name": "set flow vars and access token",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "statusCode&\" - \"&(payload.error?payload.error:payload.access_token)",
-        "statusType": "jsonata",
-        "x": 1430,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "bbe233b4512a26dd",
-        "type": "change",
-        "z": "e4d1f70f0b51d593",
-        "g": "666fdbcb779ca583",
-        "name": "set flow vars and access token",
-        "rules": [
-            {
-                "t": "set",
-                "p": "keyrock",
-                "pt": "flow",
-                "to": "keyrock",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "clientId",
-                "pt": "flow",
-                "to": "clientId",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "clientSecret",
-                "pt": "flow",
-                "to": "clientSecret",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "username",
-                "pt": "flow",
-                "to": "username",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "password",
-                "pt": "flow",
-                "to": "password",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "orion",
-                "pt": "flow",
-                "to": "orion",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "orion-ld",
-                "pt": "flow",
-                "to": "orion-ld",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "x-auth-token",
-                "pt": "flow",
-                "to": "payload.access_token",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "link",
-                "pt": "flow",
-                "to": "<https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld>; rel=\"http://www.w3.org/ns/json-ld#context\"; type=\"application/ld+json\"",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1430,
-        "y": 240,
-        "wires": [
-            [
-                "3daa71f31114633e"
-            ]
-        ]
-    },
-    {
         "id": "bf1e762d076be306",
         "type": "comment",
         "z": "e4d1f70f0b51d593",
@@ -7408,26 +7194,6 @@
         "x": 1890,
         "y": 60,
         "wires": []
-    },
-    {
-        "id": "a8c5436832d3ad59",
-        "type": "template",
-        "z": "e4d1f70f0b51d593",
-        "g": "666fdbcb779ca583",
-        "name": "query by type",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "json",
-        "syntax": "mustache",
-        "template": "{\n    \"type\": \"TemperatureSensor\"\n}\n",
-        "output": "json",
-        "x": 1380,
-        "y": 300,
-        "wires": [
-            [
-                "c15fd7e5d687bc9a"
-            ]
-        ]
     },
     {
         "id": "4be639eb23286d16",
@@ -8713,6 +8479,233 @@
                 "4f617122750c0f43",
                 "52b33d29afa99a83",
                 "4be639eb23286d16"
+            ]
+        ]
+    },
+    {
+        "id": "cf75b30eb23a4499",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "d": true,
+        "g": "666fdbcb779ca583",
+        "name": "LD as v2",
+        "rules": [],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1520,
+        "y": 260,
+        "wires": [
+            [
+                "3daa71f31114633e"
+            ]
+        ]
+    },
+    {
+        "id": "9f0f8cba2b6dbd99",
+        "type": "debug",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "set flow vars",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "statusCode&\" - \"&(payload.error?payload.error:payload.access_token)",
+        "statusType": "jsonata",
+        "x": 1150,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "bbe233b4512a26dd",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "set flow vars",
+        "rules": [
+            {
+                "t": "set",
+                "p": "keyrock",
+                "pt": "flow",
+                "to": "keyrock",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "clientId",
+                "pt": "flow",
+                "to": "clientId",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "clientSecret",
+                "pt": "flow",
+                "to": "clientSecret",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "username",
+                "pt": "flow",
+                "to": "username",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "password",
+                "pt": "flow",
+                "to": "password",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "orion",
+                "pt": "flow",
+                "to": "orion",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "orion-ld",
+                "pt": "flow",
+                "to": "orion-ld",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "flow",
+                "to": "payload.access_token",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "link",
+                "pt": "flow",
+                "to": "<https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld>; rel=\"http://www.w3.org/ns/json-ld#context\"; type=\"application/ld+json\"",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1150,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a8c5436832d3ad59",
+        "type": "template",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "query by type",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n    \"type\": \"TemperatureSensor\"\n}\n",
+        "output": "json",
+        "x": 1400,
+        "y": 300,
+        "wires": [
+            [
+                "c15fd7e5d687bc9a",
+                "cf75b30eb23a4499"
+            ]
+        ]
+    },
+    {
+        "id": "0453516bf9d06061",
+        "type": "template",
+        "z": "e4d1f70f0b51d593",
+        "d": true,
+        "g": "666fdbcb779ca583",
+        "name": "optional",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\"options\": \"keyValues\"}",
+        "output": "json",
+        "x": 1380,
+        "y": 240,
+        "wires": [
+            [
+                "3daa71f31114633e"
+            ]
+        ]
+    },
+    {
+        "id": "a7421c2dcee4af40",
+        "type": "change",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "x-auth-token",
+                "pt": "msg",
+                "to": "payload.access_token",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1180,
+        "y": 240,
+        "wires": [
+            [
+                "9f0f8cba2b6dbd99",
+                "bbe233b4512a26dd",
+                "a8c5436832d3ad59",
+                "0453516bf9d06061",
+                "3daa71f31114633e"
+            ]
+        ]
+    },
+    {
+        "id": "3daa71f31114633e",
+        "type": "http request",
+        "z": "e4d1f70f0b51d593",
+        "g": "666fdbcb779ca583",
+        "name": "GET v2/entities",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "query",
+        "url": "{{{orion}}}/v2/entities",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            }
+        ],
+        "x": 1680,
+        "y": 240,
+        "wires": [
+            [
+                "49d64956ecb2a056"
             ]
         ]
     },
@@ -16932,6 +16925,12 @@
                 "keyValue": "X-Auth-Token",
                 "valueType": "msg",
                 "valueValue": "x-auth-token"
+            },
+            {
+                "keyType": "Accept",
+                "keyValue": "",
+                "valueType": "text/plain",
+                "valueValue": ""
             }
         ],
         "x": 450,
