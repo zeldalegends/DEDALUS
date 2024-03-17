@@ -578,58 +578,6 @@
             }
         }
     },
-    "node-red-contrib-ethers": {
-        "name": "node-red-contrib-ethers",
-        "version": "1.0.7-hybuild",
-        "local": true,
-        "user": true,
-        "nodes": {
-            "ethers-wallet": {
-                "name": "ethers-wallet",
-                "types": [
-                    "ethers-wallet"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "node-red-contrib-ethers",
-                "file": "/data/node_modules/node-red-contrib-ethers/node-red-contrib-ethers/node-ethers-wallet.js"
-            },
-            "ethers-contract": {
-                "name": "ethers-contract",
-                "types": [
-                    "ethers-contract"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "node-red-contrib-ethers",
-                "file": "/data/node_modules/node-red-contrib-ethers/node-red-contrib-ethers/node-ethers-contract.js"
-            },
-            "ethers-transaction": {
-                "name": "ethers-transaction",
-                "types": [
-                    "ethers-transaction"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "node-red-contrib-ethers",
-                "file": "/data/node_modules/node-red-contrib-ethers/node-red-contrib-ethers/node-ethers-transaction.js"
-            },
-            "ethers-network": {
-                "name": "ethers-network",
-                "types": [
-                    "ethers-network"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "node-red-contrib-ethers",
-                "file": "/data/node_modules/node-red-contrib-ethers/node-red-contrib-ethers/node-ethers-network.js"
-            }
-        }
-    },
     "node-red-contrib-fiware_official": {
         "name": "node-red-contrib-fiware_official",
         "version": "1.0.3",
@@ -744,7 +692,7 @@
     },
     "node-red-dashboard": {
         "name": "node-red-dashboard",
-        "version": "3.6.2",
+        "version": "3.6.5",
         "local": true,
         "user": true,
         "nodes": {
@@ -1021,7 +969,7 @@
     },
     "node-red-contrib-ngrok": {
         "name": "node-red-contrib-ngrok",
-        "version": "2.1.0",
+        "version": "3.1.0",
         "local": true,
         "user": true,
         "nodes": {
@@ -1041,7 +989,7 @@
     },
     "node-red-contrib-image-tools": {
         "name": "node-red-contrib-image-tools",
-        "version": "2.0.4",
+        "version": "2.1.1",
         "local": true,
         "user": true,
         "nodes": {
@@ -1141,6 +1089,459 @@
                 "user": false,
                 "module": "node-red-contrib-os",
                 "file": "/data/node_modules/node-red-contrib-os/os/os.js"
+            }
+        }
+    },
+    "@andreashauschild/node-red-contrib-ethers-node": {
+        "name": "@andreashauschild/node-red-contrib-ethers-node",
+        "version": "0.0.29",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "transfer": {
+                "name": "transfer",
+                "types": [
+                    "ethers-transfer"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "@andreashauschild/node-red-contrib-ethers-node",
+                "file": "/data/node_modules/@andreashauschild/node-red-contrib-ethers-node/nodes/ethers-transfer.js"
+            },
+            "ethers-credentials": {
+                "name": "ethers-credentials",
+                "types": [
+                    "ethers-credentials"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "@andreashauschild/node-red-contrib-ethers-node",
+                "file": "/data/node_modules/@andreashauschild/node-red-contrib-ethers-node/nodes/ethers-credentials.js"
+            },
+            "ethers-rpc": {
+                "name": "ethers-rpc",
+                "types": [
+                    "ethers-rpc"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "@andreashauschild/node-red-contrib-ethers-node",
+                "file": "/data/node_modules/@andreashauschild/node-red-contrib-ethers-node/nodes/ethers-rpc.js"
+            },
+            "ethers-deploy": {
+                "name": "ethers-deploy",
+                "types": [
+                    "ethers-deploy"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "@andreashauschild/node-red-contrib-ethers-node",
+                "file": "/data/node_modules/@andreashauschild/node-red-contrib-ethers-node/nodes/ethers-deploy.js"
+            },
+            "ethers-contract": {
+                "name": "ethers-contract",
+                "types": [
+                    "ethers-contract"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "@andreashauschild/node-red-contrib-ethers-node",
+                "file": "/data/node_modules/@andreashauschild/node-red-contrib-ethers-node/nodes/ethers-contract.js"
+            },
+            "ethers-write-contract": {
+                "name": "ethers-write-contract",
+                "types": [
+                    "ethers-write-contract"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "@andreashauschild/node-red-contrib-ethers-node",
+                "file": "/data/node_modules/@andreashauschild/node-red-contrib-ethers-node/nodes/ethers-write-contract.js"
+            },
+            "ethers-read-contract": {
+                "name": "ethers-read-contract",
+                "types": [
+                    "ethers-read-contract"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "@andreashauschild/node-red-contrib-ethers-node",
+                "file": "/data/node_modules/@andreashauschild/node-red-contrib-ethers-node/nodes/ethers-read-contract.js"
+            },
+            "ethers-read-account": {
+                "name": "ethers-read-account",
+                "types": [
+                    "ethers-read-account"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "@andreashauschild/node-red-contrib-ethers-node",
+                "file": "/data/node_modules/@andreashauschild/node-red-contrib-ethers-node/nodes/ethers-read-account.js"
+            },
+            "ethers-events": {
+                "name": "ethers-events",
+                "types": [
+                    "ethers-events"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "@andreashauschild/node-red-contrib-ethers-node",
+                "file": "/data/node_modules/@andreashauschild/node-red-contrib-ethers-node/nodes/ethers-events.js"
+            },
+            "ethers-provider": {
+                "name": "ethers-provider",
+                "types": [
+                    "ethers-provider"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "@andreashauschild/node-red-contrib-ethers-node",
+                "file": "/data/node_modules/@andreashauschild/node-red-contrib-ethers-node/nodes/ethers-provider.js"
+            }
+        }
+    },
+    "node-red-contrib-ngsi-ld": {
+        "name": "node-red-contrib-ngsi-ld",
+        "version": "0.4.0",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "NGSI-LD-entity": {
+                "name": "NGSI-LD-entity",
+                "types": [
+                    "NGSI-LD Entity"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-ngsi-ld",
+                "file": "/data/node_modules/node-red-contrib-ngsi-ld/src/nodes/NGSI-LD/entity/entity.js"
+            },
+            "NGSI-LD-entities": {
+                "name": "NGSI-LD-entities",
+                "types": [
+                    "NGSI-LD entities"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-ngsi-ld",
+                "file": "/data/node_modules/node-red-contrib-ngsi-ld/src/nodes/NGSI-LD/entities/entities.js"
+            },
+            "NGSI-LD-entity-attributes": {
+                "name": "NGSI-LD-entity-attributes",
+                "types": [
+                    "NGSI-LD entity attributes"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-ngsi-ld",
+                "file": "/data/node_modules/node-red-contrib-ngsi-ld/src/nodes/NGSI-LD/entity-attributes/entity-attributes.js"
+            },
+            "NGSI-LD-entity-attribute": {
+                "name": "NGSI-LD-entity-attribute",
+                "types": [
+                    "NGSI-LD entity attribute"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-ngsi-ld",
+                "file": "/data/node_modules/node-red-contrib-ngsi-ld/src/nodes/NGSI-LD/entity-attribute/entity-attribute.js"
+            },
+            "NGSI-LD-batch-operations": {
+                "name": "NGSI-LD-batch-operations",
+                "types": [
+                    "NGSI-LD Batch operations"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-ngsi-ld",
+                "file": "/data/node_modules/node-red-contrib-ngsi-ld/src/nodes/NGSI-LD/batch-operations/batch-operations.js"
+            },
+            "NGSI-LD-broker": {
+                "name": "NGSI-LD-broker",
+                "types": [
+                    "NGSI-LD broker"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-ngsi-ld",
+                "file": "/data/node_modules/node-red-contrib-ngsi-ld/src/nodes/NGSI-LD/ngsi-ld-broker/ngsi-ld-broker.js"
+            },
+            "NGSI-LD-broker-version": {
+                "name": "NGSI-LD-broker-version",
+                "types": [
+                    "NGSI-LD broker version"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-ngsi-ld",
+                "file": "/data/node_modules/node-red-contrib-ngsi-ld/src/nodes/NGSI-LD/version/version.js"
+            },
+            "NGSI-LD-encode": {
+                "name": "NGSI-LD-encode",
+                "types": [
+                    "NGSI-LD Encode"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-ngsi-ld",
+                "file": "/data/node_modules/node-red-contrib-ngsi-ld/src/nodes/NGSI-LD/encode/encode.js"
+            },
+            "NGSI-LD-decode": {
+                "name": "NGSI-LD-decode",
+                "types": [
+                    "NGSI-LD Decode"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-ngsi-ld",
+                "file": "/data/node_modules/node-red-contrib-ngsi-ld/src/nodes/NGSI-LD/decode/decode.js"
+            }
+        }
+    },
+    "node-red-contrib-letsfiware-ngsi": {
+        "name": "node-red-contrib-letsfiware-ngsi",
+        "version": "0.17.0",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "NGSI-entity": {
+                "name": "NGSI-entity",
+                "types": [
+                    "NGSI Entity"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-letsfiware-ngsi",
+                "file": "/data/node_modules/node-red-contrib-letsfiware-ngsi/src/nodes/NGSI/entity/entity.js"
+            },
+            "NGSI-attributes": {
+                "name": "NGSI-attributes",
+                "types": [
+                    "NGSI Attributes"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-letsfiware-ngsi",
+                "file": "/data/node_modules/node-red-contrib-letsfiware-ngsi/src/nodes/NGSI/attributes/attributes.js"
+            },
+            "NGSI-attribute": {
+                "name": "NGSI-attribute",
+                "types": [
+                    "NGSI Attribute"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-letsfiware-ngsi",
+                "file": "/data/node_modules/node-red-contrib-letsfiware-ngsi/src/nodes/NGSI/attribute/attribute.js"
+            },
+            "NGSI-attribute-value": {
+                "name": "NGSI-attribute-value",
+                "types": [
+                    "NGSI Attribute value"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-letsfiware-ngsi",
+                "file": "/data/node_modules/node-red-contrib-letsfiware-ngsi/src/nodes/NGSI/attribute-value/attribute-value.js"
+            },
+            "NGSI-source": {
+                "name": "NGSI-source",
+                "types": [
+                    "NGSI source"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-letsfiware-ngsi",
+                "file": "/data/node_modules/node-red-contrib-letsfiware-ngsi/src/nodes/NGSI/source/source.js"
+            },
+            "NGSI-batch-update": {
+                "name": "NGSI-batch-update",
+                "types": [
+                    "NGSI Batch update"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-letsfiware-ngsi",
+                "file": "/data/node_modules/node-red-contrib-letsfiware-ngsi/src/nodes/NGSI/batch-update/batch-update.js"
+            },
+            "NGSI-subscription": {
+                "name": "NGSI-subscription",
+                "types": [
+                    "NGSI subscription"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-letsfiware-ngsi",
+                "file": "/data/node_modules/node-red-contrib-letsfiware-ngsi/src/nodes/NGSI/subscription/subscription.js"
+            },
+            "NGSI-registration": {
+                "name": "NGSI-registration",
+                "types": [
+                    "NGSI registration"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-letsfiware-ngsi",
+                "file": "/data/node_modules/node-red-contrib-letsfiware-ngsi/src/nodes/NGSI/registration/registration.js"
+            },
+            "NGSI-types": {
+                "name": "NGSI-types",
+                "types": [
+                    "NGSI Types"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-letsfiware-ngsi",
+                "file": "/data/node_modules/node-red-contrib-letsfiware-ngsi/src/nodes/NGSI/types/types.js"
+            },
+            "NGSI-encode": {
+                "name": "NGSI-encode",
+                "types": [
+                    "NGSI Encode"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-letsfiware-ngsi",
+                "file": "/data/node_modules/node-red-contrib-letsfiware-ngsi/src/nodes/NGSI/encode/encode.js"
+            },
+            "NGSI-decode": {
+                "name": "NGSI-decode",
+                "types": [
+                    "NGSI Decode"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-letsfiware-ngsi",
+                "file": "/data/node_modules/node-red-contrib-letsfiware-ngsi/src/nodes/NGSI/decode/decode.js"
+            },
+            "FIWARE-Service-and-ServicePath": {
+                "name": "FIWARE-Service-and-ServicePath",
+                "types": [
+                    "Service and ServicePath"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-letsfiware-ngsi",
+                "file": "/data/node_modules/node-red-contrib-letsfiware-ngsi/src/nodes/NGSI/service-and-servicepath/service-and-servicepath.js"
+            },
+            "NGSI-GTFS-Realtime": {
+                "name": "NGSI-GTFS-Realtime",
+                "types": [
+                    "GTFS Realtime to NGSI"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-letsfiware-ngsi",
+                "file": "/data/node_modules/node-red-contrib-letsfiware-ngsi/src/nodes/NGSI/gtfs-realtime/gtfs-realtime.js"
+            },
+            "NGSI-to-worldmap": {
+                "name": "NGSI-to-worldmap",
+                "types": [
+                    "NGSI to worldmap"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-letsfiware-ngsi",
+                "file": "/data/node_modules/node-red-contrib-letsfiware-ngsi/src/nodes/NGSI/to-worldmap/to-worldmap.js"
+            },
+            "NGSI-to-dashboard": {
+                "name": "NGSI-to-dashboard",
+                "types": [
+                    "NGSI to dashboard"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-letsfiware-ngsi",
+                "file": "/data/node_modules/node-red-contrib-letsfiware-ngsi/src/nodes/NGSI/to-dashboard/to-dashboard.js"
+            },
+            "OpenWeatherMap-to-NGSI": {
+                "name": "OpenWeatherMap-to-NGSI",
+                "types": [
+                    "OpenWeatherMap to NGSI"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-letsfiware-ngsi",
+                "file": "/data/node_modules/node-red-contrib-letsfiware-ngsi/src/nodes/NGSI/openweathermap_to_ngsi/openweathermap_to_ngsi.js"
+            },
+            "FIWARE-version": {
+                "name": "FIWARE-version",
+                "types": [
+                    "FIWARE version"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-letsfiware-ngsi",
+                "file": "/data/node_modules/node-red-contrib-letsfiware-ngsi/src/nodes/NGSI/version/version.js"
+            },
+            "Historical-Context": {
+                "name": "Historical-Context",
+                "types": [
+                    "Historical Context"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-letsfiware-ngsi",
+                "file": "/data/node_modules/node-red-contrib-letsfiware-ngsi/src/nodes/NGSI/historical-context/historical-context.js"
+            },
+            "NGSI-timeseries": {
+                "name": "NGSI-timeseries",
+                "types": [
+                    "NGSI timeseries"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-letsfiware-ngsi",
+                "file": "/data/node_modules/node-red-contrib-letsfiware-ngsi/src/nodes/NGSI/timeseries/timeseries.js"
+            },
+            "Open-APIs": {
+                "name": "Open-APIs",
+                "types": [
+                    "Open APIs"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-letsfiware-ngsi",
+                "file": "/data/node_modules/node-red-contrib-letsfiware-ngsi/src/nodes/NGSI/open-apis/open-apis.js"
             }
         }
     }

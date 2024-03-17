@@ -169,7 +169,7 @@ services:
   web:
     image: httpd:alpine
   # hostname: web
-    container_name: apache-server
+    container_name: ld-context
   # restart: on-failure # for Docker Compose
   # deploy:             # for Docker Swarm
   #   mode: replicated
@@ -179,13 +179,12 @@ services:
     networks:
       default:
         aliases:
-          - http-server
-          - ld-context
+          - apache-server
           - web-server
   # expose:
   #   - "80"      # http://ld-context
     ports:
-      - "8000:80" # http://localhost:8000
+      - "3004:80" # http://localhost:3004
     volumes:
       - ./public:/usr/local/apache2/htdocs/
     healthcheck:
@@ -212,14 +211,14 @@ services:
   #   - "27017:27017" # localhost:27017
     command: --nojournal
     volumes:
-      - mongo-db:/data/db
-      - mongo-db-config:/data/configdb
+      - mongo-db:/data
       - ./mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
     healthcheck:
   #   test: |
   #     mongo --quiet localhost/test --eval 'quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)' && exit 0 || exit 1
   #   interval: 5s
-      test: echo 'db.runCommand({serverStatus:1}).ok' | mongosh localhost:27017/test --quiet
+      test: mongosh --eval "db.adminCommand('ping')"
+  #   test: echo 'db.runCommand({serverStatus:1}).ok' | mongosh localhost:27017/test --quiet
   #   interval: 10s
   #   timeout: 10s
   #   start_period: 10s
@@ -374,7 +373,9 @@ services:
   #   - ./ganache/.db:/db
       - ganache-db:/db
     healthcheck:
-      test: node -e 'data=JSON.stringify({jsonrpc:"2.0",method:"eth_blockNumber",params:[],id:1});require("http").request({hostname:"localhost",port:7545,method:"POST",headers:{"Content-Type":"application/json","Content-Length":data.length}},resp=>resp.on("data",chunk=>process.exit(0)).on("error",err=>process.exit(1))).write(data)' && exit 0 || exit 1
+      test: node -e "fetch('http://localhost:7545',{method:'POST',body:JSON.stringify({id:1,jsonrpc:'2.0',method:'eth_blockNumber'})}).catch(err=>process.exit(1))"
+  #   test: node -e "fetch('http://localhost:7545', { method:'POST', headers:{ 'content-type':'application/json' }, body:JSON.stringify({ id:1, jsonrpc:'2.0', method:'eth_blockNumber' }) }).then(res => res.json()).then(res => process.exit(0)).catch(err => process.exit(1));"
+  #   test: node -e 'data=JSON.stringify({jsonrpc:"2.0",method:"eth_blockNumber",params:[],id:1});require("http").request({hostname:"localhost",port:7545,method:"POST",headers:{"Content-Type":"application/json","Content-Length":data.length}},resp=>resp.on("data",chunk=>process.exit(0)).on("error",err=>process.exit(1))).write(data)' && exit 0 || exit 1
   #   test: curl -f -X POST --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' http://localhost:7545 && exit 0 || exit 1
   #   interval: 5s
   #   timeout: 5s
@@ -448,7 +449,7 @@ services:
     build: ./node-red
   # image: nodered/node-red
   # hostname: node-red
-    container_name: node-red-agent
+    container_name: visual-iot-agent
     depends_on:
       keyrock:
         condition: service_healthy
@@ -506,9 +507,8 @@ services:
 # Volumes
 volumes:
   ganache-db: ~
-  mysql-db: ~
   mongo-db: ~
-  mongo-db-config: ~
+  mysql-db: ~
 # node-red-data: ~
 
 

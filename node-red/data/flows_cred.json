@@ -5,16 +5,13 @@
         "client_id": "tutorial-dckr-site-0000-xpresswebapp",
         "client_secret": "tutorial-dckr-site-0000-clientsecret"
     },
-    "a46f63f7bc8183e7": {
-        "privateKey": "${ETHEREUM_PRIVATE_KEY}"
-    },
-    "93b18379800c0f5a": {
-        "keyPrivate": "${ETHEREUM_PRIVATE_KEY}"
-    },
     "b4799249b6347148": {
         "authtoken": "2Wv1EQah5cDUI1HrreVFVIR88Kj_7xyHSvoQYzJufGB3pb1kZ"
     },
-    "ab8a838eb23942ff": {},
+    "ab8a838eb23942ff": {
+        "username": "alice-the-admin@test.com",
+        "password": "test"
+    },
     "3e5ce0e41afcd72f": {},
     "ea805040d9020dd5": {},
     "36a9710a40eeec8e": {},
@@ -28,5 +25,14 @@
     "c15fd7e5d687bc9a": {},
     "c81b343c2e7505ee": {},
     "3daa71f31114633e": {},
-    "2c9c4ad120cc4554": {}
+    "2c9c4ad120cc4554": {},
+    "4309ab3d92258a66": {},
+    "63ac671491a13a4b": {
+        "privatekey": "0x18bad27b0ce67b140d49667e030cdb5067c362390a93d8ddae34fd2b436c9f64"
+    },
+    "4094b30c0af73d8d": {},
+    "e68f83d2f31fa5c0": {},
+    "ce733e8a4f0e650a": {},
+    "42cd9ca6be76b1ea": {},
+    "f129b77e85428011": {}
 }

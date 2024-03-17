@@ -1,0 +1,8 @@
+{
+    "keccak256": {
+        "spec": "keccak256",
+        "module": "keccak256",
+        "builtin": false,
+        "known": false
+    }
+}
