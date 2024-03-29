@@ -71,7 +71,7 @@ All its services can be initialised from the command-line by running the bash sc
 clone the repository and create the necessary images by running the commands as shown below:
 
 ```console
-git clone https://gitpod.io/#https://github.com/engsep/HYPERRIDE/tree/D5.6.git
+git clone https://github.com/engsep/HYPERRIDE.git
 cd HYPERRIDE
 ./start.sh (or start.bat on Windows)
 ```

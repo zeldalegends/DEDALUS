@@ -1,6 +1,6 @@
 # version: "3.9"
 services:
-  # Orion v2 Context Broker
+# Orion v2 Context Broker
   orion:
     image: fiware/orion #:3.8.0
   # hostname: orion
@@ -24,7 +24,7 @@ services:
   # healthcheck:
   #   interval: 15s
 
-  # Orion-LD Context Broker
+# Orion-LD Context Broker
   orion-ld:
     image: fiware/orion-ld #:1.1.2
   # hostname: orion-ld
@@ -49,7 +49,7 @@ services:
       test: curl -sf http://localhost:1026/ngsi-ld/ex/v1/version || exit 1
   #   interval: 5s
 
-  # Keyrock IdM
+# Keyrock IdM
   keyrock:
     image: fiware/idm #:8.3.2-distroless
   # hostname: keyrock
@@ -85,7 +85,7 @@ services:
   # healthcheck:
   #   interval: 5s
 
-  # Wilma PEP Proxy for Orion (v2)
+# Wilma PEP Proxy for Orion (v2)
   orion-proxy:
     image: fiware/pep-proxy #:8.3.0-distroless
   # hostname: orion-proxy
@@ -125,7 +125,7 @@ services:
   # healthcheck:
   #   interval: 50s
 
-  # Wilma PEP Proxy for Orion-LD
+# Wilma PEP Proxy for Orion-LD
   orion-ld-proxy:
     image: fiware/pep-proxy #:8.3.0-distroless
   # hostname: orion-ld-proxy
@@ -165,7 +165,7 @@ services:
   # healthcheck:
   #   interval: 50s
 
-  # Apache Server for NGSI-LD @context files
+# Apache Server for NGSI-LD @context files
   web:
     image: httpd:alpine
   # hostname: web
@@ -188,13 +188,13 @@ services:
     volumes:
       - ./public:/usr/local/apache2/htdocs/
     healthcheck:
-      test: wget --spider -q http://localhost || exit 1
+      test: (wget --server-response --spider --quiet  http://ld-context/ngsi-context.jsonld 2>&1 | awk 'NR==1{print $$2}'|  grep -q -e "200") || exit 1
+  #   test: wget --spider -q http://localhost || exit 1
   #   interval: 15s
 
+# Databases
 
-  # Databases
-
-  # Mongo DB (Orion)
+# Mongo DB (Orion)
   mongo-db:
     image: mongo:5 # 5.0.14
   # hostname: mongo-db
@@ -214,8 +214,7 @@ services:
       - mongo-db:/data
       - ./mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
     healthcheck:
-  #   test: |
-  #     mongo --quiet localhost/test --eval 'quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)' && exit 0 || exit 1
+  #   test: mongo --quiet 127.0.0.1/test --eval 'quit(db.runCommand({ ping:1 }).ok?0:2)' && echo 0 || echo 1
   #   interval: 5s
       test: mongosh --eval "db.adminCommand('ping')"
   #   test: echo 'db.runCommand({serverStatus:1}).ok' | mongosh localhost:27017/test --quiet
@@ -224,7 +223,7 @@ services:
   #   start_period: 10s
   #   retries: 5
 
-  # Mongo DB front-end
+# Mongo DB front-end
   mongo-express:
     image: mongo-express #:1.0.0-alpha
   # hostname: mongo-express
@@ -258,7 +257,7 @@ services:
   # docker run -it --rm --net=fiware_default --name fe-mongo -e ME_CONFIG_MONGODB_SERVER=mongo-db mongo-express
   # docker run -it --rm --net=fiware_default --name ngrok-mongo -e NGROK_AUTHTOKEN=2L2kdrNlcTBcxDERiOxTW3kyEaV_3siN3rWauYmt4KLGHrHZg ngrok/ngrok:latest http fe-mongo:8081
 
-  # MySQL DB (Keyrock)
+# MySQL DB (Keyrock)
   mysql-db:
     image: mysql #:8.0.32
   # hostname: mysql-db
@@ -289,7 +288,7 @@ services:
   # docker exec db-mysql /usr/bin/mysqldump --databases -u root --password=secret idm > backup.sql
   # cat backup.sql | docker exec -i db-mysql /usr/bin/mysql -u root --password=secret idm
 
-  # MySQL DB front-end
+# MySQL DB front-end
   phpmyadmin:
     image: phpmyadmin #:5.2.1
   # hostname: adminer
@@ -322,7 +321,7 @@ services:
   # docker run -it --rm --network fiware_default --name fe-mysql phpmyadmin
   # docker run -it --rm --network fiware_default --name ngrok-mysql -e NGROK_AUTHTOKEN=2L2kdrNlcTBcxDERiOxTW3kyEaV_3siN3rWauYmt4KLGHrHZg ngrok/ngrok:latest http fe-mysql:8080
 
-# # MySQL DB front-end
+# MySQL DB front-end
 # adminer:
 #   image: adminer #:4.8.1
 # # hostname: adminer
@@ -351,9 +350,9 @@ services:
 # #   - ADMINER_PLUGINS=see https://www.adminer.org/en/plugins/
 
 
-  # Other services
+# Other services
 
-  # Blockchain (Ganache)
+# Blockchain (Ganache)
   ganache:
     image: trufflesuite/ganache #:v7.7.3
   # hostname: ganache
@@ -381,9 +380,9 @@ services:
   #   timeout: 5s
   #   retries: 5
 
-  # Blockchain front-end (Lite Explorer)
+# Blockchain front-end (Lite Explorer)
   lite-explorer:
-    image: alethio/ethereum-lite-explorer #:v1.0.0-beta.10
+    image: alethio/ethereum-lite-explorer #:latest
   # hostname: lite-explorer
     container_name: fe-ganache
     depends_on:
@@ -403,13 +402,15 @@ services:
       - "7546:80"   # localhost:7546
     environment:
       - APP_NODE_URL=http://ganache:7545
+  # volumes:
+  #   - ./alethio/config.json:/usr/share/nginx/html/config.json
     healthcheck:
       test: wget -q --spider http://localhost || exit 1
 
   # docker run -it --rm --network fiware_default --name fe-ganache -p 80:80 -e APP_NODE_URL="http://ganache:7545" alethio/ethereum-lite-explorer
   # docker run -it --rm --name fe-ganache -p 80:80 -e APP_NODE_URL="http://localhost:7545" alethio/ethereum-lite-explorer
 
-  # MQTT Broker (MosQuiTTo)
+# MQTT Broker (MosQuiTTo)
   mosquitto:
     image: eclipse-mosquitto #:2.0.15
   # hostname: mosquitto
@@ -444,12 +445,12 @@ services:
   # docker exec -it mosquitto mosquitto_sub -h mosquitto -t "/#"
   # docker exec -it mosquitto mosquitto_pub -h mosquitto -m "Hello world!" -t "/test"
 
-  # Node-RED for flow-programming automation
+# Custom IoT Agent based on Node-RED for flow-programming automation
   node-red:
     build: ./node-red
   # image: nodered/node-red
   # hostname: node-red
-    container_name: visual-iot-agent
+    container_name: iot-agent
     depends_on:
       keyrock:
         condition: service_healthy
@@ -474,7 +475,7 @@ services:
   # expose:
   #   - "1880"      # node-red:1880
     ports:
-      - "8880:1880" # localhost:8880
+      - "4041:1880" # localhost:4041
     environment:
       - ETHEREUM_ADDRESS
       - ETHEREUM_PRIVATE_KEY
@@ -490,7 +491,7 @@ services:
   # Run once to update dependencies and custom nodes
   # docker exec -it node-red bash -c "cd /data && npm install --unsafe-perm --no-update-notifier --no-fund --only=production" && docker restart node-red
 
-# # Custom Node-RED-based IoT Agent
+# Alternative Custom Node-RED-based IoT Agent
 # custom-iota:
 #   build: ./node-red/custom-iota
 # # hostname: iota  
@@ -512,7 +513,7 @@ volumes:
 # node-red-data: ~
 
 
-# # Networks (with MTU patch for Vicenza2 VM)
+# Networks (with MTU patch for Vicenza2 VM)
 # networks:
 #   default:
 #     driver: bridge
