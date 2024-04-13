@@ -138,7 +138,9 @@
             "532151c821513cdf"
         ],
         "x": 294,
-        "y": 19
+        "y": 19,
+        "w": 192,
+        "h": 142
     },
     {
         "id": "67d94c6b13c37cc2",
@@ -592,33 +594,6 @@
         "address": "0x7efC9d38581c7Cb8372325c349Ec5095D027B3Dd",
         "managedByEthereumClient": false,
         "transactionQueueSize": "100"
-    },
-    {
-        "id": "93b18379800c0f5a",
-        "type": "ethers-wallet",
-        "name": "Account 2 Test",
-        "keyPublic": "0406c16dffbd03799962604dac8056a0615fd0586c1a1df8c09c05bedd41acec25ab9756c6bc577d0804d4244ed08d86a5bd3fb83991fc67ca13c096a8b8f040e9",
-        "keyPublicType": "str",
-        "keyPrivateType": "str"
-    },
-    {
-        "id": "d9ce9f5276beafeb",
-        "type": "ethers-network",
-        "name": "",
-        "url": "goerli"
-    },
-    {
-        "id": "0a1c6c0edd1fd842",
-        "type": "ethers-network",
-        "name": "",
-        "url": "ropsten"
-    },
-    {
-        "id": "26a531bf9aef221a",
-        "type": "ethers-contract",
-        "name": "My_PoE.sol (Remix)",
-        "address": "0xE1989a90127A449Bd22176299104cf6d2cb5Ba86",
-        "abi": "[\n\t{\n\t\t\"inputs\": [\n\t\t\t{\n\t\t\t\t\"internalType\": \"string\",\n\t\t\t\t\"name\": \"document\",\n\t\t\t\t\"type\": \"string\"\n\t\t\t}\n\t\t],\n\t\t\"name\": \"notarize\",\n\t\t\"outputs\": [\n\t\t\t{\n\t\t\t\t\"internalType\": \"bytes32\",\n\t\t\t\t\"name\": \"\",\n\t\t\t\t\"type\": \"bytes32\"\n\t\t\t}\n\t\t],\n\t\t\"stateMutability\": \"nonpayable\",\n\t\t\"type\": \"function\"\n\t},\n\t{\n\t\t\"inputs\": [\n\t\t\t{\n\t\t\t\t\"internalType\": \"string\",\n\t\t\t\t\"name\": \"document\",\n\t\t\t\t\"type\": \"string\"\n\t\t\t}\n\t\t],\n\t\t\"name\": \"checkDocument\",\n\t\t\"outputs\": [\n\t\t\t{\n\t\t\t\t\"internalType\": \"bool\",\n\t\t\t\t\"name\": \"\",\n\t\t\t\t\"type\": \"bool\"\n\t\t\t}\n\t\t],\n\t\t\"stateMutability\": \"view\",\n\t\t\"type\": \"function\"\n\t}\n]"
     },
     {
         "id": "bb8657c15acd1db1",
@@ -24283,8 +24258,7 @@
         "y": 280,
         "wires": [
             [
-                "66227205f7d98182",
-                "c4aeb4c22e647f23"
+                "66227205f7d98182"
             ]
         ]
     },
@@ -24313,8 +24287,7 @@
         "y": 120,
         "wires": [
             [
-                "666bcf1786a8826b",
-                "c661074bc8187e52"
+                "666bcf1786a8826b"
             ]
         ]
     },
@@ -24577,36 +24550,6 @@
         "wires": []
     },
     {
-        "id": "bee2f669ae954ab8",
-        "type": "ethers-transaction",
-        "z": "828bae03b631ac33",
-        "name": "",
-        "network": "0a1c6c0edd1fd842",
-        "wallet": "93b18379800c0f5a",
-        "output": "payload",
-        "outputType": "msg",
-        "wait": false,
-        "address": "",
-        "addressType": "str",
-        "ether": "",
-        "etherType": "str",
-        "gaslimit": "",
-        "contract": "26a531bf9aef221a",
-        "apiCall": "checkDocument",
-        "params": [
-            "payload"
-        ],
-        "param0": "payload",
-        "typeParam0": "msg",
-        "x": 390,
-        "y": 500,
-        "wires": [
-            [
-                "35f7ec80981384b0"
-            ]
-        ]
-    },
-    {
         "id": "35f7ec80981384b0",
         "type": "debug",
         "z": "828bae03b631ac33",
@@ -24622,36 +24565,6 @@
         "x": 610,
         "y": 500,
         "wires": []
-    },
-    {
-        "id": "0a25a3c7164c9449",
-        "type": "ethers-transaction",
-        "z": "828bae03b631ac33",
-        "name": "",
-        "network": "0a1c6c0edd1fd842",
-        "wallet": "93b18379800c0f5a",
-        "output": "payload",
-        "outputType": "msg",
-        "wait": false,
-        "address": "",
-        "addressType": "str",
-        "ether": "",
-        "etherType": "str",
-        "gaslimit": "",
-        "contract": "26a531bf9aef221a",
-        "apiCall": "notarize",
-        "params": [
-            "payload"
-        ],
-        "param0": "payload",
-        "typeParam0": "msg",
-        "x": 380,
-        "y": 560,
-        "wires": [
-            [
-                "7a06a1dafea5c8a9"
-            ]
-        ]
     },
     {
         "id": "6c0efb7d54703c09",
@@ -24732,9 +24645,7 @@
         "x": 110,
         "y": 520,
         "wires": [
-            [
-                "bee2f669ae954ab8"
-            ]
+            []
         ]
     },
     {
@@ -24771,9 +24682,7 @@
         "x": 140,
         "y": 480,
         "wires": [
-            [
-                "bee2f669ae954ab8"
-            ]
+            []
         ]
     },
     {
@@ -24800,40 +24709,7 @@
         "x": 140,
         "y": 560,
         "wires": [
-            [
-                "0a25a3c7164c9449"
-            ]
-        ]
-    },
-    {
-        "id": "c4aeb4c22e647f23",
-        "type": "ethers-transaction",
-        "z": "828bae03b631ac33",
-        "d": true,
-        "name": "",
-        "network": "d9ce9f5276beafeb",
-        "wallet": "93b18379800c0f5a",
-        "output": "payload",
-        "outputType": "msg",
-        "wait": false,
-        "address": "",
-        "addressType": "str",
-        "ether": "",
-        "etherType": "str",
-        "gaslimit": "",
-        "contract": "26a531bf9aef221a",
-        "apiCall": "notarize",
-        "params": [
-            "payload"
-        ],
-        "param0": "payload",
-        "typeParam0": "msg",
-        "x": 380,
-        "y": 280,
-        "wires": [
-            [
-                "8fadde141db77098"
-            ]
+            []
         ]
     },
     {
@@ -24853,37 +24729,6 @@
         "x": 610,
         "y": 120,
         "wires": []
-    },
-    {
-        "id": "c661074bc8187e52",
-        "type": "ethers-transaction",
-        "z": "828bae03b631ac33",
-        "d": true,
-        "name": "",
-        "network": "d9ce9f5276beafeb",
-        "wallet": "93b18379800c0f5a",
-        "output": "payload",
-        "outputType": "msg",
-        "wait": false,
-        "address": "",
-        "addressType": "str",
-        "ether": "",
-        "etherType": "str",
-        "gaslimit": "",
-        "contract": "26a531bf9aef221a",
-        "apiCall": "checkDocument",
-        "params": [
-            "payload"
-        ],
-        "param0": "payload",
-        "typeParam0": "msg",
-        "x": 390,
-        "y": 120,
-        "wires": [
-            [
-                "8fadde141db77098"
-            ]
-        ]
     },
     {
         "id": "91618269345c9b5a",

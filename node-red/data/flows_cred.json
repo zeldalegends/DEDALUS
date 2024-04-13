@@ -8,9 +8,6 @@
     "a46f63f7bc8183e7": {
         "privateKey": "5f00a68d77e79e051aeafd7dec7657999dce84c045a8aa9d7995137267f91e52"
     },
-    "93b18379800c0f5a": {
-        "keyPrivate": "${ETHEREUM_PRIVATE_KEY}"
-    },
     "b4799249b6347148": {
         "authtoken": "2eCc2WUv8ElJbzGU8WE4tM9nIbU_3i7Z564CFmajxtUrUZWod"
     },
@@ -30,9 +27,10 @@
     "3daa71f31114633e": {},
     "2c9c4ad120cc4554": {},
     "9cd481486f6c2aa1": {},
-    "bee2f669ae954ab8": {},
     "3b5eea37c1ac32ae": {},
     "b10d1ebc0b5e197b": {},
     "b2bb2fb91ce43062": {},
-    "f38db19e74bf7b23": {}
+    "f38db19e74bf7b23": {},
+    "b5aef3b4689e3c29": {},
+    "7a27f392b8bc0764": {}
 }
