@@ -2,7 +2,7 @@
 FROM nodered/node-red:latest-18
 
 # USER ${UID}
-USER 0
+# USER 0
 WORKDIR /data
 
 # Copy package.json to the WORKDIR so npm builds all

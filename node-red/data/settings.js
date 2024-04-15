@@ -245,8 +245,7 @@ module.exports = {
     //    {path: '/home/nol/videos/',  root: "/vid/", options: {maxAge: '1d'}}
     //],
     httpStatic: [                                                               
-        {path: '/public/home/', root: "/"},                                     
-        {path: '/public/', root: "/static/"}                                    
+        {path: '/public/', root: "/"}                            
     ],                                                                          
 
     /**

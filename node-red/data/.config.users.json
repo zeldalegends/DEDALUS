@@ -34,7 +34,7 @@
                 "view-grid-size": "20",
                 "view-node-status": true,
                 "view-node-show-label": true,
-                "view-show-tips": true,
+                "view-show-tips": false,
                 "view-show-welcome-tours": true
             },
             "tours": {
@@ -49,6 +49,11 @@
                     "config",
                     "context"
                 ]
+            },
+            "dialog": {
+                "export": {
+                    "pretty": true
+                }
             }
         },
         "menu-deploymenu-item-node": true,

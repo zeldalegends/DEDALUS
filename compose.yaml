@@ -179,8 +179,8 @@ services:
   # Node-RED Custom IoT Agent + Open API (Swagger)
   node-red:
     # image: hybuild/openapi:latest
-    # image: nodered/node-red:latest-18 #:3.1.7
-    build: node-red
+    image: nodered/node-red:latest-18 #:3.1.7
+    # build: node-red
     hostname: ${HOSTNAME:-node-red}
     container_name: fiware-node-red
     depends_on:
@@ -195,10 +195,9 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
-      - ./node-red/data:/data
-      - ./public:/usr/src/node-red/public
     # - node-red-data:/data
-    # - node-red-public:/usr/src/node-red/public
+      - ./node-red/data:/data
+      - ./public:/public
 
 #  # NGINX Reverse Proxy and Web Server for NGSI-LD @context files
 #  nginx:
@@ -315,4 +314,3 @@ volumes:
   mongo-db: ~
   mysql-db: ~
 # node-red-data:
-# node-red-public:
