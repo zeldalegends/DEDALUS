@@ -175,7 +175,7 @@ module.exports = {
      * If set to false, this is disabled.
      */
     //httpAdminRoot: '/admin',
-    httpAdminRoot: '/v3/editor',                                                
+    httpAdminRoot: '/editor',                                                
 
     /** The following property can be used to add a custom middleware function
      * in front of all admin http routes. For example, to set custom http
@@ -195,7 +195,7 @@ module.exports = {
      * disabled.
      */
     //httpNodeRoot: '/red-nodes',
-    httpNodeRoot: '/v3',                                                        
+    httpNodeRoot: '/',                                                        
 
     /** The following property can be used to configure cross-origin resource sharing
      * in the HTTP nodes.
@@ -258,7 +258,7 @@ module.exports = {
      *      then "/home/nol/pics/" will be served at "/static/img/"
      */
     //httpStaticRoot: '/static/',
-    httpStaticRoot: '/v3/',
+    httpStaticRoot: '/',
 
 /*******************************************************************************
  * Runtime Settings

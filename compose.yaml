@@ -195,10 +195,10 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
-    # - ./node-red/data:/data
-    # - ./public:/usr/src/node-red/public
-      - node-red-data:/data
-      - node-red-public:/usr/src/node-red/public
+      - ./node-red/data:/data
+      - ./public:/usr/src/node-red/public
+    # - node-red-data:/data
+    # - node-red-public:/usr/src/node-red/public
 
 #  # NGINX Reverse Proxy and Web Server for NGSI-LD @context files
 #  nginx:
@@ -314,5 +314,5 @@ volumes:
   mongo-config: ~
   mongo-db: ~
   mysql-db: ~
-  node-red-data:
-  node-red-public:
+# node-red-data:
+# node-red-public:
