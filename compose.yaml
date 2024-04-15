@@ -10,10 +10,9 @@ services:
     restart: on-failure
     expose:
       - "1026"
-    command: -dbhost mongo-db -db orionld -logLevel DEBUG -forwarding
+    command: -dbhost mongo-db -db orionld -logLevel DEBUG -forwarding -experimental
     healthcheck:
-      test: ["CMD", "curl --fail --silent http://localhost:1026/version"]
-      interval: 30m
+      test: curl --fail -s http://localhost:1026/version || exit 1
     # interval: 30s
     # timeout: 30s
     # start_period: 0s
@@ -41,8 +40,6 @@ services:
 #   ports:
 #     - "1026:1026" # localhost:1026 (Orion v2)
 #   command: -dbURI mongodb://mongo
-#   healthcheck:
-#     interval: 30m
 
   # Mongo DB for Orion Context Broker
   mongo-db:
@@ -58,9 +55,9 @@ services:
       - mongo-db:/data/db
       - ./mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
     healthcheck:
-    # test: ["CMD", "mongo --quiet --eval db.runCommand('ping') || exit 1"]
-      test: ["CMD", "mongosh --eval db.adminCommand('ping')"]
-      interval: 30m
+    # test: ["CMD", "mongo --quiet --eval db.runCommand('ping')"]
+      test: mongo --eval "db.adminCommand('ping')" --quiet
+      interval: 15s
 
  # Mongo DB front-end
   mongo-express:
@@ -77,8 +74,7 @@ services:
       - ME_CONFIG_BASICAUTH_PASSWORD=
       - ME_CONFIG_MONGODB_SERVER=mongo-db
     healthcheck:
-      test: ["CMD", "wget --quiet --spider http://admin:pass@localhost:8081"]
-      interval: 30m
+      test: wget --quiet --spider http://admin:pass@localhost:8081
 
   # docker run --rm --network fiware_default -d --name fe-mongo -e ME_CONFIG_MONGODB_SERVER=mongo-db mongo-express
   # docker run --rm --network fiware_default -e NGROK_AUTHTOKEN=2L2kdrNlcTBcxDERiOxTW3kyEaV_3siN3rWauYmt4KLGHrHZg ngrok/ngrok http fe-mongo:8081
@@ -108,8 +104,6 @@ services:
       - IDM_ADMIN_EMAIL=alice-the-admin@test.com
       - IDM_ADMIN_PASS=test
       - IDM_CSP_FORM_ACTION=*
-    healthcheck:
-      interval: 30m
 
   # MySQL DB for Keyrock IdM
   mysql-db:
@@ -126,8 +120,7 @@ services:
       - mysql-db:/var/lib/mysql
       - ./mysql:/docker-entrypoint-initdb.d/:ro
     healthcheck:
-      test: ["CMD", "mysqladmin ping -h localhost -uroot -psecret"]
-      interval: 30m
+      test: mysqladmin ping -h localhost -uroot -psecret
 
   # docker exec db-mysql /usr/bin/mysqldump --databases -u root --password=secret idm > backup.sql
   # cat backup.sql | docker exec -i db-mysql /usr/bin/mysql -u root --password=secret idm
@@ -147,8 +140,7 @@ services:
       - PMA_USER=root
       - PMA_PASSWORD=secret
     healthcheck:
-      test: ["CMD", "curl --fail --silent http://localhost"]
-      interval: 30m
+      test: curl --fail --silent http://localhost
 
   # docker run --rm --network fiware_default -d --name fe-mysql phpmyadmin
   # docker run --rm --network fiware_default -e NGROK_AUTHTOKEN=2L2kdrNlcTBcxDERiOxTW3kyEaV_3siN3rWauYmt4KLGHrHZg -e PMA_HOST=mysql-db -e PMA_USER=root -e PMA_PASSWORD=secret ngrok/ngrok:latest http fe-mysql
@@ -183,13 +175,12 @@ services:
       - PEP_PROXY_PDP=idm
       - PEP_PROXY_MAGIC_KEY=1234
       - PEP_PROXY_PUBLIC_PATHS=/version,/ngsi-ld/ex/v1/version
-    healthcheck:
-      interval: 30m
 
   # Node-RED Custom IoT Agent + Open API (Swagger)
   node-red:
     # image: hybuild/openapi:latest
-    image: nodered/node-red:latest-18 #:3.1.7
+    # image: nodered/node-red:latest-18 #:3.1.7
+    build: node-red
     hostname: ${HOSTNAME:-node-red}
     container_name: fiware-node-red
     depends_on:
@@ -204,84 +195,99 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
-      - ./node-red/data:/data
-      - ./public:/usr/src/node-red/public
-    # - node-red-data:/data
-    # - node-red-public:/usr/src/node-red/public
-    healthcheck:
-      interval: 30m
+    # - ./node-red/data:/data
+    # - ./public:/usr/src/node-red/public
+      - node-red-data:/data
+      - node-red-public:/usr/src/node-red/public
 
-  # NGINX Reverse Proxy and Web Server for NGSI-LD @context files
-  nginx:
-    image: nginx #:1.25.4
-    hostname: web-server
-    container_name: nginx
-    depends_on:
-      - node-red
-    restart: on-failure
-    networks:
-      default:
-        aliases:
-          - context
-          - ld-context
-    ports:
-      - "80:80"   # http://localhost
-      - "443:443" # https://localhost
-    volumes:
-    # - ./nginx/ssl/:/etc/ssl/             # CA-signed (ZeroSSL)
-      - ./certbot/conf:/etc/letsencrypt:ro # Let's Encrypt (Certbot)
-      - ./certbot/www:/var/www/certbot:ro  # Let's Encrypt (Certbot)
-    # - ./certbot/dhparam:/etc/ssl/certs   # Let's Encrypt (Certbot)
-    # - ./nginx/conf:/etc/nginx/conf.d
-    # - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./public:/home/www/public_html/localhost/public
-    entrypoint: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
-    healthcheck:
-      test: ["CMD", "(wget --server-response --spider --quiet http://ld-context/public/data-models/ngsi-context.jsonld 2>&1 | awk 'NR==1{print $$2}' | grep -q -e '200')"]
-      interval: 30m
+#  # NGINX Reverse Proxy and Web Server for NGSI-LD @context files
+#  nginx:
+#    image: nginx #:1.25.4
+#    hostname: web-server
+#    container_name: nginx
+#    depends_on:
+#      - node-red
+#    restart: on-failure
+#    networks:
+#      default:
+#        aliases:
+#          - context
+#          - ld-context
+#    ports:
+#      - "80:80"   # http://localhost
+#      - "443:443" # https://localhost
+#    volumes:
+#    # - ./nginx/ssl/:/etc/ssl/             # CA-signed (ZeroSSL)
+#      - ./certbot/conf:/etc/letsencrypt:ro # Let's Encrypt (Certbot)
+#      - ./certbot/www:/var/www/certbot:ro  # Let's Encrypt (Certbot)
+#    # - ./certbot/dhparam:/etc/ssl/certs   # Let's Encrypt (Certbot)
+#    # - ./nginx/conf:/etc/nginx/conf.d
+#    # - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+#      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+#      - ./public:/home/www/public_html/localhost/public
+#    entrypoint: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+#    healthcheck:
+#      test: wget --server-response --spider --quiet http://ld-context/public/data-models/ngsi-context.jsonld 2>&1 | awk 'NR==1{print $$2}' | grep -q -e '200')
+#
+#  # Let's Encrypt with Certbot
+#  certbot:
+#    image: certbot/certbot #:v2.10.0
+#    hostname: letsencrypt
+#    container_name: certbot
+#    volumes:
+#      - ./certbot/conf:/etc/letsencrypt:rw
+#      - ./certbot/www:/var/www/certbot:rw
+#      - ./certbot/var:/var/lib/letsencrypt
+#    depends_on:
+#      - nginx
+#    # Initialize
+#    # command: certonly --webroot --webroot-path=/var/www/certbot --email abc@test.com --agree-tos --no-eff-email -d enershare.zapto.org --staging # --text --rsa-key-size 4096 --verbose --keep-until-expiring --preferred-challenges=http
+#    # Operations
+#    # command: certonly --webroot --webroot-path=/var/www/certbot --email abc@test.com --agree-tos --no-eff-email -d enershare.zapto.org --force-renewal # --rsa-key-size 4096 --verbose --keep-until-expiring --preferred-challenges=http
+#    # entrypoint: certonly --webroot -w /var/www/certbot/ -d smartenergy.duckdns.org -m test@email.com --agree-tos --keep -n -v --rsa-key-size 4096
+#    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+#    healthcheck:
+#      test: test -n '$$(ls -A /etc/letsencrypt/live/)' || test '$$DRY_RUN' == 'true'
 
-  # Let's Encrypt with Certbot
-  certbot:
-    image: certbot/certbot #:v2.10.0
-    hostname: letsencrypt
-    container_name: certbot
-    volumes:
-      - ./certbot/conf:/etc/letsencrypt:rw
-      - ./certbot/www:/var/www/certbot:rw
-      - ./certbot/var:/var/lib/letsencrypt
-    depends_on:
-      - nginx
-    # Initialize
-    # command: certonly --webroot --webroot-path=/var/www/certbot --email abc@test.com --agree-tos --no-eff-email -d enershare.zapto.org --staging # --text --rsa-key-size 4096 --verbose --keep-until-expiring --preferred-challenges=http
-    # Operations
-    # command: certonly --webroot --webroot-path=/var/www/certbot --email abc@test.com --agree-tos --no-eff-email -d enershare.zapto.org --force-renewal # --rsa-key-size 4096 --verbose --keep-until-expiring --preferred-challenges=http
-    # entrypoint: certonly --webroot -w /var/www/certbot/ -d smartenergy.duckdns.org -m test@email.com --agree-tos --keep -n -v --rsa-key-size 4096
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
-    healthcheck:
-      test: ["CMD-SHELL", "test -n '$$(ls -A /etc/letsencrypt/live/)' || test '$$DRY_RUN' == 'true'"]
-      interval: 30m
-
-  # Blockchain (Truffle Ganache)
+  # Blockchain with deployed PoE smart contract
   blockchain:
-    image: trufflesuite/ganache
+    image: hybuild/ganache
     hostname: ganache
     container_name: ethereum
-    restart: on-failure
-    expose:
-      - "8545"
+    restart: on-failure    # for Docker Compose
+  # deploy:                # for Docker Swarm
+  #   mode: replicated
+  #   replicas: 3
+  #   restart_policy:
+  #     condition: on-failure
+  # expose:
+  #   - 7545               # ganache:7545    
     ports:
-      - "8545:8545" # http://localhost:8545
-    command: --database.dbPath /db --server.host 0.0.0.0 --server.port 8545 --wallet.mnemonic "visit carpet logic blame furnace confirm rebel deliver medal mean illness error"
+      - 7545:7545          # localhost:7545
     volumes:
       - ganache-db:/db
     healthcheck:
-    # test: curl -f -X POST --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' http://localhost:8545 && exit 0 || exit 1
-    # test: node -e 'data = JSON.stringify({jsonrpc:"2.0", method:"eth_blockNumber", params:[], id:1}); require("http").request({hostname:"localhost", port:8545, method:"POST", headers:{"Content-Type":"application/json", "Content-Length":data.length }}, resp => resp.on("data", chunk => process.exit(0)).on("error", err => process.exit(1))).write(data)' && exit 0 || exit 1
-    # test: ["CMD", "node", "-e", "const req = require('http').request({hostname:'localhost', port:8545, method:'POST', headers:{ 'Content-Type':'application/json' }}, res => res.on('data', chunk => process.exit(0))).on('error', e => process.exit(1)); req.write(JSON.stringify({ jsonrpc:'2.0', method:'eth_blockNumber', params:[], id:1 })); req.end();"]
-    # test: ["CMD", "node", "-e", "require('http').request({ hostname:'localhost', port:8545, method:'POST', headers:{ 'Content-Type':'application/json', 'Content-Length':63 }}, res => res.on('data', chunk => process.exit(0)).on('error', err => process.exit(1))).write(JSON.stringify({jsonrpc:'2.0', method:'eth_blockNumber', params:[], id:1}))"]
-      test: ["CMD", "node", "-e", "fetch('http://localhost:8545', { method:'POST', headers:{ 'content-type':'application/json' }, body:JSON.stringify({ id:1, jsonrpc:'2.0', method:'eth_blockNumber' }) }).then(res => res.json()).then(res => process.exit(0)).catch(err => process.exit(1));"]
-      interval: 30m
+      test: node -e "fetch('http://localhost:7545', { method:'POST', headers:{ 'content-type':'application/json' }, body:JSON.stringify({ id:1, jsonrpc:'2.0', method:'eth_blockNumber' }) }).then(res => res.json()).then(res => process.exit(0)).catch(err => process.exit(1));"
+
+# # Blockchain (Truffle Ganache)
+# blockchain:
+#   image: trufflesuite/ganache
+#   hostname: ganache
+#   container_name: ethereum
+#   restart: on-failure
+#   expose:
+#     - "8545"
+#   ports:
+#     - "8545:8545" # http://localhost:8545
+#   command: --database.dbPath /db --server.host 0.0.0.0 --server.port 8545 --wallet.mnemonic "visit carpet logic blame furnace confirm rebel deliver medal mean illness error"
+#   volumes:
+#     - ganache-db:/db
+#   healthcheck:
+#   # test: curl -f -X POST --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' http://localhost:8545 && exit 0 || exit 1
+#   # test: node -e 'data = JSON.stringify({jsonrpc:"2.0", method:"eth_blockNumber", params:[], id:1}); require("http").request({hostname:"localhost", port:8545, method:"POST", headers:{"Content-Type":"application/json", "Content-Length":data.length }}, resp => resp.on("data", chunk => process.exit(0)).on("error", err => process.exit(1))).write(data)' && exit 0 || exit 1
+#   # test: ["CMD", "node", "-e", "const req = require('http').request({hostname:'localhost', port:8545, method:'POST', headers:{ 'Content-Type':'application/json' }}, res => res.on('data', chunk => process.exit(0))).on('error', e => process.exit(1)); req.write(JSON.stringify({ jsonrpc:'2.0', method:'eth_blockNumber', params:[], id:1 })); req.end();"]
+#   # test: ["CMD", "node", "-e", "require('http').request({ hostname:'localhost', port:8545, method:'POST', headers:{ 'Content-Type':'application/json', 'Content-Length':63 }}, res => res.on('data', chunk => process.exit(0)).on('error', err => process.exit(1))).write(JSON.stringify({jsonrpc:'2.0', method:'eth_blockNumber', params:[], id:1}))"]
+#     test: node -e fetch('http://localhost:8545', { method:'POST', headers:{ 'content-type':'application/json' }, body:JSON.stringify({ id:1, jsonrpc:'2.0', method:'eth_blockNumber' }) }).then(res => res.json()).then(res => process.exit(0)).catch(err => process.exit(1));
 
   # MQTT Broker (MosQuiTTo)
   mosquitto:
@@ -297,8 +303,8 @@ services:
     # - "9001:9001" # http://localhost:9001
     command: mosquitto -c /mosquitto-no-auth.conf
     healthcheck:
-      test: mosquitto_sub -t '$$SYS/#' -C 1 | grep -v Error || exit 1
-      interval: 30m
+      test: mosquitto_sub -t '$$SYS/#' -C 1 | grep -v Error
+      interval: 15s
 
   # docker exec -it mosquitto mosquitto_sub -h mosquitto -t "/#"
   # docker exec -it mosquitto mosquitto_pub -h mosquitto -m "Hello world!" -t "/test"
@@ -308,5 +314,5 @@ volumes:
   mongo-config: ~
   mongo-db: ~
   mysql-db: ~
-  # node-red-data:
-  # node-red-public:
+  node-red-data:
+  node-red-public:
