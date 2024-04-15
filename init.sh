@@ -11,7 +11,7 @@ email=$INSERT_YOUR_EMAIL_HERE
 # To register without email use: "--register-unsafely-without-email" (NOT RECOMMENDED).
 # https://eff-certbot.readthedocs.io/en/stable/using.html#certbot-command-line-options.
 
-# docker run --rm -v $(pwd)/node-red/data:/data node:18 bash -c "cd /data ; npm install --unsafe-perm --no-update-notifier --no-fund --only=production"
+docker run --rm -v $(pwd)/node-red/data:/data node:18 bash -c "cd /data ; npm install --unsafe-perm --no-update-notifier --no-fund --only=production"
 
 docker run --rm -p 80:80 \
   -v ./certbot/conf/:/etc/letsencrypt/ \

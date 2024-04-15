@@ -10,4 +10,5 @@ docker compose up --build --detach --remove-orphans
 # docker restart node-red
 
 # docker ps --all --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"
-./list.sh
+./ps.sh
+./logs.sh
