@@ -12,7 +12,7 @@ services:
       - "1026"
     command: -dbhost mongo-db -db orionld -logLevel DEBUG -forwarding
     healthcheck:
-      test: ["CMD", "curl --fail --silent http://orion:1026/version"]
+      test: ["CMD", "curl --fail --silent http://localhost:1026/version"]
       interval: 30m
     # interval: 30s
     # timeout: 30s
@@ -46,7 +46,7 @@ services:
 
   # Mongo DB for Orion Context Broker
   mongo-db:
-    image: mongo:5 #:4.4 (for LD) #:6.0 (for v2)
+    image: mongo:4.4 #(for LD) #:6.0 (for v2)
     hostname: mongo
     container_name: db-mongo
     restart: on-failure

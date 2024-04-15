@@ -5,11 +5,11 @@ echo FIWARE SETUP
 echo ============
 echo by Alerox, 2024
 echo
-read -n 1 -s key -p "Modify nginx/nginx.conf with your domain ..."
+read -p "Modify nginx/nginx.conf with your domain ..." -n 1 -s key
 nano nginx/nginx.conf
-read -n 1 -s key -p "Set domain and email in init.sh ..."
+read -p "Set domain and email in init.sh ..." -n 1 -s key
 nano init.sh
-read -n 1 -s key -p "Launch init.sh to initialize Nginx and Node-RED ..."
+read -p "Launch init.sh to initialize Nginx and Node-RED ..." -n 1 -s key
 ./init.sh
-read -n 1 -s key -p "Launch run.sh to run FIWARE ..."
+read -p "Launch run.sh to run FIWARE ..." -n 1 -s key
 ./run.sh
