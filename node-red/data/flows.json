@@ -23852,7 +23852,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\"description\":\"Notify me of all power measurements\",\"subject\":{\"entities\":[{\"idPattern\":\".*\",\"type\":\"PowerSensor\"}],\"condition\":{\"attrs\":[\"power\"]}},\"notification\":{\"http\":{\"url\":\"http://host.docker.internal:1880/attribute-change\"}}}",
+        "payload": "{\"description\":\"Notify me of all power measurements\",\"subject\":{\"entities\":[{\"idPattern\":\".*\",\"type\":\"PowerSensor\"}],\"condition\":{\"attrs\":[\"power\"]}},\"notification\":{\"http\":{\"url\":\"http://node-red:1880/attribute-change\"}}}",
         "payloadType": "json",
         "x": 140,
         "y": 980,
@@ -24062,9 +24062,9 @@
         "id": "1cc9f0b17c9a2312",
         "type": "comment",
         "z": "df0435d82c4bf5f6",
-        "name": "http://host.docker.internal:1880",
+        "name": "http://node-red:1880",
         "info": "On Linux:   172.17.0.1\nOn Windows: host.docker.internal",
-        "x": 570,
+        "x": 550,
         "y": 900,
         "wires": []
     },
@@ -25061,7 +25061,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\"description\":\"Notify me of all temperature changes\",\"type\":\"Subscription\",\"entities\":[{\"type\":\"TemperatureSensor\"}],\"watchedAttributes\":[\"temperature\"],\"notification\":{\"format\":\"keyValues\",\"endpoint\":{\"uri\":\"http://host.docker.internal:1880/attribute-change-ld\",\"accept\":\"application/json\"}}}",
+        "payload": "{\"description\":\"Notify me of all temperature changes\",\"type\":\"Subscription\",\"entities\":[{\"type\":\"TemperatureSensor\"}],\"watchedAttributes\":[\"temperature\"],\"notification\":{\"format\":\"keyValues\",\"endpoint\":{\"uri\":\"http://node-red:1880/attribute-change-ld\",\"accept\":\"application/json\"}}}",
         "payloadType": "json",
         "x": 1170,
         "y": 980,
@@ -25165,31 +25165,6 @@
         "x": 1910,
         "y": 980,
         "wires": []
-    },
-    {
-        "id": "734fcb2b4106254d",
-        "type": "delay",
-        "z": "df0435d82c4bf5f6",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "100",
-        "timeoutUnits": "milliseconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 1310,
-        "y": 620,
-        "wires": [
-            [
-                "4069e7f621879e5f"
-            ]
-        ]
     },
     {
         "id": "6e1a7e440c28ba96",
@@ -27429,9 +27404,9 @@
         "id": "10976846ed7e7629",
         "type": "comment",
         "z": "df0435d82c4bf5f6",
-        "name": "http://95.217.134.205:1880",
+        "name": "http://node-red:1880",
         "info": "On Linux:   172.17.0.1\nOn Windows: host.docker.internal",
-        "x": 1590,
+        "x": 1610,
         "y": 900,
         "wires": []
     },
@@ -27460,7 +27435,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\"description\":\"Notify me of all over power measurements\",\"subject\":{\"entities\":[{\"idPattern\":\".*\",\"type\":\"PowerSensor\"}],\"condition\":{\"attrs\":[\"power\"],\"expression\":{\"q\":\"power!=198..242\"}}},\"notification\":{\"http\":{\"url\":\"http://host.docker.internal:1880/test-simple-ads\"}}}",
+        "payload": "{\"description\":\"Notify me of all over power measurements\",\"subject\":{\"entities\":[{\"idPattern\":\".*\",\"type\":\"PowerSensor\"}],\"condition\":{\"attrs\":[\"power\"],\"expression\":{\"q\":\"power!=198..242\"}}},\"notification\":{\"http\":{\"url\":\"http://node-red:1880/test-simple-ads\"}}}",
         "payloadType": "json",
         "x": 150,
         "y": 1040,
@@ -27495,7 +27470,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\"description\":\"Notify me of all 'confortable' temperatures (LD version)\",\"type\":\"Subscription\",\"entities\":[{\"type\":\"TemperatureSensor\"}],\"watchedAttributes\":[\"temperature\"],\"q\":\"temperature>=19;temperature<=27\",\"notification\":{\"attributes\":[\"temperature\"],\"format\":\"keyValues\",\"endpoint\":{\"uri\":\"http://host.docker.internal:1880/test-simple-ads-ld\",\"accept\":\"application/json\"}}}",
+        "payload": "{\"description\":\"Notify me of all 'confortable' temperatures (LD version)\",\"type\":\"Subscription\",\"entities\":[{\"type\":\"TemperatureSensor\"}],\"watchedAttributes\":[\"temperature\"],\"q\":\"temperature<19|temperature>27\",\"notification\":{\"attributes\":[\"temperature\"],\"format\":\"keyValues\",\"endpoint\":{\"uri\":\"http://node-red:1880/test-simple-ads-ld\",\"accept\":\"application/json\"}}}",
         "payloadType": "json",
         "x": 1170,
         "y": 1040,
@@ -27664,31 +27639,6 @@
             ]
         ],
         "icon": "node-red-contrib-fiware_official/fiware.png"
-    },
-    {
-        "id": "0a3fbe72e16d9f6a",
-        "type": "change",
-        "z": "df0435d82c4bf5f6",
-        "name": "",
-        "rules": [
-            {
-                "t": "delete",
-                "p": "method",
-                "pt": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1530,
-        "y": 700,
-        "wires": [
-            [
-                "583e944f9561284c"
-            ]
-        ]
     },
     {
         "id": "ebb11ae7853c6735",
@@ -29424,191 +29374,6 @@
         ]
     },
     {
-        "id": "c21b2ba022038668",
-        "type": "http request",
-        "z": "df0435d82c4bf5f6",
-        "d": true,
-        "name": "PATCH /ngsi-ld/v1/entities/{id}/attrs",
-        "method": "use",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "{{{orion-ld}}}/ngsi-ld/v1/entities/{{{id}}}/attrs",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [
-            {
-                "keyType": "other",
-                "keyValue": "X-Auth-Token",
-                "valueType": "msg",
-                "valueValue": "x-auth-token"
-            },
-            {
-                "keyType": "other",
-                "keyValue": "Link",
-                "valueType": "msg",
-                "valueValue": "link"
-            },
-            {
-                "keyType": "Content-Type",
-                "keyValue": "",
-                "valueType": "application/json",
-                "valueValue": ""
-            }
-        ],
-        "x": 1600,
-        "y": 560,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "5c5dfdff0077fa52",
-        "type": "inject",
-        "z": "df0435d82c4bf5f6",
-        "d": true,
-        "name": "write attribute",
-        "props": [
-            {
-                "p": "x-auth-token",
-                "v": "x-auth-token",
-                "vt": "flow"
-            },
-            {
-                "p": "orion-ld",
-                "v": "orion-ld",
-                "vt": "flow"
-            },
-            {
-                "p": "id",
-                "v": "urn:ngsi-ld:TemperatureSensor:001",
-                "vt": "str"
-            },
-            {
-                "p": "payload"
-            },
-            {
-                "p": "method",
-                "v": "PATCH",
-                "vt": "str"
-            },
-            {
-                "p": "link",
-                "v": "link",
-                "vt": "flow"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\t   \"temperature\": {\t       \"type\": \"Property\",\t       \"value\": ($round(150*$random())+150)/10,\t       \"unitCode\": \"CEL\"\t    }\t}\t",
-        "payloadType": "jsonata",
-        "x": 1170,
-        "y": 560,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "27f3e95b69ab3bc1",
-        "type": "http request",
-        "z": "df0435d82c4bf5f6",
-        "name": "PATCH /ngsi-ld/v1/entities/{id}/attrs/temperature",
-        "method": "use",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "{{{orion-ld}}}/ngsi-ld/v1/entities/{{{id}}}/attrs/temperature",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [
-            {
-                "keyType": "other",
-                "keyValue": "X-Auth-Token",
-                "valueType": "msg",
-                "valueValue": "x-auth-token"
-            },
-            {
-                "keyType": "other",
-                "keyValue": "Link",
-                "valueType": "msg",
-                "valueValue": "link"
-            },
-            {
-                "keyType": "Content-Type",
-                "keyValue": "",
-                "valueType": "application/json",
-                "valueValue": ""
-            }
-        ],
-        "x": 1620,
-        "y": 580,
-        "wires": [
-            [
-                "f79a4689b5baaa19"
-            ]
-        ]
-    },
-    {
-        "id": "78bc40bb5e074204",
-        "type": "inject",
-        "z": "df0435d82c4bf5f6",
-        "name": "write attribute",
-        "props": [
-            {
-                "p": "x-auth-token",
-                "v": "x-auth-token",
-                "vt": "flow"
-            },
-            {
-                "p": "orion-ld",
-                "v": "orion-ld",
-                "vt": "flow"
-            },
-            {
-                "p": "id",
-                "v": "urn:ngsi-ld:TemperatureSensor:001",
-                "vt": "str"
-            },
-            {
-                "p": "payload"
-            },
-            {
-                "p": "method",
-                "v": "PATCH",
-                "vt": "str"
-            },
-            {
-                "p": "link",
-                "v": "link",
-                "vt": "flow"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\t    \"type\": \"Property\",\t    \"value\": ($round(150*$random())+150)/10\t}\t",
-        "payloadType": "jsonata",
-        "x": 1150,
-        "y": 580,
-        "wires": [
-            [
-                "734fcb2b4106254d",
-                "27f3e95b69ab3bc1"
-            ]
-        ]
-    },
-    {
         "id": "40f8129b88477795",
         "type": "inject",
         "z": "df0435d82c4bf5f6",
@@ -29648,12 +29413,15 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\t    \"temperature\": {\t        \"type\": \"Property\",\t        \"value\": ($round(150*$random())+150)/10\t    }\t}\t",
+        "payload": "{\t    \"temperature\": ($round(150*$random())+150)/10\t}",
         "payloadType": "jsonata",
-        "x": 1190,
-        "y": 540,
+        "x": 1150,
+        "y": 580,
         "wires": [
-            []
+            [
+                "4b950a1a911e95a6",
+                "734fcb2b4106254d"
+            ]
         ]
     },
     {
@@ -29691,10 +29459,12 @@
                 "valueValue": ""
             }
         ],
-        "x": 1610,
-        "y": 540,
+        "x": 1570,
+        "y": 580,
         "wires": [
-            []
+            [
+                "f79a4689b5baaa19"
+            ]
         ]
     },
     {
@@ -29853,6 +29623,56 @@
         "wires": [
             [
                 "5b6f4464fcce3868"
+            ]
+        ]
+    },
+    {
+        "id": "0a3fbe72e16d9f6a",
+        "type": "change",
+        "z": "df0435d82c4bf5f6",
+        "name": "",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "method",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1530,
+        "y": 700,
+        "wires": [
+            [
+                "583e944f9561284c"
+            ]
+        ]
+    },
+    {
+        "id": "734fcb2b4106254d",
+        "type": "delay",
+        "z": "df0435d82c4bf5f6",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1320,
+        "y": 620,
+        "wires": [
+            [
+                "4069e7f621879e5f"
             ]
         ]
     }
