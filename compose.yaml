@@ -12,7 +12,7 @@ services:
       - "1026"
     ports:
       - "10260:1026" # http://localhost:10260
-    command: -dbhost mongo-db -db orionld -logLevel DEBUG -forwarding -experimental
+    command: -dbhost mongo-db -db orionld -logLevel DEBUG -forwarding # -experimental
     healthcheck:
       test: curl --fail -s http://localhost:1026/version || exit 1
     # interval: 30s

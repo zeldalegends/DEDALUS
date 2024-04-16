@@ -75,7 +75,7 @@
         "id": "4621a3bae9cafe56",
         "type": "tab",
         "label": "BD4NRG",
-        "disabled": false,
+        "disabled": true,
         "info": "",
         "env": []
     },
@@ -83,7 +83,7 @@
         "id": "2835520133019989",
         "type": "tab",
         "label": "HYPERRIDE",
-        "disabled": false,
+        "disabled": true,
         "info": "",
         "env": []
     },
@@ -456,24 +456,16 @@
             "ef29d54a03a9b576",
             "81b831ae0bcc412c",
             "c88f3dcb9491b520",
-            "e91adaea6c055de5",
             "e568ed5ce60311c0",
             "40b2f13307ca515e",
             "5b6f4464fcce3868",
             "fb492fbc7f0e1709",
             "7ad91dacce9f89ba",
-            "cafc2ab52254540c",
-            "b0176eea263a16fc",
-            "073c94d9d1ef8430",
-            "c4bc455e9f9ecd33",
-            "ac2ba57caf9c72d0",
-            "84c20c3ceddd653b",
-            "4469b3b69479e171",
             "9ebc7614f8ae0530",
             "355e79edc51b326c",
-            "1a03d03fe0320ad6",
             "d4a6f58dcade2406",
-            "566325ccdbdada90"
+            "566325ccdbdada90",
+            "1a03d03fe0320ad6"
         ],
         "x": 14,
         "y": 19,
@@ -1155,7 +1147,7 @@
         "brokerType": "orion-ld",
         "apiEndpoint": "http://host.docker.internal:1026",
         "mintaka": "",
-        "atContext": "https://raw.githubusercontent.com/FIWARE/tutorials.CRUD-Operations/NGSI-LD/data-models/ngsi-context.jsonld",
+        "atContext": "",
         "tenant": "",
         "idmEndpoint": "http://host.docker.internal:3005",
         "idmType": "keyrock"
@@ -1167,7 +1159,7 @@
         "brokerType": "orion-ld",
         "apiEndpoint": "https://smartdatamodels.org:1026/",
         "mintaka": "",
-        "atContext": "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context-v1.6.jsonld",
+        "atContext": "https://raw.githubusercontent.com/FIWARE/tutorials.CRUD-Operations/NGSI-LD/data-models/ngsi-context.jsonld",
         "tenant": "",
         "idmEndpoint": "",
         "idmType": "none"
@@ -1180,6 +1172,23 @@
         "service": "",
         "servicepath": "",
         "idmEndpoint": ""
+    },
+    {
+        "id": "6cf4ec1defe5e72f",
+        "type": "ngrokauth",
+        "name": "asmterniproton.me"
+    },
+    {
+        "id": "066ecaa01951305b",
+        "type": "NGSI-LD broker",
+        "name": "",
+        "brokerType": "orion-ld",
+        "apiEndpoint": "https://smartdatamodels.org:1026",
+        "mintaka": "",
+        "atContext": "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context-v1.6.jsonld",
+        "tenant": "",
+        "idmEndpoint": "",
+        "idmType": "none"
     },
     {
         "id": "712bbc74186cf31b",
@@ -2633,8 +2642,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 100,
-        "y": 120,
+        "x": 80,
+        "y": 140,
         "wires": [
             [
                 "b8f3b1a2c61cb399"
@@ -2655,7 +2664,7 @@
         "correl": "",
         "expiry": "",
         "broker": "1c5e119ec6122feb",
-        "x": 920,
+        "x": 820,
         "y": 60,
         "wires": []
     },
@@ -2685,7 +2694,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 770,
+        "x": 670,
         "y": 60,
         "wires": [
             [
@@ -2709,11 +2718,12 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 570,
-        "y": 180,
+        "x": 530,
+        "y": 220,
         "wires": [
             [
-                "2e5ec6589697d933"
+                "2e5ec6589697d933",
+                "94e3906d36565266"
             ]
         ]
     },
@@ -2748,8 +2758,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 770,
-        "y": 180,
+        "x": 490,
+        "y": 140,
         "wires": [
             [
                 "7c521f056485ef38"
@@ -2761,11 +2771,11 @@
         "type": "ngrok",
         "z": "c2a28872a2e6ba67",
         "buttonState": true,
-        "port": "8880",
-        "portType": "num",
+        "port": "",
+        "portType": "node-red",
         "host": "host.docker.internal",
         "hostType": "str",
-        "creds": "b4799249b6347148",
+        "creds": "6cf4ec1defe5e72f",
         "proto": "http",
         "bind_tls": "",
         "bind_tlsType": "https",
@@ -2778,8 +2788,8 @@
         "name": "Node-RED",
         "inputtype": "port",
         "inputs": 1,
-        "x": 530,
-        "y": 240,
+        "x": 490,
+        "y": 380,
         "wires": [
             [
                 "ebfdb1facb8b4a65"
@@ -2799,8 +2809,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 120,
-        "y": 240,
+        "x": 100,
+        "y": 380,
         "wires": [
             [
                 "b1a316aa4191c472"
@@ -2821,8 +2831,8 @@
         "correl": "",
         "expiry": "",
         "broker": "1c5e119ec6122feb",
-        "x": 920,
-        "y": 240,
+        "x": 820,
+        "y": 380,
         "wires": []
     },
     {
@@ -2851,8 +2861,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 770,
-        "y": 240,
+        "x": 670,
+        "y": 380,
         "wires": [
             [
                 "98062a473030ab70"
@@ -2863,7 +2873,6 @@
         "id": "df9a152eed8ec902",
         "type": "mqtt in",
         "z": "c2a28872a2e6ba67",
-        "d": true,
         "name": "",
         "topic": "/just/you",
         "qos": "2",
@@ -2873,7 +2882,7 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 100,
+        "x": 80,
         "y": 60,
         "wires": [
             [
@@ -2885,7 +2894,6 @@
         "id": "ddd1ca21d53a41c7",
         "type": "change",
         "z": "c2a28872a2e6ba67",
-        "d": true,
         "name": "payload | off",
         "rules": [
             {
@@ -2928,8 +2936,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 370,
-        "y": 240,
+        "x": 270,
+        "y": 380,
         "wires": [
             [
                 "60cd7879a306dec1"
@@ -2956,7 +2964,7 @@
         "host": "",
         "local_host": "node-red",
         "inputs": 1,
-        "x": 540,
+        "x": 500,
         "y": 60,
         "wires": [
             [
@@ -2987,11 +2995,72 @@
         "repair": false,
         "outputs": 2,
         "x": 260,
-        "y": 120,
+        "y": 140,
         "wires": [
             [
                 "7c521f056485ef38"
             ],
+            [
+                "40b1b6f19e5fe649"
+            ]
+        ]
+    },
+    {
+        "id": "0b826b34d2768b23",
+        "type": "mqtt out",
+        "z": "c2a28872a2e6ba67",
+        "name": "",
+        "topic": "/its/dangerous/to/walk/alone",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "1c5e119ec6122feb",
+        "x": 760,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "94e3906d36565266",
+        "type": "yaml",
+        "z": "c2a28872a2e6ba67",
+        "property": "payload",
+        "name": "",
+        "x": 830,
+        "y": 220,
+        "wires": [
+            [
+                "0b826b34d2768b23"
+            ]
+        ]
+    },
+    {
+        "id": "ece271dfb0d83903",
+        "type": "inject",
+        "z": "c2a28872a2e6ba67",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 270,
+        "y": 220,
+        "wires": [
             [
                 "40b1b6f19e5fe649"
             ]
@@ -21802,7 +21871,7 @@
         "type": "NGSI-LD entities",
         "z": "f04368e2cacc78ba",
         "name": "",
-        "broker": "608eef2b7fe25a9c",
+        "broker": "066ecaa01951305b",
         "representation": "keyValues",
         "entityId": "",
         "entityType": "",
@@ -22242,13 +22311,13 @@
         "z": "f04368e2cacc78ba",
         "name": "",
         "endpoint": "a085b73ca27873cb",
-        "protocol": "LD",
+        "protocol": "v2",
         "ldContext": "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
         "mode": "normalized",
         "mimeType": "application/json",
         "attrs": "",
         "x": 370,
-        "y": 260,
+        "y": 360,
         "wires": [
             [
                 "275257c5a76e1748"
@@ -22264,7 +22333,7 @@
         "action": "",
         "pretty": false,
         "x": 510,
-        "y": 260,
+        "y": 360,
         "wires": [
             [
                 "3162d39e1bc769d8"
@@ -22289,7 +22358,7 @@
         "payload": "urn:ngsi-ld:TemperatureSensor:001",
         "payloadType": "str",
         "x": 130,
-        "y": 260,
+        "y": 360,
         "wires": [
             [
                 "5276a3a0580731f6"
@@ -22334,6 +22403,55 @@
         "x": 90,
         "y": 20,
         "wires": []
+    },
+    {
+        "id": "903baa35f939a994",
+        "type": "NGSI-LD Entity",
+        "z": "f04368e2cacc78ba",
+        "name": "",
+        "broker": "066ecaa01951305b",
+        "atContext": "",
+        "actionType": "read",
+        "entityId": "",
+        "attrs": "",
+        "sysAttrs": "false",
+        "representation": "concise",
+        "geometryProperty": "",
+        "lang": "",
+        "accept": "application/json",
+        "forbidden": "false",
+        "x": 480,
+        "y": 260,
+        "wires": [
+            [
+                "3162d39e1bc769d8"
+            ]
+        ]
+    },
+    {
+        "id": "eb615e1642801cbb",
+        "type": "inject",
+        "z": "f04368e2cacc78ba",
+        "name": "Read entity",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "urn:ngsi-ld:TemperatureSensor:001",
+        "payloadType": "str",
+        "x": 130,
+        "y": 260,
+        "wires": [
+            [
+                "903baa35f939a994"
+            ]
+        ]
     },
     {
         "id": "379b8f87c7b48b05",
@@ -22439,7 +22557,7 @@
         "targetType": "full",
         "statusVal": "\"Basic \" & clientCredentials",
         "statusType": "jsonata",
-        "x": 120,
+        "x": 160,
         "y": 180,
         "wires": []
     },
@@ -22520,7 +22638,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 120,
+        "x": 160,
         "y": 180,
         "wires": [
             [
@@ -22533,14 +22651,14 @@
         "type": "template",
         "z": "df0435d82c4bf5f6",
         "g": "fee944a6bdaf5f10",
-        "name": "payload",
+        "name": "grant",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
         "template": "grant_type=password&username={{{username}}}&password={{{password}}}",
         "output": "str",
-        "x": 400,
+        "x": 410,
         "y": 180,
         "wires": [
             [
@@ -27470,7 +27588,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\"description\":\"Notify me of all 'confortable' temperatures (LD version)\",\"type\":\"Subscription\",\"entities\":[{\"type\":\"TemperatureSensor\"}],\"watchedAttributes\":[\"temperature\"],\"q\":\"temperature<19|temperature>27\",\"notification\":{\"attributes\":[\"temperature\"],\"format\":\"keyValues\",\"endpoint\":{\"uri\":\"http://node-red:1880/test-simple-ads-ld\",\"accept\":\"application/json\"}}}",
+        "payload": "{\"description\":\"Notify me of all 'confortable' temperatures (LD version)\",\"type\":\"Subscription\",\"entities\":[{\"type\":\"TemperatureSensor\"}],\"watchedAttributes\":[\"temperature\"],\"q\":\"temperature>=19;temperature<=27\",\"notification\":{\"attributes\":[\"temperature\"],\"format\":\"keyValues\",\"endpoint\":{\"uri\":\"http://node-red:1880/test-simple-ads-ld\",\"accept\":\"application/json\"}}}",
         "payloadType": "json",
         "x": 1170,
         "y": 1040,
@@ -27657,80 +27775,9 @@
         "g": "fee944a6bdaf5f10",
         "name": "Smart Data Models",
         "info": "https://smartdatamodels.org/index.php/orion-ld-broker-with-examples-of-some-smart-data-models/",
-        "x": 150,
+        "x": 190,
         "y": 360,
         "wires": []
-    },
-    {
-        "id": "e91adaea6c055de5",
-        "type": "change",
-        "z": "df0435d82c4bf5f6",
-        "d": true,
-        "g": "fee944a6bdaf5f10",
-        "name": "under nginx",
-        "rules": [
-            {
-                "t": "set",
-                "p": "orion",
-                "pt": "msg",
-                "to": "https://enershare.zapto.org/orion",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "orion-ld",
-                "pt": "msg",
-                "to": "https://enershare.zapto.org/orionld",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "keyrock",
-                "pt": "msg",
-                "to": "https://enershare.zapto.org/keyrock",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "clientId",
-                "pt": "msg",
-                "to": "tutorial-dckr-site-0000-xpresswebapp",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "clientSecret",
-                "pt": "msg",
-                "to": "tutorial-dckr-site-0000-clientsecret",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "username",
-                "pt": "msg",
-                "to": "alice-the-admin@test.com",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "password",
-                "pt": "msg",
-                "to": "test",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 170,
-        "y": 140,
-        "wires": [
-            [
-                "566325ccdbdada90"
-            ]
-        ]
     },
     {
         "id": "e568ed5ce60311c0",
@@ -27746,7 +27793,7 @@
         "targetType": "full",
         "statusVal": "statusCode&\" - \"&(payload.error?payload.error:payload.access_token)",
         "statusType": "jsonata",
-        "x": 190,
+        "x": 230,
         "y": 300,
         "wires": []
     },
@@ -27840,7 +27887,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 190,
+        "x": 230,
         "y": 300,
         "wires": [
             [
@@ -28913,8 +28960,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 400,
-        "y": 120,
+        "x": 620,
+        "y": 60,
         "wires": [
             [
                 "566325ccdbdada90"
@@ -28938,260 +28985,6 @@
         "x": 830,
         "y": 360,
         "wires": []
-    },
-    {
-        "id": "cafc2ab52254540c",
-        "type": "inject",
-        "z": "df0435d82c4bf5f6",
-        "d": true,
-        "g": "fee944a6bdaf5f10",
-        "name": "STARTUP",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 75,
-        "y": 140,
-        "wires": [
-            [
-                "e91adaea6c055de5"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "b0176eea263a16fc",
-        "type": "inject",
-        "z": "df0435d82c4bf5f6",
-        "d": true,
-        "g": "fee944a6bdaf5f10",
-        "name": "STARTUP",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 75,
-        "y": 120,
-        "wires": [
-            [
-                "073c94d9d1ef8430"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "073c94d9d1ef8430",
-        "type": "change",
-        "z": "df0435d82c4bf5f6",
-        "d": true,
-        "g": "fee944a6bdaf5f10",
-        "name": "95.216.154.146",
-        "rules": [
-            {
-                "t": "set",
-                "p": "orion",
-                "pt": "msg",
-                "to": "http://95.216.154.146:1026",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "orion-ld",
-                "pt": "msg",
-                "to": "http://95.216.154.146:1027",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "keyrock",
-                "pt": "msg",
-                "to": "http://95.216.154.146:3005",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "clientId",
-                "pt": "msg",
-                "to": "tutorial-dckr-site-0000-xpresswebapp",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "clientSecret",
-                "pt": "msg",
-                "to": "tutorial-dckr-site-0000-clientsecret",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "username",
-                "pt": "msg",
-                "to": "alice-the-admin@test.com",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "password",
-                "pt": "msg",
-                "to": "test",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 180,
-        "y": 120,
-        "wires": [
-            [
-                "566325ccdbdada90"
-            ]
-        ]
-    },
-    {
-        "id": "c4bc455e9f9ecd33",
-        "type": "inject",
-        "z": "df0435d82c4bf5f6",
-        "d": true,
-        "g": "fee944a6bdaf5f10",
-        "name": "STARTUP",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 75,
-        "y": 80,
-        "wires": [
-            [
-                "ac2ba57caf9c72d0"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "ac2ba57caf9c72d0",
-        "type": "http request",
-        "z": "df0435d82c4bf5f6",
-        "d": true,
-        "g": "fee944a6bdaf5f10",
-        "name": "GET icanhazip.com",
-        "method": "GET",
-        "ret": "txt",
-        "paytoqs": "ignore",
-        "url": "https://icanhazip.com",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 190,
-        "y": 80,
-        "wires": [
-            [
-                "84c20c3ceddd653b",
-                "4469b3b69479e171"
-            ]
-        ]
-    },
-    {
-        "id": "84c20c3ceddd653b",
-        "type": "debug",
-        "z": "df0435d82c4bf5f6",
-        "d": true,
-        "g": "fee944a6bdaf5f10",
-        "name": "IP",
-        "active": true,
-        "tosidebar": false,
-        "console": false,
-        "tostatus": true,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 390,
-        "y": 80,
-        "wires": []
-    },
-    {
-        "id": "4469b3b69479e171",
-        "type": "change",
-        "z": "df0435d82c4bf5f6",
-        "d": true,
-        "g": "fee944a6bdaf5f10",
-        "name": "IP",
-        "rules": [
-            {
-                "t": "set",
-                "p": "orion",
-                "pt": "msg",
-                "to": "\"http://\" & $trim(payload) & \":1026\"",
-                "tot": "jsonata"
-            },
-            {
-                "t": "set",
-                "p": "orion-ld",
-                "pt": "msg",
-                "to": "\"http://\" & $trim(payload) & \":1026\"",
-                "tot": "jsonata"
-            },
-            {
-                "t": "set",
-                "p": "keyrock",
-                "pt": "msg",
-                "to": "\"http://\" & $trim(payload) & \":3005\"",
-                "tot": "jsonata"
-            },
-            {
-                "t": "set",
-                "p": "clientId",
-                "pt": "msg",
-                "to": "tutorial-dckr-site-0000-xpresswebapp",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "clientSecret",
-                "pt": "msg",
-                "to": "tutorial-dckr-site-0000-clientsecret",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "username",
-                "pt": "msg",
-                "to": "alice-the-admin@test.com",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "password",
-                "pt": "msg",
-                "to": "test",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 390,
-        "y": 80,
-        "wires": [
-            [
-                "566325ccdbdada90"
-            ]
-        ]
     },
     {
         "id": "9ebc7614f8ae0530",
@@ -29413,7 +29206,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\t    \"temperature\": ($round(150*$random())+150)/10\t}",
+        "payload": "{\t    \"type\": \"Property\",\t    \"value\": ($round(150*$random())+150)/10\t}\t",
         "payloadType": "jsonata",
         "x": 1150,
         "y": 580,
@@ -29428,11 +29221,11 @@
         "id": "4b950a1a911e95a6",
         "type": "http request",
         "z": "df0435d82c4bf5f6",
-        "name": "PATCH /ngsi-ld/v1/entities/{id}",
+        "name": "PATCH /ngsi-ld/v1/entities/{id}/attrs/temperature",
         "method": "use",
         "ret": "obj",
         "paytoqs": "ignore",
-        "url": "{{{orion-ld}}}/ngsi-ld/v1/entities/{{{id}}}",
+        "url": "{{{orion-ld}}}/ngsi-ld/v1/entities/{{{id}}}/attrs/temperature",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -29459,7 +29252,7 @@
                 "valueValue": ""
             }
         ],
-        "x": 1570,
+        "x": 1620,
         "y": 580,
         "wires": [
             [
@@ -29508,11 +29301,421 @@
         ]
     },
     {
+        "id": "d4a6f58dcade2406",
+        "type": "inject",
+        "z": "df0435d82c4bf5f6",
+        "g": "fee944a6bdaf5f10",
+        "name": " ",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 75,
+        "y": 120,
+        "wires": [
+            [
+                "1a03d03fe0320ad6"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "566325ccdbdada90",
+        "type": "change",
+        "z": "df0435d82c4bf5f6",
+        "g": "fee944a6bdaf5f10",
+        "name": "encode credentials",
+        "rules": [
+            {
+                "t": "set",
+                "p": "clientCredentials",
+                "pt": "msg",
+                "to": "clientId & \":\" & clientSecret",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 450,
+        "y": 120,
+        "wires": [
+            [
+                "5b6f4464fcce3868"
+            ]
+        ]
+    },
+    {
+        "id": "0a3fbe72e16d9f6a",
+        "type": "change",
+        "z": "df0435d82c4bf5f6",
+        "name": "",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "method",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1530,
+        "y": 700,
+        "wires": [
+            [
+                "583e944f9561284c"
+            ]
+        ]
+    },
+    {
+        "id": "734fcb2b4106254d",
+        "type": "delay",
+        "z": "df0435d82c4bf5f6",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "100",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1330,
+        "y": 620,
+        "wires": [
+            [
+                "4069e7f621879e5f"
+            ]
+        ]
+    },
+    {
+        "id": "b0176eea263a16fc",
+        "type": "inject",
+        "z": "df0435d82c4bf5f6",
+        "d": true,
+        "name": "STARTUP",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 35,
+        "y": 2220,
+        "wires": [
+            [
+                "073c94d9d1ef8430"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "cafc2ab52254540c",
+        "type": "inject",
+        "z": "df0435d82c4bf5f6",
+        "d": true,
+        "name": "STARTUP",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 35,
+        "y": 2260,
+        "wires": [
+            [
+                "e91adaea6c055de5"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "073c94d9d1ef8430",
+        "type": "change",
+        "z": "df0435d82c4bf5f6",
+        "d": true,
+        "name": "95.216.154.146",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion",
+                "pt": "msg",
+                "to": "http://95.216.154.146:1026",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "orion-ld",
+                "pt": "msg",
+                "to": "http://95.216.154.146:1027",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "keyrock",
+                "pt": "msg",
+                "to": "http://95.216.154.146:3005",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "clientId",
+                "pt": "msg",
+                "to": "tutorial-dckr-site-0000-xpresswebapp",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "clientSecret",
+                "pt": "msg",
+                "to": "tutorial-dckr-site-0000-clientsecret",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "username",
+                "pt": "msg",
+                "to": "alice-the-admin@test.com",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "password",
+                "pt": "msg",
+                "to": "test",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 140,
+        "y": 2220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e91adaea6c055de5",
+        "type": "change",
+        "z": "df0435d82c4bf5f6",
+        "d": true,
+        "name": "under nginx",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion",
+                "pt": "msg",
+                "to": "https://enershare.zapto.org/orion",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "orion-ld",
+                "pt": "msg",
+                "to": "https://enershare.zapto.org/orionld",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "keyrock",
+                "pt": "msg",
+                "to": "https://enershare.zapto.org/keyrock",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "clientId",
+                "pt": "msg",
+                "to": "tutorial-dckr-site-0000-xpresswebapp",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "clientSecret",
+                "pt": "msg",
+                "to": "tutorial-dckr-site-0000-clientsecret",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "username",
+                "pt": "msg",
+                "to": "alice-the-admin@test.com",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "password",
+                "pt": "msg",
+                "to": "test",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 130,
+        "y": 2260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c4bc455e9f9ecd33",
+        "type": "inject",
+        "z": "df0435d82c4bf5f6",
+        "d": true,
+        "name": "STARTUP",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 35,
+        "y": 2180,
+        "wires": [
+            [
+                "ac2ba57caf9c72d0"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "ac2ba57caf9c72d0",
+        "type": "http request",
+        "z": "df0435d82c4bf5f6",
+        "d": true,
+        "name": "GET icanhazip.com",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://icanhazip.com",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 150,
+        "y": 2180,
+        "wires": [
+            [
+                "4469b3b69479e171",
+                "84c20c3ceddd653b"
+            ]
+        ]
+    },
+    {
+        "id": "4469b3b69479e171",
+        "type": "change",
+        "z": "df0435d82c4bf5f6",
+        "d": true,
+        "name": "IP",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion",
+                "pt": "msg",
+                "to": "\"http://\" & $trim(payload) & \":1026\"",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "orion-ld",
+                "pt": "msg",
+                "to": "\"http://\" & $trim(payload) & \":1026\"",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "keyrock",
+                "pt": "msg",
+                "to": "\"http://\" & $trim(payload) & \":3005\"",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "clientId",
+                "pt": "msg",
+                "to": "tutorial-dckr-site-0000-xpresswebapp",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "clientSecret",
+                "pt": "msg",
+                "to": "tutorial-dckr-site-0000-clientsecret",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "username",
+                "pt": "msg",
+                "to": "alice-the-admin@test.com",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "password",
+                "pt": "msg",
+                "to": "test",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 2180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "84c20c3ceddd653b",
+        "type": "debug",
+        "z": "df0435d82c4bf5f6",
+        "d": true,
+        "name": "IP",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 310,
+        "y": 2180,
+        "wires": []
+    },
+    {
         "id": "1a03d03fe0320ad6",
         "type": "change",
         "z": "df0435d82c4bf5f6",
         "g": "fee944a6bdaf5f10",
-        "name": "host.docker.internal",
+        "name": "host.docker.internal ¹",
         "rules": [
             {
                 "t": "set",
@@ -29569,110 +29772,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 190,
-        "y": 100,
+        "x": 200,
+        "y": 120,
         "wires": [
             [
                 "566325ccdbdada90"
-            ]
-        ]
-    },
-    {
-        "id": "d4a6f58dcade2406",
-        "type": "inject",
-        "z": "df0435d82c4bf5f6",
-        "g": "fee944a6bdaf5f10",
-        "name": "STARTUP",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 75,
-        "y": 100,
-        "wires": [
-            [
-                "1a03d03fe0320ad6"
-            ]
-        ],
-        "l": false
-    },
-    {
-        "id": "566325ccdbdada90",
-        "type": "change",
-        "z": "df0435d82c4bf5f6",
-        "g": "fee944a6bdaf5f10",
-        "name": "encode credentials",
-        "rules": [
-            {
-                "t": "set",
-                "p": "clientCredentials",
-                "pt": "msg",
-                "to": "clientId & \":\" & clientSecret",
-                "tot": "jsonata"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 590,
-        "y": 60,
-        "wires": [
-            [
-                "5b6f4464fcce3868"
-            ]
-        ]
-    },
-    {
-        "id": "0a3fbe72e16d9f6a",
-        "type": "change",
-        "z": "df0435d82c4bf5f6",
-        "name": "",
-        "rules": [
-            {
-                "t": "delete",
-                "p": "method",
-                "pt": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1530,
-        "y": 700,
-        "wires": [
-            [
-                "583e944f9561284c"
-            ]
-        ]
-    },
-    {
-        "id": "734fcb2b4106254d",
-        "type": "delay",
-        "z": "df0435d82c4bf5f6",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "1",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 1320,
-        "y": 620,
-        "wires": [
-            [
-                "4069e7f621879e5f"
             ]
         ]
     }
