@@ -12,7 +12,7 @@ services:
       - "1026"
     command: -dbhost mongo-db -db orionld -logLevel DEBUG -forwarding
     healthcheck:
-      test: ["CMD", "curl --fail --silent http://orion:1026/version"]
+      test: ["CMD", "curl --fail --silent http://localhost:1026/version"]
       interval: 30m
     # interval: 30s
     # timeout: 30s
@@ -59,7 +59,7 @@ services:
       - ./mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
     healthcheck:
     # test: ["CMD", "mongo --quiet --eval db.runCommand('ping') || exit 1"]
-      test: ["CMD", "mongosh --eval db.adminCommand('ping')"]
+      test: ["CMD", "mongo --eval db.adminCommand('ping')"]
       interval: 30m
 
  # Mongo DB front-end

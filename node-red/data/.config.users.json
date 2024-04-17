@@ -49,6 +49,11 @@
                     "config",
                     "context"
                 ]
+            },
+            "dialog": {
+                "export": {
+                    "pretty": true
+                }
             }
         },
         "menu-deploymenu-item-node": true,

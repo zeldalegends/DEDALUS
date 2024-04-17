@@ -258,7 +258,7 @@ module.exports = {
      *      then "/home/nol/pics/" will be served at "/static/img/"
      */
     //httpStaticRoot: '/static/',
-    httpStaticRoot: '/v3/',
+    httpStaticRoot: '/v3/',                                                     
 
 /*******************************************************************************
  * Runtime Settings
