@@ -19,7 +19,7 @@
         "PartField": "tutorial:PartField",
         "Person": "fiware:Person",
         "SoilSensor": "tutorial:SoilSensor",
-        "TemperatureSensor": "tutorial:TemperatureSensor",
+        "TemperatureSensor": "https://w3id.org/saref#TemperatureSensor",
         "Task": "fiware:Activity",
         "Tractor": "tutorial:Tractor",
         "Water": "tutorial:Water",
@@ -151,7 +151,7 @@
             "@id": "schema:honorificSuffix",
             "@type": "xsd:string"
         },
-        "humidity": "https://w3id.org/saref#humidity",
+        "humidity": "https://w3id.org/saref#Humidity",
         "hut": "https://wiki.openstreetmap.org/wiki/Tag:building%3Dhut",
         "implement": "https://w3id.org/saref#implement",
         "ipAddress": {
@@ -225,7 +225,7 @@
             "@id": "fiware:rssi",
             "@type": "xsd:string"
         },
-        "sensor": "https://w3id.org/saref#sensor",
+        "sensor": "https://w3id.org/saref#Sensor",
         "serialNumber": {
             "@id": "fiware:serialNumber",
             "@type": "xsd:string"
@@ -256,7 +256,7 @@
             "@id": "schema:telephone",
             "@type": "xsd:string"
         },
-        "temperature": "https://w3id.org/saref#temperature",
+        "temperature": "https://w3id.org/saref#Temperature",
         "transformer_tower": "https://wiki.openstreetmap.org/wiki/Tag:building%3Dtransformer_tower",
         "value": {
             "@id": "fiware:value",
@@ -316,7 +316,7 @@
             }
         },
         {
-            "@id": "fiware:TemperatureSensor",
+            "@id": "https://w3id.org/saref#TemperatureSensor",
             "@type": "rdfs:Class",
             "rdfs:comment": [
                 {
@@ -373,39 +373,7 @@
             }
         },
         {
-            "@id": "fiware:temperature",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "Property related to some measurements that are characterized by a certain value that is measured in a temperature unit (degree_Celsius, degree_Fahrenheit, or degree_kelvin)"
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "temperature"
-                }
-            ]
-        },
-        {
-            "@id": "fiware:fillingLevel",
-            "@type": "ngsi-ld:Property",
-            "rdfs:comment": [
-                {
-                    "@language": "en",
-                    "@value": "Property related to some measurements that are characterized by a certain value that is a filling level."
-                }
-            ],
-            "rdfs:label": [
-                {
-                    "@language": "en",
-                    "@value": "fillingLevel"
-                }
-            ]
-        },
-        {
-            "@id": "fiware:temperature",
+            "@id": "https://w3id.org/saref#Temperature",
             "@type": "ngsi-ld:Property",
             "rdfs:comment": [
                 {

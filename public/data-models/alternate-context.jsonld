@@ -19,7 +19,7 @@
         "PartField": "tutorial:PartField",
         "Person": "fiware:Person",
         "SoilSensor": "tutorial:SoilSensor",
-        "TemperatureSensor": "fiware:TemperatureSensor",
+        "TemperatureSensor": "https://w3id.org/saref#TemperatureSensor",
         "Activität": "fiware:Activity",
         "Traktor": "tutorial:Tractor",
         "Wasser": "tutorial:Water",

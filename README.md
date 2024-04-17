@@ -1,5 +1,10 @@
-# FIWARE Setup
+# FIWARE Universe
+Full MVP FIWARE stack with enhanced security. 
 
-Modify nginx/nginx.conf with your domain.
+## Requirements
+Modify the following files with your domain and email:
+- `nginx/nginx.conf`
+- `run.sh`
 
-Set domain and email in run.sh and launch it.
+## Setup
+Launch `run.sh`.
