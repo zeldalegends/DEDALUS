@@ -732,7 +732,7 @@
     {
         "id": "68ea59a18e66e807",
         "type": "ui_tab",
-        "name": "Universe",
+        "name": "FIWARE Universe",
         "icon": "bubble_chart",
         "order": 2,
         "disabled": false,
@@ -1943,7 +1943,7 @@
         "order": 8,
         "width": "0",
         "height": "0",
-        "format": "<div style=\"display: flex; align-items: center;\">\n    &nbsp;&nbsp;&nbsp;<img height=\"42\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/MongoDB_Logo.svg/320px-MongoDB_Logo.svg.png\"/>\n</div>",
+        "format": "<div style=\"display: flex; align-items: center;\">\n    &nbsp;&nbsp;&nbsp;<img height=\"42\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/MongoDB_Logo.svg/320px-MongoDB_Logo.svg.png\"/>\n    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(admin/pass)\n</div>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": true,
