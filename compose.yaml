@@ -291,25 +291,25 @@ services:
 #   # test: ["CMD", "node", "-e", "require('http').request({ hostname:'localhost', port:8545, method:'POST', headers:{ 'Content-Type':'application/json', 'Content-Length':63 }}, res => res.on('data', chunk => process.exit(0)).on('error', err => process.exit(1))).write(JSON.stringify({jsonrpc:'2.0', method:'eth_blockNumber', params:[], id:1}))"]
 #     test: node -e fetch('http://localhost:8545', { method:'POST', headers:{ 'content-type':'application/json' }, body:JSON.stringify({ id:1, jsonrpc:'2.0', method:'eth_blockNumber' }) }).then(res => res.json()).then(res => process.exit(0)).catch(err => process.exit(1));
 
-  # MQTT Broker (MosQuiTTo)
-  mosquitto:
-    image: eclipse-mosquitto #:2.0.15
-    hostname: mqtt
-    container_name: mosquitto
-    restart: on-failure
-    expose:
-      - "1883"
-    # - "9001"
-    ports:
-      - "1883:1883" # http://localhost:1883
-    # - "9001:9001" # http://localhost:9001
-    command: mosquitto -c /mosquitto-no-auth.conf
-    healthcheck:
-      test: mosquitto_sub -t '$$SYS/#' -C 1 | grep -v Error
-      interval: 15s
-
-  # docker exec -it mosquitto mosquitto_sub -h mosquitto -t "/#"
-  # docker exec -it mosquitto mosquitto_pub -h mosquitto -m "Hello world!" -t "/test"
+# # MQTT Broker (MosQuiTTo)
+# mosquitto:
+#   image: eclipse-mosquitto #:2.0.15
+#   hostname: mqtt
+#   container_name: mosquitto
+#   restart: on-failure
+#   expose:
+#     - "1883"
+#     - "9001"
+#   ports:
+#     - "1883:1883" # http://localhost:1883
+#     - "9001:9001" # http://localhost:9001
+#   command: mosquitto -c /mosquitto-no-auth.conf
+#   healthcheck:
+#     test: mosquitto_sub -t '$$SYS/#' -C 1 | grep -v Error
+#     interval: 15s
+#
+# # docker exec -it mosquitto mosquitto_sub -h mosquitto -t "/#"
+# # docker exec -it mosquitto mosquitto_pub -h mosquitto -m "Hello world!" -t "/test"
 
 volumes:
   ganache-db: ~

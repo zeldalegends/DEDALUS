@@ -34,7 +34,7 @@
     {
         "id": "e52631fa86fdd3be",
         "type": "tab",
-        "label": "UNIVERSE",
+        "label": "UNIVERSE v1.1",
         "disabled": false,
         "info": "",
         "env": []
@@ -125,7 +125,9 @@
             "1a1a090377e2b43e"
         ],
         "x": 334,
-        "y": 19
+        "y": 19,
+        "w": 232,
+        "h": 82
     },
     {
         "id": "fde0a01bd296f290",
@@ -536,6 +538,39 @@
         "y": 19,
         "w": 972,
         "h": 322
+    },
+    {
+        "id": "7048013762d936db",
+        "type": "group",
+        "z": "e52631fa86fdd3be",
+        "name": "",
+        "style": {
+            "stroke-opacity": "0",
+            "fill": "#e3f3d3",
+            "label": true
+        },
+        "nodes": [
+            "c8f051effd2e3560",
+            "6e1e63d3ac48bdac",
+            "08e35d1bd3455795",
+            "5a051954645f7297",
+            "e0d89847ae3f869b",
+            "448534c70b9e7160",
+            "42d5275e7e5126d5",
+            "84dadb4b70bf968f",
+            "432586859e633808",
+            "49b3c830b1f3f8c1",
+            "e09c2264f5cd5f03",
+            "b6be9ea67c20470c",
+            "725e4060ae079a58",
+            "aef16637363ad33c",
+            "bf87f213ac1616d6",
+            "114e5d93ba37d588"
+        ],
+        "x": 154,
+        "y": 419,
+        "w": 812,
+        "h": 162
     },
     {
         "id": "15d84497.52381b",
@@ -5626,28 +5661,7 @@
         "y": 180,
         "wires": [
             [
-                "584dab5ddb454164",
                 "e409f3cc90a4caf9"
-            ]
-        ]
-    },
-    {
-        "id": "584dab5ddb454164",
-        "type": "NGSI-Update",
-        "z": "e52631fa86fdd3be",
-        "d": true,
-        "name": "",
-        "endpoint": "80433672957732d2",
-        "protocol": "LD",
-        "updateMode": "upsert-replace",
-        "updateModev2": "append",
-        "ldContext": "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
-        "mimeType": "application/ld+json",
-        "x": 710,
-        "y": 120,
-        "wires": [
-            [
-                "0291d8caca30be5c"
             ]
         ]
     },
@@ -5655,16 +5669,16 @@
         "id": "0291d8caca30be5c",
         "type": "debug",
         "z": "e52631fa86fdd3be",
-        "name": "fiware",
+        "name": "entity",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": true,
         "complete": "payload",
         "targetType": "msg",
-        "statusVal": "payload",
+        "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 850,
+        "x": 870,
         "y": 180,
         "wires": []
     },
@@ -5685,7 +5699,7 @@
         "gasPrice": "46591",
         "fetchFullTransaction": false,
         "x": 460,
-        "y": 420,
+        "y": 340,
         "wires": [
             [
                 "5ead606b11285a79"
@@ -5699,34 +5713,34 @@
         "id": "5c1c64259f8f1c39",
         "type": "debug",
         "z": "e52631fa86fdd3be",
-        "name": "txn",
+        "name": "tx hash",
         "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "summary.txHash",
         "statusType": "msg",
-        "x": 850,
-        "y": 380,
+        "x": 860,
+        "y": 300,
         "wires": []
     },
     {
         "id": "3de5615b1a791c3a",
         "type": "debug",
         "z": "e52631fa86fdd3be",
-        "name": "block",
-        "active": false,
+        "name": "block #",
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "payload.blockHash",
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload.blockNumber",
         "statusType": "msg",
-        "x": 850,
-        "y": 460,
+        "x": 860,
+        "y": 380,
         "wires": []
     },
     {
@@ -5734,15 +5748,16 @@
         "type": "http in",
         "z": "e52631fa86fdd3be",
         "name": "",
-        "url": "/test",
+        "url": "/univ",
         "method": "post",
         "upload": false,
         "swaggerDoc": "",
-        "x": 280,
+        "x": 100,
         "y": 400,
         "wires": [
             [
-                "3de68d785fb098ec"
+                "524d68c462ef3a2e",
+                "b1e44166ca7e50c3"
             ]
         ]
     },
@@ -5750,12 +5765,10 @@
         "id": "486b4d67c15beb04",
         "type": "inject",
         "z": "e52631fa86fdd3be",
-        "name": "orion-ld:1026",
+        "name": "INIT",
         "props": [
             {
-                "p": "orion-ld",
-                "v": "http://orion-ld:1026",
-                "vt": "str"
+                "p": "payload"
             }
         ],
         "repeat": "",
@@ -5763,7 +5776,9 @@
         "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 110,
+        "payload": "",
+        "payloadType": "date",
+        "x": 90,
         "y": 240,
         "wires": [
             [
@@ -5792,12 +5807,11 @@
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 280,
-        "y": 300,
+        "x": 260,
+        "y": 280,
         "wires": [
             [
-                "1c23b90bebe39753",
-                "20ad05a047920d6d"
+                "fa1ffb5234e5a36e"
             ]
         ]
     },
@@ -5821,11 +5835,11 @@
         "payloadType": "str",
         "topic": "first",
         "topicType": "flow",
-        "x": 290,
+        "x": 270,
         "y": 240,
         "wires": [
             [
-                "42cd9ca6be76b1ea"
+                "58b3dcc2090052bc"
             ]
         ]
     },
@@ -5833,10 +5847,10 @@
         "id": "1070881307c41888",
         "type": "comment",
         "z": "e52631fa86fdd3be",
-        "name": "FE Universe - FIWARE Notarization",
-        "info": "Il programma scrive sul Context Broker\nOrion LD i risultati dei test immessi.\n\nAl riavvio è programmato per annullare\ntutte le sottoscrizioni al Context Broker,\ne mantenerne solo quella al servizio\ndi notarizzazione su Blockchain. \n\nPer imostazione predefinita, notarizza\nsu Blockchain Ethereum (testnet Goerli)\nsolo gli Acceptance Test con un codice\nrisultato pari a 100 o 200.\n\nInserire la URL del Context Broker Orion\nnel flow \"FIWARE\", e a URL di Node-RED\nattualmente sul browser nella scheda\nNotification dei nodi Subscribe.",
-        "x": 760,
-        "y": 40,
+        "name": "README",
+        "info": "=========================================\nInserire le URL di Orion e di Node-RED\n(la URL attualmente sul browser) nei nodi\ncontrassegnati con il logo di \"FIWARE\".\n=========================================\nIl programma scrive sul Context Broker\nOrion LD i risultati dei test immessi.\n\nAl riavvio è programmato per annullare\ntutte le sottoscrizioni al Context Broker,\ne mantenerne solo quella al servizio\ndi notarizzazione su Blockchain. \n\nPer imostazione predefinita, notarizza\nsu Blockchain Ethereum (Ganache in Docker)\nsolo gli Acceptance Test con un codice\nrisultato pari a 100 o 200.",
+        "x": 860,
+        "y": 120,
         "wires": []
     },
     {
@@ -5857,7 +5871,7 @@
         "sendOnBlur": true,
         "className": "",
         "topicType": "msg",
-        "x": 300,
+        "x": 280,
         "y": 80,
         "wires": [
             [
@@ -5885,11 +5899,11 @@
         "payloadType": "date",
         "topic": "test",
         "topicType": "flow",
-        "x": 280,
+        "x": 260,
         "y": 180,
         "wires": [
             [
-                "f6b2109d74b0c7a2"
+                "4a1bf714e7de66d0"
             ]
         ]
     },
@@ -6008,7 +6022,7 @@
         "topic": "topic",
         "topicType": "msg",
         "className": "",
-        "x": 280,
+        "x": 260,
         "y": 120,
         "wires": [
             [
@@ -6025,7 +6039,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "{\n    \"@context\": [\n        \"https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld\",\n        \"https://schema.lab.fiware.org/ld/context\"\n    ],\n    \"id\": \"urn:entities:{{topic.reference}}\",\n    \"type\": \"Test\",\n    \"level\": {\n        \"type\": \"Property\",\n        \"value\": \"{{topic.level}}\"\n    },\n    \"reference\": {\n        \"type\": \"Property\",\n        \"value\": \"{{topic.reference}}\"\n    },\n    \"result\": {\n        \"type\": \"Property\",\n        \"value\": {{topic.result}}\n    },\n    \"timestamp\": {\n        \"type\": \"Property\",\n        \"value\": {{payload}}\n    }\n}",
+        "template": "[\n    {\n        \"@context\": [\n            \"https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld\",\n            \"https://schema.lab.fiware.org/ld/context\"\n        ],\n        \"id\": \"urn:entities:{{topic.reference}}\",\n        \"type\": \"Test\",\n        \"level\": {\n            \"type\": \"Property\",\n            \"value\": \"{{topic.level}}\"\n        },\n        \"reference\": {\n            \"type\": \"Property\",\n            \"value\": \"{{topic.reference}}\"\n        },\n        \"result\": {\n            \"type\": \"Property\",\n            \"value\": {{topic.result}}\n        },\n        \"timestamp\": {\n            \"type\": \"Property\",\n            \"value\": {{payload}}\n        }\n    }\n]",
         "output": "json",
         "x": 450,
         "y": 180,
@@ -6130,7 +6144,7 @@
         "max": "500",
         "step": "100",
         "className": "",
-        "x": 290,
+        "x": 270,
         "y": 40,
         "wires": [
             [
@@ -6139,85 +6153,20 @@
         ]
     },
     {
-        "id": "42cd9ca6be76b1ea",
-        "type": "http request",
-        "z": "e52631fa86fdd3be",
-        "name": "GET",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "{{{orion-ld}}}/ngsi-ld/v1/subscriptions/",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 450,
-        "y": 240,
-        "wires": [
-            [
-                "c43bdd592e35febe"
-            ]
-        ]
-    },
-    {
-        "id": "c43bdd592e35febe",
-        "type": "split",
-        "z": "e52631fa86fdd3be",
-        "name": "",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": false,
-        "addname": "",
-        "x": 570,
-        "y": 240,
-        "wires": [
-            [
-                "2a6d4293db831bde"
-            ]
-        ]
-    },
-    {
-        "id": "f129b77e85428011",
-        "type": "http request",
-        "z": "e52631fa86fdd3be",
-        "name": "DELETE",
-        "method": "DELETE",
-        "ret": "txt",
-        "paytoqs": "ignore",
-        "url": "{{{orion-ld}}}/ngsi-ld/v1/subscriptions/{{payload.id}}",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 840,
-        "y": 240,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "bb1dfa6b940b2d51",
         "type": "debug",
         "z": "e52631fa86fdd3be",
-        "name": "subscription",
+        "name": "sub error",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": true,
         "complete": "payload",
         "targetType": "msg",
-        "statusVal": "payload.statusCode",
+        "statusVal": "statusCode",
         "statusType": "msg",
-        "x": 470,
-        "y": 360,
+        "x": 260,
+        "y": 340,
         "wires": []
     },
     {
@@ -6238,7 +6187,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 100,
-        "y": 300,
+        "y": 280,
         "wires": [
             [
                 "df45ac331f0e9ca1"
@@ -6246,110 +6195,18 @@
         ]
     },
     {
-        "id": "2aa71acb46800323",
-        "type": "NGSI-Dataset",
-        "z": "e52631fa86fdd3be",
-        "name": "",
-        "endpoint": "80433672957732d2",
-        "protocol": "LD",
-        "ldContext": "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
-        "entityType": "Test",
-        "attrs": "",
-        "q": "",
-        "mode": "keyValues",
-        "x": 450,
-        "y": 540,
-        "wires": [
-            [
-                "466246a303951743"
-            ]
-        ]
-    },
-    {
-        "id": "36ce0b88ca622e3f",
-        "type": "inject",
-        "z": "e52631fa86fdd3be",
-        "name": "get all entities",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 290,
-        "y": 540,
-        "wires": [
-            [
-                "2aa71acb46800323"
-            ]
-        ]
-    },
-    {
-        "id": "466246a303951743",
-        "type": "json",
-        "z": "e52631fa86fdd3be",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 570,
-        "y": 540,
-        "wires": [
-            [
-                "559b6dfa1edda109"
-            ]
-        ]
-    },
-    {
-        "id": "559b6dfa1edda109",
-        "type": "debug",
-        "z": "e52631fa86fdd3be",
-        "name": "entities",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 700,
-        "y": 540,
-        "wires": []
-    },
-    {
-        "id": "8f31643a8f64dea8",
-        "type": "comment",
-        "z": "e52631fa86fdd3be",
-        "name": "set notification endpoint",
-        "info": "",
-        "x": 140,
-        "y": 380,
-        "wires": []
-    },
-    {
         "id": "5ead606b11285a79",
         "type": "template",
         "z": "e52631fa86fdd3be",
-        "name": "link",
+        "name": "hash",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "TXN in progress...\n\nHash: {{payload}}\nLink: https://goerli.etherscan.io/tx/{{payload}}",
+        "template": "TXN in progress...\n\nHash: {{payload}}\n",
         "output": "str",
         "x": 690,
-        "y": 380,
+        "y": 300,
         "wires": [
             [
                 "5c1c64259f8f1c39",
@@ -6358,35 +6215,11 @@
         ]
     },
     {
-        "id": "1c23b90bebe39753",
-        "type": "NGSI-Subscription",
-        "z": "e52631fa86fdd3be",
-        "d": true,
-        "name": "",
-        "endpoint": "80433672957732d2",
-        "protocol": "LD",
-        "ldContext": "https://schema.lab.fiware.org/ld/context",
-        "entityType": "Test",
-        "watchedAttributes": "",
-        "q": "level==%22Acceptance%22;result<300",
-        "notificationMode": "normalized",
-        "notificationEndpoint": "http://node-red:1880/test",
-        "notificationAttributes": "",
-        "mimeType": "application/ld+json",
-        "x": 270,
-        "y": 360,
-        "wires": [
-            [
-                "bb1dfa6b940b2d51"
-            ]
-        ]
-    },
-    {
         "id": "b00b7392cc25aa7c",
         "type": "ui_template",
         "z": "e52631fa86fdd3be",
         "group": "47bd647b0bf55722",
-        "name": "Banner",
+        "name": "DEDALUS Banner for the Demo",
         "order": 1,
         "width": "0",
         "height": "0",
@@ -6396,8 +6229,8 @@
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 840,
-        "y": 80,
+        "x": 790,
+        "y": 40,
         "wires": [
             []
         ]
@@ -6410,33 +6243,15 @@
         "statusCode": "",
         "headers": {},
         "x": 90,
-        "y": 540,
-        "wires": []
-    },
-    {
-        "id": "3de68d785fb098ec",
-        "type": "json",
-        "z": "e52631fa86fdd3be",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 90,
         "y": 460,
-        "wires": [
-            [
-                "524d68c462ef3a2e",
-                "02139f7c8e098f31",
-                "b1e44166ca7e50c3"
-            ]
-        ]
+        "wires": []
     },
     {
         "id": "524d68c462ef3a2e",
         "type": "function",
         "z": "e52631fa86fdd3be",
         "name": "[digest,entity]",
-        "func": "// return buffer\nmsg.hash = keccak256(JSON.stringify(msg.payload));\n\n// return string\nmsg.hex = \"0x\" + msg.payload.toString('hex')\n\nnode.status({ fill:\"blue\", shape:\"ring\", text:msg.hex });\nreturn {payload:[msg.hash, JSON.stringify(msg.payload)]};",
+        "func": "// extract data\nmsg.payload = msg.payload.data[0];\n\n// return buffer\nmsg.hash = keccak256(JSON.stringify(msg.payload));\n\n// return string\nmsg.hex = \"0x\" + msg.hash.toString('hex');\n\nnode.status({ fill:\"blue\", shape:\"ring\", text:msg.hex });\nreturn {payload:[msg.hash, JSON.stringify(msg.payload)]};",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -6448,11 +6263,12 @@
                 "module": "keccak256"
             }
         ],
-        "x": 290,
-        "y": 460,
+        "x": 270,
+        "y": 400,
         "wires": [
             [
-                "11ea9bf44451a42e"
+                "11ea9bf44451a42e",
+                "02139f7c8e098f31"
             ]
         ]
     },
@@ -6467,27 +6283,306 @@
         "tostatus": true,
         "complete": "payload",
         "targetType": "msg",
-        "statusVal": "payload.data[0].id",
-        "statusType": "msg",
+        "statusVal": "$eval(payload[1]).id",
+        "statusType": "jsonata",
         "x": 470,
-        "y": 460,
+        "y": 380,
         "wires": []
     },
     {
-        "id": "eb74c9e298dd1b00",
-        "type": "comment",
+        "id": "dc51d6e56b842a60",
+        "type": "ui_template",
         "z": "e52631fa86fdd3be",
-        "name": "Note",
-        "info": "Payload not supported by DELETE (removed)",
-        "x": 670,
-        "y": 260,
-        "wires": []
+        "group": "3887268fb207a290",
+        "name": "Ethereum",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "format": "<h4>\n    <img height=\"36\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Ethereum-icon-purple.svg/240px-Ethereum-icon-purple.svg.png\" />\n    Ethereum\n    <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n    <a href=\"https://goerli.etherscan.io/tx/{{msg.summary.txHash}}\"><input type=\"image\" height=\"24\" src=\"https://etherscan.io/assets/svg/logos/logo-etherscan.svg\" alt=\"Open in Etherscan.io\"/></a-->\n</h4>\n<textarea style=\"font-size:14px;\" rows=\"12\">{{msg.payload}}</textarea>\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 700,
+        "y": 380,
+        "wires": [
+            [
+                "3de5615b1a791c3a"
+            ]
+        ]
     },
     {
-        "id": "2a6d4293db831bde",
+        "id": "fca10557a6a499d1",
+        "type": "http request",
+        "z": "e52631fa86fdd3be",
+        "name": "POST /subs",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "{{{orion-ld}}}/ngsi-ld/v1/subscriptions",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "Content-Type",
+                "keyValue": "",
+                "valueType": "other",
+                "valueValue": "application/ld+json"
+            }
+        ],
+        "x": 110,
+        "y": 340,
+        "wires": [
+            [
+                "bb1dfa6b940b2d51"
+            ]
+        ]
+    },
+    {
+        "id": "f6ce7806f9bd5d09",
+        "type": "ui_template",
+        "z": "e52631fa86fdd3be",
+        "d": true,
+        "group": "47bd647b0bf55722",
+        "name": "Universe Banner",
+        "order": 1,
+        "width": "0",
+        "height": "0",
+        "format": "<div style=\"background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwMkp29oQjL16Cwdq8l3BOaMDBJTNXSeWdvA&usqp=CAU');text-align:center;font-size:40px;color:white;\">\n    <b>FE Universe</b>\n</div>\n<h4>(C) Alerox, 2022</h4>\n\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 830,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "20ad05a047920d6d",
+        "type": "template",
+        "z": "e52631fa86fdd3be",
+        "name": "sub",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\n    \"description\": \"Notify me of all OK tests\",\n    \"type\": \"Subscription\",\n    \"entities\": [\n        {\n            \"type\": \"Test\"\n        }\n    ],\n    \"q\": \"level==%22Acceptance%22;result<300\",\n    \"notification\": {\n        \"format\": \"keyValues\",\n        \"endpoint\": {\n            \"uri\": \"http://node-red:1880/univ\",\n            \"accept\": \"application/json\"\n        }\n    },\n    \"@context\": \"https://schema.lab.fiware.org/ld/context\"\n}",
+        "output": "str",
+        "x": 450,
+        "y": 280,
+        "wires": [
+            [
+                "fca10557a6a499d1"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png"
+    },
+    {
+        "id": "212788ea9295ec8f",
+        "type": "inject",
+        "z": "e52631fa86fdd3be",
+        "name": "manual",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 90,
+        "y": 180,
+        "wires": [
+            [
+                "b4b540e2423f722e"
+            ]
+        ]
+    },
+    {
+        "id": "e409f3cc90a4caf9",
+        "type": "http request",
+        "z": "e52631fa86fdd3be",
+        "name": "POST /upsert",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "{{{orion-ld}}}/ngsi-ld/v1/entityOperations/upsert",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "Content-Type",
+                "keyValue": "",
+                "valueType": "other",
+                "valueValue": "application/ld+json"
+            }
+        ],
+        "x": 720,
+        "y": 180,
+        "wires": [
+            [
+                "0291d8caca30be5c"
+            ]
+        ]
+    },
+    {
+        "id": "58b3dcc2090052bc",
         "type": "change",
         "z": "e52631fa86fdd3be",
-        "name": "sub ids",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion-ld",
+                "pt": "msg",
+                "to": "http://orion-ld:1026",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 375,
+        "y": 240,
+        "wires": [
+            [
+                "48b491d3a6eaaadf"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png",
+        "l": false
+    },
+    {
+        "id": "fa1ffb5234e5a36e",
+        "type": "change",
+        "z": "e52631fa86fdd3be",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion-ld",
+                "pt": "msg",
+                "to": "http://orion-ld:1026",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 375,
+        "y": 280,
+        "wires": [
+            [
+                "20ad05a047920d6d"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png",
+        "l": false
+    },
+    {
+        "id": "4a1bf714e7de66d0",
+        "type": "change",
+        "z": "e52631fa86fdd3be",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion-ld",
+                "pt": "msg",
+                "to": "http://orion-ld:1026",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 375,
+        "y": 180,
+        "wires": [
+            [
+                "f6b2109d74b0c7a2"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png",
+        "l": false
+    },
+    {
+        "id": "48b491d3a6eaaadf",
+        "type": "http request",
+        "z": "e52631fa86fdd3be",
+        "name": "GET",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "{{{orion-ld}}}/ngsi-ld/v1/subscriptions",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            }
+        ],
+        "x": 450,
+        "y": 240,
+        "wires": [
+            [
+                "23d89fd0e358ecd9"
+            ]
+        ]
+    },
+    {
+        "id": "23d89fd0e358ecd9",
+        "type": "split",
+        "z": "e52631fa86fdd3be",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 570,
+        "y": 240,
+        "wires": [
+            [
+                "8ddd93780bd58968"
+            ]
+        ]
+    },
+    {
+        "id": "8ddd93780bd58968",
+        "type": "change",
+        "z": "e52631fa86fdd3be",
+        "name": "foreach sub",
         "rules": [
             {
                 "t": "move",
@@ -6507,43 +6602,50 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 700,
+        "x": 710,
         "y": 240,
         "wires": [
             [
-                "f129b77e85428011"
+                "d50d164548a65454"
             ]
         ]
     },
     {
-        "id": "dc51d6e56b842a60",
-        "type": "ui_template",
-        "z": "e52631fa86fdd3be",
-        "group": "3887268fb207a290",
-        "name": "Ethereum",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "format": "<h4>\n    <img height=\"36\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Ethereum-icon-purple.svg/240px-Ethereum-icon-purple.svg.png\" />\n    Ethereum\n    <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n    <a href=\"https://goerli.etherscan.io/tx/{{msg.summary.txHash}}\"><input type=\"image\" height=\"24\" src=\"https://etherscan.io/assets/svg/logos/logo-etherscan.svg\" alt=\"Open in Etherscan.io\"/></a-->\n</h4>\n<textarea style=\"font-size:14px;\" rows=\"12\">{{msg.payload}}</textarea>\n",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "className": "",
-        "x": 700,
-        "y": 460,
-        "wires": [
-            [
-                "3de5615b1a791c3a"
-            ]
-        ]
-    },
-    {
-        "id": "fca10557a6a499d1",
+        "id": "d50d164548a65454",
         "type": "http request",
         "z": "e52631fa86fdd3be",
-        "name": "POST /ngsi-ld/v1/subscriptions",
-        "method": "POST",
+        "name": "DELETE",
+        "method": "DELETE",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "{{{orion-ld}}}/ngsi-ld/v1/subscriptions/{{id}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            }
+        ],
+        "x": 860,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c8f051effd2e3560",
+        "type": "http request",
+        "z": "e52631fa86fdd3be",
+        "g": "7048013762d936db",
+        "name": "GET /subscriptions",
+        "method": "GET",
         "ret": "obj",
         "paytoqs": "ignore",
         "url": "{{{orion-ld}}}/ngsi-ld/v1/subscriptions",
@@ -6555,83 +6657,37 @@
         "senderr": false,
         "headers": [
             {
-                "keyType": "Content-Type",
-                "keyValue": "",
-                "valueType": "application/json",
-                "valueValue": ""
-            },
-            {
                 "keyType": "other",
                 "keyValue": "X-Auth-Token",
                 "valueType": "msg",
                 "valueValue": "x-auth-token"
-            },
-            {
-                "keyType": "other",
-                "keyValue": "Link",
-                "valueType": "msg",
-                "valueValue": "link"
             }
         ],
-        "x": 670,
-        "y": 300,
+        "x": 490,
+        "y": 500,
         "wires": [
             [
-                "bb1dfa6b940b2d51"
+                "448534c70b9e7160",
+                "e0d89847ae3f869b"
             ]
         ]
     },
     {
-        "id": "f6ce7806f9bd5d09",
-        "type": "ui_template",
-        "z": "e52631fa86fdd3be",
-        "d": true,
-        "group": "47bd647b0bf55722",
-        "name": "Banner",
-        "order": 1,
-        "width": "0",
-        "height": "0",
-        "format": "<div style=\"background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwMkp29oQjL16Cwdq8l3BOaMDBJTNXSeWdvA&usqp=CAU');text-align:center;font-size:40px;color:white;\">\n    <b>FE Universe</b>\n</div>\n<h4>(C) Alerox, 2022</h4>\n\n",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "className": "",
-        "x": 700,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "20ad05a047920d6d",
-        "type": "template",
-        "z": "e52631fa86fdd3be",
-        "name": "",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "{\n    \"description\": \"Notify me of all OK tests\",\n    \"type\": \"Subscription\",\n    \"entities\": [\n        {\n            \"type\": \"Test\"\n        }\n    ],\n    \"q\": \"level==%22Acceptance%22;result<300\",\n    \"notification\": {\n        \"format\": \"keyValues\",\n        \"endpoint\": {\n            \"uri\": \"http://node-red:1880/test\",\n            \"accept\": \"application/json\"\n        }\n    }\n}",
-        "output": "str",
-        "x": 460,
-        "y": 300,
-        "wires": [
-            [
-                "fca10557a6a499d1"
-            ]
-        ]
-    },
-    {
-        "id": "212788ea9295ec8f",
+        "id": "6e1e63d3ac48bdac",
         "type": "inject",
         "z": "e52631fa86fdd3be",
-        "name": "orion-ld:1026",
+        "g": "7048013762d936db",
+        "name": "list all subs",
         "props": [
             {
                 "p": "orion-ld",
-                "v": "http://orion-ld:1026",
-                "vt": "str"
+                "v": "orion-ld",
+                "vt": "flow"
+            },
+            {
+                "p": "x-auth-token",
+                "v": "x-auth-token",
+                "vt": "flow"
             }
         ],
         "repeat": "",
@@ -6639,23 +6695,173 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 110,
-        "y": 180,
+        "x": 260,
+        "y": 500,
         "wires": [
             [
-                "b4b540e2423f722e"
+                "42d5275e7e5126d5"
             ]
         ]
     },
     {
-        "id": "e409f3cc90a4caf9",
+        "id": "08e35d1bd3455795",
+        "type": "debug",
+        "z": "e52631fa86fdd3be",
+        "g": "7048013762d936db",
+        "name": "get flow.latest",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload.id",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "5a051954645f7297",
+        "type": "change",
+        "z": "e52631fa86fdd3be",
+        "g": "7048013762d936db",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "latest",
+                "pt": "flow",
+                "to": "payload.id",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 840,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e0d89847ae3f869b",
+        "type": "debug",
+        "z": "e52631fa86fdd3be",
+        "g": "7048013762d936db",
+        "name": "split",
+        "active": false,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "statusCode&\" - \"&(payload.error?payload.error:$count(payload)&($count(payload)=1?\" result\":\" results\"))",
+        "statusType": "jsonata",
+        "x": 690,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "448534c70b9e7160",
+        "type": "split",
+        "z": "e52631fa86fdd3be",
+        "g": "7048013762d936db",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 690,
+        "y": 500,
+        "wires": [
+            [
+                "08e35d1bd3455795",
+                "5a051954645f7297"
+            ]
+        ]
+    },
+    {
+        "id": "42d5275e7e5126d5",
+        "type": "change",
+        "z": "e52631fa86fdd3be",
+        "g": "7048013762d936db",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion-ld",
+                "pt": "msg",
+                "to": "http://orion-ld:1026",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 375,
+        "y": 500,
+        "wires": [
+            [
+                "c8f051effd2e3560"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png",
+        "l": false
+    },
+    {
+        "id": "84dadb4b70bf968f",
+        "type": "inject",
+        "z": "e52631fa86fdd3be",
+        "g": "7048013762d936db",
+        "name": "delete last sub",
+        "props": [
+            {
+                "p": "orion-ld",
+                "v": "orion-ld",
+                "vt": "flow"
+            },
+            {
+                "p": "x-auth-token",
+                "v": "x-auth-token",
+                "vt": "flow"
+            },
+            {
+                "p": "id",
+                "v": "latest",
+                "vt": "flow"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 270,
+        "y": 540,
+        "wires": [
+            [
+                "e09c2264f5cd5f03"
+            ]
+        ]
+    },
+    {
+        "id": "432586859e633808",
         "type": "http request",
         "z": "e52631fa86fdd3be",
-        "name": "NGSI Upsert",
-        "method": "POST",
-        "ret": "obj",
+        "g": "7048013762d936db",
+        "name": "DELETE /subscriptions/{id}",
+        "method": "DELETE",
+        "ret": "txt",
         "paytoqs": "ignore",
-        "url": "{{{orion-ld}}}/ngsi-ld/v1/entityOperations/upsert",
+        "url": "{{{orion-ld}}}/ngsi-ld/v1/subscriptions/{{id}}",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -6664,19 +6870,197 @@
         "senderr": false,
         "headers": [
             {
-                "keyType": "Content-Type",
-                "keyValue": "",
-                "valueType": "other",
-                "valueValue": "application/ld+json"
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
+            }
+        ],
+        "x": 520,
+        "y": 540,
+        "wires": [
+            [
+                "49b3c830b1f3f8c1"
+            ]
+        ]
+    },
+    {
+        "id": "49b3c830b1f3f8c1",
+        "type": "debug",
+        "z": "e52631fa86fdd3be",
+        "g": "7048013762d936db",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "statusCode&\" - \"&(payload.error?payload.error:$count(payload)&($count(payload)=1?\" result\":\" results\"))",
+        "statusType": "jsonata",
+        "x": 850,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "e09c2264f5cd5f03",
+        "type": "change",
+        "z": "e52631fa86fdd3be",
+        "g": "7048013762d936db",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion-ld",
+                "pt": "msg",
+                "to": "http://orion-ld:1026",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 375,
+        "y": 540,
+        "wires": [
+            [
+                "432586859e633808"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png",
+        "l": false
+    },
+    {
+        "id": "b6be9ea67c20470c",
+        "type": "inject",
+        "z": "e52631fa86fdd3be",
+        "g": "7048013762d936db",
+        "name": "get all entities",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 270,
+        "y": 460,
+        "wires": [
+            [
+                "114e5d93ba37d588"
+            ]
+        ]
+    },
+    {
+        "id": "725e4060ae079a58",
+        "type": "debug",
+        "z": "e52631fa86fdd3be",
+        "g": "7048013762d936db",
+        "name": "entities",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 860,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "aef16637363ad33c",
+        "type": "http request",
+        "z": "e52631fa86fdd3be",
+        "g": "7048013762d936db",
+        "name": "GET /entities",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "query",
+        "url": "{{{orion-ld}}}/ngsi-ld/v1/entities",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-Token",
+                "valueType": "msg",
+                "valueValue": "x-auth-token"
             }
         ],
         "x": 710,
-        "y": 180,
+        "y": 460,
         "wires": [
             [
-                "0291d8caca30be5c"
+                "725e4060ae079a58"
             ]
         ]
+    },
+    {
+        "id": "bf87f213ac1616d6",
+        "type": "template",
+        "z": "e52631fa86fdd3be",
+        "g": "7048013762d936db",
+        "name": "query",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n    \"type\": \"Test\"\n}\n",
+        "output": "json",
+        "x": 450,
+        "y": 460,
+        "wires": [
+            [
+                "aef16637363ad33c"
+            ]
+        ]
+    },
+    {
+        "id": "114e5d93ba37d588",
+        "type": "change",
+        "z": "e52631fa86fdd3be",
+        "g": "7048013762d936db",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion-ld",
+                "pt": "msg",
+                "to": "http://orion-ld:1026",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 375,
+        "y": 460,
+        "wires": [
+            [
+                "bf87f213ac1616d6"
+            ]
+        ],
+        "icon": "node-red-contrib-fiware_official/fiware.png",
+        "l": false
     },
     {
         "id": "666bcf1786a8826b",
