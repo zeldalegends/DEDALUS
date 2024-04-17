@@ -1,5 +1,5 @@
 # FIWARE Universe
-Full MVP FIWARE stack with enhanced security. 
+FIWARE stack with enhanced security and local blockchain.
 
 ## Requirements
 Modify the following files with your domain and email:
