@@ -18,8 +18,9 @@ echo ""
 echo -e "\033[0;36m🟦 COMMIT ALL CHANGES IN FOLDER \033[0m"
 git add .
 echo -e "\033[0;32mPress Enter to set commit title (CTRL+S+X to terminate)...\033[0m" && read key
-git commit
+git commit # -m "from local changes" 
 echo ""
+#git pull
 
 echo -e "\033[0;33m🟨 GIT CREDENTIALS \033[0m"
 echo Username: zeldalegends

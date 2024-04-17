@@ -1,8 +1,8 @@
 #!/bin/bash
-                               
-domain=$INSERT_YOUR_DOMAIN_HERE
-email=$INSERT_YOUR_EMAIL_HERE
-                               
+
+domain=enershare.zapto.org
+email=test@email.com
+
 # Domains must contain only letters and numbers (e.g., "try-it.noip.org" is not valid).
 # To register without email use: "--register-unsafely-without-email" (NOT RECOMMENDED).
 # https://eff-certbot.readthedocs.io/en/stable/using.html#certbot-command-line-options.
@@ -33,5 +33,5 @@ docker restart node-red
 #read -s -n 1 key && [[ $key != $'\e' ]] && exit
 #docker ps --all --format "table {{.Networks}}\t{{.Names}}\t{{.RunningFor}}\t{{.Image}}\t{{.Command}}\t{{.Mounts}}" | sort
 
-read -s -n 1 key && [[ $key == $'\e' ]] && exit
-docker compose logs --tail 10 --follow
+#read -s -n 1 key && [[ $key == $'\e' ]] && exit
+#docker compose logs --tail 10 --follow

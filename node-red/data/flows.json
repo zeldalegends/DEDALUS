@@ -725,7 +725,7 @@
         "type": "ui_tab",
         "name": "System Monitor",
         "icon": "memory",
-        "order": 5,
+        "order": 6,
         "disabled": false,
         "hidden": false
     },
@@ -734,7 +734,7 @@
         "type": "ui_tab",
         "name": "FIWARE Universe",
         "icon": "bubble_chart",
-        "order": 2,
+        "order": 1,
         "disabled": false,
         "hidden": false
     },
@@ -809,7 +809,7 @@
         "type": "ui_tab",
         "name": "File Manager",
         "icon": "folder_open",
-        "order": 3,
+        "order": 5,
         "disabled": false,
         "hidden": false
     },
@@ -838,7 +838,7 @@
         "type": "ui_tab",
         "name": "HTML Viewer",
         "icon": "dashboard",
-        "order": 6,
+        "order": 7,
         "disabled": false,
         "hidden": false
     },
@@ -863,7 +863,7 @@
         "type": "ui_tab",
         "name": "Home",
         "icon": "home",
-        "order": 1,
+        "order": 2,
         "disabled": false,
         "hidden": false
     },
@@ -1067,7 +1067,7 @@
         "type": "ui_tab",
         "name": "Docs",
         "icon": "fa-book",
-        "order": 1,
+        "order": 3,
         "disabled": false,
         "hidden": false
     },
@@ -1153,7 +1153,7 @@
         "type": "ui_tab",
         "name": "HYPERRIDE",
         "icon": "fa-header",
-        "order": 1,
+        "order": 4,
         "disabled": false,
         "hidden": false
     },
@@ -2346,7 +2346,7 @@
         "method": "put",
         "upload": false,
         "swaggerDoc": "",
-        "x": 130,
+        "x": 120,
         "y": 100,
         "wires": [
             [
@@ -2384,7 +2384,7 @@
         "method": "delete",
         "upload": false,
         "swaggerDoc": "",
-        "x": 140,
+        "x": 130,
         "y": 240,
         "wires": [
             [
@@ -2644,7 +2644,7 @@
         "order": 14,
         "width": "0",
         "height": "0",
-        "format": "<div>\n    &nbsp;\n    <button><a id=\"home\" style=\"text-decoration:none\"><i class=\"fa fa-home\"></i> Home</a></button>\n    &nbsp;&nbsp;&nbsp;\n    <button><a id=\"uploads\" style=\"text-decoration:none\"><i class=\"fa fa-upload\"></i> Uploads</a></button>\n    &nbsp;&nbsp;&nbsp;\n    <button><a href=\"..\" style=\"text-decoration:none\"><i class=\"fa fa-pencil\"></i> Editor</a></button>\n</div>\n<script>\n    document.getElementById(\"home\").href = window.location.protocol + \"//\" + window.location.hostname;\n    document.getElementById(\"uploads\").href = window.location.protocol + \"//\" + window.location.hostname + \"/uploads/\"\n</script>",
+        "format": "<div>\n    &nbsp;\n    <button><a id=\"home\" style=\"text-decoration:none\"><i class=\"fa fa-home\"></i> Home</a></button>\n    &nbsp;&nbsp;&nbsp;\n    <button><a id=\"uploads\" style=\"text-decoration:none\"><i class=\"fa fa-upload\"></i> Uploads</a></button>\n    &nbsp;&nbsp;&nbsp;\n    <button><a href=\"../editor\" style=\"text-decoration:none\"><i class=\"fa fa-pencil\"></i> Editor</a></button>\n</div>\n<script>\n    document.getElementById(\"home\").href = window.location.protocol + \"//\" + window.location.hostname;\n    document.getElementById(\"uploads\").href = window.location.protocol + \"//\" + window.location.hostname + \"/uploads/\"\n</script>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": true,
@@ -2665,7 +2665,7 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 130,
+        "x": 120,
         "y": 300,
         "wires": [
             [
@@ -5651,7 +5651,7 @@
         "order": 1,
         "width": 0,
         "height": 0,
-        "format": "<h4>\n    <img height=\"36\" src=\"https://account.thethingsnetwork.org/api/v2/users/atdfiware/picture.jpg\" />\n    Orion LD\n</h4>\n<textarea style=\"font-size:14px;\" rows=\"9\">{{msg.payload}}</textarea>",
+        "format": "<h4>\n    <img height=\"36\" src=\"https://outbarriers.com/static/img/fiware/orion-logo.png\" />\n    Orion LD\n    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n    <a href=\"https://fiware.github.io/data-models/context.jsonld\" title=\"FIWARE Data Model\"><img style=\"border:0px;\" height=\"36\" src=\"https://account.thethingsnetwork.org/api/v2/users/atdfiware/picture.jpg\" alt=\"FIWARE Data Model\"/></a>\n    <a href=\"https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld\" title=\"NGSI Core Context\"><img style=\"border:0px;\" height=\"36\" src=\"https://json-ld.org/images/json-ld-data-48.png\" alt=\"NGSI Core Context\"/></a>\n</h4>\n<textarea style=\"font-size:14px;\" rows=\"9\">{{msg.payload}}</textarea>\n",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": true,
@@ -6039,7 +6039,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "[\n    {\n        \"@context\": [\n            \"https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld\",\n            \"https://schema.lab.fiware.org/ld/context\"\n        ],\n        \"id\": \"urn:entities:{{topic.reference}}\",\n        \"type\": \"Test\",\n        \"level\": {\n            \"type\": \"Property\",\n            \"value\": \"{{topic.level}}\"\n        },\n        \"reference\": {\n            \"type\": \"Property\",\n            \"value\": \"{{topic.reference}}\"\n        },\n        \"result\": {\n            \"type\": \"Property\",\n            \"value\": {{topic.result}}\n        },\n        \"timestamp\": {\n            \"type\": \"Property\",\n            \"value\": {{payload}}\n        }\n    }\n]",
+        "template": "[\n    {\n        \"@context\": [\n            \"https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld\",\n            \"https://fiware.github.io/data-models/context.jsonld\"\n        ],\n        \"id\": \"urn:entities:{{topic.reference}}\",\n        \"type\": \"Test\",\n        \"level\": {\n            \"type\": \"Property\",\n            \"value\": \"{{topic.level}}\"\n        },\n        \"reference\": {\n            \"type\": \"Property\",\n            \"value\": \"{{topic.reference}}\"\n        },\n        \"result\": {\n            \"type\": \"Property\",\n            \"value\": {{topic.result}}\n        },\n        \"timestamp\": {\n            \"type\": \"Property\",\n            \"value\": {{payload}}\n        }\n    }\n]",
         "output": "json",
         "x": 450,
         "y": 180,
@@ -6221,8 +6221,8 @@
         "group": "47bd647b0bf55722",
         "name": "DEDALUS Banner for the Demo",
         "order": 1,
-        "width": "0",
-        "height": "0",
+        "width": "6",
+        "height": "2",
         "format": "<img src='https://dedalus-horizon.eu/wp-content/uploads/2023/08/Screenshot-from-2023-08-13-12-19-46.png' width=100%>\n</div>\n<h4>WP3 demo</h4>\n\n",
         "storeOutMessages": true,
         "fwdInMessages": true,
@@ -7022,7 +7022,7 @@
         "fieldType": "msg",
         "format": "json",
         "syntax": "mustache",
-        "template": "{\n    \"type\": \"Test\"\n}\n",
+        "template": "{\n    \"type\": \"Test\",\n    \"options\": \"concise\"\n}\n",
         "output": "json",
         "x": 450,
         "y": 460,

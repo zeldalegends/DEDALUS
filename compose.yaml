@@ -61,7 +61,7 @@ services:
       test: mongo --eval "db.adminCommand('ping')" --quiet
       interval: 15s
 
- # Mongo DB front-end
+  # Mongo DB front-end
   mongo-express:
     image: mongo-express #:1.0.2
     container_name: fe-mongo
@@ -93,7 +93,7 @@ services:
       - "3005"
     ports:
       - "3005:3005" # http://localhost:3005
-      - "3443:3443" # https://localhost:3443
+    # - "3443:3443" # https://localhost:3443
     environment:
       - DEBUG=idm:*
       - IDM_DB_HOST=mysql-db
@@ -202,54 +202,55 @@ services:
       - ./node-red/data:/data
       - ./public:/public
 
-#  # NGINX Reverse Proxy and Web Server for NGSI-LD @context files
-#  nginx:
-#    image: nginx #:1.25.4
-#    hostname: web-server
-#    container_name: nginx
-#    depends_on:
-#      - node-red
-#    restart: on-failure
-#    networks:
-#      default:
-#        aliases:
-#          - context
-#          - ld-context
-#    ports:
-#      - "80:80"   # http://localhost
-#      - "443:443" # https://localhost
-#    volumes:
-#    # - ./nginx/ssl/:/etc/ssl/             # CA-signed (ZeroSSL)
-#      - ./certbot/conf:/etc/letsencrypt:ro # Let's Encrypt (Certbot)
-#      - ./certbot/www:/var/www/certbot:ro  # Let's Encrypt (Certbot)
-#    # - ./certbot/dhparam:/etc/ssl/certs   # Let's Encrypt (Certbot)
-#    # - ./nginx/conf:/etc/nginx/conf.d
-#    # - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-#      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-#      - ./public:/home/www/public_html/localhost/public
-#    entrypoint: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
-#    healthcheck:
-#      test: wget --server-response --spider --quiet http://ld-context/public/data-models/ngsi-context.jsonld 2>&1 | awk 'NR==1{print $$2}' | grep -q -e '200')
-#
-#  # Let's Encrypt with Certbot
-#  certbot:
-#    image: certbot/certbot #:v2.10.0
-#    hostname: letsencrypt
-#    container_name: certbot
-#    volumes:
-#      - ./certbot/conf:/etc/letsencrypt:rw
-#      - ./certbot/www:/var/www/certbot:rw
-#      - ./certbot/var:/var/lib/letsencrypt
-#    depends_on:
-#      - nginx
-#    # Initialize
-#    # command: certonly --webroot --webroot-path=/var/www/certbot --email abc@test.com --agree-tos --no-eff-email -d enershare.zapto.org --staging # --text --rsa-key-size 4096 --verbose --keep-until-expiring --preferred-challenges=http
-#    # Operations
-#    # command: certonly --webroot --webroot-path=/var/www/certbot --email abc@test.com --agree-tos --no-eff-email -d enershare.zapto.org --force-renewal # --rsa-key-size 4096 --verbose --keep-until-expiring --preferred-challenges=http
-#    # entrypoint: certonly --webroot -w /var/www/certbot/ -d smartenergy.duckdns.org -m test@email.com --agree-tos --keep -n -v --rsa-key-size 4096
-#    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
-#    healthcheck:
-#      test: test -n '$$(ls -A /etc/letsencrypt/live/)' || test '$$DRY_RUN' == 'true'
+  # NGINX Reverse Proxy and Web Server for NGSI-LD @context files
+  nginx:
+    image: nginx #:1.25.4
+    hostname: web-server
+    container_name: nginx
+    depends_on:
+      - node-red
+    restart: on-failure
+    networks:
+      default:
+        aliases:
+          - context
+          - ld-context
+    ports:
+      - "80:80"   # http://localhost
+      - "443:443" # https://localhost
+    volumes:
+    # - ./nginx/ssl/:/etc/ssl/             # CA-signed (ZeroSSL)
+      - ./certbot/conf:/etc/letsencrypt:ro # Let's Encrypt (Certbot)
+      - ./certbot/www:/var/www/certbot:ro  # Let's Encrypt (Certbot)
+    # - ./certbot/dhparam:/etc/ssl/certs   # Let's Encrypt (Certbot)
+    # - ./nginx/conf:/etc/nginx/conf.d
+    # - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./public:/home/www/public_html/localhost/public
+    # entrypoint: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    healthcheck:
+      # test: curl -k https://localhost/data-models/ngsi-context.jsonld 2>&1 | awk 'NR==1{print $$2}' | grep -q -e '200')
+      test: curl -k -sf https://localhost/data-models/ngsi-context.jsonld || exit 1
+
+  # Let's Encrypt with Certbot
+  certbot:
+    image: certbot/certbot #:v2.10.0
+    hostname: letsencrypt
+    container_name: certbot
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt:rw
+      - ./certbot/www:/var/www/certbot:rw
+      - ./certbot/var:/var/lib/letsencrypt
+    depends_on:
+      - nginx
+    # Initialize
+    # command: certonly --webroot --webroot-path=/var/www/certbot --email abc@test.com --agree-tos --no-eff-email -d enershare.zapto.org --staging # --text --rsa-key-size 4096 --verbose --keep-until-expiring --preferred-challenges=http
+    # Operations
+    # command: certonly --webroot --webroot-path=/var/www/certbot --email abc@test.com --agree-tos --no-eff-email -d enershare.zapto.org --force-renewal # --rsa-key-size 4096 --verbose --keep-until-expiring --preferred-challenges=http
+    # entrypoint: certonly --webroot -w /var/www/certbot/ -d smartenergy.duckdns.org -m test@email.com --agree-tos --keep -n -v --rsa-key-size 4096
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    healthcheck:
+      test: test -n '$$(ls -A /etc/letsencrypt/live/)' || test '$$DRY_RUN' == 'true'
 
   # Blockchain with deployed PoE smart contract
   blockchain:
@@ -263,7 +264,7 @@ services:
   #   restart_policy:
   #     condition: on-failure
   # expose:
-  #   - 7545               # ganache:7545    
+  #   - 7545               # ganache:7545
     ports:
       - 7545:7545          # localhost:7545
     volumes:
@@ -317,3 +318,4 @@ volumes:
   mongo-db: ~
   mysql-db: ~
 # node-red-data:
+  
