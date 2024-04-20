@@ -19,7 +19,6 @@ git config user.name zeldalegends
 # git status
 git add .
 git commit -m "first commit"
-echo -e "\033[0;36m🟦 CREDENTIALS \033[0m"
-echo Username: zeldalegends
-echo Password: $(cat .token)
+echo -e "\033[0;36mUsername: zeldalegends \033[0m"
+echo -e "\033[0;36mPassword: $(cat .token) \033[0m"
 git push origin
