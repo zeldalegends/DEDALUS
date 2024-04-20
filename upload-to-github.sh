@@ -24,7 +24,7 @@ read key
 
 git add .
 git commit -m "commit for local changes"
-echo -e "\033[0;34m🟩 CREDENTIALS \033[0m"
+echo -e "\033[0;32m🟩 CREDENTIALS \033[0m"
 echo Username: zeldalegends
 echo Password: $(cat .token)
 cat .token | clip
